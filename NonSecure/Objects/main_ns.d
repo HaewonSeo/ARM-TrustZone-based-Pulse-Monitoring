@@ -2,6 +2,7 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_cmse.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\..\Library\Device\Nuvoton\M2351\Include\NuMicro.h \
   ..\..\Library\Device\Nuvoton\M2351\Include\M2351.h \
   ..\..\Library\CMSIS\Include\core_armv8mbl.h \

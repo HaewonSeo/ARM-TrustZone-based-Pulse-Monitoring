@@ -50,20 +50,25 @@ Section Cross References
     main_ns.o(.text.LED_Off) refers to printfa.o(i.__0printf) for printf
     main_ns.o(.text.LED_Off) refers to main_ns.o(.rodata.str1.1) for .L.str.1
     main_ns.o(.ARM.exidx.text.LED_Off) refers to main_ns.o(.text.LED_Off) for [Anonymous Symbol]
+    main_ns.o(.text.ft_strdup) refers to strlen.o(.text) for strlen
+    main_ns.o(.text.ft_strdup) refers to malloc.o(i.malloc) for malloc
+    main_ns.o(.ARM.exidx.text.ft_strdup) refers to main_ns.o(.text.ft_strdup) for [Anonymous Symbol]
+    main_ns.o(.text.Send_Pulse_To_Server) refers to calloc.o(.text) for calloc
+    main_ns.o(.text.Send_Pulse_To_Server) refers to strlen.o(.text) for strlen
+    main_ns.o(.text.Send_Pulse_To_Server) refers to printfa.o(i.__0printf) for printf
+    main_ns.o(.text.Send_Pulse_To_Server) refers to wifi.o(.text.WIFI_PORT_Send_Data) for WIFI_PORT_Send_Data
+    main_ns.o(.text.Send_Pulse_To_Server) refers to malloc.o(i.free) for free
+    main_ns.o(.text.Send_Pulse_To_Server) refers to main_ns.o(.rodata.GET_MSG) for GET_MSG
+    main_ns.o(.text.Send_Pulse_To_Server) refers to main_ns.o(.rodata.str1.1) for .L.str.2
+    main_ns.o(.ARM.exidx.text.Send_Pulse_To_Server) refers to main_ns.o(.text.Send_Pulse_To_Server) for [Anonymous Symbol]
+    main_ns.o(.ARM.exidx.text.Control_SW) refers to main_ns.o(.text.Control_SW) for [Anonymous Symbol]
     main_ns.o(.ARM.exidx.text.SysTick_Handler) refers to main_ns.o(.text.SysTick_Handler) for [Anonymous Symbol]
-    main_ns.o(.ARM.exidx.text.SYS_Init) refers to main_ns.o(.text.SYS_Init) for [Anonymous Symbol]
     main_ns.o(.text.main) refers to printfa.o(i.__0printf) for printf
-    main_ns.o(.text.main) refers to main_ns.o(.text.SysTick_Config) for SysTick_Config
     main_ns.o(.text.main) refers to wifi.o(.text.WIFI_PORT_Start) for WIFI_PORT_Start
-    main_ns.o(.text.main) refers to main_ns.o(.text.CLK_SysTickLongDelay) for CLK_SysTickLongDelay
-    main_ns.o(.text.main) refers to main_ns.o(.rodata.str1.1) for .L.str.2
-    main_ns.o(.text.main) refers to system_m2351.o(.data.SystemCoreClock) for SystemCoreClock
+    main_ns.o(.text.main) refers to main_ns.o(.text.Control_SW) for Control_SW
+    main_ns.o(.text.main) refers to main_ns.o(.text.Send_Pulse_To_Server) for Send_Pulse_To_Server
+    main_ns.o(.text.main) refers to main_ns.o(.rodata.str1.1) for .L.str.4
     main_ns.o(.ARM.exidx.text.main) refers to main_ns.o(.text.main) for [Anonymous Symbol]
-    main_ns.o(.text.SysTick_Config) refers to main_ns.o(.text.__NVIC_SetPriority) for __NVIC_SetPriority
-    main_ns.o(.ARM.exidx.text.SysTick_Config) refers to main_ns.o(.text.SysTick_Config) for [Anonymous Symbol]
-    main_ns.o(.text.CLK_SysTickLongDelay) refers to system_m2351.o(.data.CyclesPerUs) for CyclesPerUs
-    main_ns.o(.ARM.exidx.text.CLK_SysTickLongDelay) refers to main_ns.o(.text.CLK_SysTickLongDelay) for [Anonymous Symbol]
-    main_ns.o(.ARM.exidx.text.__NVIC_SetPriority) refers to main_ns.o(.text.__NVIC_SetPriority) for [Anonymous Symbol]
     wifi.o(.ARM.exidx.text.WIFI_PORT_Init) refers to wifi.o(.text.WIFI_PORT_Init) for [Anonymous Symbol]
     wifi.o(.text.WIFI_PORT_Start) refers to printfa.o(i.__0printf) for printf
     wifi.o(.text.WIFI_PORT_Start) refers to wifi.o(.text.CLK_SysTickLongDelay) for CLK_SysTickLongDelay
@@ -76,6 +81,7 @@ Section Cross References
     wifi.o(.text.WIFI_PORT_Start) refers to wifi.o(.rodata.ATCommand_CWJAP_SET) for ATCommand_CWJAP_SET
     wifi.o(.text.WIFI_PORT_Start) refers to wifi.o(.rodata.ATCommand_CIPSTA_SET) for ATCommand_CIPSTA_SET
     wifi.o(.text.WIFI_PORT_Start) refers to wifi.o(.rodata.ATCommand_CIPMUX_SET0) for ATCommand_CIPMUX_SET0
+    wifi.o(.text.WIFI_PORT_Start) refers to wifi.o(.rodata.ATCommand_CIPMUX_GET) for ATCommand_CIPMUX_GET
     wifi.o(.text.WIFI_PORT_Start) refers to wifi.o(.rodata.ATCommand_CIPSTART) for ATCommand_CIPSTART
     wifi.o(.ARM.exidx.text.WIFI_PORT_Start) refers to wifi.o(.text.WIFI_PORT_Start) for [Anonymous Symbol]
     wifi.o(.text.CLK_SysTickLongDelay) refers to system_m2351.o(.data.CyclesPerUs) for CyclesPerUs
@@ -86,6 +92,23 @@ Section Cross References
     wifi.o(.text.WIFI_PORT_Read) refers to printfa.o(i.__0printf) for printf
     wifi.o(.text.WIFI_PORT_Read) refers to wifi.o(.rodata.str1.1) for .L.str.9
     wifi.o(.ARM.exidx.text.WIFI_PORT_Read) refers to wifi.o(.text.WIFI_PORT_Read) for [Anonymous Symbol]
+    wifi.o(.text.WIFI_PORT_Send_Data) refers to printfa.o(i.__0printf) for printf
+    wifi.o(.text.WIFI_PORT_Send_Data) refers to wifi.o(.text.ft_itoa) for ft_itoa
+    wifi.o(.text.WIFI_PORT_Send_Data) refers to strlen.o(.text) for strlen
+    wifi.o(.text.WIFI_PORT_Send_Data) refers to wifi.o(.text.WIFI_PORT_Write) for WIFI_PORT_Write
+    wifi.o(.text.WIFI_PORT_Send_Data) refers to wifi.o(.text.WIFI_PORT_Read) for WIFI_PORT_Read
+    wifi.o(.text.WIFI_PORT_Send_Data) refers to wifi.o(.rodata.str1.1) for .L.str.11
+    wifi.o(.text.WIFI_PORT_Send_Data) refers to wifi.o(.rodata.ATCommand_CIPSEND) for ATCommand_CIPSEND
+    wifi.o(.text.WIFI_PORT_Send_Data) refers to wifi.o(.rodata.ATCommand_END) for ATCommand_END
+    wifi.o(.ARM.exidx.text.WIFI_PORT_Send_Data) refers to wifi.o(.text.WIFI_PORT_Send_Data) for [Anonymous Symbol]
+    wifi.o(.text.ft_itoa) refers to wifi.o(.text.ft_intlen) for ft_intlen
+    wifi.o(.text.ft_itoa) refers to calloc.o(.text) for calloc
+    wifi.o(.ARM.exidx.text.ft_itoa) refers to wifi.o(.text.ft_itoa) for [Anonymous Symbol]
+    wifi.o(.text.WIFI_PORT_Receive_Data) refers to memseta.o(.text) for __aeabi_memclr
+    wifi.o(.text.WIFI_PORT_Receive_Data) refers to printfa.o(i.__0printf) for printf
+    wifi.o(.text.WIFI_PORT_Receive_Data) refers to wifi.o(.rodata.str1.1) for .L.str.19
+    wifi.o(.ARM.exidx.text.WIFI_PORT_Receive_Data) refers to wifi.o(.text.WIFI_PORT_Receive_Data) for [Anonymous Symbol]
+    wifi.o(.ARM.exidx.text.ft_intlen) refers to wifi.o(.text.ft_intlen) for [Anonymous Symbol]
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
@@ -136,6 +159,39 @@ Section Cross References
     printfa.o(i._printf_pre_padding) refers (Special) to iusefp.o(.text) for __I$use$fp
     printfa.o(i._snputc) refers (Special) to iusefp.o(.text) for __I$use$fp
     printfa.o(i._sputc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    malloc.o(i.free) refers to mvars.o(.data) for __microlib_freelist
+    malloc.o(i.malloc) refers to mvars.o(.data) for __microlib_freelist_initialised
+    malloc.o(i.malloc) refers to mvars.o(.data) for __microlib_freelist
+    malloc.o(i.malloc) refers to startup_m2351.o(HEAP) for __heap_base
+    mallocr.o(i.__free$realloc) refers to mvars.o(.data) for __microlib_freelist
+    mallocr.o(i.__malloc$realloc) refers to mallocr.o(i.internal_alloc) for internal_alloc
+    mallocr.o(i.__malloc$realloc) refers to mvars.o(.data) for __microlib_freelist_initialised
+    mallocr.o(i.__malloc$realloc) refers to startup_m2351.o(HEAP) for __heap_base
+    mallocr.o(i.__malloc$realloc) refers to mvars.o(.data) for __microlib_freelist
+    mallocr.o(i.internal_alloc) refers to memcpya.o(.text) for __aeabi_memcpy
+    mallocr.o(i.internal_alloc) refers to mvars.o(.data) for __microlib_freelist
+    mallocr.o(i.realloc) refers to mallocr.o(i.__free$realloc) for __free$realloc
+    mallocr.o(i.realloc) refers to mallocr.o(i.internal_alloc) for internal_alloc
+    mallocr.o(i.realloc) refers to mallocr.o(i.__malloc$realloc) for __malloc$realloc
+    mallocr.o(i.realloc) refers to mvars.o(.data) for __microlib_freelist
+    malloca.o(i.__aligned_malloc) refers to mvars.o(.data) for __microlib_freelist
+    malloca.o(i.__aligned_malloc) refers to mvars.o(.data) for __microlib_freelist_initialised
+    malloca.o(i.__aligned_malloc) refers to startup_m2351.o(HEAP) for __heap_base
+    malloca.o(i.__free$memalign) refers to mvars.o(.data) for __microlib_freelist
+    malloca.o(i.__malloc$memalign) refers to malloca.o(i.__aligned_malloc) for __aligned_malloc
+    mallocra.o(i.__aligned_malloc$realloc) refers to mallocra.o(i.internal_alloc) for internal_alloc
+    mallocra.o(i.__aligned_malloc$realloc) refers to startup_m2351.o(HEAP) for __heap_base
+    mallocra.o(i.__aligned_malloc$realloc) refers to mvars.o(.data) for __microlib_freelist
+    mallocra.o(i.__aligned_malloc$realloc) refers to mvars.o(.data) for __microlib_freelist_initialised
+    mallocra.o(i.__free$realloc$memalign) refers to mvars.o(.data) for __microlib_freelist
+    mallocra.o(i.__malloc$realloc$memalign) refers to mallocra.o(i.__aligned_malloc$realloc) for __aligned_malloc$realloc
+    mallocra.o(i.__realloc$memalign) refers to mallocra.o(i.__free$realloc$memalign) for __free$realloc$memalign
+    mallocra.o(i.__realloc$memalign) refers to mallocra.o(i.internal_alloc) for internal_alloc
+    mallocra.o(i.__realloc$memalign) refers to mallocra.o(i.__malloc$realloc$memalign) for __malloc$realloc$memalign
+    mallocra.o(i.__realloc$memalign) refers to mvars.o(.data) for __microlib_freelist
+    mallocra.o(i.internal_alloc) refers to memcpya.o(.text) for __aeabi_memcpy
+    mallocra.o(i.internal_alloc) refers to mvars.o(.data) for __microlib_freelist
+    calloc.o(.text) refers to malloc.o(i.malloc) for malloc
     entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
     entry2.o(.ARM.Collect$$$$00002712) refers to startup_m2351.o(STACK) for __initial_sp
     entry2.o(__vectab_stack_and_reset_area) refers to startup_m2351.o(STACK) for __initial_sp
@@ -175,9 +231,9 @@ Removing Unused input sections from the image.
     Removing system_m2351.o(.text.SystemCoreClockUpdate), (56 bytes).
     Removing system_m2351.o(.ARM.exidx.text.SystemCoreClockUpdate), (8 bytes).
     Removing system_m2351.o(.ARM.exidx.text.SystemInit), (8 bytes).
+    Removing system_m2351.o(.data.SystemCoreClock), (4 bytes).
     Removing system_m2351.o(.data.PllClock), (4 bytes).
     Removing system_m2351.o(.rodata.gau32ClkSrcTbl), (32 bytes).
-    Removing startup_m2351.o(HEAP), (0 bytes).
     Removing retarget.o(.text), (0 bytes).
     Removing retarget.o(.ARM.exidx.text.ProcessHardFault), (8 bytes).
     Removing retarget.o(.ARM.exidx.text.SH_Return), (8 bytes).
@@ -213,13 +269,14 @@ Removing Unused input sections from the image.
     Removing main_ns.o(.ARM.exidx.text.LED_On), (8 bytes).
     Removing main_ns.o(.text.LED_Off), (32 bytes).
     Removing main_ns.o(.ARM.exidx.text.LED_Off), (8 bytes).
+    Removing main_ns.o(.text.ft_strdup), (88 bytes).
+    Removing main_ns.o(.ARM.exidx.text.ft_strdup), (8 bytes).
+    Removing main_ns.o(.ARM.exidx.text.Send_Pulse_To_Server), (8 bytes).
+    Removing main_ns.o(.ARM.exidx.text.Control_SW), (8 bytes).
     Removing main_ns.o(.ARM.exidx.text.SysTick_Handler), (8 bytes).
-    Removing main_ns.o(.text.SYS_Init), (2 bytes).
-    Removing main_ns.o(.ARM.exidx.text.SYS_Init), (8 bytes).
     Removing main_ns.o(.ARM.exidx.text.main), (8 bytes).
-    Removing main_ns.o(.ARM.exidx.text.SysTick_Config), (8 bytes).
-    Removing main_ns.o(.ARM.exidx.text.CLK_SysTickLongDelay), (8 bytes).
-    Removing main_ns.o(.ARM.exidx.text.__NVIC_SetPriority), (8 bytes).
+    Removing main_ns.o(.rodata.GET_MSG_HEAD), (24 bytes).
+    Removing main_ns.o(.rodata.GET_MSG_TAIL), (68 bytes).
     Removing main_ns.o(.bss.SysTick_Handler.u32Ticks), (4 bytes).
     Removing main_ns.o(.ARM.use_no_argv), (4 bytes).
     Removing wifi.o(.text), (0 bytes).
@@ -229,6 +286,11 @@ Removing Unused input sections from the image.
     Removing wifi.o(.ARM.exidx.text.CLK_SysTickLongDelay), (8 bytes).
     Removing wifi.o(.ARM.exidx.text.WIFI_PORT_Write), (8 bytes).
     Removing wifi.o(.ARM.exidx.text.WIFI_PORT_Read), (8 bytes).
+    Removing wifi.o(.ARM.exidx.text.WIFI_PORT_Send_Data), (8 bytes).
+    Removing wifi.o(.ARM.exidx.text.ft_itoa), (8 bytes).
+    Removing wifi.o(.text.WIFI_PORT_Receive_Data), (708 bytes).
+    Removing wifi.o(.ARM.exidx.text.WIFI_PORT_Receive_Data), (8 bytes).
+    Removing wifi.o(.ARM.exidx.text.ft_intlen), (8 bytes).
     Removing wifi.o(.rodata.ATCommand_RST), (9 bytes).
     Removing wifi.o(.rodata.ATCommand_GMR), (9 bytes).
     Removing wifi.o(.rodata.ATCommand_CWMODE_GET), (13 bytes).
@@ -237,10 +299,8 @@ Removing Unused input sections from the image.
     Removing wifi.o(.rodata.ATCommand_CWJAP_GET), (13 bytes).
     Removing wifi.o(.rodata.ATCommand_CIPSTA_GET), (14 bytes).
     Removing wifi.o(.rodata.ATCommand_CIPSTATUS), (15 bytes).
-    Removing wifi.o(.rodata.ATCommand_CIPMUX_GET), (13 bytes).
     Removing wifi.o(.rodata.ATCommand_CIPMUX_SET1), (14 bytes).
     Removing wifi.o(.rodata.ATCommand_CIFSR), (11 bytes).
-    Removing wifi.o(.rodata.ATCommand_CIPSEND), (13 bytes).
     Removing wifi.o(.rodata.ATCommand_CIPCLOSE), (14 bytes).
     Removing wifi.o(.data.command_AT), (5 bytes).
     Removing wifi.o(.data.command_CWMODE), (14 bytes).
@@ -252,15 +312,7 @@ Removing Unused input sections from the image.
     Removing wifi.o(.data.command_CIPSTART), (44 bytes).
     Removing wifi.o(.data.command_CIPSTO), (13 bytes).
 
-81 unused section(s) (total 1400 bytes) removed from the image.
-
-==============================================================================
-
-Adding Veneers to the image
-
-    Adding TT veneer (12 bytes, Long) for call to 'GetSystemCoreClock' from main_ns.o(.text.main).
-
-1 Veneer(s) (total 12 bytes) added to the image.
+85 unused section(s) (total 2288 bytes) removed from the image.
 
 ==============================================================================
 
@@ -295,7 +347,16 @@ Image Symbol Table
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
+    ../clib/microlib/malloc/calloc.c         0x00000000   Number         0  calloc.o ABSOLUTE
+    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  malloc.o ABSOLUTE
+    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  mallocr.o ABSOLUTE
+    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  malloca.o ABSOLUTE
+    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  mallocra.o ABSOLUTE
+    ../clib/microlib/malloc/mvars.c          0x00000000   Number         0  mvars.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
+    ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
     ../clib/microlib/string/strlen.c         0x00000000   Number         0  strlen.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
@@ -325,224 +386,255 @@ Image Symbol Table
     .ARM.Collect$$$$00002712                 0x100401e8   Section        4  entry2.o(.ARM.Collect$$$$00002712)
     .text                                    0x100401ec   Section       68  startup_m2351.o(.text)
     .text                                    0x10040230   Section        0  strlen.o(.text)
-    .text                                    0x1004023e   Section        0  uldiv.o(.text)
-    .text                                    0x1004029e   Section        0  iusefp.o(.text)
-    .text                                    0x100402a0   Section        0  dadd.o(.text)
-    .text                                    0x10040404   Section        0  dmul.o(.text)
-    .text                                    0x100404d4   Section        0  ddiv.o(.text)
-    .text                                    0x100405c4   Section        0  dfixul.o(.text)
-    .text                                    0x10040604   Section       40  cdrcmple.o(.text)
-    .text                                    0x1004062c   Section       36  init.o(.text)
-    .text                                    0x10040650   Section        0  uidiv_div0.o(.text)
-    .text                                    0x1004068e   Section        0  llshl.o(.text)
-    .text                                    0x100406ae   Section        0  llushr.o(.text)
-    .text                                    0x100406d0   Section        0  llsshr.o(.text)
-    .text                                    0x100406f6   Section        0  depilogue.o(.text)
-    .text                                    0x100407b4   Section        0  __dczerorl2.o(.text)
-    CLK_SysTickLongDelay                     0x1004080d   Thumb Code   104  main_ns.o(.text.CLK_SysTickLongDelay)
-    [Anonymous Symbol]                       0x1004080c   Section        0  main_ns.o(.text.CLK_SysTickLongDelay)
-    CLK_SysTickLongDelay                     0x10040875   Thumb Code   120  wifi.o(.text.CLK_SysTickLongDelay)
-    [Anonymous Symbol]                       0x10040874   Section        0  wifi.o(.text.CLK_SysTickLongDelay)
-    __arm_cp.2_0                             0x100408dc   Number         4  wifi.o(.text.CLK_SysTickLongDelay)
-    __arm_cp.2_1                             0x100408e0   Number         4  wifi.o(.text.CLK_SysTickLongDelay)
-    __arm_cp.2_2                             0x100408e4   Number         4  wifi.o(.text.CLK_SysTickLongDelay)
-    __arm_cp.2_3                             0x100408e8   Number         4  wifi.o(.text.CLK_SysTickLongDelay)
-    [Anonymous Symbol]                       0x100408ec   Section        0  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_20                            0x10040d0c   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_21                            0x10040d10   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_22                            0x10040d14   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_23                            0x10040d18   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_24                            0x10040d1c   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_0                             0x10040e84   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_5                             0x10040e88   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_6                             0x10040e8c   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_7                             0x10040e90   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_8                             0x10040e94   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_9                             0x10040e98   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_11                            0x10040e9c   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_12                            0x10040ea0   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_13                            0x10040ea4   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_14                            0x10040ea8   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_15                            0x10040eac   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_16                            0x10040eb0   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_17                            0x10040eb4   Number         4  retarget.o(.text.ProcessHardFault)
-    __arm_cp.0_18                            0x10040eb8   Number         4  retarget.o(.text.ProcessHardFault)
-    [Anonymous Symbol]                       0x10040ebc   Section        0  system_m2351.o(.text.SCU_IRQHandler)
-    [Anonymous Symbol]                       0x10040ec0   Section        0  retarget.o(.text.SH_Return)
-    [Anonymous Symbol]                       0x10040ece   Section        0  retarget.o(.text.SendChar)
-    [Anonymous Symbol]                       0x10040ee0   Section        0  retarget.o(.text.SendChar_ToUART)
-    __arm_cp.2_0                             0x10040f20   Number         4  retarget.o(.text.SendChar_ToUART)
-    __arm_cp.2_1                             0x10040f24   Number         4  retarget.o(.text.SendChar_ToUART)
-    SysTick_Config                           0x10040f29   Thumb Code    84  main_ns.o(.text.SysTick_Config)
-    [Anonymous Symbol]                       0x10040f28   Section        0  main_ns.o(.text.SysTick_Config)
-    __arm_cp.5_0                             0x10040f70   Number         4  main_ns.o(.text.SysTick_Config)
-    __arm_cp.5_1                             0x10040f74   Number         4  main_ns.o(.text.SysTick_Config)
-    __arm_cp.5_2                             0x10040f78   Number         4  main_ns.o(.text.SysTick_Config)
-    [Anonymous Symbol]                       0x10040f7c   Section        0  main_ns.o(.text.SysTick_Handler)
-    [Anonymous Symbol]                       0x10040f80   Section        0  system_m2351.o(.text.SystemInit)
-    __arm_cp.2_0                             0x10040f88   Number         4  system_m2351.o(.text.SystemInit)
-    __arm_cp.2_1                             0x10040f8c   Number         4  system_m2351.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x10040f90   Section        0  wifi.o(.text.WIFI_PORT_Read)
-    [Anonymous Symbol]                       0x1004100c   Section        0  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_0                             0x100412c0   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_1                             0x100412c4   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_2                             0x100412c8   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_3                             0x100412cc   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_4                             0x100412d0   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_5                             0x100412d4   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_6                             0x100412d8   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_7                             0x100412dc   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_8                             0x100412e0   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_10                            0x100412e4   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_11                            0x100412e8   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_12                            0x100412ec   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_13                            0x100412f0   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_14                            0x100412f4   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_15                            0x100412f8   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_16                            0x100412fc   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_17                            0x10041300   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_18                            0x10041304   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_19                            0x10041308   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_20                            0x1004130c   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    __arm_cp.1_21                            0x10041310   Number         4  wifi.o(.text.WIFI_PORT_Start)
-    [Anonymous Symbol]                       0x10041314   Section        0  wifi.o(.text.WIFI_PORT_Write)
-    __arm_cp.3_0                             0x1004136c   Number         4  wifi.o(.text.WIFI_PORT_Write)
-    __arm_cp.3_1                             0x10041370   Number         4  wifi.o(.text.WIFI_PORT_Write)
-    __arm_cp.3_2                             0x10041374   Number         4  wifi.o(.text.WIFI_PORT_Write)
-    __NVIC_SetPriority                       0x10041379   Thumb Code   120  main_ns.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x10041378   Section        0  main_ns.o(.text.__NVIC_SetPriority)
-    __arm_cp.7_0                             0x100413e8   Number         4  main_ns.o(.text.__NVIC_SetPriority)
-    __arm_cp.7_1                             0x100413ec   Number         4  main_ns.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x100413f0   Section        0  retarget.o(.text.fputc)
-    [Anonymous Symbol]                       0x10041404   Section        0  main_ns.o(.text.main)
-    __arm_cp.4_0                             0x100414a0   Number         4  main_ns.o(.text.main)
-    __arm_cp.4_1                             0x100414a4   Number         4  main_ns.o(.text.main)
-    __arm_cp.4_2                             0x100414a8   Number         4  main_ns.o(.text.main)
-    __arm_cp.4_3                             0x100414ac   Number         4  main_ns.o(.text.main)
-    __arm_cp.4_4                             0x100414b0   Number         4  main_ns.o(.text.main)
-    __arm_cp.4_5                             0x100414b4   Number         4  main_ns.o(.text.main)
-    __arm_cp.4_6                             0x100414b8   Number         4  main_ns.o(.text.main)
-    __arm_cp.4_7                             0x100414bc   Number         4  main_ns.o(.text.main)
-    __arm_cp.4_8                             0x100414c0   Number         4  main_ns.o(.text.main)
-    __arm_cp.4_9                             0x100414c4   Number         4  main_ns.o(.text.main)
-    __arm_cp.4_10                            0x100414c8   Number         4  main_ns.o(.text.main)
-    i.__0printf                              0x100414d8   Section        0  printfa.o(i.__0printf)
-    i.__ARM_clz                              0x100414f8   Section        0  depilogue.o(i.__ARM_clz)
-    i.__scatterload_copy                     0x10041526   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x10041534   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x10041536   Section       14  handlers.o(i.__scatterload_zeroinit)
-    _fp_digits                               0x10041545   Thumb Code   344  printfa.o(i._fp_digits)
-    i._fp_digits                             0x10041544   Section        0  printfa.o(i._fp_digits)
-    _printf_core                             0x100416b9   Thumb Code  1754  printfa.o(i._printf_core)
-    i._printf_core                           0x100416b8   Section        0  printfa.o(i._printf_core)
-    _printf_post_padding                     0x10041da5   Thumb Code    32  printfa.o(i._printf_post_padding)
-    i._printf_post_padding                   0x10041da4   Section        0  printfa.o(i._printf_post_padding)
-    _printf_pre_padding                      0x10041dc5   Thumb Code    44  printfa.o(i._printf_pre_padding)
-    i._printf_pre_padding                    0x10041dc4   Section        0  printfa.o(i._printf_pre_padding)
-    .L.str.79                                0x10041e80   Data          35  retarget.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x10041e80   Section        0  retarget.o(.rodata.str1.1)
-    .L.str.70                                0x10041ea3   Data          69  retarget.o(.rodata.str1.1)
-    .L.str.80                                0x10041ee8   Data          46  retarget.o(.rodata.str1.1)
-    .L.str.83                                0x10041f16   Data          79  retarget.o(.rodata.str1.1)
-    .L.str.73                                0x10041f65   Data          44  retarget.o(.rodata.str1.1)
-    .L.str.71                                0x10041f91   Data          42  retarget.o(.rodata.str1.1)
-    .L.str.75                                0x10041fbb   Data          33  retarget.o(.rodata.str1.1)
-    .L.str.78                                0x10041fdc   Data          34  retarget.o(.rodata.str1.1)
-    .L.str.74                                0x10041ffe   Data          38  retarget.o(.rodata.str1.1)
-    .L.str.84                                0x10042024   Data          67  retarget.o(.rodata.str1.1)
-    .L.str.72                                0x10042067   Data          51  retarget.o(.rodata.str1.1)
-    .L.str.20                                0x1004209a   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.55                                0x100420a0   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.34                                0x100420a5   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.58                                0x100420aa   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.24                                0x100420ae   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.68                                0x100420b3   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.62                                0x100420b9   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.44                                0x100420be   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.45                                0x100420bf   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.42                                0x100420c4   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.40                                0x100420ca   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.61                                0x100420d0   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.64                                0x100420d5   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.36                                0x100420db   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.49                                0x100420e0   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.33                                0x100420e6   Data           7  retarget.o(.rodata.str1.1)
-    .L.str.38                                0x100420ed   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.21                                0x100420f3   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.56                                0x100420f9   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.35                                0x100420fe   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.59                                0x10042103   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.69                                0x10042107   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.63                                0x1004210d   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.46                                0x10042112   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.43                                0x10042117   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.41                                0x1004211d   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.65                                0x10042123   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.50                                0x10042129   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.57                                0x1004212f   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.60                                0x10042134   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.47                                0x10042138   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.51                                0x1004213d   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.39                                0x10042143   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.48                                0x10042149   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.52                                0x1004214e   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.53                                0x10042154   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.54                                0x1004215a   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.3                                 0x10042160   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.12                                0x10042166   Data           3  retarget.o(.rodata.str1.1)
-    .L.str.4                                 0x10042169   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.13                                0x1004216f   Data           3  retarget.o(.rodata.str1.1)
-    .L.str.32                                0x10042172   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.23                                0x10042177   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.5                                 0x1004217b   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.14                                0x10042181   Data           3  retarget.o(.rodata.str1.1)
-    .L.str.27                                0x10042184   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.31                                0x10042188   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.67                                0x1004218c   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.6                                 0x10042191   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.15                                0x10042197   Data           3  retarget.o(.rodata.str1.1)
-    .L.str.7                                 0x1004219a   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.16                                0x100421a0   Data           3  retarget.o(.rodata.str1.1)
-    .L.str.8                                 0x100421a3   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.17                                0x100421a9   Data           3  retarget.o(.rodata.str1.1)
-    .L.str.66                                0x100421ac   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.9                                 0x100421b1   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.18                                0x100421b7   Data           3  retarget.o(.rodata.str1.1)
-    .L.str.37                                0x100421ba   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.22                                0x100421be   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.10                                0x100421c3   Data           6  retarget.o(.rodata.str1.1)
-    .L.str.19                                0x100421c9   Data           3  retarget.o(.rodata.str1.1)
-    .L.str.25                                0x100421cc   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.1                                 0x100421d0   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.11                                0x100421d4   Data          11  retarget.o(.rodata.str1.1)
-    .L.str.76                                0x100421df   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.77                                0x100421e3   Data           4  retarget.o(.rodata.str1.1)
-    .L.str                                   0x100421e7   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.30                                0x100421eb   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.29                                0x100421ec   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.2                                 0x100421f0   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.28                                0x100421f4   Data           5  retarget.o(.rodata.str1.1)
-    .L.str.26                                0x100421f9   Data           4  retarget.o(.rodata.str1.1)
-    .L.str.82                                0x100421fd   Data           7  retarget.o(.rodata.str1.1)
-    .L.str.81                                0x10042204   Data          10  retarget.o(.rodata.str1.1)
-    .L.str                                   0x1004220e   Data          22  main_ns.o(.rodata.str1.1)
-    .L.str.2                                 0x1004220e   Data          49  main_ns.o(.rodata.str1.1)
-    .L.str.8                                 0x1004220e   Data          49  main_ns.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x1004220e   Section        0  main_ns.o(.rodata.str1.1)
-    .L.str.1                                 0x10042224   Data          23  main_ns.o(.rodata.str1.1)
-    .L.str.3                                 0x1004223f   Data          49  main_ns.o(.rodata.str1.1)
-    .L.str.5                                 0x10042270   Data          49  main_ns.o(.rodata.str1.1)
-    .L.str.6                                 0x100422a1   Data          47  wifi.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x100422a1   Section        0  wifi.o(.rodata.str1.1)
-    .L.str.1                                 0x100422d0   Data          49  wifi.o(.rodata.str1.1)
-    .L.str.2                                 0x10042301   Data          49  wifi.o(.rodata.str1.1)
-    .L.str                                   0x10042332   Data          49  wifi.o(.rodata.str1.1)
-    .L.str.7                                 0x10042363   Data          49  wifi.o(.rodata.str1.1)
-    .L.str.3                                 0x10042394   Data          49  wifi.o(.rodata.str1.1)
-    .L.str.4                                 0x100423c5   Data          49  wifi.o(.rodata.str1.1)
-    .L.str.5                                 0x100423f6   Data          50  wifi.o(.rodata.str1.1)
-    .L.str.4                                 0x10042426   Data           2  wifi.o(.rodata.str1.1)
-    .L.str.9                                 0x10042428   Data           3  wifi.o(.rodata.str1.1)
+    .text                                    0x1004023e   Section        0  calloc.o(.text)
+    .text                                    0x1004025a   Section        0  uldiv.o(.text)
+    .text                                    0x100402ba   Section        0  iusefp.o(.text)
+    .text                                    0x100402bc   Section        0  dadd.o(.text)
+    .text                                    0x10040420   Section        0  dmul.o(.text)
+    .text                                    0x100404f0   Section        0  ddiv.o(.text)
+    .text                                    0x100405e0   Section        0  dfixul.o(.text)
+    .text                                    0x10040620   Section       40  cdrcmple.o(.text)
+    .text                                    0x10040648   Section       36  init.o(.text)
+    .text                                    0x1004066c   Section        0  uidiv_div0.o(.text)
+    .text                                    0x100406aa   Section        0  llshl.o(.text)
+    .text                                    0x100406ca   Section        0  llushr.o(.text)
+    .text                                    0x100406ec   Section        0  llsshr.o(.text)
+    .text                                    0x10040712   Section        0  depilogue.o(.text)
+    .text                                    0x100407d0   Section        0  __dczerorl2.o(.text)
+    CLK_SysTickLongDelay                     0x10040829   Thumb Code   120  wifi.o(.text.CLK_SysTickLongDelay)
+    [Anonymous Symbol]                       0x10040828   Section        0  wifi.o(.text.CLK_SysTickLongDelay)
+    __arm_cp.2_0                             0x10040890   Number         4  wifi.o(.text.CLK_SysTickLongDelay)
+    __arm_cp.2_1                             0x10040894   Number         4  wifi.o(.text.CLK_SysTickLongDelay)
+    __arm_cp.2_2                             0x10040898   Number         4  wifi.o(.text.CLK_SysTickLongDelay)
+    __arm_cp.2_3                             0x1004089c   Number         4  wifi.o(.text.CLK_SysTickLongDelay)
+    [Anonymous Symbol]                       0x100408a0   Section        0  main_ns.o(.text.Control_SW)
+    [Anonymous Symbol]                       0x100408a4   Section        0  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_20                            0x10040cc4   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_21                            0x10040cc8   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_22                            0x10040ccc   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_23                            0x10040cd0   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_24                            0x10040cd4   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_0                             0x10040e3c   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_5                             0x10040e40   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_6                             0x10040e44   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_7                             0x10040e48   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_8                             0x10040e4c   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_9                             0x10040e50   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_11                            0x10040e54   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_12                            0x10040e58   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_13                            0x10040e5c   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_14                            0x10040e60   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_15                            0x10040e64   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_16                            0x10040e68   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_17                            0x10040e6c   Number         4  retarget.o(.text.ProcessHardFault)
+    __arm_cp.0_18                            0x10040e70   Number         4  retarget.o(.text.ProcessHardFault)
+    [Anonymous Symbol]                       0x10040e74   Section        0  system_m2351.o(.text.SCU_IRQHandler)
+    [Anonymous Symbol]                       0x10040e78   Section        0  retarget.o(.text.SH_Return)
+    [Anonymous Symbol]                       0x10040e86   Section        0  retarget.o(.text.SendChar)
+    [Anonymous Symbol]                       0x10040e98   Section        0  retarget.o(.text.SendChar_ToUART)
+    __arm_cp.2_0                             0x10040ed8   Number         4  retarget.o(.text.SendChar_ToUART)
+    __arm_cp.2_1                             0x10040edc   Number         4  retarget.o(.text.SendChar_ToUART)
+    [Anonymous Symbol]                       0x10040ee0   Section        0  main_ns.o(.text.Send_Pulse_To_Server)
+    __arm_cp.3_0                             0x10040f74   Number         4  main_ns.o(.text.Send_Pulse_To_Server)
+    __arm_cp.3_1                             0x10040f78   Number         4  main_ns.o(.text.Send_Pulse_To_Server)
+    __arm_cp.3_2                             0x10040f7c   Number         4  main_ns.o(.text.Send_Pulse_To_Server)
+    [Anonymous Symbol]                       0x10040f80   Section        0  main_ns.o(.text.SysTick_Handler)
+    [Anonymous Symbol]                       0x10040f84   Section        0  system_m2351.o(.text.SystemInit)
+    __arm_cp.2_0                             0x10040f8c   Number         4  system_m2351.o(.text.SystemInit)
+    __arm_cp.2_1                             0x10040f90   Number         4  system_m2351.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x10040f94   Section        0  wifi.o(.text.WIFI_PORT_Read)
+    __arm_cp.4_0                             0x10041014   Number         4  wifi.o(.text.WIFI_PORT_Read)
+    __arm_cp.4_1                             0x10041018   Number         4  wifi.o(.text.WIFI_PORT_Read)
+    __arm_cp.4_2                             0x1004101c   Number         4  wifi.o(.text.WIFI_PORT_Read)
+    __arm_cp.4_3                             0x10041020   Number         4  wifi.o(.text.WIFI_PORT_Read)
+    __arm_cp.4_4                             0x10041024   Number         4  wifi.o(.text.WIFI_PORT_Read)
+    [Anonymous Symbol]                       0x10041028   Section        0  wifi.o(.text.WIFI_PORT_Send_Data)
+    __arm_cp.5_0                             0x10041168   Number         4  wifi.o(.text.WIFI_PORT_Send_Data)
+    __arm_cp.5_1                             0x1004116c   Number         4  wifi.o(.text.WIFI_PORT_Send_Data)
+    __arm_cp.5_2                             0x10041170   Number         4  wifi.o(.text.WIFI_PORT_Send_Data)
+    __arm_cp.5_3                             0x10041174   Number         4  wifi.o(.text.WIFI_PORT_Send_Data)
+    __arm_cp.5_4                             0x10041178   Number         4  wifi.o(.text.WIFI_PORT_Send_Data)
+    __arm_cp.5_5                             0x1004117c   Number         4  wifi.o(.text.WIFI_PORT_Send_Data)
+    __arm_cp.5_6                             0x10041180   Number         4  wifi.o(.text.WIFI_PORT_Send_Data)
+    __arm_cp.5_7                             0x10041184   Number         4  wifi.o(.text.WIFI_PORT_Send_Data)
+    __arm_cp.5_8                             0x10041188   Number         4  wifi.o(.text.WIFI_PORT_Send_Data)
+    __arm_cp.5_9                             0x1004118c   Number         4  wifi.o(.text.WIFI_PORT_Send_Data)
+    __arm_cp.5_10                            0x10041190   Number         4  wifi.o(.text.WIFI_PORT_Send_Data)
+    [Anonymous Symbol]                       0x10041194   Section        0  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_0                             0x10041460   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_1                             0x10041464   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_2                             0x10041468   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_3                             0x1004146c   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_4                             0x10041470   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_5                             0x10041474   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_6                             0x10041478   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_7                             0x1004147c   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_8                             0x10041480   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_10                            0x10041484   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_11                            0x10041488   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_12                            0x1004148c   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_13                            0x10041490   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_14                            0x10041494   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_15                            0x10041498   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_16                            0x1004149c   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_17                            0x100414a0   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_18                            0x100414a4   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_19                            0x100414a8   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_20                            0x100414ac   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_21                            0x100414b0   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    __arm_cp.1_22                            0x100414b4   Number         4  wifi.o(.text.WIFI_PORT_Start)
+    [Anonymous Symbol]                       0x100414b8   Section        0  wifi.o(.text.WIFI_PORT_Write)
+    __arm_cp.3_0                             0x10041510   Number         4  wifi.o(.text.WIFI_PORT_Write)
+    __arm_cp.3_1                             0x10041514   Number         4  wifi.o(.text.WIFI_PORT_Write)
+    __arm_cp.3_2                             0x10041518   Number         4  wifi.o(.text.WIFI_PORT_Write)
+    [Anonymous Symbol]                       0x1004151c   Section        0  retarget.o(.text.fputc)
+    ft_intlen                                0x10041531   Thumb Code    58  wifi.o(.text.ft_intlen)
+    [Anonymous Symbol]                       0x10041530   Section        0  wifi.o(.text.ft_intlen)
+    ft_itoa                                  0x1004156b   Thumb Code   148  wifi.o(.text.ft_itoa)
+    [Anonymous Symbol]                       0x1004156a   Section        0  wifi.o(.text.ft_itoa)
+    [Anonymous Symbol]                       0x10041600   Section        0  main_ns.o(.text.main)
+    __arm_cp.6_0                             0x10041694   Number         4  main_ns.o(.text.main)
+    __arm_cp.6_1                             0x10041698   Number         4  main_ns.o(.text.main)
+    __arm_cp.6_2                             0x1004169c   Number         4  main_ns.o(.text.main)
+    __arm_cp.6_3                             0x100416a0   Number         4  main_ns.o(.text.main)
+    __arm_cp.6_4                             0x100416a4   Number         4  main_ns.o(.text.main)
+    __arm_cp.6_5                             0x100416a8   Number         4  main_ns.o(.text.main)
+    i.__0printf                              0x100416ac   Section        0  printfa.o(i.__0printf)
+    i.__ARM_clz                              0x100416cc   Section        0  depilogue.o(i.__ARM_clz)
+    i.__scatterload_copy                     0x100416fa   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x10041708   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x1004170a   Section       14  handlers.o(i.__scatterload_zeroinit)
+    _fp_digits                               0x10041719   Thumb Code   344  printfa.o(i._fp_digits)
+    i._fp_digits                             0x10041718   Section        0  printfa.o(i._fp_digits)
+    _printf_core                             0x1004188d   Thumb Code  1754  printfa.o(i._printf_core)
+    i._printf_core                           0x1004188c   Section        0  printfa.o(i._printf_core)
+    _printf_post_padding                     0x10041f79   Thumb Code    32  printfa.o(i._printf_post_padding)
+    i._printf_post_padding                   0x10041f78   Section        0  printfa.o(i._printf_post_padding)
+    _printf_pre_padding                      0x10041f99   Thumb Code    44  printfa.o(i._printf_pre_padding)
+    i._printf_pre_padding                    0x10041f98   Section        0  printfa.o(i._printf_pre_padding)
+    i.free                                   0x10041fc4   Section        0  malloc.o(i.free)
+    i.malloc                                 0x10042018   Section        0  malloc.o(i.malloc)
+    .L.str.79                                0x1004218f   Data          35  retarget.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x1004218f   Section        0  retarget.o(.rodata.str1.1)
+    .L.str.70                                0x100421b2   Data          69  retarget.o(.rodata.str1.1)
+    .L.str.80                                0x100421f7   Data          46  retarget.o(.rodata.str1.1)
+    .L.str.83                                0x10042225   Data          79  retarget.o(.rodata.str1.1)
+    .L.str.73                                0x10042274   Data          44  retarget.o(.rodata.str1.1)
+    .L.str.71                                0x100422a0   Data          42  retarget.o(.rodata.str1.1)
+    .L.str.75                                0x100422ca   Data          33  retarget.o(.rodata.str1.1)
+    .L.str.78                                0x100422eb   Data          34  retarget.o(.rodata.str1.1)
+    .L.str.74                                0x1004230d   Data          38  retarget.o(.rodata.str1.1)
+    .L.str.84                                0x10042333   Data          67  retarget.o(.rodata.str1.1)
+    .L.str.72                                0x10042376   Data          51  retarget.o(.rodata.str1.1)
+    .L.str.20                                0x100423a9   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.55                                0x100423af   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.34                                0x100423b4   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.58                                0x100423b9   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.24                                0x100423bd   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.68                                0x100423c2   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.62                                0x100423c8   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.44                                0x100423cd   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.45                                0x100423ce   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.42                                0x100423d3   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.40                                0x100423d9   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.61                                0x100423df   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.64                                0x100423e4   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.36                                0x100423ea   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.49                                0x100423ef   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.33                                0x100423f5   Data           7  retarget.o(.rodata.str1.1)
+    .L.str.38                                0x100423fc   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.21                                0x10042402   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.56                                0x10042408   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.35                                0x1004240d   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.59                                0x10042412   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.69                                0x10042416   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.63                                0x1004241c   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.46                                0x10042421   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.43                                0x10042426   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.41                                0x1004242c   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.65                                0x10042432   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.50                                0x10042438   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.57                                0x1004243e   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.60                                0x10042443   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.47                                0x10042447   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.51                                0x1004244c   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.39                                0x10042452   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.48                                0x10042458   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.52                                0x1004245d   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.53                                0x10042463   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.54                                0x10042469   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.3                                 0x1004246f   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.12                                0x10042475   Data           3  retarget.o(.rodata.str1.1)
+    .L.str.4                                 0x10042478   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.13                                0x1004247e   Data           3  retarget.o(.rodata.str1.1)
+    .L.str.32                                0x10042481   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.23                                0x10042486   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.5                                 0x1004248a   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.14                                0x10042490   Data           3  retarget.o(.rodata.str1.1)
+    .L.str.27                                0x10042493   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.31                                0x10042497   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.67                                0x1004249b   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.6                                 0x100424a0   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.15                                0x100424a6   Data           3  retarget.o(.rodata.str1.1)
+    .L.str.7                                 0x100424a9   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.16                                0x100424af   Data           3  retarget.o(.rodata.str1.1)
+    .L.str.8                                 0x100424b2   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.17                                0x100424b8   Data           3  retarget.o(.rodata.str1.1)
+    .L.str.66                                0x100424bb   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.9                                 0x100424c0   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.18                                0x100424c6   Data           3  retarget.o(.rodata.str1.1)
+    .L.str.37                                0x100424c9   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.22                                0x100424cd   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.10                                0x100424d2   Data           6  retarget.o(.rodata.str1.1)
+    .L.str.19                                0x100424d8   Data           3  retarget.o(.rodata.str1.1)
+    .L.str.25                                0x100424db   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.1                                 0x100424df   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.11                                0x100424e3   Data          11  retarget.o(.rodata.str1.1)
+    .L.str.76                                0x100424ee   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.77                                0x100424f2   Data           4  retarget.o(.rodata.str1.1)
+    .L.str                                   0x100424f6   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.30                                0x100424fa   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.29                                0x100424fb   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.2                                 0x100424ff   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.28                                0x10042503   Data           5  retarget.o(.rodata.str1.1)
+    .L.str.26                                0x10042508   Data           4  retarget.o(.rodata.str1.1)
+    .L.str.82                                0x1004250c   Data           7  retarget.o(.rodata.str1.1)
+    .L.str.81                                0x10042513   Data          10  retarget.o(.rodata.str1.1)
+    .L.str                                   0x1004251d   Data          22  main_ns.o(.rodata.str1.1)
+    .L.str.4                                 0x1004251d   Data          49  main_ns.o(.rodata.str1.1)
+    .L.str.8                                 0x1004251d   Data          49  main_ns.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x1004251d   Section        0  main_ns.o(.rodata.str1.1)
+    .L.str.1                                 0x10042533   Data          23  main_ns.o(.rodata.str1.1)
+    .L.str.3                                 0x1004254e   Data          19  main_ns.o(.rodata.str1.1)
+    .L.str.2                                 0x10042561   Data          20  main_ns.o(.rodata.str1.1)
+    .L.str.7                                 0x10042575   Data          49  main_ns.o(.rodata.str1.1)
+    .L.str.5                                 0x100425a6   Data          49  main_ns.o(.rodata.str1.1)
+    .L.str.18                                0x100425d7   Data          13  wifi.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x100425d7   Section        0  wifi.o(.rodata.str1.1)
+    .L.str.12                                0x100425e4   Data           5  wifi.o(.rodata.str1.1)
+    .L.str.15                                0x100425e9   Data           4  wifi.o(.rodata.str1.1)
+    .L.str.17                                0x100425ed   Data          22  wifi.o(.rodata.str1.1)
+    .L.str.14                                0x10042603   Data          22  wifi.o(.rodata.str1.1)
+    .L.str.13                                0x10042619   Data          23  wifi.o(.rodata.str1.1)
+    .L.str.16                                0x10042630   Data          22  wifi.o(.rodata.str1.1)
+    .L.str.1                                 0x10042646   Data          49  wifi.o(.rodata.str1.1)
+    .L.str.2                                 0x10042677   Data          49  wifi.o(.rodata.str1.1)
+    .L.str                                   0x100426a8   Data          49  wifi.o(.rodata.str1.1)
+    .L.str.6                                 0x100426d9   Data          49  wifi.o(.rodata.str1.1)
+    .L.str.7                                 0x1004270a   Data          49  wifi.o(.rodata.str1.1)
+    .L.str.3                                 0x1004273b   Data          49  wifi.o(.rodata.str1.1)
+    .L.str.4                                 0x1004276c   Data          49  wifi.o(.rodata.str1.1)
+    .L.str.11                                0x1004279d   Data          49  wifi.o(.rodata.str1.1)
+    .L.str.5                                 0x100427ce   Data          49  wifi.o(.rodata.str1.1)
+    .L.str.10                                0x100427fd   Data           2  wifi.o(.rodata.str1.1)
+    .L.str.6                                 0x100427fd   Data           2  wifi.o(.rodata.str1.1)
+    .L.str.9                                 0x100427ff   Data           3  wifi.o(.rodata.str1.1)
+    .L.str.19                                0x10042835   Data          49  wifi.o(.rodata.str1.1)
+    .L.str.20                                0x10042866   Data          17  wifi.o(.rodata.str1.1)
+    .L.str.21                                0x10042877   Data          17  wifi.o(.rodata.str1.1)
+    .data                                    0x30008000   Section        4  mvars.o(.data)
+    .data                                    0x30008004   Section        4  mvars.o(.data)
+    HEAP                                     0x300083b8   Section        0  startup_m2351.o(HEAP)
     STACK                                    0x300083b8   Section     2048  startup_m2351.o(STACK)
 
     Global Symbols
@@ -555,23 +647,24 @@ Image Symbol Table
     _clock_init                               - Undefined Weak Reference
     _microlib_exit                            - Undefined Weak Reference
     __Vectors_Size                           0x000001d8   Number         0  startup_m2351.o ABSOLUTE
-    CLK_GetCPUFreq                           0x00001e21   Thumb Code     8  nsclib.o ABSOLUTE
-    CLK_GetHCLKFreq                          0x00001e29   Thumb Code     8  nsclib.o ABSOLUTE
-    CLK_GetHXTFreq                           0x00001e31   Thumb Code     8  nsclib.o ABSOLUTE
-    CLK_GetLXTFreq                           0x00001e39   Thumb Code     8  nsclib.o ABSOLUTE
-    CLK_GetModuleClockDivider                0x00001e41   Thumb Code     8  nsclib.o ABSOLUTE
-    CLK_GetModuleClockSource                 0x00001e49   Thumb Code     8  nsclib.o ABSOLUTE
-    CLK_GetPCLK0Freq                         0x00001e51   Thumb Code     8  nsclib.o ABSOLUTE
-    CLK_GetPCLK1Freq                         0x00001e59   Thumb Code     8  nsclib.o ABSOLUTE
-    CLK_GetPLLClockFreq                      0x00001e61   Thumb Code     8  nsclib.o ABSOLUTE
-    GetSystemCoreClock                       0x00001e69   Thumb Code     8  nsclib.o ABSOLUTE
-    Print_Pulse                              0x00001e71   Thumb Code     8  nsclib.o ABSOLUTE
-    Secure_PA11_LED_Off                      0x00001e79   Thumb Code     8  nsclib.o ABSOLUTE
-    Secure_PA11_LED_On                       0x00001e81   Thumb Code     8  nsclib.o ABSOLUTE
-    Secure_PA12_LED_Off                      0x00001e89   Thumb Code     8  nsclib.o ABSOLUTE
-    Secure_PA12_LED_On                       0x00001e91   Thumb Code     8  nsclib.o ABSOLUTE
-    Secure_PA13_LED_Off                      0x00001e99   Thumb Code     8  nsclib.o ABSOLUTE
-    Secure_PA13_LED_On                       0x00001ea1   Thumb Code     8  nsclib.o ABSOLUTE
+    CLK_GetCPUFreq                           0x00001f01   Thumb Code     8  nsclib.o ABSOLUTE
+    CLK_GetHCLKFreq                          0x00001f09   Thumb Code     8  nsclib.o ABSOLUTE
+    CLK_GetHXTFreq                           0x00001f11   Thumb Code     8  nsclib.o ABSOLUTE
+    CLK_GetLXTFreq                           0x00001f19   Thumb Code     8  nsclib.o ABSOLUTE
+    CLK_GetModuleClockDivider                0x00001f21   Thumb Code     8  nsclib.o ABSOLUTE
+    CLK_GetModuleClockSource                 0x00001f29   Thumb Code     8  nsclib.o ABSOLUTE
+    CLK_GetPCLK0Freq                         0x00001f31   Thumb Code     8  nsclib.o ABSOLUTE
+    CLK_GetPCLK1Freq                         0x00001f39   Thumb Code     8  nsclib.o ABSOLUTE
+    CLK_GetPLLClockFreq                      0x00001f41   Thumb Code     8  nsclib.o ABSOLUTE
+    GetSystemCoreClock                       0x00001f49   Thumb Code     8  nsclib.o ABSOLUTE
+    Get_Pulse                                0x00001f51   Thumb Code     8  nsclib.o ABSOLUTE
+    Print_Pulse                              0x00001f59   Thumb Code     8  nsclib.o ABSOLUTE
+    Secure_PA11_LED_Off                      0x00001f61   Thumb Code     8  nsclib.o ABSOLUTE
+    Secure_PA11_LED_On                       0x00001f69   Thumb Code     8  nsclib.o ABSOLUTE
+    Secure_PA12_LED_Off                      0x00001f71   Thumb Code     8  nsclib.o ABSOLUTE
+    Secure_PA12_LED_On                       0x00001f79   Thumb Code     8  nsclib.o ABSOLUTE
+    Secure_PA13_LED_Off                      0x00001f81   Thumb Code     8  nsclib.o ABSOLUTE
+    Secure_PA13_LED_On                       0x00001f89   Thumb Code     8  nsclib.o ABSOLUTE
     __Vectors                                0x10040000   Data           4  startup_m2351.o(RESET)
     __Vectors_End                            0x100401d8   Data           0  startup_m2351.o(RESET)
     __main                                   0x100401d9   Thumb Code     0  entry.o(.ARM.Collect$$$$00000000)
@@ -674,63 +767,75 @@ Image Symbol Table
     SH_DoCommand                             0x10040211   Thumb Code    10  startup_m2351.o(.text)
     __PC                                     0x1004021b   Thumb Code     6  startup_m2351.o(.text)
     strlen                                   0x10040231   Thumb Code    14  strlen.o(.text)
-    __aeabi_uldivmod                         0x1004023f   Thumb Code    96  uldiv.o(.text)
-    __I$use$fp                               0x1004029f   Thumb Code     0  iusefp.o(.text)
-    __aeabi_dadd                             0x100402a1   Thumb Code   328  dadd.o(.text)
-    __aeabi_dsub                             0x100403e9   Thumb Code    12  dadd.o(.text)
-    __aeabi_drsub                            0x100403f5   Thumb Code    12  dadd.o(.text)
-    __aeabi_dmul                             0x10040405   Thumb Code   202  dmul.o(.text)
-    __aeabi_ddiv                             0x100404d5   Thumb Code   234  ddiv.o(.text)
-    __aeabi_d2ulz                            0x100405c5   Thumb Code    54  dfixul.o(.text)
-    __aeabi_cdrcmple                         0x10040605   Thumb Code    38  cdrcmple.o(.text)
-    __scatterload                            0x1004062d   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x1004062d   Thumb Code     0  init.o(.text)
-    __aeabi_uidiv$div0                       0x10040651   Thumb Code     0  uidiv_div0.o(.text)
-    __aeabi_uidivmod                         0x10040651   Thumb Code    62  uidiv_div0.o(.text)
-    __aeabi_llsl                             0x1004068f   Thumb Code    32  llshl.o(.text)
-    _ll_shift_l                              0x1004068f   Thumb Code     0  llshl.o(.text)
-    __aeabi_llsr                             0x100406af   Thumb Code    34  llushr.o(.text)
-    _ll_ushift_r                             0x100406af   Thumb Code     0  llushr.o(.text)
-    __aeabi_lasr                             0x100406d1   Thumb Code    38  llsshr.o(.text)
-    _ll_sshift_r                             0x100406d1   Thumb Code     0  llsshr.o(.text)
-    _double_round                            0x100406f7   Thumb Code    26  depilogue.o(.text)
-    _double_epilogue                         0x10040711   Thumb Code   164  depilogue.o(.text)
-    __decompress                             0x100407b5   Thumb Code     0  __dczerorl2.o(.text)
-    __decompress1                            0x100407b5   Thumb Code    86  __dczerorl2.o(.text)
-    ProcessHardFault                         0x100408ed   Thumb Code  1488  retarget.o(.text.ProcessHardFault)
-    SCU_IRQHandler                           0x10040ebd   Thumb Code     4  system_m2351.o(.text.SCU_IRQHandler)
-    SH_Return                                0x10040ec1   Thumb Code    14  retarget.o(.text.SH_Return)
-    SendChar                                 0x10040ecf   Thumb Code    16  retarget.o(.text.SendChar)
-    SendChar_ToUART                          0x10040ee1   Thumb Code    72  retarget.o(.text.SendChar_ToUART)
-    SysTick_Handler                          0x10040f7d   Thumb Code     2  main_ns.o(.text.SysTick_Handler)
-    SystemInit                               0x10040f81   Thumb Code    16  system_m2351.o(.text.SystemInit)
-    WIFI_PORT_Read                           0x10040f91   Thumb Code   124  wifi.o(.text.WIFI_PORT_Read)
-    WIFI_PORT_Start                          0x1004100d   Thumb Code   776  wifi.o(.text.WIFI_PORT_Start)
-    WIFI_PORT_Write                          0x10041315   Thumb Code   100  wifi.o(.text.WIFI_PORT_Write)
-    fputc                                    0x100413f1   Thumb Code    20  retarget.o(.text.fputc)
-    main                                     0x10041405   Thumb Code   200  main_ns.o(.text.main)
-    Long Thumb to Thumb Veneer to GetSystemCoreClock 0x100414cd   Thumb Code    12  anon$$obj.o(Veneer$$Code)
-    __0printf                                0x100414d9   Thumb Code    24  printfa.o(i.__0printf)
-    __1printf                                0x100414d9   Thumb Code     0  printfa.o(i.__0printf)
-    __2printf                                0x100414d9   Thumb Code     0  printfa.o(i.__0printf)
-    __c89printf                              0x100414d9   Thumb Code     0  printfa.o(i.__0printf)
-    printf                                   0x100414d9   Thumb Code     0  printfa.o(i.__0printf)
-    __ARM_clz                                0x100414f9   Thumb Code    46  depilogue.o(i.__ARM_clz)
-    __scatterload_copy                       0x10041527   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x10041535   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x10041537   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    ATCommand_AT                             0x10041df0   Data           5  wifi.o(.rodata.ATCommand_AT)
-    ATCommand_CIPMUX_SET0                    0x10041df5   Data          14  wifi.o(.rodata.ATCommand_CIPMUX_SET0)
-    ATCommand_CIPSTART                       0x10041e03   Data          40  wifi.o(.rodata.ATCommand_CIPSTART)
-    ATCommand_CIPSTA_SET                     0x10041e2b   Data          29  wifi.o(.rodata.ATCommand_CIPSTA_SET)
-    ATCommand_CWJAP_SET                      0x10041e48   Data          42  wifi.o(.rodata.ATCommand_CWJAP_SET)
-    ATCommand_CWMODE_SET1                    0x10041e72   Data          14  wifi.o(.rodata.ATCommand_CWMODE_SET1)
-    Region$$Table$$Base                      0x1004242c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x1004244c   Number         0  anon$$obj.o(Region$$Table)
-    CyclesPerUs                              0x30008000   Data           4  system_m2351.o(.data.CyclesPerUs)
-    SystemCoreClock                          0x30008004   Data           4  system_m2351.o(.data.SystemCoreClock)
-    ip_tbl                                   0x30008008   Data         852  retarget.o(.data.ip_tbl)
+    calloc                                   0x1004023f   Thumb Code    28  calloc.o(.text)
+    __aeabi_uldivmod                         0x1004025b   Thumb Code    96  uldiv.o(.text)
+    __I$use$fp                               0x100402bb   Thumb Code     0  iusefp.o(.text)
+    __aeabi_dadd                             0x100402bd   Thumb Code   328  dadd.o(.text)
+    __aeabi_dsub                             0x10040405   Thumb Code    12  dadd.o(.text)
+    __aeabi_drsub                            0x10040411   Thumb Code    12  dadd.o(.text)
+    __aeabi_dmul                             0x10040421   Thumb Code   202  dmul.o(.text)
+    __aeabi_ddiv                             0x100404f1   Thumb Code   234  ddiv.o(.text)
+    __aeabi_d2ulz                            0x100405e1   Thumb Code    54  dfixul.o(.text)
+    __aeabi_cdrcmple                         0x10040621   Thumb Code    38  cdrcmple.o(.text)
+    __scatterload                            0x10040649   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x10040649   Thumb Code     0  init.o(.text)
+    __aeabi_uidiv$div0                       0x1004066d   Thumb Code     0  uidiv_div0.o(.text)
+    __aeabi_uidivmod                         0x1004066d   Thumb Code    62  uidiv_div0.o(.text)
+    __aeabi_llsl                             0x100406ab   Thumb Code    32  llshl.o(.text)
+    _ll_shift_l                              0x100406ab   Thumb Code     0  llshl.o(.text)
+    __aeabi_llsr                             0x100406cb   Thumb Code    34  llushr.o(.text)
+    _ll_ushift_r                             0x100406cb   Thumb Code     0  llushr.o(.text)
+    __aeabi_lasr                             0x100406ed   Thumb Code    38  llsshr.o(.text)
+    _ll_sshift_r                             0x100406ed   Thumb Code     0  llsshr.o(.text)
+    _double_round                            0x10040713   Thumb Code    26  depilogue.o(.text)
+    _double_epilogue                         0x1004072d   Thumb Code   164  depilogue.o(.text)
+    __decompress                             0x100407d1   Thumb Code     0  __dczerorl2.o(.text)
+    __decompress1                            0x100407d1   Thumb Code    86  __dczerorl2.o(.text)
+    Control_SW                               0x100408a1   Thumb Code     2  main_ns.o(.text.Control_SW)
+    ProcessHardFault                         0x100408a5   Thumb Code  1488  retarget.o(.text.ProcessHardFault)
+    SCU_IRQHandler                           0x10040e75   Thumb Code     4  system_m2351.o(.text.SCU_IRQHandler)
+    SH_Return                                0x10040e79   Thumb Code    14  retarget.o(.text.SH_Return)
+    SendChar                                 0x10040e87   Thumb Code    16  retarget.o(.text.SendChar)
+    SendChar_ToUART                          0x10040e99   Thumb Code    72  retarget.o(.text.SendChar_ToUART)
+    Send_Pulse_To_Server                     0x10040ee1   Thumb Code   160  main_ns.o(.text.Send_Pulse_To_Server)
+    SysTick_Handler                          0x10040f81   Thumb Code     2  main_ns.o(.text.SysTick_Handler)
+    SystemInit                               0x10040f85   Thumb Code    16  system_m2351.o(.text.SystemInit)
+    WIFI_PORT_Read                           0x10040f95   Thumb Code   148  wifi.o(.text.WIFI_PORT_Read)
+    WIFI_PORT_Send_Data                      0x10041029   Thumb Code   364  wifi.o(.text.WIFI_PORT_Send_Data)
+    WIFI_PORT_Start                          0x10041195   Thumb Code   804  wifi.o(.text.WIFI_PORT_Start)
+    WIFI_PORT_Write                          0x100414b9   Thumb Code   100  wifi.o(.text.WIFI_PORT_Write)
+    fputc                                    0x1004151d   Thumb Code    20  retarget.o(.text.fputc)
+    main                                     0x10041601   Thumb Code   172  main_ns.o(.text.main)
+    __0printf                                0x100416ad   Thumb Code    24  printfa.o(i.__0printf)
+    __1printf                                0x100416ad   Thumb Code     0  printfa.o(i.__0printf)
+    __2printf                                0x100416ad   Thumb Code     0  printfa.o(i.__0printf)
+    __c89printf                              0x100416ad   Thumb Code     0  printfa.o(i.__0printf)
+    printf                                   0x100416ad   Thumb Code     0  printfa.o(i.__0printf)
+    __ARM_clz                                0x100416cd   Thumb Code    46  depilogue.o(i.__ARM_clz)
+    __scatterload_copy                       0x100416fb   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x10041709   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x1004170b   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    free                                     0x10041fc5   Thumb Code    80  malloc.o(i.free)
+    malloc                                   0x10042019   Thumb Code    92  malloc.o(i.malloc)
+    ATCommand_AT                             0x10042084   Data           5  wifi.o(.rodata.ATCommand_AT)
+    ATCommand_CIPMUX_GET                     0x10042089   Data          13  wifi.o(.rodata.ATCommand_CIPMUX_GET)
+    ATCommand_CIPMUX_SET0                    0x10042096   Data          14  wifi.o(.rodata.ATCommand_CIPMUX_SET0)
+    ATCommand_CIPSEND                        0x100420a4   Data          12  wifi.o(.rodata.ATCommand_CIPSEND)
+    ATCommand_CIPSTART                       0x100420b0   Data          40  wifi.o(.rodata.ATCommand_CIPSTART)
+    ATCommand_CIPSTA_SET                     0x100420d8   Data          29  wifi.o(.rodata.ATCommand_CIPSTA_SET)
+    ATCommand_CWJAP_SET                      0x100420f5   Data          42  wifi.o(.rodata.ATCommand_CWJAP_SET)
+    ATCommand_CWMODE_SET1                    0x1004211f   Data          14  wifi.o(.rodata.ATCommand_CWMODE_SET1)
+    ATCommand_END                            0x1004212d   Data           3  wifi.o(.rodata.ATCommand_END)
+    GET_MSG                                  0x10042130   Data          95  main_ns.o(.rodata.GET_MSG)
+    Region$$Table$$Base                      0x10042804   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x10042824   Number         0  anon$$obj.o(Region$$Table)
+    __microlib_freelist                      0x30008000   Data           4  mvars.o(.data)
+    __microlib_freelist_initialised          0x30008004   Data           4  mvars.o(.data)
+    CyclesPerUs                              0x30008008   Data           4  system_m2351.o(.data.CyclesPerUs)
+    ip_tbl                                   0x3000800c   Data         852  retarget.o(.data.ip_tbl)
     __stdout                                 0x30008360   Data          84  retarget.o(.bss.__stdout)
+    __heap_base                              0x300083b8   Data           0  startup_m2351.o(HEAP)
+    __heap_limit                             0x300083b8   Data           0  startup_m2351.o(HEAP)
     __initial_sp                             0x30008bb8   Data           0  startup_m2351.o(STACK)
 
 
@@ -741,91 +846,102 @@ Memory Map of the image
 
   Image Entry point : 0x100401d9
 
-  Load Region LR_ROM (Base: 0x10040000, Size: 0x000027b0, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00002648])
+  Load Region LR_ROM (Base: 0x10040000, Size: 0x00002b88, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00002a20])
 
-    Execution Region EXE_ROM (Exec base: 0x10040000, Load base: 0x10040000, Size: 0x0000244c, Max: 0xffffffff, ABSOLUTE)
+    Execution Region EXE_ROM (Exec base: 0x10040000, Load base: 0x10040000, Size: 0x00002824, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x10040000   0x10040000   0x000001d8   Data   RO           20    RESET               startup_m2351.o
-    0x100401d8   0x100401d8   0x00000000   Code   RO          149  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
-    0x100401d8   0x100401d8   0x00000004   Code   RO          182    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
-    0x100401dc   0x100401dc   0x00000004   Code   RO          185    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
-    0x100401e0   0x100401e0   0x00000000   Code   RO          187    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
-    0x100401e0   0x100401e0   0x00000000   Code   RO          189    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
-    0x100401e0   0x100401e0   0x00000008   Code   RO          190    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
-    0x100401e8   0x100401e8   0x00000000   Code   RO          192    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
-    0x100401e8   0x100401e8   0x00000000   Code   RO          194    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
-    0x100401e8   0x100401e8   0x00000004   Code   RO          183    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
+    0x100401d8   0x100401d8   0x00000000   Code   RO          159  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
+    0x100401d8   0x100401d8   0x00000004   Code   RO          224    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
+    0x100401dc   0x100401dc   0x00000004   Code   RO          227    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
+    0x100401e0   0x100401e0   0x00000000   Code   RO          229    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
+    0x100401e0   0x100401e0   0x00000000   Code   RO          231    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
+    0x100401e0   0x100401e0   0x00000008   Code   RO          232    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
+    0x100401e8   0x100401e8   0x00000000   Code   RO          234    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
+    0x100401e8   0x100401e8   0x00000000   Code   RO          236    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
+    0x100401e8   0x100401e8   0x00000004   Code   RO          225    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
     0x100401ec   0x100401ec   0x00000044   Code   RO           21    .text               startup_m2351.o
-    0x10040230   0x10040230   0x0000000e   Code   RO          152    .text               mc_p.l(strlen.o)
-    0x1004023e   0x1004023e   0x00000060   Code   RO          200    .text               mc_p.l(uldiv.o)
-    0x1004029e   0x1004029e   0x00000000   Code   RO          202    .text               mc_p.l(iusefp.o)
-    0x1004029e   0x1004029e   0x00000002   PAD
-    0x100402a0   0x100402a0   0x00000164   Code   RO          203    .text               mf_p.l(dadd.o)
-    0x10040404   0x10040404   0x000000d0   Code   RO          205    .text               mf_p.l(dmul.o)
-    0x100404d4   0x100404d4   0x000000f0   Code   RO          207    .text               mf_p.l(ddiv.o)
-    0x100405c4   0x100405c4   0x00000040   Code   RO          209    .text               mf_p.l(dfixul.o)
-    0x10040604   0x10040604   0x00000028   Code   RO          211    .text               mf_p.l(cdrcmple.o)
-    0x1004062c   0x1004062c   0x00000024   Code   RO          213    .text               mc_p.l(init.o)
-    0x10040650   0x10040650   0x0000003e   Code   RO          217    .text               mc_p.l(uidiv_div0.o)
-    0x1004068e   0x1004068e   0x00000020   Code   RO          223    .text               mc_p.l(llshl.o)
-    0x100406ae   0x100406ae   0x00000022   Code   RO          225    .text               mc_p.l(llushr.o)
-    0x100406d0   0x100406d0   0x00000026   Code   RO          227    .text               mc_p.l(llsshr.o)
-    0x100406f6   0x100406f6   0x000000be   Code   RO          229    .text               mf_p.l(depilogue.o)
-    0x100407b4   0x100407b4   0x00000056   Code   RO          241    .text               mc_p.l(__dczerorl2.o)
-    0x1004080a   0x1004080a   0x00000002   PAD
-    0x1004080c   0x1004080c   0x00000068   Code   RO           90    .text.CLK_SysTickLongDelay  main_ns.o
-    0x10040874   0x10040874   0x00000078   Code   RO          108    .text.CLK_SysTickLongDelay  wifi.o
-    0x100408ec   0x100408ec   0x000005d0   Code   RO           28    .text.ProcessHardFault  retarget.o
-    0x10040ebc   0x10040ebc   0x00000004   Code   RO            2    .text.SCU_IRQHandler  system_m2351.o
-    0x10040ec0   0x10040ec0   0x0000000e   Code   RO           30    .text.SH_Return     retarget.o
-    0x10040ece   0x10040ece   0x00000010   Code   RO           34    .text.SendChar      retarget.o
-    0x10040ede   0x10040ede   0x00000002   PAD
-    0x10040ee0   0x10040ee0   0x00000048   Code   RO           32    .text.SendChar_ToUART  retarget.o
-    0x10040f28   0x10040f28   0x00000054   Code   RO           88    .text.SysTick_Config  main_ns.o
-    0x10040f7c   0x10040f7c   0x00000002   Code   RO           82    .text.SysTick_Handler  main_ns.o
-    0x10040f7e   0x10040f7e   0x00000002   PAD
-    0x10040f80   0x10040f80   0x00000010   Code   RO            6    .text.SystemInit    system_m2351.o
-    0x10040f90   0x10040f90   0x0000007c   Code   RO          112    .text.WIFI_PORT_Read  wifi.o
-    0x1004100c   0x1004100c   0x00000308   Code   RO          106    .text.WIFI_PORT_Start  wifi.o
-    0x10041314   0x10041314   0x00000064   Code   RO          110    .text.WIFI_PORT_Write  wifi.o
-    0x10041378   0x10041378   0x00000078   Code   RO           92    .text.__NVIC_SetPriority  main_ns.o
-    0x100413f0   0x100413f0   0x00000014   Code   RO           44    .text.fputc         retarget.o
-    0x10041404   0x10041404   0x000000c8   Code   RO           86    .text.main          main_ns.o
-    0x100414cc   0x100414cc   0x0000000c   Ven    RO          243    Veneer$$Code        anon$$obj.o
-    0x100414d8   0x100414d8   0x00000020   Code   RO          155    i.__0printf         mc_p.l(printfa.o)
-    0x100414f8   0x100414f8   0x0000002e   Code   RO          231    i.__ARM_clz         mf_p.l(depilogue.o)
-    0x10041526   0x10041526   0x0000000e   Code   RO          235    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x10041534   0x10041534   0x00000002   Code   RO          236    i.__scatterload_null  mc_p.l(handlers.o)
-    0x10041536   0x10041536   0x0000000e   Code   RO          237    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x10041544   0x10041544   0x00000174   Code   RO          162    i._fp_digits        mc_p.l(printfa.o)
-    0x100416b8   0x100416b8   0x000006ec   Code   RO          163    i._printf_core      mc_p.l(printfa.o)
-    0x10041da4   0x10041da4   0x00000020   Code   RO          164    i._printf_post_padding  mc_p.l(printfa.o)
-    0x10041dc4   0x10041dc4   0x0000002c   Code   RO          165    i._printf_pre_padding  mc_p.l(printfa.o)
-    0x10041df0   0x10041df0   0x00000005   Data   RO          114    .rodata.ATCommand_AT  wifi.o
-    0x10041df5   0x10041df5   0x0000000e   Data   RO          127    .rodata.ATCommand_CIPMUX_SET0  wifi.o
-    0x10041e03   0x10041e03   0x00000028   Data   RO          130    .rodata.ATCommand_CIPSTART  wifi.o
-    0x10041e2b   0x10041e2b   0x0000001d   Data   RO          124    .rodata.ATCommand_CIPSTA_SET  wifi.o
-    0x10041e48   0x10041e48   0x0000002a   Data   RO          122    .rodata.ATCommand_CWJAP_SET  wifi.o
-    0x10041e72   0x10041e72   0x0000000e   Data   RO          118    .rodata.ATCommand_CWMODE_SET1  wifi.o
-    0x10041e80   0x10041e80   0x0000038e   Data   RO           50    .rodata.str1.1      retarget.o
-    0x1004220e   0x1004220e   0x00000093   Data   RO           94    .rodata.str1.1      main_ns.o
-    0x100422a1   0x100422a1   0x0000018a   Data   RO          142    .rodata.str1.1      wifi.o
-    0x1004242b   0x1004242b   0x00000001   PAD
-    0x1004242c   0x1004242c   0x00000020   Data   RO          234    Region$$Table       anon$$obj.o
+    0x10040230   0x10040230   0x0000000e   Code   RO          164    .text               mc_p.l(strlen.o)
+    0x1004023e   0x1004023e   0x0000001c   Code   RO          222    .text               mc_p.l(calloc.o)
+    0x1004025a   0x1004025a   0x00000060   Code   RO          242    .text               mc_p.l(uldiv.o)
+    0x100402ba   0x100402ba   0x00000000   Code   RO          250    .text               mc_p.l(iusefp.o)
+    0x100402ba   0x100402ba   0x00000002   PAD
+    0x100402bc   0x100402bc   0x00000164   Code   RO          251    .text               mf_p.l(dadd.o)
+    0x10040420   0x10040420   0x000000d0   Code   RO          253    .text               mf_p.l(dmul.o)
+    0x100404f0   0x100404f0   0x000000f0   Code   RO          255    .text               mf_p.l(ddiv.o)
+    0x100405e0   0x100405e0   0x00000040   Code   RO          257    .text               mf_p.l(dfixul.o)
+    0x10040620   0x10040620   0x00000028   Code   RO          259    .text               mf_p.l(cdrcmple.o)
+    0x10040648   0x10040648   0x00000024   Code   RO          261    .text               mc_p.l(init.o)
+    0x1004066c   0x1004066c   0x0000003e   Code   RO          265    .text               mc_p.l(uidiv_div0.o)
+    0x100406aa   0x100406aa   0x00000020   Code   RO          271    .text               mc_p.l(llshl.o)
+    0x100406ca   0x100406ca   0x00000022   Code   RO          273    .text               mc_p.l(llushr.o)
+    0x100406ec   0x100406ec   0x00000026   Code   RO          275    .text               mc_p.l(llsshr.o)
+    0x10040712   0x10040712   0x000000be   Code   RO          277    .text               mf_p.l(depilogue.o)
+    0x100407d0   0x100407d0   0x00000056   Code   RO          289    .text               mc_p.l(__dczerorl2.o)
+    0x10040826   0x10040826   0x00000002   PAD
+    0x10040828   0x10040828   0x00000078   Code   RO          109    .text.CLK_SysTickLongDelay  wifi.o
+    0x100408a0   0x100408a0   0x00000002   Code   RO           86    .text.Control_SW    main_ns.o
+    0x100408a2   0x100408a2   0x00000002   PAD
+    0x100408a4   0x100408a4   0x000005d0   Code   RO           28    .text.ProcessHardFault  retarget.o
+    0x10040e74   0x10040e74   0x00000004   Code   RO            2    .text.SCU_IRQHandler  system_m2351.o
+    0x10040e78   0x10040e78   0x0000000e   Code   RO           30    .text.SH_Return     retarget.o
+    0x10040e86   0x10040e86   0x00000010   Code   RO           34    .text.SendChar      retarget.o
+    0x10040e96   0x10040e96   0x00000002   PAD
+    0x10040e98   0x10040e98   0x00000048   Code   RO           32    .text.SendChar_ToUART  retarget.o
+    0x10040ee0   0x10040ee0   0x000000a0   Code   RO           84    .text.Send_Pulse_To_Server  main_ns.o
+    0x10040f80   0x10040f80   0x00000002   Code   RO           88    .text.SysTick_Handler  main_ns.o
+    0x10040f82   0x10040f82   0x00000002   PAD
+    0x10040f84   0x10040f84   0x00000010   Code   RO            6    .text.SystemInit    system_m2351.o
+    0x10040f94   0x10040f94   0x00000094   Code   RO          113    .text.WIFI_PORT_Read  wifi.o
+    0x10041028   0x10041028   0x0000016c   Code   RO          115    .text.WIFI_PORT_Send_Data  wifi.o
+    0x10041194   0x10041194   0x00000324   Code   RO          107    .text.WIFI_PORT_Start  wifi.o
+    0x100414b8   0x100414b8   0x00000064   Code   RO          111    .text.WIFI_PORT_Write  wifi.o
+    0x1004151c   0x1004151c   0x00000014   Code   RO           44    .text.fputc         retarget.o
+    0x10041530   0x10041530   0x0000003a   Code   RO          121    .text.ft_intlen     wifi.o
+    0x1004156a   0x1004156a   0x00000094   Code   RO          117    .text.ft_itoa       wifi.o
+    0x100415fe   0x100415fe   0x00000002   PAD
+    0x10041600   0x10041600   0x000000ac   Code   RO           90    .text.main          main_ns.o
+    0x100416ac   0x100416ac   0x00000020   Code   RO          167    i.__0printf         mc_p.l(printfa.o)
+    0x100416cc   0x100416cc   0x0000002e   Code   RO          279    i.__ARM_clz         mf_p.l(depilogue.o)
+    0x100416fa   0x100416fa   0x0000000e   Code   RO          283    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x10041708   0x10041708   0x00000002   Code   RO          284    i.__scatterload_null  mc_p.l(handlers.o)
+    0x1004170a   0x1004170a   0x0000000e   Code   RO          285    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x10041718   0x10041718   0x00000174   Code   RO          174    i._fp_digits        mc_p.l(printfa.o)
+    0x1004188c   0x1004188c   0x000006ec   Code   RO          175    i._printf_core      mc_p.l(printfa.o)
+    0x10041f78   0x10041f78   0x00000020   Code   RO          176    i._printf_post_padding  mc_p.l(printfa.o)
+    0x10041f98   0x10041f98   0x0000002c   Code   RO          177    i._printf_pre_padding  mc_p.l(printfa.o)
+    0x10041fc4   0x10041fc4   0x00000054   Code   RO          194    i.free              mc_p.l(malloc.o)
+    0x10042018   0x10042018   0x0000006c   Code   RO          195    i.malloc            mc_p.l(malloc.o)
+    0x10042084   0x10042084   0x00000005   Data   RO          123    .rodata.ATCommand_AT  wifi.o
+    0x10042089   0x10042089   0x0000000d   Data   RO          136    .rodata.ATCommand_CIPMUX_GET  wifi.o
+    0x10042096   0x10042096   0x0000000e   Data   RO          137    .rodata.ATCommand_CIPMUX_SET0  wifi.o
+    0x100420a4   0x100420a4   0x0000000c   Data   RO          141    .rodata.ATCommand_CIPSEND  wifi.o
+    0x100420b0   0x100420b0   0x00000028   Data   RO          140    .rodata.ATCommand_CIPSTART  wifi.o
+    0x100420d8   0x100420d8   0x0000001d   Data   RO          134    .rodata.ATCommand_CIPSTA_SET  wifi.o
+    0x100420f5   0x100420f5   0x0000002a   Data   RO          132    .rodata.ATCommand_CWJAP_SET  wifi.o
+    0x1004211f   0x1004211f   0x0000000e   Data   RO          128    .rodata.ATCommand_CWMODE_SET1  wifi.o
+    0x1004212d   0x1004212d   0x00000003   Data   RO          126    .rodata.ATCommand_END  wifi.o
+    0x10042130   0x10042130   0x0000005f   Data   RO           94    .rodata.GET_MSG     main_ns.o
+    0x1004218f   0x1004218f   0x0000038e   Data   RO           50    .rodata.str1.1      retarget.o
+    0x1004251d   0x1004251d   0x000000ba   Data   RO           95    .rodata.str1.1      main_ns.o
+    0x100425d7   0x100425d7   0x0000022b   Data   RO          152    .rodata.str1.1      wifi.o
+    0x10042802   0x10042802   0x00000002   PAD
+    0x10042804   0x10042804   0x00000020   Data   RO          282    Region$$Table       anon$$obj.o
 
 
-    Execution Region EXE_RAM (Exec base: 0x30008000, Load base: 0x10042450, Size: 0x00000bb8, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x000001f8])
+    Execution Region EXE_RAM (Exec base: 0x30008000, Load base: 0x10042828, Size: 0x00000bb8, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x000001f8])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x30008000   COMPRESSED   0x00000004   Data   RW            9    .data.CyclesPerUs   system_m2351.o
-    0x30008004   COMPRESSED   0x00000004   Data   RW            8    .data.SystemCoreClock  system_m2351.o
-    0x30008008   COMPRESSED   0x00000354   Data   RW           51    .data.ip_tbl        retarget.o
-    0x3000835c   COMPRESSED   0x00000004   PAD
+    0x30008000   COMPRESSED   0x00000004   Data   RW          248    .data               mc_p.l(mvars.o)
+    0x30008004   COMPRESSED   0x00000004   Data   RW          249    .data               mc_p.l(mvars.o)
+    0x30008008   COMPRESSED   0x00000004   Data   RW            9    .data.CyclesPerUs   system_m2351.o
+    0x3000800c   COMPRESSED   0x00000354   Data   RW           51    .data.ip_tbl        retarget.o
     0x30008360        -       0x00000054   Zero   RW           52    .bss.__stdout       retarget.o
     0x300083b4   COMPRESSED   0x00000004   PAD
+    0x300083b8        -       0x00000000   Zero   RW           19    HEAP                startup_m2351.o
     0x300083b8        -       0x00000800   Zero   RW           18    STACK               startup_m2351.o
 
 
@@ -836,22 +952,23 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       510         64        147          0          0       4642   main_ns.o
+       336         36        281          0          0       2195   main_ns.o
       1610        104        910        852         84       5702   retarget.o
         68         20        472          0       2048        868   startup_m2351.o
-        20          8          0          8          0       1405   system_m2351.o
-      1120        112        538          0          0       6783   wifi.o
+        20          8          0          4          0       1405   system_m2351.o
+      1742        180        727          0          0       9261   wifi.o
 
     ----------------------------------------------------------------------
-      3344        312       2100        860       2140      19400   Object Totals
-        12          4         32          0          0          0   (incl. Generated)
-         4          0          1          0          8          0   (incl. Padding)
+      3784        348       2424        856       2136      19431   Object Totals
+         0          0         32          0          0          0   (incl. Generated)
+         8          0          2          0          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
 
         86          0          0          0          0          0   __dczerorl2.o
+        28          0          0          0          0         68   calloc.o
          0          0          0          0          0          0   entry.o
          0          0          0          0          0          0   entry10a.o
          0          0          0          0          0          0   entry11a.o
@@ -866,6 +983,8 @@ Image component sizes
         32          0          0          0          0         68   llshl.o
         38          0          0          0          0         68   llsshr.o
         34          0          0          0          0         68   llushr.o
+       192         20          0          0          0        144   malloc.o
+         0          0          0          8          0          0   mvars.o
       2252         98          0          0          0        412   printfa.o
         14          0          0          0          0         60   strlen.o
         62          0          0          0          0         72   uidiv_div0.o
@@ -878,18 +997,18 @@ Image component sizes
        208          6          0          0          0         88   dmul.o
 
     ----------------------------------------------------------------------
-      3848        142          0          0          0       1564   Library Totals
+      4068        162          0          8          0       1776   Library Totals
          4          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
-      2700        114          0          0          0        900   mc_p.l
+      2920        134          0          8          0       1112   mc_p.l
       1144         28          0          0          0        664   mf_p.l
 
     ----------------------------------------------------------------------
-      3848        142          0          0          0       1564   Library Totals
+      4068        162          0          8          0       1776   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -898,15 +1017,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      7192        454       2100        860       2140      20428   Grand Totals
-      7192        454       2100        504       2140      20428   ELF Image Totals (compressed)
-      7192        454       2100        504          0          0   ROM Totals
+      7852        510       2424        864       2136      20539   Grand Totals
+      7852        510       2424        504       2136      20539   ELF Image Totals (compressed)
+      7852        510       2424        504          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 9292 (   9.07kB)
+    Total RO  Size (Code + RO Data)                10276 (  10.04kB)
     Total RW  Size (RW Data + ZI Data)              3000 (   2.93kB)
-    Total ROM Size (Code + RO Data + RW Data)       9796 (   9.57kB)
+    Total ROM Size (Code + RO Data + RW Data)      10780 (  10.53kB)
 
 ==============================================================================
 

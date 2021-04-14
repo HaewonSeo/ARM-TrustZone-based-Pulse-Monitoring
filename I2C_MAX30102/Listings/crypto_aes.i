@@ -1,218 +1,16 @@
-# 1 "main.c"
+# 1 "crypto_aes.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 358 "<built-in>" 3
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
-# 1 "main.c" 2
-# 12 "main.c"
-# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 1 3
-# 13 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 3
-# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stddef.h" 1 3
-# 38 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stddef.h" 3
-  typedef signed int ptrdiff_t;
-# 53 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stddef.h" 3
-    typedef unsigned int size_t;
-# 71 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stddef.h" 3
-      typedef unsigned short wchar_t;
-# 95 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stddef.h" 3
-  typedef long double max_align_t;
-# 14 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 2 3
-# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdint.h" 1 3
-# 56 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdint.h" 3
-typedef signed char int8_t;
-typedef signed short int int16_t;
-typedef signed int int32_t;
-typedef signed long long int int64_t;
-
-
-typedef unsigned char uint8_t;
-typedef unsigned short int uint16_t;
-typedef unsigned int uint32_t;
-typedef unsigned long long int uint64_t;
-
-
-
-
-
-typedef signed char int_least8_t;
-typedef signed short int int_least16_t;
-typedef signed int int_least32_t;
-typedef signed long long int int_least64_t;
-
-
-typedef unsigned char uint_least8_t;
-typedef unsigned short int uint_least16_t;
-typedef unsigned int uint_least32_t;
-typedef unsigned long long int uint_least64_t;
-
-
-
-
-typedef signed int int_fast8_t;
-typedef signed int int_fast16_t;
-typedef signed int int_fast32_t;
-typedef signed long long int int_fast64_t;
-
-
-typedef unsigned int uint_fast8_t;
-typedef unsigned int uint_fast16_t;
-typedef unsigned int uint_fast32_t;
-typedef unsigned long long int uint_fast64_t;
-
-
-
-
-
-
-typedef signed int intptr_t;
-typedef unsigned int uintptr_t;
-
-
-
-typedef signed long long intmax_t;
-typedef unsigned long long uintmax_t;
-# 15 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 2 3
-# 31 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 3
-typedef union {
-  struct cmse_address_info {
-# 60 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 3
-    unsigned mpu_region : 8;
-
-    unsigned sau_region : 8;
-
-
-
-    unsigned mpu_region_valid : 1;
-
-    unsigned sau_region_valid : 1;
-
-
-
-    unsigned read_ok : 1;
-    unsigned readwrite_ok : 1;
-
-    unsigned nonsecure_read_ok : 1;
-    unsigned nonsecure_readwrite_ok : 1;
-    unsigned secure : 1;
-    unsigned idau_region_valid : 1;
-    unsigned idau_region : 8;
-
-
-
-
-  } flags;
-  unsigned value;
-} cmse_address_info_t;
-
-static cmse_address_info_t __attribute__((__always_inline__, __nodebug__))
-cmse_TT(void *__p) {
-  cmse_address_info_t __u;
-  __u.value = __builtin_arm_cmse_TT(__p);
-  return __u;
-}
-static cmse_address_info_t __attribute__((__always_inline__, __nodebug__))
-cmse_TTT(void *__p) {
-  cmse_address_info_t __u;
-  __u.value = __builtin_arm_cmse_TTT(__p);
-  return __u;
-}
-
-
-static cmse_address_info_t __attribute__((__always_inline__, __nodebug__))
-cmse_TTA(void *__p) {
-  cmse_address_info_t __u;
-  __u.value = __builtin_arm_cmse_TTA(__p);
-  return __u;
-}
-static cmse_address_info_t __attribute__((__always_inline__, __nodebug__))
-cmse_TTAT(void *__p) {
-  cmse_address_info_t __u;
-  __u.value = __builtin_arm_cmse_TTAT(__p);
-  return __u;
-}
-# 124 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 3
-static void *__attribute__((__always_inline__))
-cmse_check_address_range(void *__pb, size_t __s, int __flags) {
-  uintptr_t __begin = (uintptr_t)__pb;
-  uintptr_t __end = __begin + __s - 1;
-
-  if (__end < __begin)
-    return 0;
-
-
-  const int __single_check = (__begin ^ __end) < 0x20u;
-
-
-  void *__pe = (void *)__end;
-  cmse_address_info_t __permb, __perme;
-  switch (__flags & (4 | 16)) {
-  case 0:
-    __permb = cmse_TT(__pb);
-    __perme = __single_check ? __permb : cmse_TT(__pe);
-    break;
-  case 4:
-    __permb = cmse_TTT(__pb);
-    __perme = __single_check ? __permb : cmse_TTT(__pe);
-    break;
-
-  case 16:
-    __permb = cmse_TTA(__pb);
-    __perme = __single_check ? __permb : cmse_TTA(__pe);
-    break;
-  case 4 | 16:
-    __permb = cmse_TTAT(__pb);
-    __perme = __single_check ? __permb : cmse_TTAT(__pe);
-    break;
-
-
-  default:
-    return 0;
-  }
-
-
-  if (__permb.value != __perme.value)
-    return 0;
-
-
-
-
-
-
-
-  switch (__flags & ~(4 | 16)) {
-
-  case 8 | 1 | 2:
-  case 1 | 2:
-    return __permb.flags.nonsecure_readwrite_ok ? __pb : 0;
-
-  case 8 | 2:
-    return __permb.flags.nonsecure_read_ok ? __pb : 0;
-
-  case 2:
-    return __permb.flags.secure ? 0 : __pb;
-
-  case 8 | 1:
-  case 1:
-    return __permb.flags.readwrite_ok ? __pb : 0;
-
-  case 8:
-    return __permb.flags.read_ok ? __pb : 0;
-
-  default:
-    return 0;
-  }
-}
-
-
-static int __attribute__((__always_inline__, __nodebug__))
-cmse_nonsecure_caller(void) {
-  return !((uintptr_t)__builtin_return_address(0) & 1);
-}
-# 210 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 3
-void __attribute__((__noreturn__)) cmse_abort(void);
-# 13 "main.c" 2
+# 1 "crypto_aes.c" 2
+# 13 "crypto_aes.c"
+# 1 "../I2C_MAX30102/crypto_aes.h" 1
+# 13 "../I2C_MAX30102/crypto_aes.h"
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 1 3
+# 53 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
+    typedef unsigned int size_t;
 # 68 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
     typedef __builtin_va_list __va_list;
 # 87 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
@@ -531,7 +329,124 @@ extern __attribute__((__nothrow__)) int _fisatty(FILE * ) __attribute__((__nonnu
 
 extern __attribute__((__nothrow__)) void __use_no_semihosting_swi(void);
 extern __attribute__((__nothrow__)) void __use_no_semihosting(void);
-# 14 "main.c" 2
+# 14 "../I2C_MAX30102/crypto_aes.h" 2
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 1 3
+# 58 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) void *memcpy(void * __restrict ,
+                    const void * __restrict , size_t ) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) void *memmove(void * ,
+                    const void * , size_t ) __attribute__((__nonnull__(1,2)));
+# 77 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) char *strcpy(char * __restrict , const char * __restrict ) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) char *strncpy(char * __restrict , const char * __restrict , size_t ) __attribute__((__nonnull__(1,2)));
+# 93 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) char *strcat(char * __restrict , const char * __restrict ) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) char *strncat(char * __restrict , const char * __restrict , size_t ) __attribute__((__nonnull__(1,2)));
+# 117 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) int memcmp(const void * , const void * , size_t ) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int strcmp(const char * , const char * ) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int strncmp(const char * , const char * , size_t ) __attribute__((__nonnull__(1,2)));
+# 141 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) int strcasecmp(const char * , const char * ) __attribute__((__nonnull__(1,2)));
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int strncasecmp(const char * , const char * , size_t ) __attribute__((__nonnull__(1,2)));
+# 158 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) int strcoll(const char * , const char * ) __attribute__((__nonnull__(1,2)));
+# 169 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) size_t strxfrm(char * __restrict , const char * __restrict , size_t ) __attribute__((__nonnull__(2)));
+# 193 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) void *memchr(const void * , int , size_t ) __attribute__((__nonnull__(1)));
+# 209 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) char *strchr(const char * , int ) __attribute__((__nonnull__(1)));
+# 218 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) size_t strcspn(const char * , const char * ) __attribute__((__nonnull__(1,2)));
+# 232 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) char *strpbrk(const char * , const char * ) __attribute__((__nonnull__(1,2)));
+# 247 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) char *strrchr(const char * , int ) __attribute__((__nonnull__(1)));
+# 257 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) size_t strspn(const char * , const char * ) __attribute__((__nonnull__(1,2)));
+# 270 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) char *strstr(const char * , const char * ) __attribute__((__nonnull__(1,2)));
+# 280 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) char *strtok(char * __restrict , const char * __restrict ) __attribute__((__nonnull__(2)));
+extern __attribute__((__nothrow__)) char *_strtok_r(char * , const char * , char ** ) __attribute__((__nonnull__(2,3)));
+# 321 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) void *memset(void * , int , size_t ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+extern __attribute__((__nothrow__)) char *strerror(int );
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) size_t strlen(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) size_t strlcpy(char * , const char * , size_t ) __attribute__((__nonnull__(1,2)));
+# 362 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) size_t strlcat(char * , const char * , size_t ) __attribute__((__nonnull__(1,2)));
+# 388 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\string.h" 3
+extern __attribute__((__nothrow__)) void _membitcpybl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) void _membitcpybb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) void _membitcpyhl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) void _membitcpyhb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) void _membitcpywl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) void _membitcpywb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) void _membitmovebl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) void _membitmovebb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) void _membitmovehl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) void _membitmovehb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) void _membitmovewl(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
+extern __attribute__((__nothrow__)) void _membitmovewb(void * , const void * , int , int , size_t ) __attribute__((__nonnull__(1,2)));
+# 15 "../I2C_MAX30102/crypto_aes.h" 2
 # 1 "../../Library/Device/Nuvoton/M2351/Include\\NuMicro.h" 1
 # 11 "../../Library/Device/Nuvoton/M2351/Include\\NuMicro.h"
 # 1 "../../Library/Device/Nuvoton/M2351/Include/M2351.h" 1
@@ -641,6 +556,66 @@ typedef enum IRQn
 # 269 "../../Library/Device/Nuvoton/M2351/Include/M2351.h"
 # 1 "../../Library/CMSIS/Include\\core_armv8mbl.h" 1
 # 29 "../../Library/CMSIS/Include\\core_armv8mbl.h" 3
+
+
+
+
+
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdint.h" 1 3
+# 56 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdint.h" 3
+typedef signed char int8_t;
+typedef signed short int int16_t;
+typedef signed int int32_t;
+typedef signed long long int int64_t;
+
+
+typedef unsigned char uint8_t;
+typedef unsigned short int uint16_t;
+typedef unsigned int uint32_t;
+typedef unsigned long long int uint64_t;
+
+
+
+
+
+typedef signed char int_least8_t;
+typedef signed short int int_least16_t;
+typedef signed int int_least32_t;
+typedef signed long long int int_least64_t;
+
+
+typedef unsigned char uint_least8_t;
+typedef unsigned short int uint_least16_t;
+typedef unsigned int uint_least32_t;
+typedef unsigned long long int uint_least64_t;
+
+
+
+
+typedef signed int int_fast8_t;
+typedef signed int int_fast16_t;
+typedef signed int int_fast32_t;
+typedef signed long long int int_fast64_t;
+
+
+typedef unsigned int uint_fast8_t;
+typedef unsigned int uint_fast16_t;
+typedef unsigned int uint_fast32_t;
+typedef unsigned long long int uint_fast64_t;
+
+
+
+
+
+
+typedef signed int intptr_t;
+typedef unsigned int uintptr_t;
+
+
+
+typedef signed long long intmax_t;
+typedef unsigned long long uintmax_t;
+# 35 "../../Library/CMSIS/Include\\core_armv8mbl.h" 2 3
 # 63 "../../Library/CMSIS/Include\\core_armv8mbl.h" 3
 # 1 "../../Library/CMSIS/Include/cmsis_version.h" 1 3
 # 29 "../../Library/CMSIS/Include/cmsis_version.h" 3
@@ -4678,13 +4653,176 @@ int32_t BL_USBDInstallEPHandler(uint32_t ep, void *pfnEPHandler, uint32_t *pfnEP
 int32_t BL_USBDStart(void);
 # 1006 "../../Library/Device/Nuvoton/M2351/Include\\M2351.h" 2
 # 12 "../../Library/Device/Nuvoton/M2351/Include\\NuMicro.h" 2
-# 15 "main.c" 2
+# 16 "../I2C_MAX30102/crypto_aes.h" 2
 
+
+
+
+
+
+
+static volatile int32_t g_AES_done;
+
+void CRPT_IRQHandler(void);
+void Nuvoton_M2351_crypto_init(uint8_t, uint8_t);
+void Nuvoton_M2351_crypto_useSessionKey(uint8_t );
+void Nuvoton_M2351_crypto_useMasterKey(void);
+void Nuvoton_M2351_encrypt_data(uint8_t, uint8_t *, uint8_t *);
+void Nuvoton_M2351_decrypt_data(uint8_t, uint8_t *, uint8_t *);
+# 14 "crypto_aes.c" 2
 # 1 "../I2C_MAX30102/nsc.h" 1
 
 
 
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 1 3
+# 13 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 3
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stddef.h" 1 3
+# 38 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stddef.h" 3
+  typedef signed int ptrdiff_t;
+# 71 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stddef.h" 3
+      typedef unsigned short wchar_t;
+# 95 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stddef.h" 3
+  typedef long double max_align_t;
+# 14 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 2 3
+# 31 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 3
+typedef union {
+  struct cmse_address_info {
+# 60 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 3
+    unsigned mpu_region : 8;
 
+    unsigned sau_region : 8;
+
+
+
+    unsigned mpu_region_valid : 1;
+
+    unsigned sau_region_valid : 1;
+
+
+
+    unsigned read_ok : 1;
+    unsigned readwrite_ok : 1;
+
+    unsigned nonsecure_read_ok : 1;
+    unsigned nonsecure_readwrite_ok : 1;
+    unsigned secure : 1;
+    unsigned idau_region_valid : 1;
+    unsigned idau_region : 8;
+
+
+
+
+  } flags;
+  unsigned value;
+} cmse_address_info_t;
+
+static cmse_address_info_t __attribute__((__always_inline__, __nodebug__))
+cmse_TT(void *__p) {
+  cmse_address_info_t __u;
+  __u.value = __builtin_arm_cmse_TT(__p);
+  return __u;
+}
+static cmse_address_info_t __attribute__((__always_inline__, __nodebug__))
+cmse_TTT(void *__p) {
+  cmse_address_info_t __u;
+  __u.value = __builtin_arm_cmse_TTT(__p);
+  return __u;
+}
+
+
+static cmse_address_info_t __attribute__((__always_inline__, __nodebug__))
+cmse_TTA(void *__p) {
+  cmse_address_info_t __u;
+  __u.value = __builtin_arm_cmse_TTA(__p);
+  return __u;
+}
+static cmse_address_info_t __attribute__((__always_inline__, __nodebug__))
+cmse_TTAT(void *__p) {
+  cmse_address_info_t __u;
+  __u.value = __builtin_arm_cmse_TTAT(__p);
+  return __u;
+}
+# 124 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 3
+static void *__attribute__((__always_inline__))
+cmse_check_address_range(void *__pb, size_t __s, int __flags) {
+  uintptr_t __begin = (uintptr_t)__pb;
+  uintptr_t __end = __begin + __s - 1;
+
+  if (__end < __begin)
+    return 0;
+
+
+  const int __single_check = (__begin ^ __end) < 0x20u;
+
+
+  void *__pe = (void *)__end;
+  cmse_address_info_t __permb, __perme;
+  switch (__flags & (4 | 16)) {
+  case 0:
+    __permb = cmse_TT(__pb);
+    __perme = __single_check ? __permb : cmse_TT(__pe);
+    break;
+  case 4:
+    __permb = cmse_TTT(__pb);
+    __perme = __single_check ? __permb : cmse_TTT(__pe);
+    break;
+
+  case 16:
+    __permb = cmse_TTA(__pb);
+    __perme = __single_check ? __permb : cmse_TTA(__pe);
+    break;
+  case 4 | 16:
+    __permb = cmse_TTAT(__pb);
+    __perme = __single_check ? __permb : cmse_TTAT(__pe);
+    break;
+
+
+  default:
+    return 0;
+  }
+
+
+  if (__permb.value != __perme.value)
+    return 0;
+
+
+
+
+
+
+
+  switch (__flags & ~(4 | 16)) {
+
+  case 8 | 1 | 2:
+  case 1 | 2:
+    return __permb.flags.nonsecure_readwrite_ok ? __pb : 0;
+
+  case 8 | 2:
+    return __permb.flags.nonsecure_read_ok ? __pb : 0;
+
+  case 2:
+    return __permb.flags.secure ? 0 : __pb;
+
+  case 8 | 1:
+  case 1:
+    return __permb.flags.readwrite_ok ? __pb : 0;
+
+  case 8:
+    return __permb.flags.read_ok ? __pb : 0;
+
+  default:
+    return 0;
+  }
+}
+
+
+static int __attribute__((__always_inline__, __nodebug__))
+cmse_nonsecure_caller(void) {
+  return !((uintptr_t)__builtin_return_address(0) & 1);
+}
+# 210 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 3
+void __attribute__((__noreturn__)) cmse_abort(void);
+# 5 "../I2C_MAX30102/nsc.h" 2
 
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 1 3
 # 96 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
@@ -4930,271 +5068,142 @@ int32_t Get_Pulse();
 
 extern uint8_t cipheredSessionKey[16];
 extern uint8_t sessionIv[16];
-# 17 "main.c" 2
-# 1 "../I2C_MAX30102/i2c_max30102.h" 1
-# 61 "../I2C_MAX30102/i2c_max30102.h"
-void Get_Data_From_MAX30102();
-void Config_MAX30102();
-# 18 "main.c" 2
-# 27 "main.c"
-typedef __attribute__((cmse_nonsecure_call)) int32_t (*NonSecure_funcptr)(uint32_t);
-typedef int32_t (*Secure_funcptr)(uint32_t);
+# 15 "crypto_aes.c" 2
 
+uint8_t cipheredSessionKey[16];
+uint8_t sessionIv[16];
 
-
-
-
-int32_t LED_On(void)
+void CRPT_IRQHandler()
 {
-    printf("Secure/Non-secure LED On call by Secure\n");
-    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((10)<<2)))) = 0;
-    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x10000000UL)+(0x40*(2))) + ((1)<<2)))) = 0;
-    return 0;
-}
-
-int32_t LED_Off(void)
-{
-    printf("Secure/Non-secure LED Off call by Secure\n");
-    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((10)<<2)))) = 1;
-    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x10000000UL)+(0x40*(2))) + ((1)<<2)))) = 1;
-    return 1;
-}
-
-
-
-
-
-void SysTick_Handler(void)
-{
-    static uint32_t u32Ticks;
-# 107 "main.c"
-}
-
-
-
-
-void I2C0_Init(void)
-{
-
-
-    I2C_Open(((I2C_T *) (((0x40000000UL) + 0x00040000UL) + 0x40000UL)), 400000);
-
-
-    printf("I2C0 clock %d Hz\n", I2C_GetBusClockFreq(((I2C_T *) (((0x40000000UL) + 0x00040000UL) + 0x40000UL))));
-
-
-    I2C_SetSlaveAddr(((I2C_T *) (((0x40000000UL) + 0x00040000UL) + 0x40000UL)), 0, 0x57, 0);
-
-
-
-
-
-
-
-}
-
-
-void SYS_Init(void)
-{
-
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPF_MFPL = (((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPF_MFPL & (~(0xful << (8)))) | (0x0aUL<<(8));
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPF_MFPL = (((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPF_MFPL & (~(0xful << (12)))) | (0x0aUL<<(12));
-
-
-
-
-
-
-    CLK_EnableXtalRC((0x1ul << (2)));
-
-
-    CLK_WaitClockReady((0x1ul << (4)));
-
-
-    CLK_SetHCLK((0x07UL<<(0)), (((1)-1UL) << (0)));
-
-
-    CLK_EnableXtalRC((0x1ul << (0)));
-
-
-    CLK_WaitClockReady((0x1ul << (0)));
-
-
-
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->PLLCTL = (0x00080000UL | (((3UL)-1UL)<<9) | ((16UL)-2UL) | 0x0000UL);
-
-
-    CLK_WaitClockReady((0x1ul << (2)));
-
-
-    CLK_SetHCLK((0x02UL<<(0)), (((1)-1UL) << (0)));
-
-
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->APBCLK0 |= (0x1ul << (16));
-
-
-
-
-
-  ((CLK_T *) ((0x40000000UL) + 0x00200UL))->PWRCTL |= (0x1ul << (18));
-    while((((CLK_T *) ((0x40000000UL) + 0x00200UL))->STATUS & (0x1ul << (6))) == 0);
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->CLKSEL0 = (0x05UL<<(0));
-
-
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->CLKSEL1 = (0x3UL<<(24)) | (0x3UL<<(26));
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->CLKSEL3 = (0x3UL<<(24)) | (0x3UL<<(26)) | (0x3UL<<(30));
-
-
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->APBCLK0 |= (0x1ul << (16)) | (0x1ul << (2)) | (0x1ul << (17)) |
-                    (0x1ul << (18)) | (0x1ul << (19)) | (0x1ul << (21));
-# 195 "main.c"
-    CLK_EnableModuleClock(((((1UL) & 0x03UL) << 30)|((((uint32_t)(8)) & 0x1fUL) << 0) | (((0x0UL) & 0x03UL) << 28)|(((0x0UL) & 0x07UL) << 25)|(((0x0UL) & 0x1fUL) << 20)| (((0x0UL) & 0x03UL) << 18)|(((0x0UL) & 0xffUL) << 10)|(((0x0UL) & 0x1fUL) << 5)));
-
-
-    CLK_EnableModuleClock(((((1UL) & 0x03UL) << 30)|((((uint32_t)(9)) & 0x1fUL) << 0) | (((0x0UL) & 0x03UL) << 28)|(((0x0UL) & 0x07UL) << 25)|(((0x0UL) & 0x1fUL) << 20)| (((0x0UL) & 0x03UL) << 18)|(((0x0UL) & 0xffUL) << 10)|(((0x0UL) & 0x1fUL) << 5)));
-
-
-
-
-    PllClock = 128000000;
-    SystemCoreClock = 64000000 / 1;
-    CyclesPerUs = 64000000 / 1000000;
-
-
-
-
-
-
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPB_MFPH = (((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPB_MFPH & (~((0xful << (16)) | (0xful << (20))))) | (0x06UL<<(16)) | (0x06UL<<(20));
-
-
-
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPA_MFPL &= ~((0xful << (16)) | (0xful << (20)));
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPA_MFPL |= ((0x09UL<<(16)) | (0x09UL<<(20)));
-
-
-
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPA_MFPL &= ~((0xful << (8)) | (0xful << (12)));
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPA_MFPL |= ((0x09UL<<(8)) | (0x09UL<<(12)));
-
-}
-
-
-
-
-
-void DEBUG_PORT_Init()
-{
-    ((UART_T *) ((((0x40000000UL) + 0x00040000UL) + 0x30000UL)+(0x10000000UL)))->LINE = (0x0UL << (3)) | (0x0UL << (2)) | (3UL);
-    ((UART_T *) ((((0x40000000UL) + 0x00040000UL) + 0x30000UL)+(0x10000000UL)))->BAUD = ((0x1ul << (29)) | (0x1ul << (28))) | (((((12000000UL)) + ((115200)/2ul)) / (115200))-2ul);
-}
-
-
-
-
-void WIFI_PORT_Init()
-{
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->APBCLK0 |= (0x1ul << (20));
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->CLKSEL3 = (((CLK_T *) ((0x40000000UL) + 0x00200UL))->CLKSEL3 & (~(0x3ul << (26)))) | (0x3UL<<(26));
-
-    ((UART_T *) ((((0x40000000UL) + 0x00040000UL) + 0x33000UL)+(0x10000000UL)))->LINE = (0x0UL << (3)) | (0x0UL << (2)) | (3UL);
-    ((UART_T *) ((((0x40000000UL) + 0x00040000UL) + 0x33000UL)+(0x10000000UL)))->BAUD = ((0x1ul << (29)) | (0x1ul << (28))) | (((((12000000UL)) + ((115200)/2ul)) / (115200))-2ul);
-
-
-
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPD_MFPL = (((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPD_MFPL & (~((0xful << (0)) | (0xful << (4))))) | (0x05UL<<(0)) | (0x05UL<<(4));
-}
-
-
-void Nonsecure_Init(void)
-{
-    NonSecure_funcptr fp;
-
-
-    ((SCB_Type *) ((0xE002E000UL) + 0x0D00UL) )->VTOR = 0x10040000;
-
-
-    __TZ_set_MSP_NS(*((uint32_t *)((SCB_Type *) ((0xE002E000UL) + 0x0D00UL) )->VTOR));
-
-
-    fp = ((NonSecure_funcptr)(*(((uint32_t *)((SCB_Type *) ((0xE002E000UL) + 0x0D00UL) )->VTOR) + 1)));
-
-
-
-    fp = __builtin_bit_cast(__typeof__(fp), (__builtin_bit_cast(uintptr_t, fp) & ~(uintptr_t)1));
-
-
-    if(((__builtin_bit_cast(uintptr_t, fp) & 1) == 0) && (((uint32_t)fp & 0xf0000000) == 0x10000000))
+    if(((((CRPT_T *) ((0x40000000UL) + 0x32000UL)))->INTSTS & ((0x1ul << (0))|(0x1ul << (1)))))
     {
-        printf("Execute non-secure code ...\n");
-        fp(0);
-    }
-    else
-    {
-
-        printf("No code in non-secure region!\n");
-        printf("CPU will halted at non-secure state\n");
-
-
-        __TZ_set_MSP_NS((0x30000000 + 0x08000) + 512);
-
-
-        (*((vu32 *) ((0x30000000 + 0x08000)))) = 0xe7fee7ff;
-        fp = (NonSecure_funcptr)((0x30000000 + 0x08000) + 1);
-        fp(0);
-
-        while(1);
+        g_AES_done = 1;
+        ((((CRPT_T *) ((0x40000000UL) + 0x32000UL)))->INTSTS = ((0x1ul << (0))|(0x1ul << (1))));
     }
 }
 
+void Nuvoton_M2351_crypto_init(uint8_t channel, uint8_t modeAES) {
+
+ if(modeAES != 1 && modeAES != 0) printf("Error mode , mode must be ENCRYPT or DECRYPT value\n");
+
+    __NVIC_EnableIRQ(CRPT_IRQn);
+    ((((CRPT_T *) ((0x40000000UL) + 0x32000UL)))->INTEN |= ((0x1ul << (0))|(0x1ul << (1))));
+
+ AES_Open(((CRPT_T *) ((0x40000000UL) + 0x32000UL)), channel, modeAES, 0UL, 0UL, 3UL);
+
+}
+
+void Nuvoton_M2351_crypto_useMasterKey() {
+
+    CRPT_T *crpt = ((CRPT_T *) ((0x40000000UL) + 0x32000UL));
+    uint32_t u32Channel = 1;
+
+
+    uint32_t key_reg_addr;
+    key_reg_addr = (uint32_t)&crpt->AES0_KEY[0] + (u32Channel * 0x3CUL);
+
+
+    FMC_Open();
+
+ (*((volatile unsigned int *)(key_reg_addr))=(FMC_ReadUID(0)));
+ (*((volatile unsigned int *)(key_reg_addr+4UL))=(FMC_ReadUID(1)));
+ (*((volatile unsigned int *)(key_reg_addr+8UL))=(FMC_ReadUID(2)));
+ (*((volatile unsigned int *)(key_reg_addr+12UL))=(FMC_ReadUID(0)));
 
 
 
 
-int32_t main(void)
-{
-
-
-    SYS_UnlockReg();
-
-
-    SYS_Init();
-
-
-    SYS_LockReg();
-
-
-    DEBUG_PORT_Init();
-  WIFI_PORT_Init();
-    I2C0_Init();
-
-
-  Config_MAX30102();
-
-
-    GPIO_SetMode(((GPIO_T *) ((0x40000000UL) + 0x04000UL)), 0x00002000UL | 0x00001000UL | 0x00000800UL | 0x00000400UL, 0x1UL);
-
-
-    GPIO_SetMode(((GPIO_T *) (((0x40000000UL) + 0x04080UL)+(0x10000000UL))), 0x00000002UL, 0x1UL);
-
-
-    SystemCoreClock = GetSystemCoreClock();
-
-
-    SysTick_Config(SystemCoreClock / 100);
-
-    printf("+---------------------------------------------+\n");
-    printf("|             Secure is running ...           |\n");
-    printf("+---------------------------------------------+\n");
-
-  Nonsecure_Init();
+    FMC_Close();
 
 
 
-    do
-    {
 
-        __builtin_arm_wfi();
+
+
+
+    uint32_t iv_reg_addr;
+    iv_reg_addr = (uint32_t)&crpt->AES0_IV[0] + (u32Channel * 0x3CUL);
+
+ (*((volatile unsigned int *)(iv_reg_addr))=(0x00000000));
+ (*((volatile unsigned int *)(iv_reg_addr+4UL))=(0x00000000));
+ (*((volatile unsigned int *)(iv_reg_addr+8UL))=(0x00000000));
+ (*((volatile unsigned int *)(iv_reg_addr+12UL))=(0x00000000));
+
+}
+
+void Nuvoton_M2351_crypto_useSessionKey(uint8_t channel) {
+
+ uint8_t sessionKey[16] = {0};
+
+
+
+
+ Nuvoton_M2351_crypto_init(1, 0);
+    Nuvoton_M2351_crypto_useMasterKey();
+ if (1) printf("|  Secure is running ... decrypt sessionKey   |\n");
+    Nuvoton_M2351_decrypt_data(1, cipheredSessionKey, sessionKey);
+
+
+
+
+    uint32_t tmp_sk[4];
+    uint32_t tmp_si[4];
+
+ for (uint8_t z = 0; z < 4; z++) {
+     tmp_sk[z] = (sessionKey[0+(4*z)] << 24) | (sessionKey[1+(4*z)] << 16) | (sessionKey[2+(4*z)] << 8) | sessionKey[3+(4*z)];
+     tmp_si[z] = (sessionIv[0+(4*z)] << 24) | (sessionIv[1+(4*z)] << 16) | (sessionIv[2+(4*z)] << 8) | sessionIv[3+(4*z)];
     }
-    while(1);
+ AES_SetKey(((CRPT_T *) ((0x40000000UL) + 0x32000UL)), channel, tmp_sk, 0UL);
+ AES_SetInitVect(((CRPT_T *) ((0x40000000UL) + 0x32000UL)), channel, tmp_si);
+
+
+    for (uint8_t z = 0; z < 16; z++) sessionKey[z] = 0;
+
+    for (uint8_t z = 0; z < 4; z++) {
+     tmp_sk[z] = 0;
+     tmp_si[z] = 0;
+    }
+
+}
+
+
+void Nuvoton_M2351_encrypt_data(uint8_t channel, uint8_t InputData[], uint8_t OutputData[]) {
+
+
+
+
+
+
+ AES_SetDMATransfer(((CRPT_T *) ((0x40000000UL) + 0x32000UL)), channel, (uint32_t)InputData, (uint32_t)OutputData, 16);
+# 130 "crypto_aes.c"
+ g_AES_done = 0;
+
+ AES_Start(((CRPT_T *) ((0x40000000UL) + 0x32000UL)), channel, 0x5UL);
+
+
+ while(!g_AES_done);
+
+
+
+}
+
+
+void Nuvoton_M2351_decrypt_data(uint8_t channel, uint8_t InputData[], uint8_t OutputData[]) {
+
+
+
+
+
+
+
+    AES_SetDMATransfer(((CRPT_T *) ((0x40000000UL) + 0x32000UL)), channel, (uint32_t)InputData, (uint32_t)OutputData, 16);
+# 159 "crypto_aes.c"
+    g_AES_done = 0;
+
+    AES_Start(((CRPT_T *) ((0x40000000UL) + 0x32000UL)), channel, 0x5UL);
+
+    while(!g_AES_done);
+
+
+
 }

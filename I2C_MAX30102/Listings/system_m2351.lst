@@ -266,8 +266,9 @@ SCU_Setup:
 	str	r1, [r2]
 	.loc	2 111 18                        @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:111:18
 	subs	r2, r0, #4
-	movs	r3, #12
+	movs	r3, #14
 	str	r3, [r2]
+	movs	r3, #12
 .Ltmp15:
 	@DEBUG_VALUE: SCU_Setup:i <- 11
 	.loc	2 0 18 is_stmt 0                @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:0:18
@@ -304,27 +305,32 @@ SCU_Setup:
 	ldr	r5, [r3, #4]
 	orrs	r5, r4
 	str	r5, [r3, #4]
-	lsls	r4, r2, #18
 .Ltmp21:
+	.loc	2 173 52                        @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:173:52
+	ldr	r5, [r3]
+	orrs	r5, r4
+	str	r5, [r3]
+	lsls	r4, r2, #18
+.Ltmp22:
 	.loc	2 174 52                        @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:174:52
 	ldr	r5, [r3]
 	orrs	r5, r4
 	str	r5, [r3]
 	lsls	r2, r2, #19
-.Ltmp22:
+.Ltmp23:
 	.loc	2 175 52                        @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:175:52
 	ldr	r4, [r3]
 	orrs	r4, r2
 	str	r4, [r3]
 	mvns	r1, r1
-.Ltmp23:
+.Ltmp24:
 	.loc	2 183 18                        @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:183:18
 	str	r1, [r0, #8]
 	.loc	2 184 5                         @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:184:5
 	bl	__NVIC_EnableIRQ
 	.loc	2 186 1                         @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:186:1
 	pop	{r4, r5, r7, pc}
-.Ltmp24:
+.Ltmp25:
 	.p2align	2
 @ %bb.3:
 	.loc	2 0 1 is_stmt 0                 @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:0:1
@@ -356,13 +362,13 @@ __NVIC_EnableIRQ:
 	ldr	r0, __arm_cp.3_0
 	movs	r1, #8
 	@DEBUG_VALUE: __NVIC_EnableIRQ:IRQn <- 99
-.Ltmp25:
+.Ltmp26:
 	.loc	7 1279 52 prologue_end          @ ../../Library/CMSIS/Include\core_armv8mbl.h:1279:52
 	str	r1, [r0]
-.Ltmp26:
+.Ltmp27:
 	.loc	7 1281 1                        @ ../../Library/CMSIS/Include\core_armv8mbl.h:1281:1
 	bx	lr
-.Ltmp27:
+.Ltmp28:
 	.p2align	2
 @ %bb.1:
 	.loc	7 0 1 is_stmt 0                 @ ../../Library/CMSIS/Include\core_armv8mbl.h:0:1
@@ -401,7 +407,7 @@ SCU_IRQHandler:
 	.cfi_def_cfa_offset 64
 	mov	r0, sp
 	movs	r1, #48
-.Ltmp28:
+.Ltmp29:
 	.loc	2 196 17 prologue_end           @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:196:17
 	bl	__aeabi_memclr4
 	ldr	r0, __arm_cp.4_0
@@ -419,29 +425,29 @@ SCU_IRQHandler:
 	ldr	r4, __arm_cp.4_6
 	.loc	2 205 19                        @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:205:19
 	ldr	r1, [r4]
-.Ltmp29:
+.Ltmp30:
 	@DEBUG_VALUE: SCU_IRQHandler:u32Reg <- $r1
 	.loc	2 206 8                         @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:206:8
 	cbz	r1, .LBB4_4
-.Ltmp30:
+.Ltmp31:
 @ %bb.1:
 	@DEBUG_VALUE: SCU_IRQHandler:u32Reg <- $r1
 	.loc	2 0 8 is_stmt 0                 @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:0:8
 	movs	r2, #0
 	ldr	r0, __arm_cp.4_7
 	movs	r3, #1
-.Ltmp31:
+.Ltmp32:
 .LBB4_2:                                @ =>This Inner Loop Header: Depth=1
 	@DEBUG_VALUE: SCU_IRQHandler:u32Reg <- $r1
 	@DEBUG_VALUE: SCU_IRQHandler:i <- $r2
 	.loc	2 212 28 is_stmt 1              @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:212:28
 	mov	r5, r3
 	lsls	r5, r2
-.Ltmp32:
+.Ltmp33:
 	.loc	2 212 16 is_stmt 0              @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:212:16
 	tst	r5, r1
 	bne	.LBB4_5
-.Ltmp33:
+.Ltmp34:
 @ %bb.3:                                @   in Loop: Header=BB4_2 Depth=1
 	@DEBUG_VALUE: SCU_IRQHandler:i <- $r2
 	@DEBUG_VALUE: SCU_IRQHandler:u32Reg <- $r1
@@ -449,31 +455,31 @@ SCU_IRQHandler:
 	adds	r0, r0, #4
 	.loc	2 210 36 is_stmt 0              @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:210:36
 	adds	r2, r2, #1
-.Ltmp34:
+.Ltmp35:
 	@DEBUG_VALUE: SCU_IRQHandler:i <- $r2
 	.loc	2 210 9                         @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:210:9
 	cmp	r2, #76
 	bne	.LBB4_2
-.Ltmp35:
+.Ltmp36:
 .LBB4_4:
 	@DEBUG_VALUE: SCU_IRQHandler:u32Reg <- $r1
 	.loc	2 223 1 is_stmt 1               @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:223:1
 	add	sp, #48
 	pop	{r4, r5, r7, pc}
-.Ltmp36:
+.Ltmp37:
 .LBB4_5:
 	@DEBUG_VALUE: SCU_IRQHandler:i <- $r2
 	@DEBUG_VALUE: SCU_IRQHandler:u32Reg <- $r1
 	@DEBUG_VALUE: SCU_IRQHandler:i <- $r2
 	.loc	2 214 27                        @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:214:27
 	adr	r1, .LCPI4_8
-.Ltmp37:
+.Ltmp38:
 	ldrb	r1, [r1, r2]
 	mov	r3, r4
 	subs	r3, #48
 	orrs	r3, r1
 	ldr	r2, [r3, #4]
-.Ltmp38:
+.Ltmp39:
 	@DEBUG_VALUE: SCU_IRQHandler:u32Addr <- $r2
 	.loc	2 215 95                        @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:215:95
 	ldr	r1, [r3]
@@ -486,14 +492,14 @@ SCU_IRQHandler:
 	.loc	2 215 17                        @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:215:17
 	adr	r0, .LCPI4_9
 	bl	__2printf
-.Ltmp39:
+.Ltmp40:
 	.loc	2 216 31 is_stmt 1              @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:216:31
 	str	r5, [r4]
-.Ltmp40:
+.Ltmp41:
 	.loc	2 223 1                         @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:223:1
 	add	sp, #48
 	pop	{r4, r5, r7, pc}
-.Ltmp41:
+.Ltmp42:
 	.p2align	2
 @ %bb.6:
 	.loc	2 0 1 is_stmt 0                 @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:0:1
@@ -556,24 +562,24 @@ NSC_Init:
 @ %bb.0:
 	ldr	r0, __arm_cp.5_0
 	movs	r1, #3
-.Ltmp42:
+.Ltmp43:
 	@DEBUG_VALUE: NSC_Init:i32Region <- 3
 	.loc	2 254 15 prologue_end           @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:254:15
 	str	r1, [r0]
 	movs	r2, #31
 	.loc	2 255 15                        @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:255:15
 	ldr	r3, __arm_cp.5_1
-.Ltmp43:
+.Ltmp44:
 	@DEBUG_VALUE: NSC_Init:u32Base <- $r3
 	bics	r3, r2
-.Ltmp44:
+.Ltmp45:
 	str	r3, [r0, #4]
 	.loc	2 256 15                        @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:256:15
 	ldr	r2, __arm_cp.5_2
-.Ltmp45:
+.Ltmp46:
 	@DEBUG_VALUE: NSC_Init:u32Limit <- $r2
 	orrs	r2, r1
-.Ltmp46:
+.Ltmp47:
 	.loc	2 0 15 is_stmt 0                @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:0:15
 	movs	r1, #28
 	.loc	2 256 15                        @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:256:15
@@ -581,7 +587,7 @@ NSC_Init:
 	str	r2, [r0, #8]
 	.loc	2 259 1 is_stmt 1               @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:259:1
 	bx	lr
-.Ltmp47:
+.Ltmp48:
 	.p2align	2
 @ %bb.1:
 	.loc	2 0 1 is_stmt 0                 @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:0:1
@@ -623,7 +629,7 @@ TZ_SAU_Setup:
 	.cfi_offset r7, -8
 	ldr	r0, __arm_cp.6_0
 	movs	r1, #0
-.Ltmp48:
+.Ltmp49:
 	.loc	2 273 5 prologue_end            @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:273:5
 	str	r1, [r0]
 	movs	r1, #63
@@ -679,7 +685,7 @@ TZ_SAU_Setup:
 	bl	NSC_Init
 	.loc	2 338 1                         @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:338:1
 	pop	{r7, pc}
-.Ltmp49:
+.Ltmp50:
 	.p2align	2
 @ %bb.1:
 	.loc	2 0 1 is_stmt 0                 @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:0:1
@@ -751,7 +757,7 @@ SystemCoreClockUpdate:
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-.Ltmp50:
+.Ltmp51:
 	.loc	2 360 16 prologue_end           @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:360:16
 	bl	CLK_GetPLLClockFreq
 	.loc	2 360 14 is_stmt 0              @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:360:14
@@ -773,7 +779,7 @@ SystemCoreClockUpdate:
 	str	r0, [r1]
 	.loc	2 367 1 is_stmt 1               @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:367:1
 	pop	{r7, pc}
-.Ltmp51:
+.Ltmp52:
 	.p2align	2
 @ %bb.1:
 	.loc	2 0 1 is_stmt 0                 @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:0:1
@@ -822,7 +828,7 @@ SystemInit:
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
 	ldr	r0, __arm_cp.8_0
-.Ltmp52:
+.Ltmp53:
 	.loc	2 383 15 prologue_end           @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:383:15
 	ldr	r1, __arm_cp.8_1
 	str	r1, [r0]
@@ -834,7 +840,7 @@ SystemInit:
 	bl	FMC_NSBA_Setup
 	.loc	2 396 1                         @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:396:1
 	pop	{r7, pc}
-.Ltmp53:
+.Ltmp54:
 	.p2align	2
 @ %bb.1:
 	.loc	2 0 1 is_stmt 0                 @ ../../Library/Device/Nuvoton/M2351/Source/system_M2351.c:0:1
@@ -1035,8 +1041,8 @@ gau32ClkSrcTbl:
 .Ldebug_loc1:
 	.long	-1
 	.long	.Lfunc_begin4                   @   base address
-	.long	.Ltmp29-.Lfunc_begin4
-	.long	.Ltmp37-.Lfunc_begin4
+	.long	.Ltmp30-.Lfunc_begin4
+	.long	.Ltmp38-.Lfunc_begin4
 	.short	1                               @ Loc expr size
 	.byte	81                              @ DW_OP_reg1
 	.long	0
@@ -1044,12 +1050,12 @@ gau32ClkSrcTbl:
 .Ldebug_loc2:
 	.long	-1
 	.long	.Lfunc_begin4                   @   base address
-	.long	.Ltmp31-.Lfunc_begin4
-	.long	.Ltmp35-.Lfunc_begin4
+	.long	.Ltmp32-.Lfunc_begin4
+	.long	.Ltmp36-.Lfunc_begin4
 	.short	1                               @ Loc expr size
 	.byte	82                              @ DW_OP_reg2
-	.long	.Ltmp36-.Lfunc_begin4
-	.long	.Ltmp38-.Lfunc_begin4
+	.long	.Ltmp37-.Lfunc_begin4
+	.long	.Ltmp39-.Lfunc_begin4
 	.short	1                               @ Loc expr size
 	.byte	82                              @ DW_OP_reg2
 	.long	0
@@ -1057,8 +1063,8 @@ gau32ClkSrcTbl:
 .Ldebug_loc3:
 	.long	-1
 	.long	.Lfunc_begin4                   @   base address
-	.long	.Ltmp38-.Lfunc_begin4
 	.long	.Ltmp39-.Lfunc_begin4
+	.long	.Ltmp40-.Lfunc_begin4
 	.short	1                               @ Loc expr size
 	.byte	82                              @ DW_OP_reg2
 	.long	0
@@ -1066,8 +1072,8 @@ gau32ClkSrcTbl:
 .Ldebug_loc4:
 	.long	-1
 	.long	.Lfunc_begin5                   @   base address
-	.long	.Ltmp43-.Lfunc_begin5
 	.long	.Ltmp44-.Lfunc_begin5
+	.long	.Ltmp45-.Lfunc_begin5
 	.short	1                               @ Loc expr size
 	.byte	83                              @ DW_OP_reg3
 	.long	0
@@ -1075,8 +1081,8 @@ gau32ClkSrcTbl:
 .Ldebug_loc5:
 	.long	-1
 	.long	.Lfunc_begin5                   @   base address
-	.long	.Ltmp45-.Lfunc_begin5
 	.long	.Ltmp46-.Lfunc_begin5
+	.long	.Ltmp47-.Lfunc_begin5
 	.short	1                               @ Loc expr size
 	.byte	82                              @ DW_OP_reg2
 	.long	0

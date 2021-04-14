@@ -1,13 +1,13 @@
-/*
- *########################################################
+/*********************************************************
+ *
  * @file       : Nuvoton_M2351_wifi_module.c
  * @version    : v1.00
  * @created on : 11 mars 2019
  * @updated on : 13 mars 2019
- * @author     : Damien SOURSAS
+ * @author     : HaewonSeo
  *
  * @note       : WiFi Module
- *########################################################
+ *********************************************************
 */
 
 #include <string.h>
@@ -17,7 +17,8 @@
 const char ATCommand_AT[]						= "AT\r\n";																						//Simple. AT.
 const char ATCommand_RST[]					= "AT+RST\r\n";																				//Restart
 const char ATCommand_GMR[]					= "AT+GMR\r\n";																				//Get version info
-		
+const char ATCommand_END[]					= "\r\n";																							//ATCommand end format string
+
 /* WiFi Station */		
 const char ATCommand_CWMODE_GET[]		= "AT+CWMODE?\r\n";																		//Get current mode
 const char ATCommand_CWMODE_SET1[]	= "AT+CWMODE=1\r\n";																	//Set current mode1 : Station
@@ -38,7 +39,7 @@ const char ATCommand_CIPMUX_SET0[]	= "AT+CIPMUX=0\r\n";																		//Set m
 const char ATCommand_CIPMUX_SET1[]	= "AT+CIPMUX=1\r\n";																		//Set mode for multiple connection
 const char ATCommand_CIFSR[]				= "AT+CIFSR\r\n";																				//Get local IP address
 const char ATCommand_CIPSTART[]			= "AT+CIPSTART=\"TCP\",\"192.168.35.128\",80\r\n";			//Start connection
-const char ATCommand_CIPSEND[]			= "AT+CIPSEND\r\n";																			//Send data
+const char ATCommand_CIPSEND[]			= "AT+CIPSEND=";																				//Send data(without data and end string)
 const char ATCommand_CIPCLOSE[]			= "AT+CIPCLOSE\r\n";																		//Close connection
 
 
@@ -159,11 +160,14 @@ void WIFI_PORT_Start()
 
             WIFI_PORT_Write(PRINT, ATCommand_CIPMUX_SET0, strlen(ATCommand_CIPMUX_SET0));
             WIFI_PORT_Read(PRINT);
-            if (DEMO) printf("|   	WiFi Single Server Connections Enabled    |\n");
+            if (DEMO) printf("|    WiFi Single Server Connections Enabled   |\n");
 
+            WIFI_PORT_Write(PRINT, ATCommand_CIPMUX_GET, strlen(ATCommand_CIPMUX_SET0));
+            WIFI_PORT_Read(PRINT);
+						
             WIFI_PORT_Write(PRINT, ATCommand_CIPSTART, strlen(ATCommand_CIPSTART));
             WIFI_PORT_Read(PRINT);
-            if (DEMO) printf("|       Server TCP enabled on 80 port   	  	|\n");
+            if (DEMO) printf("|       Server TCP enabled on 80 port         |\n");
 
             //WIFI_PORT_Write(command_CIPSTO, (sizeof(command_CIPSTO) / sizeof(char))-1);
             //printf("WiFi Nuvoton Timeout is : \n");
@@ -183,6 +187,7 @@ void WIFI_PORT_Start()
 
 }
 
+/* Receive data from ESP8266 char by char, until last 'OK' message is received  */
 void WIFI_PORT_Read(int print)
 {
     char buf = 0;
@@ -195,10 +200,13 @@ void WIFI_PORT_Read(int print)
         while((WIFI_PORT->FIFOSTS & UART_FIFOSTS_RXEMPTY_Msk) == 0) {
             buf = (char)WIFI_PORT->DAT;
             if (print) printf("%c", buf);
-            if (lastBuf == 'O' && buf == 'K') {
+            if (lastBuf == 'O' && buf == 'K')
+						{
+								printf("\n");
                 cmdOK = 1;
             }
-            else lastBuf = buf;
+            else
+							lastBuf = buf;
         }
 
     }
@@ -206,6 +214,7 @@ void WIFI_PORT_Read(int print)
 
 }
 
+/* Send AT command on UART to ESP8266 char by char */
 void WIFI_PORT_Write(int print, const char *command, int lenCommand)
 {
     
@@ -214,6 +223,208 @@ void WIFI_PORT_Write(int print, const char *command, int lenCommand)
         WIFI_PORT->DAT = command[i];
         if(print) printf("%c", command[i]);
     }
+
+}
+
+static size_t	ft_intlen(long n)
+{
+	size_t len;
+
+	len = 0;
+	if (n <= 0)
+		len++;
+	while (n)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
+}
+
+static char			*ft_itoa(int n)
+{
+	char	*str;
+	size_t	len;
+	int		pos;
+	long	nbr;
+
+	nbr = n;
+	pos = 1;
+	len = ft_intlen(nbr);
+	if (!(str = calloc(len + 1, sizeof(char))))
+		return (NULL);
+	if (nbr < 0)
+	{
+		pos = -1;
+		nbr = -nbr;
+	}
+	while (len)
+	{
+		str[--len] = '0' + (nbr % 10);
+		nbr = nbr / 10;
+	}
+	if (pos == -1)
+		str[0] = '-';
+	return (str);
+}
+
+
+/* AT+CIPSEND : Send data */
+int WIFI_PORT_Send_Data(int print, t_netData *netData)
+{
+    int lengthStrLen = 0;
+		char *lengthStr;
+    int tmpLen = netData->len;
+
+		if (DEMO) printf("|      NonSecure is running ... Send Data     |\n");
+		printf("*&&\n");
+		printf("netData->data   : \n%s\n", netData->data);
+		printf("netData->length : %d\n", netData->len);
+
+    LED_Y = 0;
+	
+		while (tmpLen)
+		{
+			lengthStrLen++;
+			tmpLen /= 10;
+		}
+
+    //lengthStr = calloc((lengthStrLen + 1), sizeof(char));
+    //sprintf(lengthStr, "%d", netData->len);
+    //lengthStr[lengthStrLen] = '\0';
+		lengthStr = ft_itoa(netData->len);
+		
+		printf("**\n");
+		printf("netData->data   : \n%s\n", netData->data);
+		printf("netData->length : %d\n", netData->len);
+    printf("lengthStr       : %s\n", lengthStr);
+    printf("lengthStrLen    : %d\n", lengthStrLen); 
+
+    // AT+CIPSEND=
+    WIFI_PORT_Write(print, ATCommand_CIPSEND, strlen(ATCommand_CIPSEND));
+		// <length>
+    WIFI_PORT_Write(print, lengthStr, lengthStrLen);
+		// \r\n
+    WIFI_PORT_Write(print, ATCommand_END, strlen(ATCommand_END));
+		
+    WIFI_PORT_Read(print);
+
+		// >DATA\r\n
+    WIFI_PORT_Write(print, netData->data, netData->len);
+    WIFI_PORT_Write(print, ATCommand_END, strlen(ATCommand_END));
+		
+		// SEND OK
+    WIFI_PORT_Read(print);
+		
+    if (print) printf("Data Sent !\n");
+    
+    LED_Y = 1;
+    
+    return 1;
+    
+}
+
+/* +IPD : Receive network data */
+int WIFI_PORT_Receive_Data(int print, t_netData *netData)
+{
+    char buff = 0;
+    int isReceive = 0;
+    int loop = 0;
+    int indx = 0;
+    char dataR[64] = {0};
+    int i = 0;
+    int c = 0;
+    int nbCharLength = 0;
+    int lengthData = 0;
+    int columnDetect = 0;
+    
+		if (DEMO) printf("|      Secure is running ... Wait Data        |\n");
+
+    LED_G = 0;
+		
+		// +IPD,<len>:data
+    while(isReceive == 0) {
+        while((WIFI_PORT->FIFOSTS & UART_FIFOSTS_RXEMPTY_Msk) == 0) {
+            loop = 0;
+            buff = WIFI_PORT->DAT;
+            //printf("%c",buff);
+            if(indx == 0 && buff == '+' && loop == 0) {
+                indx = 1;
+                loop = 1;
+                //printf("%c",buff);
+            }
+            if(indx == 1 && buff == 'I' && loop == 0) {
+                indx = 2;
+                loop = 1;
+                //printf("%c",buff);
+            }
+            else if (indx == 1 && loop == 0) indx = 0;
+            
+            if(indx == 2 && buff == 'P' && loop == 0) {
+                indx = 3;
+                loop = 1;
+                //printf("%c",buff);
+            }
+            else if (indx == 2 && loop == 0) indx = 0;
+            
+            if(indx == 3 && buff == 'D' && loop == 0) {
+                indx = 4;
+                loop = 1;
+                //printf("%c",buff);
+            }
+            else if (indx == 3 && loop == 0) indx = 0;
+            
+            if(indx == 4 && buff == ',' && loop == 0) {
+                isReceive = 1;
+                loop = 1;
+                //printf("%c",buff);
+            }
+            else if (indx == 4 && loop == 0) indx = 0;
+        }
+    }
+    while(isReceive) {
+        while((WIFI_PORT->FIFOSTS & UART_FIFOSTS_RXEMPTY_Msk) == 0) {
+            buff = WIFI_PORT->DAT;
+            //printf("%c",buff);
+            if (c == 0) {
+                
+                uint8_t channelID = buff-0x30;
+                if (print) printf("channel ID : %d\n", channelID);
+                
+            }
+            if (c == 1 && buff != ',') isReceive = 0; //ERROR
+            //Data Read
+            if (columnDetect && c < lengthData+3+nbCharLength) {
+                
+                dataR[c-(3+nbCharLength)] = buff;
+                
+            }
+            //Length parse
+            if (c > 1 && columnDetect == 0) {
+                
+                if (buff == ':') {
+                    columnDetect = 1;
+                    lengthData--;
+                    if (print) printf("lengthData : %d\n", lengthData);
+                }
+                else {
+                    lengthData = 10*lengthData+buff-0x30;
+                    nbCharLength++;
+                }
+                
+            }
+            if (columnDetect && c == lengthData+3+nbCharLength) isReceive = 0;
+            c++;
+        }
+    }
+
+    for (int nb=0; nb <= lengthData; nb++)
+			(netData->data)[nb] = dataR[nb];
+    netData->len = lengthData;
+
+    LED_G = 1;
+
+    return 1;
 
 }
 

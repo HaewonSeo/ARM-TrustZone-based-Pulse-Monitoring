@@ -9,6 +9,7 @@
 ".\objects\gpio.o"
 ".\objects\i2c_max30102.o"
 ".\objects\main.o"
+".\objects\nsc.o"
 --library_type=microlib --strict --scatter ".\Objects\I2C_MAX30102.sct"
 --import-cmse-lib-out="..\..\I2C_MAX30102\Objects\I2C_MAX30102_CMSE_Lib.o"
 --import-cmse-lib-out .\lib\nsclib.o --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

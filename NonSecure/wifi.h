@@ -30,11 +30,22 @@
 		PC_NS->MODE = (GPIO_MODE_OUTPUT << 11*2) | (GPIO_MODE_OUTPUT << 12*2); }	\
     //PA->MODE = (GPIO_MODE_OUTPUT << 10*2) | (GPIO_MODE_OUTPUT << 11*2) ;}
 
-#define PRINT	0												// Set 1 if you want to print a WIFI_PORT->DAT
+#define DEMO		 1 
+#define PRINT		 0												// Set 1 if you want to print a WIFI_PORT->DAT
+
+typedef struct	s_netData
+{
+	char					*data;
+	int						len;
+}								t_netData;
+
 		
 void WIFI_PORT_Init();
 void WIFI_PORT_Start();
 void WIFI_PORT_Read(int);
 void WIFI_PORT_Write(int, const char *, int);
-
+int WIFI_PORT_Receive_Data(int, t_netData *);
+int WIFI_PORT_Send_Data(int, t_netData *);
+		
+		
 #endif /* __WIFI_H__ */

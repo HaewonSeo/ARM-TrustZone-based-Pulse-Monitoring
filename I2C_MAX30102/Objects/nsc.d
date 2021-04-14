@@ -1,8 +1,12 @@
-./objects/i2c_max30102.o: i2c_max30102.c \
+./objects/nsc.o: nsc.c ..\I2C_MAX30102\nsc.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_cmse.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   ..\..\Library\Device\Nuvoton\M2351\Include\NuMicro.h \
   ..\..\Library\Device\Nuvoton\M2351\Include\M2351.h \
   ..\..\Library\CMSIS\Include\core_armv8mbl.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\..\Library\CMSIS\Include\cmsis_version.h \
   ..\..\Library\CMSIS\Include\cmsis_compiler.h \
   ..\..\Library\CMSIS\Include\cmsis_armclang.h \
@@ -66,8 +70,6 @@
   ..\..\Library\StdDriver\inc\usci_spi.h \
   ..\..\Library\StdDriver\inc\usci_uart.h \
   ..\..\Library\StdDriver\inc\usci_i2c.h \
-  ..\..\Library\StdDriver\inc\sdh.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  ..\..\Library\StdDriver\inc\qei.h ..\..\Library\StdDriver\inc\can.h \
-  ..\..\Library\StdDriver\inc\scu.h \
-  ..\..\Library\StdDriver\inc\mkromlib.h ..\I2C_MAX30102\i2c_max30102.h
+  ..\..\Library\StdDriver\inc\sdh.h ..\..\Library\StdDriver\inc\qei.h \
+  ..\..\Library\StdDriver\inc\can.h ..\..\Library\StdDriver\inc\scu.h \
+  ..\..\Library\StdDriver\inc\mkromlib.h

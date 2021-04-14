@@ -1,4 +1,4 @@
-/**************************************************************************//**
+/******************************************************************************
  * @file     main_ns.c
  * @version  V1.00
  * @brief    Non-secure sample code for Collaborative Secure Software Development
@@ -8,11 +8,18 @@
  ******************************************************************************/
 
 #include <arm_cmse.h>
+#include <string.h>
 #include "NuMicro.h"                    /* Device header */
 #include "cssd_lib.h"                   /* Collaborative Secure Software Development Library header */
-//#include "non_secure.h"
 #include "wifi.h"
+//#include "non_secure.h"
 
+#define SW2		PB0_NS
+#define SW3		PB1_NS
+
+const char GET_MSG_HEAD[] = "GET /process.php?pulse=";
+const char GET_MSG_TAIL[] = " HTTP/1.0\nHost: 192.168.35.128\nConnection: keep-alive\nAccept: */*\n\n";
+const char GET_MSG[] = "GET /process.php?pulse=1234 HTTP/1.1\nHost: 192.168.35.128\nConnection: keep-alive\nAccept: */*\n\n";
 
 /*----------------------------------------------------------------------------
   NonSecure Functions from NonSecure Region
@@ -28,6 +35,81 @@ void LED_Off(uint32_t us)
     printf("NS LED Off call by NS\n");
     PC0_NS = 1;
 }
+
+char	*ft_strdup(const char *str)
+{
+	int		i;
+	char	*dst;
+
+	if (!(dst = (char *)malloc(sizeof(char) * strlen(str) + 1)))
+		return (NULL);
+	i = 0;
+	while (str[i])
+	{
+		dst[i] = str[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}
+
+
+void Send_Pulse_To_Server()
+{
+	t_netData *get;
+	int32_t	pulse;
+	int32_t tmpPulse;
+	char *strPulse;
+	int32_t strPulseLen = 0;
+	int i;
+	
+	get = calloc(1, sizeof(t_netData));
+	get->data = calloc(110, sizeof(char));
+	get->len = strlen(GET_MSG);
+	
+	for (i = 0; i < get->len; i++)
+		(get->data)[i] = GET_MSG[i];
+	
+	
+	//pulse = Get_Pulse();
+	/*
+	pulse = 123456;
+	
+	tmpPulse = pulse;
+	while (tmpPulse)
+	{
+		strPulseLen++;
+		tmpPulse /= 10;
+	}
+	
+	strPulse = calloc((strPulseLen + 1), sizeof(char));
+	sprintf(strPulse, "%d", pulse);
+	strPulse[strPulseLen] = '\0';
+	
+	get->data = ft_strdup(GET_MSG_HEAD);
+	strcat(get->data, strPulse);
+	strcat(get->data, GET_MSG_TAIL);
+
+	get->len = strlen(get->data);
+	*/
+	printf("get->data			 : \n%s\n", get->data);
+  printf("get->len 			 : %d\n", get->len);
+  //printf("strPulse       : %s\n", strPulse);
+  //printf("strPulseLen    : %d\n", strPulseLen); 
+
+	WIFI_PORT_Send_Data(1, get);
+	
+	free(get->data);
+	free(get);
+	//free(strPulse);
+}
+
+void Control_SW()
+{
+	return ;
+}
+
+
 
 /*----------------------------------------------------------------------------
   SysTick IRQ Handler
@@ -100,64 +182,6 @@ void SysTick_Handler(void)
     }*/
 }
 
-void SYS_Init(void)
-{
-
-
-//    /* Enable PLL */
-//    CLK->PLLCTL = CLK_PLLCTL_128MHz_HIRC;
-
-//    /* Waiting for PLL stable */
-//    while((CLK->STATUS & CLK_STATUS_PLLSTB_Msk) == 0);
-
-//    /* Set HCLK divider to 2 */
-//    CLK->CLKDIV0 = (CLK->CLKDIV0 & (~CLK_CLKDIV0_HCLKDIV_Msk)) | 1;
-
-//    /* Switch HCLK clock source to PLL */
-//    CLK->CLKSEL0 = (CLK->CLKSEL0 & (~CLK_CLKSEL0_HCLKSEL_Msk)) | CLK_CLKSEL0_HCLKSEL_PLL;
-
-//    CLK->PWRCTL |= CLK_PWRCTL_HIRC48EN_Msk;
-//    while((CLK->STATUS & CLK_STATUS_HIRC48STB_Msk) == 0);
-//    CLK->CLKSEL0 = CLK_CLKSEL0_HCLKSEL_HIRC48;
-
-    /* Select IP clock source */
-//    CLK->CLKSEL1 = CLK_CLKSEL1_UART0SEL_HIRC | CLK_CLKSEL1_UART1SEL_HIRC;
-//    CLK->CLKSEL3 = CLK_CLKSEL3_UART2SEL_HIRC | CLK_CLKSEL3_UART3SEL_HIRC | CLK_CLKSEL3_UART5SEL_HIRC;
-
-//    /* Enable IP clock */
-//    CLK->APBCLK0 |= CLK_APBCLK0_UART0CKEN_Msk | CLK_APBCLK0_TMR0CKEN_Msk | CLK_APBCLK0_UART1CKEN_Msk |
-//                    CLK_APBCLK0_UART2CKEN_Msk | CLK_APBCLK0_UART3CKEN_Msk | CLK_APBCLK0_UART5CKEN_Msk;
-
-
-    /* Update System Core Clock */
-    /* User can use SystemCoreClockUpdate() to calculate PllClock, SystemCoreClock and CycylesPerUs automatically. */
-    //SystemCoreClockUpdate();
-//    PllClock        = 128000000;           // PLL
-//    SystemCoreClock = 128000000 / 2;       // HCLK
-//    CyclesPerUs     = 64000000 / 1000000;  // For SYS_SysTickDelay()
-
-    /*---------------------------------------------------------------------------------------------------------*/
-    /* Init I/O Multi-function                                                                                 */
-    /*---------------------------------------------------------------------------------------------------------*/
-    /* Set multi-function pins for UART0 RXD and TXD */
-//    SYS->GPB_MFPH = (SYS->GPB_MFPH & (~(UART0_RXD_PB12_Msk | UART0_TXD_PB13_Msk))) | UART0_RXD_PB12 | UART0_TXD_PB13;
-
-}
-
-//void WIFI_PORT_Init()
-//{
-//    //CLK->APBCLK0 |= CLK_APBCLK0_UART4CKEN_Msk;
-//    //CLK->CLKSEL3 = (CLK->CLKSEL3 & (~CLK_CLKSEL3_UART3SEL_Msk)) | CLK_CLKSEL3_UART3SEL_HIRC;
-
-//    WIFI_PORT->LINE = UART_PARITY_NONE | UART_STOP_BIT_1 | UART_WORD_LEN_8;
-//    WIFI_PORT->BAUD = UART_BAUD_MODE2 | UART_BAUD_MODE2_DIVIDER(__HIRC, 115200);
-
-//    /* Set multi-function pins for RXD and TXD */
-//    //SYS->GPC_MFPL = (SYS->GPC_MFPL & (~(UART4_RXD_PC6_Msk | UART4_TXD_PC7_Msk))) | UART4_RXD_PC6 | UART4_TXD_PC7;
-//    SYS->GPD_MFPL |= (SYS->GPD_MFPL & (~(UART3_RXD_PD0_Msk | UART3_TXD_PD1_Msk))) | UART3_RXD_PD0 | UART3_TXD_PD1;
-//}
-
-
 
 
 /*----------------------------------------------------------------------------
@@ -170,36 +194,26 @@ int main(void)
     printf("+---------------------------------------------+\n");
 		
 
-    /* Init GPIO Port C for non-secure LED control */
-    //GPIO_SetMode(PC_NS, BIT0, GPIO_MODE_OUTPUT);
-
-    /* Call secure API to get system core clock */
-    SystemCoreClock = GetSystemCoreClock();
-
-    /* Generate Systick interrupt each 10 ms */
-    SysTick_Config(SystemCoreClock / 100);
-
     printf("\n");
     printf("+---------------------------------------------+\n");
-    printf("|            ESP8266 WiFi Module Demo         |\n");
+    printf("|            ESP8266 WiFi Module Start        |\n");
     printf("+---------------------------------------------+\n");
 	
-		WIFI_PORT_Start();
-
-	  IOCTL_INIT;
-//    LED_OFF = 1;
-		PWR_OFF = 1;
-
-    CLK_SysTickLongDelay(3000000);
-
-    //FW_UPDATE_OFF = 0; // Set 0 to enable WIFI module firmware update.
-    FW_UPDATE_OFF = 1; // Set 1 to Disable WIFI module firmware update.
-
-    CLK_SysTickLongDelay(1000000);
-//    LED_OFF = 0;
-    PWR_OFF = 0;
-		
-			
+	  WIFI_PORT_Start();
+	
+		while(1)
+		{
+			if(SW2 == 0)
+			{
+				while(SW2 == 0);
+				Control_SW();
+			}
+			if(SW3 == 0)
+			{
+				while(SW3 == 0);
+				Send_Pulse_To_Server();
+			}
+		}
 	
 	
 	
@@ -216,16 +230,14 @@ int main(void)
         {
             while(BYPASS_PORT->FIFOSTS & UART_FIFOSTS_TXFULL_Msk);
             BYPASS_PORT->DAT = WIFI_PORT->DAT;
-						//printf("1");
         }
-				//printf("2");
+				
         if((BYPASS_PORT->FIFOSTS & UART_FIFOSTS_RXEMPTY_Msk) == 0)
         {
             while(WIFI_PORT->FIFOSTS & UART_FIFOSTS_TXFULL_Msk);
             WIFI_PORT->DAT = BYPASS_PORT->DAT;
-						//printf("3");
         }
-				//printf("4");
+				
 		}
 		*/
 }

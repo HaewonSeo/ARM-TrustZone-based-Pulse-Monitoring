@@ -1,4 +1,4 @@
-/******************************************************************************
+/***************************************************************************
  * @file     main.c
  * @version  V3.00
  * $Revision: 3 $
@@ -12,120 +12,25 @@
 #include <arm_cmse.h>
 #include <stdio.h>
 #include "NuMicro.h"
-#include "i2c_max30102.h"
 #include "partition_M2351.h"
+#include "nsc.h"
+#include "i2c_max30102.h"
+//#include "crypto_aes.h"
 
-#define WIFI_PORT   UART3_NS    // Used to connect to WIFI module
-
-typedef void (*I2C_FUNC)(uint32_t u32Status);
-volatile static I2C_FUNC s_I2C0HandlerFn = NULL;
-volatile static I2C_FUNC s_I2C1HandlerFn = NULL;
-
-// Data buffer
-uint8_t au8RDataBuf[6];
-		
-// Raw HR & SPo2 data from FIFO
-volatile int32_t hr_val;
-volatile int32_t spo2_val;
+#define DEBUG_PORT			UART0_NS
+#define WIFI_PORT   		UART3_NS    // Used to connect to WIFI module
 
 #define NEXT_BOOT_BASE  0x10040000
 #define JUMP_HERE       0xe7fee7ff      /* Instruction Code of "B ." */
 
 /* typedef for NonSecure callback functions */
 typedef __NONSECURE_CALL int32_t (*NonSecure_funcptr)(uint32_t);
+typedef int32_t (*Secure_funcptr)(uint32_t);
+
 
 /*----------------------------------------------------------------------------
-  Secure functions exported to NonSecure application
-  Must place in Non-secure Callable
+  Secure LED control function
  *----------------------------------------------------------------------------*/
-__NONSECURE_ENTRY
-int32_t Secure_PA11_LED_On(uint32_t num)
-{
-    printf("Secure PA11 LED On call by secure\n");
-    PA11 = 0;
-    return 0;
-}
-
-__NONSECURE_ENTRY
-int32_t Secure_PA11_LED_Off(uint32_t num)
-{
-    printf("Secure PA11 LED Off call by secure\n");
-    PA11 = 1;
-    return 1;
-}
-
-__NONSECURE_ENTRY
-int32_t Secure_PA12_LED_On(uint32_t num)
-{
-    printf("Secure PA12 LED On call by secure\n");
-    PA12 = 0;
-    return 0;
-}
-
-__NONSECURE_ENTRY
-int32_t Secure_PA12_LED_Off(uint32_t num)
-{
-    printf("Secure PA12 LED Off call by secure\n");
-    PA12 = 1;
-    return 1;
-}
-
-__NONSECURE_ENTRY
-int32_t Secure_PA13_LED_On(uint32_t num)
-{
-    printf("Secure PA13 LED On call by secure\n");
-    PA13 = 0;
-    return 0;
-}
-
-__NONSECURE_ENTRY
-int32_t Secure_PA13_LED_Off(uint32_t num)
-{
-    printf("Secure PA13 LED Off call by secure\n");
-    PA13 = 1;
-    return 1;
-}
-
-__NONSECURE_ENTRY
-uint32_t GetSystemCoreClock(void)
-{
-    printf("System core clock = %d.\n", SystemCoreClock);
-    return SystemCoreClock;
-}
-
-
-void Get_Pulse()
-{
-		uint32_t i;
-
-		// Get data from sensor
-		//while(1)
-    //{
-			//printf("**********************\n");
-		for(i=0; i<1; i++)
-			{
-			printf("**\n");
-			I2C_ReadMultiBytesOneReg(I2C0, MAX30102_ADDR, MAX30102_FIFO_DATA, au8RDataBuf, 3);
-			hr_val = (au8RDataBuf[0]<<16)|(au8RDataBuf[1]<<8)|au8RDataBuf[2];   //RED LED
-			//spo2_val = (au8RDataBuf[3]<<16)|(au8RDataBuf[4]<<8)|au8RDataBuf[5]; //IR LED(pulse oximetry)
-			
-			printf("HR_val : %#08x(%d)\t \n", hr_val, hr_val);
-			//printf("HR_val : %#08x(%d),\t Spo2_val : %#08x(%d) \r\n", hr_val, hr_val, spo2_val, spo2_val);
-			
-			printf("**\n");
-      //CLK_SysTickDelay(300000); //300000us = 300ms = 0.3s
-			//printf("**********************\n");
-    //}
-			}
-}
-
-__NONSECURE_ENTRY
-void Print_Pulse()
-{
-		printf("HR_val : %#08x(%d),\t \n", hr_val, hr_val);
-}
-
-
 int32_t LED_On(void)
 {
     printf("Secure/Non-secure LED On call by Secure\n");
@@ -214,33 +119,16 @@ void I2C0_Init(void)
     printf("I2C0 clock %d Hz\n", I2C_GetBusClockFreq(I2C0));
 	
     /* Set I2C0 Slave Addresses */
-    I2C_SetSlaveAddr(I2C0, 0, MAX30100_ADDR, 0);   /* Slave Address : 0x57 */	
+    I2C_SetSlaveAddr(I2C0, 0, MAX30102_ADDR, 0);   /* MAX30102 Slave Address : 0x57 */	
 
     /* Set I2C0 Slave Addresses Mask */
     //I2C_SetSlaveAddrMask(I2C0, 0, 0x01);	
 	
-//    /* Enable I2C1 interrupt */
-//    I2C_EnableInt(I2C1);
-//    NVIC_EnableIRQ(I2C1_IRQn);
+    /* Enable I2C0 interrupt */
+    //I2C_EnableInt(I2C0);
+    //NVIC_EnableIRQ(I2C0_IRQn);
 }
 
-
-//void I2C1_IRQHandler(void)
-//{
-//    uint32_t u32Status;
-// 
-//		u32Status = I2C_GET_STATUS(I2C1);
-
-//    if (I2C_GET_TIMEOUT_FLAG(I2C1))
-//    {
-//				I2C_ClearTimeoutFlag(I2C1);
-//    }
-//    else
-//    {
-//        if (s_I2C1HandlerFn != NULL)
-//					s_I2C1HandlerFn(u32Status);
-//    }
-//}
 
 void SYS_Init(void)
 {
@@ -274,7 +162,7 @@ void SYS_Init(void)
     /* Waiting for PLL stable */
     CLK_WaitClockReady(CLK_STATUS_PLLSTB_Msk);
 
-    /* Select HCLK clock source as PLL and HCLK source divider as 2 */
+    /* Select HCLK clock source as PLL and HCLK source divider as 1 */
     CLK_SetHCLK(CLK_CLKSEL0_HCLKSEL_PLL, CLK_CLKDIV0_HCLK(1));
 
     /* Enable UART clock */
@@ -297,13 +185,11 @@ void SYS_Init(void)
                     CLK_APBCLK0_UART2CKEN_Msk | CLK_APBCLK0_UART3CKEN_Msk | CLK_APBCLK0_UART5CKEN_Msk;
 
 
+    /* Enable UART module clock */
+    //CLK_EnableModuleClock(UART0_MODULE);
 
-
-//    /* Enable UART module clock */
-//    CLK_EnableModuleClock(UART0_MODULE);
-
-//    /* Select UART module clock source as HXT `and UART module clock divider as 1 */
-//    CLK_SetModuleClock(UART0_MODULE, CLK_CLKSEL1_UART0SEL_HXT, CLK_CLKDIV0_UART0(1));
+    /* Select UART module clock source as HXT `and UART module clock divider as 1 */
+    //CLK_SetModuleClock(UART0_MODULE, CLK_CLKSEL1_UART0SEL_HXT, CLK_CLKDIV0_UART0(1));
 
     /* Enable I2C0 peripheral clock */
     CLK_EnableModuleClock(I2C0_MODULE);
@@ -318,11 +204,11 @@ void SYS_Init(void)
     SystemCoreClock = 64000000 / 1;        // HCLK
     CyclesPerUs     = 64000000 / 1000000;  // For SYS_SysTickDelay()
 
-
     /*---------------------------------------------------------------------------------------------------------*/
     /* Init I/O Multi-function                                                                                 */
     /*---------------------------------------------------------------------------------------------------------*/
-    /* Set multi-function pins for UART0 RXD and TXD */
+    
+		/* Set multi-function pins for UART0 RXD and TXD */
     SYS->GPB_MFPH = (SYS->GPB_MFPH & (~(UART0_RXD_PB12_Msk | UART0_TXD_PB13_Msk))) | UART0_RXD_PB12 | UART0_TXD_PB13;
 
     /* Set PA multi-function pins for I2C0 SDA and SCL */
@@ -335,21 +221,21 @@ void SYS_Init(void)
     SYS->GPA_MFPL &= ~(SYS_GPA_MFPL_PA2MFP_Msk | SYS_GPA_MFPL_PA3MFP_Msk);
     SYS->GPA_MFPL |= (SYS_GPA_MFPL_PA2MFP_I2C1_SDA | SYS_GPA_MFPL_PA3MFP_I2C1_SCL);
 		
-		// UART3 
-//		SYS->GPD_MFPL |= (SYS->GPD_MFPL & (~(UART3_RXD_PD0_Msk | UART3_TXD_PD1_Msk))) | UART3_RXD_PD0 | UART3_TXD_PD1;
-
 }
 
+
+/*---------------------------------------------------------------------------------------------------------*/
+/* Init UART0_NS  :115200, 8-bit word, no parity bit, 1 stop bit.                                          */
+/*---------------------------------------------------------------------------------------------------------*/
 void DEBUG_PORT_Init()
 {
-    /*---------------------------------------------------------------------------------------------------------*/
-    /* Init UART_NS0                                                                                           */
-    /*---------------------------------------------------------------------------------------------------------*/
     DEBUG_PORT->LINE = UART_PARITY_NONE | UART_STOP_BIT_1 | UART_WORD_LEN_8;
     DEBUG_PORT->BAUD = UART_BAUD_MODE2 | UART_BAUD_MODE2_DIVIDER(__HIRC, 115200);
-
 }
 
+/*---------------------------------------------------------------------------------------------------------*/
+/* Init UART3_NS  :115200, 8-bit word, no parity bit, 1 stop bit.                                          */
+/*---------------------------------------------------------------------------------------------------------*/
 void WIFI_PORT_Init()
 {
     CLK->APBCLK0 |= CLK_APBCLK0_UART4CKEN_Msk;
@@ -405,50 +291,6 @@ void Nonsecure_Init(void)
     }
 }
 
-void Config_MAX30102()
-{
-		uint8_t ret = 2;
-		
-		/*
-        This sample code sets I2C bus clock to 100kHz. Then, Master accesses Slave with Byte Write
-        and Byte Read operations, and check if the read data is equal to the programmed data.
-    */
-    printf("+-------------------------------------------------------+\n");
-    printf("|          Configuration MAX30102 in SECURE             |\n");
-    printf("+-------------------------------------------------------+\n");
-
-
-		/* FIFO Config
-			Sample_AVG 1, FIFO_ROLLOVER_EN 1*/
-		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_FIFO_CONFIG, 0x10);
-		printf("[1]MAX30102_FIFO_CONFIG --- ret %d\n", ret);
-		
-		/* Mode Config
-			Multi-LED Mode, Active LED Channels : Red Only */
-		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_MODE_CONFIG, 0x02);
-		printf("[2]MAX30102_MODE_CONFIG --- ret %d\n", ret);
-
-		/* SpO2 Config
-			SPO2 ADC range control(16384), SPO2 sample rate 50/1s,
-			LED pulse width = 411, ADC Resolution = 18bit
-			0b01100011 */
-		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_SPO2_CONFIG, 0x63);
-		printf("[3]MAX30102_SPO2_CONFIG --- ret %d\n", ret);
-
-		/* LED Pulde Amplitude
-			Typical LED current : 6.2mA */
-		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_LED1_AMP, 0x3F);
-		printf("[4]MAX30102_LED1_AMP --- ret %d\n", ret);
-		//ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_LED2_AMP, 0x3f);
-		//printf("[5]MAX30102_LED2_AMP --- ret %d\n", ret);
-		
-		/* Multi-LED Mode Control Registers
-			Slot1 : LED1(RED), Slot2 : LED2(IR) */
-		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX31012_MLED_CTRL1, 0x01);
-		printf("[6]MAX31012_MLED_CTRL1 --- ret %d\n", ret);
-		//ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX31012_MLED_CTRL2, 0x00);	
-}
-
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*  Main Function                                                                                          */
@@ -463,14 +305,11 @@ int32_t main(void)
     SYS_Init();
 
     /* Lock protected registers */
-    //SYS_LockReg();
+    SYS_LockReg();
 
-    /* Configure UART0: 115200, 8-bit word, no parity bit, 1 stop bit. */
+    /* Inin UART and I2C0 */
     DEBUG_PORT_Init();
-	
 		WIFI_PORT_Init();
-
-    /* Init I2C0 */
     I2C0_Init();
 	
 		/* Config MAX30102 */
@@ -481,6 +320,9 @@ int32_t main(void)
 
     /* Init GPIO Port C for non-secure LED control */
     GPIO_SetMode(PC_NS, BIT1, GPIO_MODE_OUTPUT);
+
+		/* Call secure API to get system core clock */
+    SystemCoreClock = GetSystemCoreClock();
 
     /* Generate Systick interrupt each 10 ms */
     SysTick_Config(SystemCoreClock / 100);		

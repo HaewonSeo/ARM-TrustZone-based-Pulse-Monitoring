@@ -1,11 +1,15 @@
-# 1 "main.c"
+# 1 "nsc.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 358 "<built-in>" 3
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
-# 1 "main.c" 2
-# 12 "main.c"
+# 1 "nsc.c" 2
+# 12 "nsc.c"
+# 1 "../I2C_MAX30102/nsc.h" 1
+
+
+
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 1 3
 # 13 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 3
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stddef.h" 1 3
@@ -211,7 +215,7 @@ cmse_nonsecure_caller(void) {
 }
 # 210 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\arm_cmse.h" 3
 void __attribute__((__noreturn__)) cmse_abort(void);
-# 13 "main.c" 2
+# 5 "../I2C_MAX30102/nsc.h" 2
 # 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 1 3
 # 68 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdio.h" 3
     typedef __builtin_va_list __va_list;
@@ -531,7 +535,210 @@ extern __attribute__((__nothrow__)) int _fisatty(FILE * ) __attribute__((__nonnu
 
 extern __attribute__((__nothrow__)) void __use_no_semihosting_swi(void);
 extern __attribute__((__nothrow__)) void __use_no_semihosting(void);
-# 14 "main.c" 2
+# 6 "../I2C_MAX30102/nsc.h" 2
+# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 1 3
+# 96 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+typedef struct div_t { int quot, rem; } div_t;
+
+typedef struct ldiv_t { long int quot, rem; } ldiv_t;
+
+
+typedef struct lldiv_t { long long quot, rem; } lldiv_t;
+# 139 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int __aeabi_MB_CUR_MAX(void);
+# 158 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) double atof(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+extern __attribute__((__nothrow__)) int atoi(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+extern __attribute__((__nothrow__)) long int atol(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) long long atoll(const char * ) __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) double strtod(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
+# 206 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) float strtof(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
+extern __attribute__((__nothrow__)) long double strtold(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
+
+
+
+
+extern __attribute__((__nothrow__)) long int strtol(const char * __restrict ,
+                        char ** __restrict , int ) __attribute__((__nonnull__(1)));
+# 243 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) unsigned long int strtoul(const char * __restrict ,
+                                       char ** __restrict , int ) __attribute__((__nonnull__(1)));
+# 275 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) long long strtoll(const char * __restrict ,
+                                  char ** __restrict , int )
+                          __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) unsigned long long strtoull(const char * __restrict ,
+                                            char ** __restrict , int )
+                                   __attribute__((__nonnull__(1)));
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) int rand(void);
+# 303 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) void srand(unsigned int );
+# 313 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+struct _rand_state { int __x[57]; };
+extern __attribute__((__nothrow__)) int _rand_r(struct _rand_state *);
+extern __attribute__((__nothrow__)) void _srand_r(struct _rand_state *, unsigned int);
+struct _ANSI_rand_state { int __x[1]; };
+extern __attribute__((__nothrow__)) int _ANSI_rand_r(struct _ANSI_rand_state *);
+extern __attribute__((__nothrow__)) void _ANSI_srand_r(struct _ANSI_rand_state *, unsigned int);
+
+
+
+
+
+extern __attribute__((__nothrow__)) void *calloc(size_t , size_t );
+
+
+
+
+
+extern __attribute__((__nothrow__)) void free(void * );
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) void *malloc(size_t );
+
+
+
+
+
+extern __attribute__((__nothrow__)) void *realloc(void * , size_t );
+# 374 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+typedef int (*__heapprt)(void *, char const *, ...);
+extern __attribute__((__nothrow__)) void __heapstats(int (* )(void * ,
+                                           char const * , ...),
+                        void * ) __attribute__((__nonnull__(1)));
+# 390 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int __heapvalid(int (* )(void * ,
+                                           char const * , ...),
+                       void * , int ) __attribute__((__nonnull__(1)));
+# 411 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void abort(void);
+# 422 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int atexit(void (* )(void)) __attribute__((__nonnull__(1)));
+# 444 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void exit(int );
+# 460 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void _Exit(int );
+# 471 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) char *getenv(const char * ) __attribute__((__nonnull__(1)));
+# 484 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int system(const char * );
+# 497 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern void *bsearch(const void * , const void * ,
+              size_t , size_t ,
+              int (* )(const void *, const void *)) __attribute__((__nonnull__(1,2,5)));
+# 532 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern void qsort(void * , size_t , size_t ,
+           int (* )(const void *, const void *)) __attribute__((__nonnull__(1,4)));
+# 560 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) int abs(int );
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) __attribute__((__const__)) div_t div(int , int );
+# 579 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) long int labs(long int );
+# 589 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) ldiv_t ldiv(long int , long int );
+# 610 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) long long llabs(long long );
+# 620 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) __attribute__((__const__)) lldiv_t lldiv(long long , long long );
+# 644 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+typedef struct __sdiv32by16 { long quot, rem; } __sdiv32by16;
+typedef struct __udiv32by16 { unsigned long quot, rem; } __udiv32by16;
+
+typedef struct __sdiv64by32 { long rem, quot; } __sdiv64by32;
+
+__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __sdiv32by16 __rt_sdiv32by16(
+     int ,
+     short int );
+
+
+
+__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __udiv32by16 __rt_udiv32by16(
+     unsigned int ,
+     unsigned short );
+
+
+
+__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __sdiv64by32 __rt_sdiv64by32(
+     int , unsigned int ,
+     int );
+
+
+
+
+
+
+
+extern __attribute__((__nothrow__)) unsigned int __fp_status(unsigned int , unsigned int );
+# 705 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int mblen(const char * , size_t );
+# 720 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int mbtowc(wchar_t * __restrict ,
+                   const char * __restrict , size_t );
+# 739 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) int wctomb(char * , wchar_t );
+# 761 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) size_t mbstowcs(wchar_t * __restrict ,
+                      const char * __restrict , size_t ) __attribute__((__nonnull__(2)));
+# 779 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) size_t wcstombs(char * __restrict ,
+                      const wchar_t * __restrict , size_t ) __attribute__((__nonnull__(2)));
+# 798 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
+extern __attribute__((__nothrow__)) void __use_realtime_heap(void);
+extern __attribute__((__nothrow__)) void __use_realtime_division(void);
+extern __attribute__((__nothrow__)) void __use_two_region_memory(void);
+extern __attribute__((__nothrow__)) void __use_no_heap(void);
+extern __attribute__((__nothrow__)) void __use_no_heap_region(void);
+
+extern __attribute__((__nothrow__)) char const *__C_library_version_string(void);
+extern __attribute__((__nothrow__)) int __C_library_version_number(void);
+# 7 "../I2C_MAX30102/nsc.h" 2
 # 1 "../../Library/Device/Nuvoton/M2351/Include\\NuMicro.h" 1
 # 11 "../../Library/Device/Nuvoton/M2351/Include\\NuMicro.h"
 # 1 "../../Library/Device/Nuvoton/M2351/Include/M2351.h" 1
@@ -4678,218 +4885,7 @@ int32_t BL_USBDInstallEPHandler(uint32_t ep, void *pfnEPHandler, uint32_t *pfnEP
 int32_t BL_USBDStart(void);
 # 1006 "../../Library/Device/Nuvoton/M2351/Include\\M2351.h" 2
 # 12 "../../Library/Device/Nuvoton/M2351/Include\\NuMicro.h" 2
-# 15 "main.c" 2
-
-# 1 "../I2C_MAX30102/nsc.h" 1
-
-
-
-
-
-# 1 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 1 3
-# 96 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-typedef struct div_t { int quot, rem; } div_t;
-
-typedef struct ldiv_t { long int quot, rem; } ldiv_t;
-
-
-typedef struct lldiv_t { long long quot, rem; } lldiv_t;
-# 139 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int __aeabi_MB_CUR_MAX(void);
-# 158 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) double atof(const char * ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-extern __attribute__((__nothrow__)) int atoi(const char * ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-extern __attribute__((__nothrow__)) long int atol(const char * ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) long long atoll(const char * ) __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) double strtod(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
-# 206 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) float strtof(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
-extern __attribute__((__nothrow__)) long double strtold(const char * __restrict , char ** __restrict ) __attribute__((__nonnull__(1)));
-
-
-
-
-extern __attribute__((__nothrow__)) long int strtol(const char * __restrict ,
-                        char ** __restrict , int ) __attribute__((__nonnull__(1)));
-# 243 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) unsigned long int strtoul(const char * __restrict ,
-                                       char ** __restrict , int ) __attribute__((__nonnull__(1)));
-# 275 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) long long strtoll(const char * __restrict ,
-                                  char ** __restrict , int )
-                          __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) unsigned long long strtoull(const char * __restrict ,
-                                            char ** __restrict , int )
-                                   __attribute__((__nonnull__(1)));
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) int rand(void);
-# 303 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) void srand(unsigned int );
-# 313 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-struct _rand_state { int __x[57]; };
-extern __attribute__((__nothrow__)) int _rand_r(struct _rand_state *);
-extern __attribute__((__nothrow__)) void _srand_r(struct _rand_state *, unsigned int);
-struct _ANSI_rand_state { int __x[1]; };
-extern __attribute__((__nothrow__)) int _ANSI_rand_r(struct _ANSI_rand_state *);
-extern __attribute__((__nothrow__)) void _ANSI_srand_r(struct _ANSI_rand_state *, unsigned int);
-
-
-
-
-
-extern __attribute__((__nothrow__)) void *calloc(size_t , size_t );
-
-
-
-
-
-extern __attribute__((__nothrow__)) void free(void * );
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) void *malloc(size_t );
-
-
-
-
-
-extern __attribute__((__nothrow__)) void *realloc(void * , size_t );
-# 374 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-typedef int (*__heapprt)(void *, char const *, ...);
-extern __attribute__((__nothrow__)) void __heapstats(int (* )(void * ,
-                                           char const * , ...),
-                        void * ) __attribute__((__nonnull__(1)));
-# 390 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int __heapvalid(int (* )(void * ,
-                                           char const * , ...),
-                       void * , int ) __attribute__((__nonnull__(1)));
-# 411 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void abort(void);
-# 422 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int atexit(void (* )(void)) __attribute__((__nonnull__(1)));
-# 444 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void exit(int );
-# 460 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__noreturn__)) void _Exit(int );
-# 471 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) char *getenv(const char * ) __attribute__((__nonnull__(1)));
-# 484 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int system(const char * );
-# 497 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern void *bsearch(const void * , const void * ,
-              size_t , size_t ,
-              int (* )(const void *, const void *)) __attribute__((__nonnull__(1,2,5)));
-# 532 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern void qsort(void * , size_t , size_t ,
-           int (* )(const void *, const void *)) __attribute__((__nonnull__(1,4)));
-# 560 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__const__)) int abs(int );
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) __attribute__((__const__)) div_t div(int , int );
-# 579 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__const__)) long int labs(long int );
-# 589 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__const__)) ldiv_t ldiv(long int , long int );
-# 610 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__const__)) long long llabs(long long );
-# 620 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) __attribute__((__const__)) lldiv_t lldiv(long long , long long );
-# 644 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-typedef struct __sdiv32by16 { long quot, rem; } __sdiv32by16;
-typedef struct __udiv32by16 { unsigned long quot, rem; } __udiv32by16;
-
-typedef struct __sdiv64by32 { long rem, quot; } __sdiv64by32;
-
-__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __sdiv32by16 __rt_sdiv32by16(
-     int ,
-     short int );
-
-
-
-__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __udiv32by16 __rt_udiv32by16(
-     unsigned int ,
-     unsigned short );
-
-
-
-__attribute__((__value_in_regs__)) extern __attribute__((__nothrow__)) __attribute__((__const__)) __sdiv64by32 __rt_sdiv64by32(
-     int , unsigned int ,
-     int );
-
-
-
-
-
-
-
-extern __attribute__((__nothrow__)) unsigned int __fp_status(unsigned int , unsigned int );
-# 705 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int mblen(const char * , size_t );
-# 720 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int mbtowc(wchar_t * __restrict ,
-                   const char * __restrict , size_t );
-# 739 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) int wctomb(char * , wchar_t );
-# 761 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) size_t mbstowcs(wchar_t * __restrict ,
-                      const char * __restrict , size_t ) __attribute__((__nonnull__(2)));
-# 779 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) size_t wcstombs(char * __restrict ,
-                      const wchar_t * __restrict , size_t ) __attribute__((__nonnull__(2)));
-# 798 "C:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdlib.h" 3
-extern __attribute__((__nothrow__)) void __use_realtime_heap(void);
-extern __attribute__((__nothrow__)) void __use_realtime_division(void);
-extern __attribute__((__nothrow__)) void __use_two_region_memory(void);
-extern __attribute__((__nothrow__)) void __use_no_heap(void);
-extern __attribute__((__nothrow__)) void __use_no_heap_region(void);
-
-extern __attribute__((__nothrow__)) char const *__C_library_version_string(void);
-extern __attribute__((__nothrow__)) int __C_library_version_number(void);
-# 7 "../I2C_MAX30102/nsc.h" 2
-
+# 8 "../I2C_MAX30102/nsc.h" 2
 
 
 
@@ -4930,271 +4926,79 @@ int32_t Get_Pulse();
 
 extern uint8_t cipheredSessionKey[16];
 extern uint8_t sessionIv[16];
-# 17 "main.c" 2
-# 1 "../I2C_MAX30102/i2c_max30102.h" 1
-# 61 "../I2C_MAX30102/i2c_max30102.h"
-void Get_Data_From_MAX30102();
-void Config_MAX30102();
-# 18 "main.c" 2
-# 27 "main.c"
+# 13 "nsc.c" 2
+
+
 typedef __attribute__((cmse_nonsecure_call)) int32_t (*NonSecure_funcptr)(uint32_t);
-typedef int32_t (*Secure_funcptr)(uint32_t);
 
 
 
 
 
-int32_t LED_On(void)
+__attribute__((cmse_nonsecure_entry))
+int32_t Secure_PA11_LED_On(uint32_t num)
 {
-    printf("Secure/Non-secure LED On call by Secure\n");
-    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((10)<<2)))) = 0;
-    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x10000000UL)+(0x40*(2))) + ((1)<<2)))) = 0;
+    printf("Secure PA11 LED On call by secure\n");
+    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((11)<<2)))) = 0;
     return 0;
 }
 
-int32_t LED_Off(void)
+__attribute__((cmse_nonsecure_entry))
+int32_t Secure_PA11_LED_Off(uint32_t num)
 {
-    printf("Secure/Non-secure LED Off call by Secure\n");
-    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((10)<<2)))) = 1;
-    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x10000000UL)+(0x40*(2))) + ((1)<<2)))) = 1;
+    printf("Secure PA11 LED Off call by secure\n");
+    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((11)<<2)))) = 1;
     return 1;
 }
 
-
-
-
-
-void SysTick_Handler(void)
+__attribute__((cmse_nonsecure_entry))
+int32_t Secure_PA12_LED_On(uint32_t num)
 {
-    static uint32_t u32Ticks;
-# 107 "main.c"
+    printf("Secure PA12 LED On call by secure\n");
+    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((12)<<2)))) = 0;
+    return 0;
+}
+
+__attribute__((cmse_nonsecure_entry))
+int32_t Secure_PA12_LED_Off(uint32_t num)
+{
+    printf("Secure PA12 LED Off call by secure\n");
+    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((12)<<2)))) = 1;
+    return 1;
+}
+
+__attribute__((cmse_nonsecure_entry))
+int32_t Secure_PA13_LED_On(uint32_t num)
+{
+    printf("Secure PA13 LED On call by secure\n");
+    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((13)<<2)))) = 0;
+    return 0;
+}
+
+__attribute__((cmse_nonsecure_entry))
+int32_t Secure_PA13_LED_Off(uint32_t num)
+{
+    printf("Secure PA13 LED Off call by secure\n");
+    (*((volatile uint32_t *)((((0x40000000UL) + 0x04800UL)+(0x40*(0))) + ((13)<<2)))) = 1;
+    return 1;
+}
+
+__attribute__((cmse_nonsecure_entry))
+uint32_t GetSystemCoreClock(void)
+{
+
+    return SystemCoreClock;
 }
 
 
-
-
-void I2C0_Init(void)
+__attribute__((cmse_nonsecure_entry))
+void Print_Pulse()
 {
-
-
-    I2C_Open(((I2C_T *) (((0x40000000UL) + 0x00040000UL) + 0x40000UL)), 400000);
-
-
-    printf("I2C0 clock %d Hz\n", I2C_GetBusClockFreq(((I2C_T *) (((0x40000000UL) + 0x00040000UL) + 0x40000UL))));
-
-
-    I2C_SetSlaveAddr(((I2C_T *) (((0x40000000UL) + 0x00040000UL) + 0x40000UL)), 0, 0x57, 0);
-
-
-
-
-
-
-
+  printf("HR_val : %#08x(%d),\t \n", hr_val, hr_val);
 }
 
-
-void SYS_Init(void)
+__attribute__((cmse_nonsecure_entry))
+int32_t Get_Pulse()
 {
-
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPF_MFPL = (((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPF_MFPL & (~(0xful << (8)))) | (0x0aUL<<(8));
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPF_MFPL = (((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPF_MFPL & (~(0xful << (12)))) | (0x0aUL<<(12));
-
-
-
-
-
-
-    CLK_EnableXtalRC((0x1ul << (2)));
-
-
-    CLK_WaitClockReady((0x1ul << (4)));
-
-
-    CLK_SetHCLK((0x07UL<<(0)), (((1)-1UL) << (0)));
-
-
-    CLK_EnableXtalRC((0x1ul << (0)));
-
-
-    CLK_WaitClockReady((0x1ul << (0)));
-
-
-
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->PLLCTL = (0x00080000UL | (((3UL)-1UL)<<9) | ((16UL)-2UL) | 0x0000UL);
-
-
-    CLK_WaitClockReady((0x1ul << (2)));
-
-
-    CLK_SetHCLK((0x02UL<<(0)), (((1)-1UL) << (0)));
-
-
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->APBCLK0 |= (0x1ul << (16));
-
-
-
-
-
-  ((CLK_T *) ((0x40000000UL) + 0x00200UL))->PWRCTL |= (0x1ul << (18));
-    while((((CLK_T *) ((0x40000000UL) + 0x00200UL))->STATUS & (0x1ul << (6))) == 0);
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->CLKSEL0 = (0x05UL<<(0));
-
-
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->CLKSEL1 = (0x3UL<<(24)) | (0x3UL<<(26));
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->CLKSEL3 = (0x3UL<<(24)) | (0x3UL<<(26)) | (0x3UL<<(30));
-
-
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->APBCLK0 |= (0x1ul << (16)) | (0x1ul << (2)) | (0x1ul << (17)) |
-                    (0x1ul << (18)) | (0x1ul << (19)) | (0x1ul << (21));
-# 195 "main.c"
-    CLK_EnableModuleClock(((((1UL) & 0x03UL) << 30)|((((uint32_t)(8)) & 0x1fUL) << 0) | (((0x0UL) & 0x03UL) << 28)|(((0x0UL) & 0x07UL) << 25)|(((0x0UL) & 0x1fUL) << 20)| (((0x0UL) & 0x03UL) << 18)|(((0x0UL) & 0xffUL) << 10)|(((0x0UL) & 0x1fUL) << 5)));
-
-
-    CLK_EnableModuleClock(((((1UL) & 0x03UL) << 30)|((((uint32_t)(9)) & 0x1fUL) << 0) | (((0x0UL) & 0x03UL) << 28)|(((0x0UL) & 0x07UL) << 25)|(((0x0UL) & 0x1fUL) << 20)| (((0x0UL) & 0x03UL) << 18)|(((0x0UL) & 0xffUL) << 10)|(((0x0UL) & 0x1fUL) << 5)));
-
-
-
-
-    PllClock = 128000000;
-    SystemCoreClock = 64000000 / 1;
-    CyclesPerUs = 64000000 / 1000000;
-
-
-
-
-
-
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPB_MFPH = (((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPB_MFPH & (~((0xful << (16)) | (0xful << (20))))) | (0x06UL<<(16)) | (0x06UL<<(20));
-
-
-
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPA_MFPL &= ~((0xful << (16)) | (0xful << (20)));
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPA_MFPL |= ((0x09UL<<(16)) | (0x09UL<<(20)));
-
-
-
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPA_MFPL &= ~((0xful << (8)) | (0xful << (12)));
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPA_MFPL |= ((0x09UL<<(8)) | (0x09UL<<(12)));
-
-}
-
-
-
-
-
-void DEBUG_PORT_Init()
-{
-    ((UART_T *) ((((0x40000000UL) + 0x00040000UL) + 0x30000UL)+(0x10000000UL)))->LINE = (0x0UL << (3)) | (0x0UL << (2)) | (3UL);
-    ((UART_T *) ((((0x40000000UL) + 0x00040000UL) + 0x30000UL)+(0x10000000UL)))->BAUD = ((0x1ul << (29)) | (0x1ul << (28))) | (((((12000000UL)) + ((115200)/2ul)) / (115200))-2ul);
-}
-
-
-
-
-void WIFI_PORT_Init()
-{
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->APBCLK0 |= (0x1ul << (20));
-    ((CLK_T *) ((0x40000000UL) + 0x00200UL))->CLKSEL3 = (((CLK_T *) ((0x40000000UL) + 0x00200UL))->CLKSEL3 & (~(0x3ul << (26)))) | (0x3UL<<(26));
-
-    ((UART_T *) ((((0x40000000UL) + 0x00040000UL) + 0x33000UL)+(0x10000000UL)))->LINE = (0x0UL << (3)) | (0x0UL << (2)) | (3UL);
-    ((UART_T *) ((((0x40000000UL) + 0x00040000UL) + 0x33000UL)+(0x10000000UL)))->BAUD = ((0x1ul << (29)) | (0x1ul << (28))) | (((((12000000UL)) + ((115200)/2ul)) / (115200))-2ul);
-
-
-
-    ((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPD_MFPL = (((SYS_T *) ((0x40000000UL) + 0x00000UL))->GPD_MFPL & (~((0xful << (0)) | (0xful << (4))))) | (0x05UL<<(0)) | (0x05UL<<(4));
-}
-
-
-void Nonsecure_Init(void)
-{
-    NonSecure_funcptr fp;
-
-
-    ((SCB_Type *) ((0xE002E000UL) + 0x0D00UL) )->VTOR = 0x10040000;
-
-
-    __TZ_set_MSP_NS(*((uint32_t *)((SCB_Type *) ((0xE002E000UL) + 0x0D00UL) )->VTOR));
-
-
-    fp = ((NonSecure_funcptr)(*(((uint32_t *)((SCB_Type *) ((0xE002E000UL) + 0x0D00UL) )->VTOR) + 1)));
-
-
-
-    fp = __builtin_bit_cast(__typeof__(fp), (__builtin_bit_cast(uintptr_t, fp) & ~(uintptr_t)1));
-
-
-    if(((__builtin_bit_cast(uintptr_t, fp) & 1) == 0) && (((uint32_t)fp & 0xf0000000) == 0x10000000))
-    {
-        printf("Execute non-secure code ...\n");
-        fp(0);
-    }
-    else
-    {
-
-        printf("No code in non-secure region!\n");
-        printf("CPU will halted at non-secure state\n");
-
-
-        __TZ_set_MSP_NS((0x30000000 + 0x08000) + 512);
-
-
-        (*((vu32 *) ((0x30000000 + 0x08000)))) = 0xe7fee7ff;
-        fp = (NonSecure_funcptr)((0x30000000 + 0x08000) + 1);
-        fp(0);
-
-        while(1);
-    }
-}
-
-
-
-
-
-int32_t main(void)
-{
-
-
-    SYS_UnlockReg();
-
-
-    SYS_Init();
-
-
-    SYS_LockReg();
-
-
-    DEBUG_PORT_Init();
-  WIFI_PORT_Init();
-    I2C0_Init();
-
-
-  Config_MAX30102();
-
-
-    GPIO_SetMode(((GPIO_T *) ((0x40000000UL) + 0x04000UL)), 0x00002000UL | 0x00001000UL | 0x00000800UL | 0x00000400UL, 0x1UL);
-
-
-    GPIO_SetMode(((GPIO_T *) (((0x40000000UL) + 0x04080UL)+(0x10000000UL))), 0x00000002UL, 0x1UL);
-
-
-    SystemCoreClock = GetSystemCoreClock();
-
-
-    SysTick_Config(SystemCoreClock / 100);
-
-    printf("+---------------------------------------------+\n");
-    printf("|             Secure is running ...           |\n");
-    printf("+---------------------------------------------+\n");
-
-  Nonsecure_Init();
-
-
-
-    do
-    {
-
-        __builtin_arm_wfi();
-    }
-    while(1);
+  return hr_val;
 }

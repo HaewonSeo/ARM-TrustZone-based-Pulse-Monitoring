@@ -57,6 +57,11 @@
 #define MAX30102_REV_ID         0xFE  // Part revision
 #define MAX30102_PART_ID        0xFF  // Part ID, normally 0x11
 
+
+void Get_Data_From_MAX30102();
+void Config_MAX30102();
+
+
 //extern void I2C1_Init(void);
 //extern int32_t I2C0_Read_Write_SLAVE(uint8_t u8SlvAddr);
 //extern int32_t I2C0_Read(uint8_t u8SlvAddr, uint8_t u8Reg, uint8_t u8Byte);

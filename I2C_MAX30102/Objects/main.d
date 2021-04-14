@@ -71,5 +71,7 @@
   ..\..\Library\StdDriver\inc\usci_i2c.h \
   ..\..\Library\StdDriver\inc\sdh.h ..\..\Library\StdDriver\inc\qei.h \
   ..\..\Library\StdDriver\inc\can.h ..\..\Library\StdDriver\inc\scu.h \
-  ..\..\Library\StdDriver\inc\mkromlib.h ..\I2C_MAX30102\i2c_max30102.h \
-  ..\I2C_MAX30102\partition_M2351.h
+  ..\..\Library\StdDriver\inc\mkromlib.h \
+  ..\I2C_MAX30102\partition_M2351.h ..\I2C_MAX30102\nsc.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  ..\I2C_MAX30102\i2c_max30102.h

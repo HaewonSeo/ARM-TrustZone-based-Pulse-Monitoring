@@ -1,14 +1,127 @@
-///**************************************************************************//**
+///*************************************************************************
 // * @file     i2c_max30102.c
 // * @brief
 // *           MAX30102 driver header file
 // *
 // * @note
 // * Copyright (C) 2019 Nuvoton Technology Corp. All rights reserved.
-// *****************************************************************************/
+// ********************************************************************** **/
 
-//#include "NuMicro.h"
-//#include "i2c_max30102.h"
+#include "NuMicro.h"
+#include "i2c_max30102.h"
+
+
+// Data buffer
+uint8_t au8RDataBuf[6];
+		
+// Raw HR & SPo2 data from MAX30102 DATA FIFO
+volatile int32_t hr_val;
+volatile int32_t spo2_val;
+
+/*
+		Get HR data from MAX30102
+*/
+void Get_Data_From_MAX30102()
+{
+		uint32_t i;
+
+		// Get data from sensor
+		//while(1)
+    //{
+			//printf("**********************\n");
+		for(i=0; i<1; i++)
+			{
+			printf("**\n");
+			I2C_ReadMultiBytesOneReg(I2C0, MAX30102_ADDR, MAX30102_FIFO_DATA, au8RDataBuf, 3);
+			hr_val = (au8RDataBuf[0]<<16)|(au8RDataBuf[1]<<8)|au8RDataBuf[2];   //RED LED
+			//spo2_val = (au8RDataBuf[3]<<16)|(au8RDataBuf[4]<<8)|au8RDataBuf[5]; //IR LED(pulse oximetry)
+			
+			printf("HR_val : %#08x(%d)\t \n", hr_val, hr_val);
+			//printf("HR_val : %#08x(%d),\t Spo2_val : %#08x(%d) \r\n", hr_val, hr_val, spo2_val, spo2_val);
+			
+			printf("**\n");
+      //CLK_SysTickDelay(300000); //300000us = 300ms = 0.3s
+			//printf("**********************\n");
+    //}
+			}
+}
+
+
+/*
+		Configuration MAX30102 by write data to a MAX30102 and check return value
+*/
+void Config_MAX30102()
+{
+		uint8_t ret = 2;
+		
+    printf("+-------------------------------------------------------+\n");
+    printf("|          Configuration MAX30102 in SECURE             |\n");
+    printf("+-------------------------------------------------------+\n");
+
+
+		/* FIFO Config
+			Sample_AVG 1, FIFO_ROLLOVER_EN
+		1*/
+		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_FIFO_CONFIG, 0x10);
+		printf("|      [1]MAX30102_FIFO_CONFIG --- ret %d          |\n", ret);
+		
+		/* Mode Config
+			Multi-LED Mode, Active LED Channels : Red Only
+		*/
+		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_MODE_CONFIG, 0x02);
+		printf("|      [2]MAX30102_MODE_CONFIG --- ret %d          |\n", ret);
+
+		/* SpO2 Config
+			SPO2 ADC range control(16384), SPO2 sample rate 50/1s,
+			LED pulse width = 411, ADC Resolution = 18bit
+			0b01100011
+		*/
+		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_SPO2_CONFIG, 0x63);
+		printf("|      [3]MAX30102_SPO2_CONFIG --- ret %d          |\n", ret);
+
+		/* LED Pulde Amplitude
+			Typical LED current : 6.2mA
+		*/
+		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_LED1_AMP, 0x3F);
+		printf("|      [4]MAX30102_LED1_AMP    --- ret %d          |\n", ret);
+		
+		//ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_LED2_AMP, 0x3f);
+		//printf("[5]MAX30102_LED2_AMP --- ret %d\n", ret);
+		
+		/* Multi-LED Mode Control Registers
+			Slot1 : LED1(RED), Slot2 : LED2(IR)
+		*/
+		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX31012_MLED_CTRL1, 0x01);
+		printf("|      [5]MAX31012_MLED_CTRL1  --- ret %d          |\n", ret);
+		//ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX31012_MLED_CTRL2, 0x00);	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ///*---------------------------------------------------------------------------*/
@@ -21,6 +134,12 @@
 ////volatile uint8_t g_u8EndFlag = 0;
 ////typedef void (*I2C_FUNC)(uint32_t u32Status);
 ////static I2C_FUNC s_I2CHandlerFn = NULL;
+
+
+//typedef void (*I2C_FUNC)(uint32_t u32Status);
+//volatile static I2C_FUNC s_I2C0HandlerFn = NULL;
+//volatile static I2C_FUNC s_I2C1HandlerFn = NULL;
+
 
 
 //volatile uint32_t slave_buff_addr;
@@ -41,6 +160,25 @@
 
 //typedef void (*I2C_FUNC)(uint32_t u32Status);
 //volatile static I2C_FUNC s_I2C1HandlerFn = NULL;
+
+
+
+//void I2C1_IRQHandler(void)
+//{
+//    uint32_t u32Status;
+// 
+//		u32Status = I2C_GET_STATUS(I2C1);
+
+//    if (I2C_GET_TIMEOUT_FLAG(I2C1))
+//    {
+//				I2C_ClearTimeoutFlag(I2C1);
+//    }
+//    else
+//    {
+//        if (s_I2C1HandlerFn != NULL)
+//					s_I2C1HandlerFn(u32Status);
+//    }
+//}
 
 
 

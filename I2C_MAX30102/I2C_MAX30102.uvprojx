@@ -453,6 +453,16 @@
               <FileType>5</FileType>
               <FilePath>.\i2c_max30102.h</FilePath>
             </File>
+            <File>
+              <FileName>nsc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\nsc.c</FilePath>
+            </File>
+            <File>
+              <FileName>nsc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\nsc.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
