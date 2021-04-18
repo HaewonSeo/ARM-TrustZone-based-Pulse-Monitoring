@@ -21,6 +21,7 @@ extern int32_t Secure_PA13_LED_Off(uint32_t num);
 extern uint32_t GetSystemCoreClock(void);
 extern volatile int32_t hr_val;
 extern void Print_Pulse();
-
+extern int32_t Get_BPM();
+//extern int32_t Get_Data_From_MAX30102();
 
 #endif //__CSSD_LIB_H__

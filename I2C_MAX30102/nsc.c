@@ -10,9 +10,13 @@
  **********************************************************/
 
 #include "nsc.h"
+#include "i2c_max30102.h"
 
 /* typedef for NonSecure callback functions */
 typedef __NONSECURE_CALL int32_t (*NonSecure_funcptr)(uint32_t);
+
+//extern uint8_t au8RDataBuf[6];
+extern int32_t beatsPerMinute;
 
 /*----------------------------------------------------------------------------
   Secure functions exported to NonSecure application
@@ -81,9 +85,11 @@ void Print_Pulse()
 }
 
 __NONSECURE_ENTRY
-int32_t Get_Pulse()
+int32_t Get_BPM()
 {
-		return hr_val;
+		Get_Data_From_MAX30102();
+		Get_HeartRate();
+		return beatsPerMinute;
 }
 
 

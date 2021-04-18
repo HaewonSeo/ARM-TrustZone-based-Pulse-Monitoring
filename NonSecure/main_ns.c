@@ -18,8 +18,8 @@
 #define SW3		PB1_NS
 
 const char GET_MSG_HEAD[] = "GET /process.php?pulse=";
-const char GET_MSG_TAIL[] = " HTTP/1.0\nHost: 192.168.35.128\nConnection: keep-alive\nAccept: */*\n\n";
-const char GET_MSG[] = "GET /process.php?pulse=1234 HTTP/1.1\nHost: 192.168.35.128\nConnection: keep-alive\nAccept: */*\n\n";
+const char GET_MSG_TAIL[] = " HTTP/1.1\nHost: 127.0.0.1\nConnection: keep-alive\nAccept: */*\n\n";
+//const char GET_MSG[] = "GET /process.php?pulse=112345 HTTP/1.1\nHost: 192.168.35.128\nConnection: keep-alive\nAccept: */*\n\n";
 
 /*----------------------------------------------------------------------------
   NonSecure Functions from NonSecure Region
@@ -36,72 +36,47 @@ void LED_Off(uint32_t us)
     PC0_NS = 1;
 }
 
-char	*ft_strdup(const char *str)
-{
-	int		i;
-	char	*dst;
 
-	if (!(dst = (char *)malloc(sizeof(char) * strlen(str) + 1)))
-		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		dst[i] = str[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
-}
-
-
-void Send_Pulse_To_Server()
+void Send_Pulse_To_Server(int pulse)
 {
 	t_netData *get;
-	int32_t	pulse;
-	int32_t tmpPulse;
+	int tmpPulse;
 	char *strPulse;
-	int32_t strPulseLen = 0;
-	int i;
-	
-	get = calloc(1, sizeof(t_netData));
-	get->data = calloc(110, sizeof(char));
-	get->len = strlen(GET_MSG);
-	
-	for (i = 0; i < get->len; i++)
-		(get->data)[i] = GET_MSG[i];
-	
-	
-	//pulse = Get_Pulse();
-	/*
-	pulse = 123456;
-	
-	tmpPulse = pulse;
-	while (tmpPulse)
+	int strPulseLen = 0;
+	int totalLen;
+
+	//Convert int pulse to char *strPulse
+	if (pulse == 0)
+		strPulseLen = 1;
+	else
 	{
-		strPulseLen++;
-		tmpPulse /= 10;
+		tmpPulse = pulse;
+		while (tmpPulse)
+		{
+			strPulseLen++;
+			tmpPulse /= 10;
+		}
 	}
-	
 	strPulse = calloc((strPulseLen + 1), sizeof(char));
 	sprintf(strPulse, "%d", pulse);
-	strPulse[strPulseLen] = '\0';
 	
-	get->data = ft_strdup(GET_MSG_HEAD);
+	//Make t_netData *get
+	totalLen = strlen(GET_MSG_HEAD) + strlen(GET_MSG_TAIL) + strPulseLen;
+	
+	get = calloc(1, sizeof(t_netData));
+	get->data = calloc(totalLen, sizeof(char));
+	get->len = totalLen;
+	
+	strcat(get->data, GET_MSG_HEAD);
 	strcat(get->data, strPulse);
 	strcat(get->data, GET_MSG_TAIL);
 
-	get->len = strlen(get->data);
-	*/
-	printf("get->data			 : \n%s\n", get->data);
-  printf("get->len 			 : %d\n", get->len);
-  //printf("strPulse       : %s\n", strPulse);
-  //printf("strPulseLen    : %d\n", strPulseLen); 
-
-	WIFI_PORT_Send_Data(1, get);
+	WIFI_PORT_Send_Data(0, get);
 	
 	free(get->data);
 	free(get);
-	//free(strPulse);
+	free(strPulse);
+	
 }
 
 void Control_SW()
@@ -182,17 +157,24 @@ void SysTick_Handler(void)
     }*/
 }
 
-
+extern const char ATCommand_CIPSTART[];
 
 /*----------------------------------------------------------------------------
   Main function
  *----------------------------------------------------------------------------*/
 int main(void)
 {
+	  int32_t i;
+		int32_t pulse;
+		int32_t toggle;
+	
+		printf("\n");
     printf("+---------------------------------------------+\n");
     printf("|             Non-Secure is running ...       |\n");
     printf("+---------------------------------------------+\n");
 		
+		/* Call secure API to get system core clock */
+    SystemCoreClock = GetSystemCoreClock();
 
     printf("\n");
     printf("+---------------------------------------------+\n");
@@ -201,18 +183,37 @@ int main(void)
 	
 	  WIFI_PORT_Start();
 	
+		i = 0;
+		toggle = 0;
+	
 		while(1)
 		{
 			if(SW2 == 0)
 			{
 				while(SW2 == 0);
-				Control_SW();
+				toggle = !toggle;
+				printf("\nSW2 ON in Non-secure code ...\n\n");
+				
+				if(toggle)
+					printf("\nMAX30102 On ...\n\n");
+				else 
+					printf("\nMAX30102 Off ...\n\n");
+
 			}
 			if(SW3 == 0)
 			{
 				while(SW3 == 0);
-				Send_Pulse_To_Server();
+				printf("\nSW3 ON in Non-secure code ...\n\n");
+				
+				Send_Pulse_To_Server(i);
+				i++;
 			}
+			if (toggle){			
+				pulse = Get_BPM();
+				printf("--pulse : %d--\n", pulse);
+				//Send_Pulse_To_Server(pulse);
+				CLK_SysTickDelay(300000); //300000us = 300ms = 0.3s
+			}			
 		}
 	
 	

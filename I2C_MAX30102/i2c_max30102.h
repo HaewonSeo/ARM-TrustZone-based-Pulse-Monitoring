@@ -58,9 +58,17 @@
 #define MAX30102_PART_ID        0xFF  // Part ID, normally 0x11
 
 
-void Get_Data_From_MAX30102();
+//void Get_Data_From_MAX30102();
 void Config_MAX30102();
 
+int checkForBeat(int32_t sample);
+int16_t averageDCEstimator(int32_t *p, uint16_t x);
+int16_t lowPassFIRFilter(int16_t din);
+int32_t mul16(int16_t x, int16_t y);
+
+void Get_HeartRate();
+void Get_Data_From_MAX30102();
+extern uint32_t millis();
 
 //extern void I2C1_Init(void);
 //extern int32_t I2C0_Read_Write_SLAVE(uint8_t u8SlvAddr);

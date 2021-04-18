@@ -40,7 +40,7 @@ __NONSECURE_ENTRY
 void Print_Pulse();
 
 __NONSECURE_ENTRY
-int32_t Get_Pulse();
+int32_t Get_BPM();
 
 
 extern uint8_t cipheredSessionKey[16];

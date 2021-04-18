@@ -11,11 +11,17 @@
 *****************************************************************************/
 #include <arm_cmse.h>
 #include <stdio.h>
+#include <stdint.h>
 #include "NuMicro.h"
 #include "partition_M2351.h"
 #include "nsc.h"
 #include "i2c_max30102.h"
+
 //#include "crypto_aes.h"
+
+#include "OLED_Driver.h"
+#include "OLED_GUI.h"
+
 
 #define DEBUG_PORT			UART0_NS
 #define WIFI_PORT   		UART3_NS    // Used to connect to WIFI module
@@ -27,6 +33,7 @@
 typedef __NONSECURE_CALL int32_t (*NonSecure_funcptr)(uint32_t);
 typedef int32_t (*Secure_funcptr)(uint32_t);
 
+volatile uint32_t millis_counter;
 
 /*----------------------------------------------------------------------------
   Secure LED control function
@@ -48,6 +55,80 @@ int32_t LED_Off(void)
 }
 
 
+uint32_t millis()
+{
+	return millis_counter;
+}
+
+void OLED_On(void)
+{
+  /* USER CODE BEGIN 2 */  
+	printf("**********1.5inch OLED Demo**********\r\n");
+	System_Init();
+  
+	printf("OLED_Init()...\r\n");
+	OLED_Init(SCAN_DIR_DFT);//SCAN_DIR_DFT = D2U_L2R
+	
+	printf("OLED_Show()...\r\n");	
+	GUI_Show();
+	
+	OLED_Clear(OLED_BACKGROUND);//OLED_BACKGROUND
+	OLED_Display();
+
+	printf("Show Pic\r\n");
+	GUI_Disbitmap(0  , 2, Signal816  , 16, 8);
+	GUI_Disbitmap(24 , 2, Bluetooth88, 8 , 8);
+	GUI_Disbitmap(40 , 2, Msg816     , 16, 8);
+	GUI_Disbitmap(64 , 2, GPRS88     , 8 , 8);
+	GUI_Disbitmap(90 , 2, Alarm88    , 8 , 8);
+	GUI_Disbitmap(112, 2, Bat816     , 16, 8);
+
+	printf("Show 16 Gray Map\r\n");
+	GUI_DisGrayMap(0, 0, gImage_bpm);
+	//GUI_DisGrayMap(0, 73, gImage_flower);
+
+	//GUI_DisString_EN(0 , 52, "MUSIC", &Font12, FONT_BACKGROUND, WHITE);
+	//GUI_DisString_EN(48, 52, "MENU" , &Font12, FONT_BACKGROUND, WHITE);
+	//GUI_DisString_EN(90, 52, "PHONE", &Font12, FONT_BACKGROUND, WHITE);
+	OLED_Display();
+	
+	printf("Show time\r\n");
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+	/*
+  while (1)
+  {
+	uint8_t sec = 0;
+	DEV_TIME sDev_time;
+	sDev_time.Hour = 12;
+	sDev_time.Min = 34;
+	sDev_time.Sec = 56;
+	for (;;) {
+		sec++;
+		sDev_time.Sec = sec;
+		if (sec == 60) {
+			sDev_time.Min = sDev_time.Min + 1;
+			sec = 0;
+			if (sDev_time.Min == 60) {
+				sDev_time.Hour =  sDev_time.Hour + 1;
+				sDev_time.Min = 0;
+				if (sDev_time.Hour == 24) {
+				  sDev_time.Hour = 0;
+				  sDev_time.Min = 0;
+				  sDev_time.Sec = 0;
+				}
+			}
+		}
+		GUI_Showtime(0, 22, 127, 47, &sDev_time, WHITE);
+		Driver_Delay_ms(1000);//Analog clock 1s 
+	}
+	
+	}
+	*/	
+}
+
 /*----------------------------------------------------------------------------
   SysTick IRQ Handler
  *----------------------------------------------------------------------------*/
@@ -55,50 +136,29 @@ void SysTick_Handler(void)
 {
     static uint32_t u32Ticks;
 
- /*   switch(u32Ticks++)
+		millis_counter++;
+	//printf("\nSysTick : %d \n", millis_counter);
+   /* switch(u32Ticks++)
     {
         case   0:
-            LED_On();
-            break;
-        case  50:
-            Get_Pulse();
+            //Get_Data_From_MAX30102();
             break;
         case 100:
-            LED_Off();
-            break;
-        case 150:
-            Get_Pulse();
             break;
         case 200:
-            LED_On();
-            break;
-        case 250:
-            Get_Pulse();
             break;
         case 300:
-            LED_Off();
-            break;
-        case 350:
-            Get_Pulse();
+						//Get_HeartRate();
             break;
         case 400:
-            LED_On();
-            break;
-        case 450:
-            Get_Pulse();
             break;
         case 500:
-            LED_Off();
             break;
-        case 550:
-            Get_Pulse();
-            break;
-        case 600:
+        case 1500:
             u32Ticks = 0;
             break;
-
         default:
-            if(u32Ticks > 600)
+            if(u32Ticks > 1500)
             {
                 u32Ticks = 0;
             }
@@ -116,7 +176,7 @@ void I2C0_Init(void)
     I2C_Open(I2C0, 400000);
 
 	  /* Get I2C0 Bus Clock */
-    printf("I2C0 clock %d Hz\n", I2C_GetBusClockFreq(I2C0));
+    //printf("I2C0 clock %d Hz\n", I2C_GetBusClockFreq(I2C0));
 	
     /* Set I2C0 Slave Addresses */
     I2C_SetSlaveAddr(I2C0, 0, MAX30102_ADDR, 0);   /* MAX30102 Slave Address : 0x57 */	
@@ -190,12 +250,20 @@ void SYS_Init(void)
 
     /* Select UART module clock source as HXT `and UART module clock divider as 1 */
     //CLK_SetModuleClock(UART0_MODULE, CLK_CLKSEL1_UART0SEL_HXT, CLK_CLKDIV0_UART0(1));
+    
+		/* Select HIRC as the clock source of SPI0 */
+    CLK_SetModuleClock(SPI0_MODULE, CLK_CLKSEL2_SPI0SEL_PCLK1, MODULE_NoMsk);
+    //CLK_SetModuleClock(SDH0_MODULE, CLK_CLKSEL2_SPI0SEL_HIRC, MODULE_NoMsk);
 
     /* Enable I2C0 peripheral clock */
     CLK_EnableModuleClock(I2C0_MODULE);
 
     /* Enable I2C1 peripheral clock */
-    CLK_EnableModuleClock(I2C1_MODULE);
+    //CLK_EnableModuleClock(I2C1_MODULE);
+		
+    /* Enable SPI0 peripheral clock */
+    CLK_EnableModuleClock(SPI0_MODULE);
+		//CLK_EnableModuleClock(SDH0_MODULE);
 
 		/* Update System Core Clock */
     /* User can use SystemCoreClockUpdate() to calculate PllClock, SystemCoreClock and CycylesPerUs automatically. */
@@ -218,9 +286,22 @@ void SYS_Init(void)
 
     /* Set PA multi-function pins for I2C1 SDA and SCL */
 		/* PA.2(58):SDA, PA.3(57):SCL*/
-    SYS->GPA_MFPL &= ~(SYS_GPA_MFPL_PA2MFP_Msk | SYS_GPA_MFPL_PA3MFP_Msk);
-    SYS->GPA_MFPL |= (SYS_GPA_MFPL_PA2MFP_I2C1_SDA | SYS_GPA_MFPL_PA3MFP_I2C1_SCL);
+    //SYS->GPA_MFPL &= ~(SYS_GPA_MFPL_PA2MFP_Msk | SYS_GPA_MFPL_PA3MFP_Msk);
+    //SYS->GPA_MFPL |= (SYS_GPA_MFPL_PA2MFP_I2C1_SDA | SYS_GPA_MFPL_PA3MFP_I2C1_SCL);
 		
+    /* Setup SPI0 multi-function pins */
+		/* Reference the Arduino UNO compatible interface */
+    //SYS->GPF_MFPL &= ~(SYS_GPF_MFPL_PF6MFP_Msk | SYS_GPF_MFPL_PF7MFP_Msk | SYS_GPF_MFPH_PF8MFP_Msk | SYS_GPF_MFPH_PF9MFP_Msk);
+    //SYS->GPF_MFPL |= (SYS_GPF_MFPL_PF6MFP_SPI0_MOSI | SYS_GPF_MFPL_PF7MFP_SPI0_MISO | SYS_GPF_MFPH_PF8MFP_SPI0_CLK | SYS_GPF_MFPH_PF9MFP_SPI0_SS);
+
+		/* Setup SPI0 multi-function pins */
+    //SYS->GPD_MFPL &= ~(SYS_GPD_MFPL_PD0MFP_Msk | SYS_GPD_MFPL_PD2MFP_Msk | SYS_GPD_MFPL_PD3MFP_Msk);
+    //SYS->GPD_MFPL |= (SYS_GPD_MFPL_PD0MFP_SPI0_MOSI | SYS_GPD_MFPL_PD2MFP_SPI0_CLK | SYS_GPD_MFPL_PD3MFP_SPI0_SS);
+
+		/* Setup SPI0 multi-function pins */
+    SYS->GPA_MFPL &= ~(SYS_GPA_MFPL_PA0MFP_Msk | SYS_GPA_MFPL_PA2MFP_Msk | SYS_GPA_MFPL_PA3MFP_Msk);
+    SYS->GPA_MFPL |= (SYS_GPA_MFPL_PA0MFP_SPI0_MOSI | SYS_GPA_MFPL_PA2MFP_SPI0_CLK | SYS_GPA_MFPL_PA3MFP_SPI0_SS);
+
 }
 
 
@@ -249,6 +330,21 @@ void WIFI_PORT_Init()
     SYS->GPD_MFPL = (SYS->GPD_MFPL & (~(UART3_RXD_PD0_Msk | UART3_TXD_PD1_Msk))) | UART3_RXD_PD0 | UART3_TXD_PD1;
 }
 
+/*---------------------------------------------------------------------------------------------------------*/
+/* Init SPI                                                                                                */
+/*---------------------------------------------------------------------------------------------------------*/
+/* Configure as a master, clock idle low, 32-bit transaction, drive output on falling clock edge and latch input on rising edge. */
+void SPI_Init(void)
+{
+    /* Set IP clock divider. SPI clock rate = 2MHz */
+    SPI_Open(SPI0, SPI_MASTER, SPI_MODE_0, 32, 2000000);
+
+    /* Enable the automatic hardware slave select function. Select the SS pin and configure as low-active. */
+    SPI_EnableAutoSS(SPI0, SPI_SS, SPI_SS_ACTIVE_LOW);
+	
+		SPI_SET_DATA_WIDTH(SPI0, 8);
+}
+
 
 void Nonsecure_Init(void)
 {
@@ -270,7 +366,7 @@ void Nonsecure_Init(void)
     /* Check if the Reset_Handler address is in Non-secure space */
     if(cmse_is_nsfptr(fp) && (((uint32_t)fp & 0xf0000000) == 0x10000000))
     {
-        printf("Execute non-secure code ...\n");
+        printf("\nExecute Non-secure code ...\n");
         fp(0); /* Non-secure function call */
     }
     else
@@ -312,32 +408,43 @@ int32_t main(void)
 		WIFI_PORT_Init();
     I2C0_Init();
 	
+		SPI_Init();
+    
+		printf("+---------------------------------------------+\n");
+    printf("|             Secure is running ...           |\n");
+    printf("+---------------------------------------------+\n");
+			
 		/* Config MAX30102 */
 		Config_MAX30102();
-	
+		
     /* Init GPIO Port A for secure LED control */
     GPIO_SetMode(PA, BIT13 | BIT12 | BIT11 | BIT10, GPIO_MODE_OUTPUT);
 
     /* Init GPIO Port C for non-secure LED control */
-    GPIO_SetMode(PC_NS, BIT1, GPIO_MODE_OUTPUT);
-
+    //GPIO_SetMode(PC_NS, BIT1, GPIO_MODE_OUTPUT);
+		
+		/* LDO OLED */
+    GPIO_SetMode(PC, BIT11, GPIO_MODE_OUTPUT); //DC
+    GPIO_SetMode(PC, BIT12, GPIO_MODE_OUTPUT); //RST
+		//PC->MODE = (GPIO_MODE_OUTPUT << 11*2) | (GPIO_MODE_OUTPUT << 12*2); 
+		
+    PC11 = 1;
+    PC12 = 1;
+		
 		/* Call secure API to get system core clock */
     SystemCoreClock = GetSystemCoreClock();
 
     /* Generate Systick interrupt each 10 ms */
     SysTick_Config(SystemCoreClock / 100);		
 		
-    printf("+---------------------------------------------+\n");
-    printf("|             Secure is running ...           |\n");
-    printf("+---------------------------------------------+\n");
+		OLED_On();
 		
-		Nonsecure_Init();
+		//Nonsecure_Init();
+
 		
-		// Get_Pulse();
-		
-    do
+
+		do
     {
-				//Get_Pulse();
         __WFI();
     }
     while(1);

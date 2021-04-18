@@ -38,7 +38,7 @@ const char ATCommand_CIPMUX_GET[]		= "AT+CIPMUX?\r\n";																			//Get c
 const char ATCommand_CIPMUX_SET0[]	= "AT+CIPMUX=0\r\n";																		//Set mode for single connection
 const char ATCommand_CIPMUX_SET1[]	= "AT+CIPMUX=1\r\n";																		//Set mode for multiple connection
 const char ATCommand_CIFSR[]				= "AT+CIFSR\r\n";																				//Get local IP address
-const char ATCommand_CIPSTART[]			= "AT+CIPSTART=\"TCP\",\"192.168.35.128\",80\r\n";			//Start connection
+const char ATCommand_CIPSTART[]			= "AT+CIPSTART=\"TCP\",\"192.168.35.94\",80\r\n";				//Start connection
 const char ATCommand_CIPSEND[]			= "AT+CIPSEND=";																				//Send data(without data and end string)
 const char ATCommand_CIPCLOSE[]			= "AT+CIPCLOSE\r\n";																		//Close connection
 
@@ -162,11 +162,11 @@ void WIFI_PORT_Start()
             WIFI_PORT_Read(PRINT);
             if (DEMO) printf("|    WiFi Single Server Connections Enabled   |\n");
 
-            WIFI_PORT_Write(PRINT, ATCommand_CIPMUX_GET, strlen(ATCommand_CIPMUX_SET0));
-            WIFI_PORT_Read(PRINT);
+            //WIFI_PORT_Write(PRINT, ATCommand_CIPMUX_GET, strlen(ATCommand_CIPMUX_SET0));
+            //WIFI_PORT_Read(PRINT);
 						
             WIFI_PORT_Write(PRINT, ATCommand_CIPSTART, strlen(ATCommand_CIPSTART));
-            WIFI_PORT_Read(PRINT);
+            //WIFI_PORT_Read(PRINT);
             if (DEMO) printf("|       Server TCP enabled on 80 port         |\n");
 
             //WIFI_PORT_Write(command_CIPSTO, (sizeof(command_CIPSTO) / sizeof(char))-1);
@@ -202,7 +202,7 @@ void WIFI_PORT_Read(int print)
             if (print) printf("%c", buf);
             if (lastBuf == 'O' && buf == 'K')
 						{
-								printf("\n");
+								//printf("\n");
                 cmdOK = 1;
             }
             else
@@ -226,49 +226,6 @@ void WIFI_PORT_Write(int print, const char *command, int lenCommand)
 
 }
 
-static size_t	ft_intlen(long n)
-{
-	size_t len;
-
-	len = 0;
-	if (n <= 0)
-		len++;
-	while (n)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
-
-static char			*ft_itoa(int n)
-{
-	char	*str;
-	size_t	len;
-	int		pos;
-	long	nbr;
-
-	nbr = n;
-	pos = 1;
-	len = ft_intlen(nbr);
-	if (!(str = calloc(len + 1, sizeof(char))))
-		return (NULL);
-	if (nbr < 0)
-	{
-		pos = -1;
-		nbr = -nbr;
-	}
-	while (len)
-	{
-		str[--len] = '0' + (nbr % 10);
-		nbr = nbr / 10;
-	}
-	if (pos == -1)
-		str[0] = '-';
-	return (str);
-}
-
-
 /* AT+CIPSEND : Send data */
 int WIFI_PORT_Send_Data(int print, t_netData *netData)
 {
@@ -277,10 +234,7 @@ int WIFI_PORT_Send_Data(int print, t_netData *netData)
     int tmpLen = netData->len;
 
 		if (DEMO) printf("|      NonSecure is running ... Send Data     |\n");
-		printf("*&&\n");
-		printf("netData->data   : \n%s\n", netData->data);
-		printf("netData->length : %d\n", netData->len);
-
+	
     LED_Y = 0;
 	
 		while (tmpLen)
@@ -289,16 +243,8 @@ int WIFI_PORT_Send_Data(int print, t_netData *netData)
 			tmpLen /= 10;
 		}
 
-    //lengthStr = calloc((lengthStrLen + 1), sizeof(char));
-    //sprintf(lengthStr, "%d", netData->len);
-    //lengthStr[lengthStrLen] = '\0';
-		lengthStr = ft_itoa(netData->len);
-		
-		printf("**\n");
-		printf("netData->data   : \n%s\n", netData->data);
-		printf("netData->length : %d\n", netData->len);
-    printf("lengthStr       : %s\n", lengthStr);
-    printf("lengthStrLen    : %d\n", lengthStrLen); 
+    lengthStr = calloc((lengthStrLen + 1), sizeof(char));
+    sprintf(lengthStr, "%d", netData->len);
 
     // AT+CIPSEND=
     WIFI_PORT_Write(print, ATCommand_CIPSEND, strlen(ATCommand_CIPSEND));
@@ -309,15 +255,18 @@ int WIFI_PORT_Send_Data(int print, t_netData *netData)
 		
     WIFI_PORT_Read(print);
 
-		// >DATA\r\n
+		// >DATA
     WIFI_PORT_Write(print, netData->data, netData->len);
+		// \r\n
     WIFI_PORT_Write(print, ATCommand_END, strlen(ATCommand_END));
 		
 		// SEND OK
     WIFI_PORT_Read(print);
 		
-    if (print) printf("Data Sent !\n");
-    
+		free(lengthStr);
+		
+    if (print) printf("\nData Sent !\n");
+		
     LED_Y = 1;
     
     return 1;
