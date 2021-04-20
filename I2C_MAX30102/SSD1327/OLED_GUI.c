@@ -338,6 +338,11 @@ void GUI_DisNum(POINT Xpoint, POINT Ypoint, int32_t Nummber,
         return;
     }
 
+		if (!Nummber)
+		{
+				Num_Array[Num_Bit] = Nummber % 10 + '0';
+        Num_Bit++;
+		}
     //Converts a number to a string
     while(Nummber) {
         Num_Array[Num_Bit] = Nummber % 10 + '0';
