@@ -70,6 +70,7 @@
 #include "i2c_max30102.h"
 
 
+
 // Data buffer
 uint8_t au8RDataBuf[6];
 		
@@ -78,7 +79,7 @@ volatile int32_t hr_val;
 volatile int32_t spo2_val;
 
 extern volatile uint32_t millis_counter;
-
+extern uint32_t GetMillis();
 
 int16_t IR_AC_Max = 20;
 int16_t IR_AC_Min = -20;
@@ -103,8 +104,65 @@ int32_t rates[RATE_SIZE]; //Array of heart rates
 int32_t rateSpot = 0;
 long lastBeat = 0; //Time at which the last beat occurred
 
-int32_t beatsPerMinute;
-int32_t beatAvg;
+float beatsPerMinute;
+int beatAvg;
+
+
+
+/*
+		Configuration MAX30102 by write data to a MAX30102 and check return value
+*/
+void Config_MAX30102()
+{
+		uint8_t ret = 2;
+		
+    printf("+---------------------------------------------+\n");
+    printf("|       Configuration MAX30102 in SECURE      |\n");
+    printf("+---------------------------------------------+\n");
+
+
+		/* FIFO Config
+			Sample_AVG 4, FIFO_ROLLOVER_EN
+		1*/
+		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_FIFO_CONFIG, 0x50);
+		printf("|       [1]MAX30102_FIFO_CONFIG --- ret %d     |\n", ret);
+		
+		/* Mode Config
+			Mode conrtol, Active LED Channels : Multi-LED Mode
+		*/
+		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_MODE_CONFIG, 0x07);
+		printf("|       [2]MAX30102_MODE_CONFIG --- ret %d     |\n", ret);
+
+		/* SpO2 Config
+			SPO2 ADC range control(4096), SPO2 sample rate 400/1s,
+			LED pulse width = 411, ADC Resolution = 18bit
+			0b00101111
+		*/
+		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_SPO2_CONFIG, 0x2F);
+		printf("|       [3]MAX30102_SPO2_CONFIG --- ret %d     |\n", ret);
+
+		/* LED Pulse Amplitude
+			Typical LED1(RED) current : 2.0mA
+			Typical LED2(IR) current : 6.2mA
+		*/
+		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_LED1_AMP, 0x0A);
+		printf("|       [4]MAX30102_LED1_AMP    --- ret %d     |\n", ret);
+		
+		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_LED2_AMP, 0x1F);
+		printf("|       [4]MAX30102_LED2_AMP    --- ret %d     |\n", ret);
+		
+		/* Multi-LED Mode Control Registers
+			Slot1 : LED1(RED), Slot2 : LED2(IR)
+		*/
+		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX31012_MLED_CTRL1, 0x21);
+		printf("|       [5]MAX31012_MLED_CTRL1  --- ret %d     |\n", ret);
+		
+		//ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX31012_MLED_CTRL2, 0x00);	
+		//printf("|       [5]MAX31012_MLED_CTRL2  --- ret %d     |\n", ret);
+		
+		printf("+---------------------------------------------+\n");
+}
+
 
 
 //  Heart Rate Monitor functions takes a sample value and the sample number
@@ -125,6 +183,7 @@ int checkForBeat(int32_t sample)
   IR_Average_Estimated = averageDCEstimator(&ir_avg_reg, sample);
   IR_AC_Signal_Current = lowPassFIRFilter(sample - IR_Average_Estimated);
 
+	//printf("\n\t\t\t\t\t\t IR_AC_Signal_Previous(%d), IR_AC_Signal_Current(%d)\n", IR_AC_Signal_Previous , IR_AC_Signal_Current);
   //  Detect positive zero crossing (rising edge)
   if ((IR_AC_Signal_Previous < 0) & (IR_AC_Signal_Current >= 0))
   {
@@ -136,7 +195,9 @@ int checkForBeat(int32_t sample)
     negativeEdge = 0;
     IR_AC_Signal_max = 0;
 
-    //if ((IR_AC_Max - IR_AC_Min) > 100 & (IR_AC_Max - IR_AC_Min) < 1000)
+		
+		//printf("\n\t\t\t\t\t\tIR_AC_Max(%d) - IR_AC_Min(%d) : %d --------------------------------------------------------\n",  IR_AC_Max, IR_AC_Max, IR_AC_Min - IR_AC_Min);
+    //if ((IR_AC_Max - IR_AC_Min) > 20 & (IR_AC_Max - IR_AC_Min) < 1000)
     if ((IR_AC_Max - IR_AC_Min) > 20 & (IR_AC_Max - IR_AC_Min) < 1000)
     {
       //Heart beat!!!
@@ -200,18 +261,55 @@ int32_t mul16(int16_t x, int16_t y)
 
 
 
-void Get_HeartRate()
+
+
+
+
+
+/*
+		Get HR data from MAX30102
+*/
+void MAX30102_Get_FIFO()
+{
+		int i;
+		for(i = 0; i < 6; i++)
+			au8RDataBuf[i] = 0;
+		
+		hr_val =0;
+		spo2_val = 0;
+		// Get data from sensor
+			
+			I2C_ReadMultiBytesOneReg(I2C0, MAX30102_ADDR, MAX30102_FIFO_DATA, au8RDataBuf, 6);
+			hr_val = (au8RDataBuf[0]<<16)|(au8RDataBuf[1]<<8)|au8RDataBuf[2];   //RED LED
+			spo2_val = (au8RDataBuf[3]<<16)|(au8RDataBuf[4]<<8)|au8RDataBuf[5]; //IR LED(pulse oximetry)
+	
+			//printf("\n+---------------------------------------------+\n");
+			//printf("HR_val : %#08x(%d)\t \n", hr_val, hr_val);
+			//printf("HR_val : %#08x(%d),\t Spo2_val : %#08x(%d) \r\n", hr_val, hr_val, spo2_val, spo2_val);
+			
+			//printf("+---------------------------------------------+\n");
+			//CLK_SysTickDelay(300000); //300000us = 300ms = 0.3s
+
+}
+
+
+void MAX30102_Compute_HR()
 {
 	int i;
+	long irValue;
 	long delta;
-
-  if (checkForBeat(spo2_val) == 1)
+	
+		MAX30102_Get_FIFO();
+		irValue = (long)spo2_val;
+  
+  if (checkForBeat(irValue) == 1)
   {
-    //We sensed a beat!
-    delta = (long)millis_counter - lastBeat;
-		printf("\nmillis = %d, \t delta = %ld\n", millis_counter, delta);
-    lastBeat = (long)millis_counter;
-
+    //printf("\n\n\nWe sensed a beat!\n");
+		//printf("\nmillis = %d\t delta = %ld\n", millis_counter, delta);
+    delta = GetMillis()- lastBeat;
+		lastBeat = GetMillis();
+		
+    
     beatsPerMinute = 60 / (delta / 1000.0);
 
     if (beatsPerMinute < 255 && beatsPerMinute > 20)
@@ -227,102 +325,15 @@ void Get_HeartRate()
     }
   }
 
-	printf("\nIR = %d\n", spo2_val);
-	printf("BPM = %d\n", beatsPerMinute);
-	printf("Avg BPM = %d\n", beatAvg);
+	printf("\nIR = %ld\t", irValue);
+	printf("BPM = %f\t", beatsPerMinute);
+	printf("Avg BPM = %d\t", beatAvg);
 
-  if (hr_val < 50000)
-    printf("\n No finger?\n");
+	//50000
+  if (irValue < 3000)
+    printf("[No Finger?]\n");
 
 }
-
-
-
-
-
-
-
-
-
-/*
-		Configuration MAX30102 by write data to a MAX30102 and check return value
-*/
-void Config_MAX30102()
-{
-		uint8_t ret = 2;
-		
-    printf("+---------------------------------------------+\n");
-    printf("|       Configuration MAX30102 in SECURE      |\n");
-    printf("+---------------------------------------------+\n");
-
-
-		/* FIFO Config
-			Sample_AVG 4, FIFO_ROLLOVER_EN
-		1*/
-		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_FIFO_CONFIG, 0x50);
-		printf("|       [1]MAX30102_FIFO_CONFIG --- ret %d     |\n", ret);
-		
-		/* Mode Config
-			Mode conrtol, Active LED Channels : Multi-LED Mode
-		*/
-		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_MODE_CONFIG, 0x07);
-		printf("|       [2]MAX30102_MODE_CONFIG --- ret %d     |\n", ret);
-
-		/* SpO2 Config
-			SPO2 ADC range control(4096), SPO2 sample rate 400/1s,
-			LED pulse width = 411, ADC Resolution = 18bit
-			0b00101111
-		*/
-		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_SPO2_CONFIG, 0x2F);
-		printf("|       [3]MAX30102_SPO2_CONFIG --- ret %d     |\n", ret);
-
-		/* LED Pulse Amplitude
-			Typical LED current : 6.2mA
-		*/
-		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_LED1_AMP, 0x0A);
-		printf("|       [4]MAX30102_LED1_AMP    --- ret %d     |\n", ret);
-		
-		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_LED2_AMP, 0x1F);
-		printf("|       [4]MAX30102_LED2_AMP    --- ret %d     |\n", ret);
-		
-		/* Multi-LED Mode Control Registers
-			Slot1 : LED1(RED), Slot2 : LED2(IR)
-		*/
-		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX31012_MLED_CTRL1, 0x21);
-		printf("|       [5]MAX31012_MLED_CTRL1  --- ret %d     |\n", ret);
-		
-		//ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX31012_MLED_CTRL2, 0x00);	
-		//printf("|       [5]MAX31012_MLED_CTRL2  --- ret %d     |\n", ret);
-		
-		printf("+---------------------------------------------+\n");
-}
-
-/*
-		Get HR data from MAX30102
-*/
-void Get_Data_From_MAX30102()
-{
-		uint32_t i;
-
-		// Get data from sensor
-
-		for(i=0; i<1; i++)
-		{
-			printf("+---------------------------------------------+\n");
-			I2C_ReadMultiBytesOneReg(I2C0, MAX30102_ADDR, MAX30102_FIFO_DATA, au8RDataBuf, 6);
-			hr_val = (au8RDataBuf[0]<<16)|(au8RDataBuf[1]<<8)|au8RDataBuf[2];   //RED LED
-			spo2_val = (au8RDataBuf[3]<<16)|(au8RDataBuf[4]<<8)|au8RDataBuf[5]; //IR LED(pulse oximetry)
-			
-			//printf("HR_val : %#08x(%d)\t \n", hr_val, hr_val);
-			printf("HR_val : %#08x(%d),\t Spo2_val : %#08x(%d) \r\n", hr_val, hr_val, spo2_val, spo2_val);
-			
-			printf("+---------------------------------------------+\n");
-			//CLK_SysTickDelay(300000); //300000us = 300ms = 0.3s
-
-		}
-			
-}
-
 
 
 

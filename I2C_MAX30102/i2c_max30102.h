@@ -66,9 +66,10 @@ int16_t averageDCEstimator(int32_t *p, uint16_t x);
 int16_t lowPassFIRFilter(int16_t din);
 int32_t mul16(int16_t x, int16_t y);
 
-void Get_HeartRate();
-void Get_Data_From_MAX30102();
-extern uint32_t millis();
+void MAX30102_Get_FIFO();
+void MAX30102_Compute_HR();
+
+
 
 //extern void I2C1_Init(void);
 //extern int32_t I2C0_Read_Write_SLAVE(uint8_t u8SlvAddr);

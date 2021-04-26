@@ -8,8 +8,10 @@
 //#include "crypto_aes.h"
 #include "OLED_Driver.h"
 #include "OLED_GUI.h"
+#include "crypto_aes.h"
+#include "i2c_max30102.h"
 
-
+#define DEMO		 1 
 #define OSCORE_CRYPTO_SUCCESS 1
 #define OSCORE_CRYPTO_FAIL 0
 
@@ -43,7 +45,10 @@ __NONSECURE_ENTRY
 void Print_Pulse();
 
 __NONSECURE_ENTRY
-int32_t Get_BPM();
+int32_t Get_bpm();
+
+__NONSECURE_ENTRY
+int32_t MAX30102_Get_BPM();
 
 __NONSECURE_ENTRY
 void OLED_HeartRate(int print, int bpm);
@@ -52,9 +57,14 @@ extern uint8_t cipheredSessionKey[16];
 extern uint8_t sessionIv[16];
 
 
+typedef struct	s_netData
+{
+	char					*data;
+	int						len;
+}								t_netData;
 
 
-/* Crypto 
+/* Crypto */
 __NONSECURE_ENTRY
 int32_t Encrypt_data(uint8_t *,uint8_t *);
 __NONSECURE_ENTRY
@@ -64,15 +74,14 @@ int32_t Store_key(uint8_t *);
 __NONSECURE_ENTRY
 int32_t Store_iv(uint8_t *);
 
-// Print 
+/* Print */
 __NONSECURE_ENTRY
 int32_t printBlock(uint8_t *);
 __NONSECURE_ENTRY
 int32_t printSecure(char *,void *,uint8_t);
 __NONSECURE_ENTRY
-int32_t printNetworkData(networkData *);
+int32_t printNetworkData(t_netData *);
 
-*/
 
 
 

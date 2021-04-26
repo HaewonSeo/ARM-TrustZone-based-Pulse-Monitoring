@@ -21,6 +21,8 @@ const char GET_MSG_HEAD[] = "GET /process.php?pulse=";
 const char GET_MSG_TAIL[] = " HTTP/1.1\nHost: 127.0.0.1\nConnection: keep-alive\nAccept: */*\n\n";
 //const char GET_MSG[] = "GET /process.php?pulse=112345 HTTP/1.1\nHost: 192.168.35.128\nConnection: keep-alive\nAccept: */*\n\n";
 
+extern const char ATCommand_CIPSTART[];
+
 /*----------------------------------------------------------------------------
   NonSecure Functions from NonSecure Region
  *----------------------------------------------------------------------------*/
@@ -93,71 +95,30 @@ void SysTick_Handler(void)
 {
     static uint32_t u32Ticks;
 
- /*   switch(u32Ticks++)
+   switch(u32Ticks++)
     {
 				case   0:
-							Print_Pulse();
 							break;
 				case   100:
-							Print_Pulse();
 							break;
 				case   200:
-							Print_Pulse();
 							break;
 				case   300:
-							Print_Pulse();
 							break;
 				case   400:
-							Print_Pulse();
 							break;
 				case   500:
-							Print_Pulse();
 							break;				
-				case 	600:
+				case 	 600:
 							u32Ticks = 0;
 							break;
-//        case   0:
-//            // second developer handle
-//            LED_On(7u);
-//            Secure_PA11_LED_On(0u);
-//            break;
-//        case 100:
-//            // second developer handle
-//            Secure_PA11_LED_Off(0u);
-//            Secure_PA12_LED_On(0u);
-//            break;
-//        case 200:
-//            // second developer handle
-//            Secure_PA12_LED_Off(0u);
-//            break;
-//        case 300:
-//            // second developer handle
-//						Get_Pulse();
-//            LED_Off(7u);
-//            break;
-//        case 400:
-//            // second developer handle
-//            Secure_PA11_LED_On(0u);
-//            Secure_PA12_LED_On(0u);
-//            break;
-//        case 500:
-//            // second developer handle
-//            Secure_PA11_LED_Off(0u);
-//            Secure_PA12_LED_Off(0u);
-//            break;
-//        case 600:
-//            u32Ticks = 0;
-//            break;
-
         default:
             if(u32Ticks > 600)
             {
                 u32Ticks = 0;
             }
-    }*/
+    }
 }
-
-extern const char ATCommand_CIPSTART[];
 
 /*----------------------------------------------------------------------------
   Main function
@@ -167,6 +128,7 @@ int main(void)
 	  int32_t i;
 		int32_t pulse;
 		int32_t toggle;
+		uint32_t ticks = 0;
 	
 		printf("\n");
     printf("+---------------------------------------------+\n");
@@ -174,8 +136,14 @@ int main(void)
     printf("+---------------------------------------------+\n");
 		
 		/* Call secure API to get system core clock */
-    SystemCoreClock = GetSystemCoreClock();
+    //SystemCoreClock = GetSystemCoreClock();
 
+    /* Generate Systick interrupt each 10 ms */
+    SysTick_Config(SystemCoreClock / 100);
+	
+		//while(1);
+		
+	
     printf("\n");
     printf("+---------------------------------------------+\n");
     printf("|            ESP8266 WiFi Module Start        |\n");
@@ -185,7 +153,7 @@ int main(void)
 	
 		i = 0;
 		toggle = 0;
-	
+		
 		while(1)
 		{
 			if(SW2 == 0)
@@ -195,7 +163,10 @@ int main(void)
 				printf("\nSW2 ON in Non-secure code ...\n\n");
 				
 				if(toggle)
+				{
+					ticks = 0;
 					printf("\nMAX30102 On ...\n\n");
+				}
 				else 
 					printf("\nMAX30102 Off ...\n\n");
 
@@ -210,14 +181,25 @@ int main(void)
 			}
 			
 			if (toggle){			
-				pulse = Get_BPM();
+				pulse = MAX30102_Get_BPM();
 				printf("--pulse : %d--\n", pulse);
-				CLK_SysTickLongDelay(2000000);
+				//CLK_SysTickLongDelay(100000);
 				//Send_Pulse_To_Server(pulse);
-				
+				ticks++;
+			
+				if (ticks == 60)
+				{
+					ticks = 0;
+					printf("\n\n\n\n");
+					Send_Pulse_To_Server(pulse);
+				}
 
 				//CLK_SysTickDelay(300000); //300000us = 300ms = 0.3s
-			}			
+			}		
+			
+
+			
+			
 		}
 	
 	

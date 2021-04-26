@@ -21,7 +21,7 @@
 
 #include "OLED_Driver.h"
 #include "OLED_GUI.h"
-
+//#include "max30102.h"
 
 #define DEBUG_PORT			UART0_NS
 #define WIFI_PORT   		UART3_NS    // Used to connect to WIFI module
@@ -34,28 +34,13 @@ typedef __NONSECURE_CALL int32_t (*NonSecure_funcptr)(uint32_t);
 typedef int32_t (*Secure_funcptr)(uint32_t);
 
 volatile uint32_t millis_counter;
+//max30102_config_t max30102 = {};
+
 
 /*----------------------------------------------------------------------------
   Secure LED control function
  *----------------------------------------------------------------------------*/
-int32_t LED_On(void)
-{
-    printf("Secure/Non-secure LED On call by Secure\n");
-    PA10 = 0;
-    PC1_NS = 0;
-    return 0;
-}
-
-int32_t LED_Off(void)
-{
-    printf("Secure/Non-secure LED Off call by Secure\n");
-    PA10 = 1;
-    PC1_NS = 1;
-    return 1;
-}
-
-
-uint32_t millis()
+uint32_t GetMillis()
 {
 	return millis_counter;
 }
@@ -63,7 +48,7 @@ uint32_t millis()
 void OLED_INIT(void)
 {
   /* USER CODE BEGIN 2 */  
-	printf("**********1.5inch OLED Demo**********\r\n");
+	printf("**********1.5inch OLED IniT**********\r\n");
 	System_Init();
   
 	printf("OLED_Init()...\r\n");
@@ -71,12 +56,29 @@ void OLED_INIT(void)
 	
 	printf("OLED_Show()...\r\n");	
 	GUI_Show();
-	
+	printf("************************************\r\n");
 	OLED_Clear(OLED_BACKGROUND);//OLED_BACKGROUND
 	OLED_Display();
 }
 
-
+/*
+void Get_BPM()
+{
+    printf("MAX30102 Test\n");
+    max30102_data_t result = {};
+    //ESP_ERROR_CHECK(max30102_print_registers(&max30102));
+   
+    //Update sensor, saving to "result"
+    max30102_update(&max30102, &result);
+    if(result.pulse_detected)
+		{
+        printf("BEAT\n");
+        printf("BPM: %f | SpO2: %f%%\n", result.heart_bpm, result.spO2);
+    }
+    CLK_SysTickDelay(10000);
+        
+}	
+*/
 
 /*----------------------------------------------------------------------------
   SysTick IRQ Handler
@@ -86,7 +88,7 @@ void SysTick_Handler(void)
     static uint32_t u32Ticks;
 
 		millis_counter++;
-	//printf("\nSysTick : %d \n", millis_counter);
+		//printf("\nSysTick : %d \n", millis_counter);
     switch(u32Ticks++)
     {
         case   0:
@@ -119,27 +121,6 @@ void SysTick_Handler(void)
 /*---------------------------------------------------------------------------*/
 /* Functions                                                                 */
 /*---------------------------------------------------------------------------*/
-void I2C0_Init(void)
-{
-
-		/* Open I2C0 module and set bus clock */
-    I2C_Open(I2C0, 400000);
-
-	  /* Get I2C0 Bus Clock */
-    //printf("I2C0 clock %d Hz\n", I2C_GetBusClockFreq(I2C0));
-	
-    /* Set I2C0 Slave Addresses */
-    I2C_SetSlaveAddr(I2C0, 0, MAX30102_ADDR, 0);   /* MAX30102 Slave Address : 0x57 */	
-
-    /* Set I2C0 Slave Addresses Mask */
-    //I2C_SetSlaveAddrMask(I2C0, 0, 0x01);	
-	
-    /* Enable I2C0 interrupt */
-    //I2C_EnableInt(I2C0);
-    //NVIC_EnableIRQ(I2C0_IRQn);
-}
-
-
 void SYS_Init(void)
 {
     /* Set PF multi-function pins for XT1_OUT(PF.2) and XT1_IN(PF.3) */
@@ -281,6 +262,29 @@ void WIFI_PORT_Init()
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
+/* Init I2C0                                                                                                */
+/*---------------------------------------------------------------------------------------------------------*/
+void I2C0_Init(void)
+{
+
+		/* Open I2C0 module and set bus clock */
+    I2C_Open(I2C0, 400000);
+
+	  /* Get I2C0 Bus Clock */
+    //printf("I2C0 clock %d Hz\n", I2C_GetBusClockFreq(I2C0));
+	
+    /* Set I2C0 Slave Addresses */
+    I2C_SetSlaveAddr(I2C0, 0, MAX30102_ADDR, 0);   /* MAX30102 Slave Address : 0x57 */	
+
+    /* Set I2C0 Slave Addresses Mask */
+    //I2C_SetSlaveAddrMask(I2C0, 0, 0x01);	
+	
+    /* Enable I2C0 interrupt */
+    //I2C_EnableInt(I2C0);
+    //NVIC_EnableIRQ(I2C0_IRQn);
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
 /* Init SPI                                                                                                */
 /*---------------------------------------------------------------------------------------------------------*/
 /* Configure as a master, clock idle low, 32-bit transaction, drive output on falling clock edge and latch input on rising edge. */
@@ -337,7 +341,7 @@ void Nonsecure_Init(void)
     }
 }
 
-
+	
 /*---------------------------------------------------------------------------------------------------------*/
 /*  Main Function                                                                                          */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -354,25 +358,27 @@ int32_t main(void)
     SYS_LockReg();
 			
 		/* Call secure API to get system core clock */
-    SystemCoreClock = GetSystemCoreClock();
+    //SystemCoreClock = GetSystemCoreClock();
 
-    /* Generate Systick interrupt each 10 ms */
-    SysTick_Config(SystemCoreClock / 100);		
+    /* Generate Systick interrupt each 1 ms */
+    SysTick_Config(SystemCoreClock / 1000);		
 		
     /* Inin UART and I2C0 */
     DEBUG_PORT_Init();
 		WIFI_PORT_Init();
     I2C0_Init();
-	
 		SPI_Init();
-    
+			
 		printf("+---------------------------------------------+\n");
     printf("|             Secure is running ...           |\n");
     printf("+---------------------------------------------+\n");
-			
+		
+	
+		
 		/* Config MAX30102 */
 		Config_MAX30102();
-		
+
+
     /* Init GPIO Port A for secure LED control */
     GPIO_SetMode(PA, BIT13 | BIT12 | BIT11 | BIT10, GPIO_MODE_OUTPUT);
 
@@ -384,14 +390,11 @@ int32_t main(void)
     GPIO_SetMode(PC, BIT12, GPIO_MODE_OUTPUT); //RST
     PC11 = 1;
     PC12 = 1;
-	
-		OLED_INIT();
 		
+		//OLED_INIT();
+				
 		Nonsecure_Init();
 		
-		//int hr = 0;
-
-	
 		do
     {			
 			//OLED_HeartRate(0, hr++);
@@ -400,5 +403,54 @@ int32_t main(void)
 			
       //__WFI();
     }
-    while(1);
+    while(1);			
+		
+
+
+		/*
+		Max30102_Init(I2C0);
+		while (1) {
+		Max30102_Task();
+		printf("HR: %d\tSpO2: %d\n", Max30102_GetHeartRate(), Max30102_GetSpO2Value());
+		}
+		*/
+		
+	
+/*
+		max30102_init(&max30102, I2C0,
+                   MAX30102_DEFAULT_OPERATING_MODE,
+                   MAX30102_DEFAULT_SAMPLING_RATE,
+                   MAX30102_DEFAULT_LED_PULSE_WIDTH,
+                   MAX30102_DEFAULT_IR_LED_CURRENT,
+                   MAX30102_DEFAULT_START_RED_LED_CURRENT,
+                   MAX30102_DEFAULT_MEAN_FILTER_SIZE,
+                   MAX30102_DEFAULT_PULSE_BPM_SAMPLE_SIZE,
+                   MAX30102_DEFAULT_ADC_RANGE, 
+                   MAX30102_DEFAULT_SAMPLE_AVERAGING,
+                   MAX30102_DEFAULT_ROLL_OVER,
+                   MAX30102_DEFAULT_ALMOST_FULL,
+                   true );
+    
+    //Start test task
+
+		
+*/	
+/*
+		while(1)
+		{
+			Get_HeartRate();
+		}
+
+*/	
+		//int hr = 0;
+
+		//while(1)
+		//{
+			//MAX30102_Get_BPM();
+			//CLK_SysTickLongDelay(300000);
+		//}	
+		
+		
+		
+
 }

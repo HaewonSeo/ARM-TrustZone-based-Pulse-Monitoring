@@ -38,7 +38,7 @@ const char ATCommand_CIPMUX_GET[]		= "AT+CIPMUX?\r\n";																			//Get c
 const char ATCommand_CIPMUX_SET0[]	= "AT+CIPMUX=0\r\n";																		//Set mode for single connection
 const char ATCommand_CIPMUX_SET1[]	= "AT+CIPMUX=1\r\n";																		//Set mode for multiple connection
 const char ATCommand_CIFSR[]				= "AT+CIFSR\r\n";																				//Get local IP address
-const char ATCommand_CIPSTART[]			= "AT+CIPSTART=\"TCP\",\"192.168.35.94\",80\r\n";				//Start connection
+const char ATCommand_CIPSTART[]			= "AT+CIPSTART=\"TCP\",\"192.168.35.145\",80\r\n";				//Start connection
 const char ATCommand_CIPSEND[]			= "AT+CIPSEND=";																				//Send data(without data and end string)
 const char ATCommand_CIPCLOSE[]			= "AT+CIPCLOSE\r\n";																		//Close connection
 
