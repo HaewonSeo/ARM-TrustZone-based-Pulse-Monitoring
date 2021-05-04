@@ -15,13 +15,9 @@
 #include "NuMicro.h"
 #include "partition_M2351.h"
 #include "nsc.h"
-#include "i2c_max30102.h"
+#include "MAX30102.h"
+#include "crypto_aes.h"
 
-//#include "crypto_aes.h"
-
-#include "OLED_Driver.h"
-#include "OLED_GUI.h"
-//#include "max30102.h"
 
 #define DEBUG_PORT			UART0_NS
 #define WIFI_PORT   		UART3_NS    // Used to connect to WIFI module
@@ -30,7 +26,7 @@
 #define JUMP_HERE       0xe7fee7ff      /* Instruction Code of "B ." */
 
 /* typedef for NonSecure callback functions */
-typedef __NONSECURE_CALL int32_t (*NonSecure_funcptr)(uint32_t);
+typedef __NONSECURE_CALL void (*NonSecure_funcptr)(uint32_t);
 typedef int32_t (*Secure_funcptr)(uint32_t);
 
 volatile uint32_t millis_counter;
@@ -40,45 +36,12 @@ volatile uint32_t millis_counter;
 /*----------------------------------------------------------------------------
   Secure LED control function
  *----------------------------------------------------------------------------*/
+
 uint32_t GetMillis()
 {
 	return millis_counter;
 }
 
-void OLED_INIT(void)
-{
-  /* USER CODE BEGIN 2 */  
-	printf("**********1.5inch OLED IniT**********\r\n");
-	System_Init();
-  
-	printf("OLED_Init()...\r\n");
-	OLED_Init(SCAN_DIR_DFT);//SCAN_DIR_DFT = D2U_L2R
-	
-	printf("OLED_Show()...\r\n");	
-	GUI_Show();
-	printf("************************************\r\n");
-	OLED_Clear(OLED_BACKGROUND);//OLED_BACKGROUND
-	OLED_Display();
-}
-
-/*
-void Get_BPM()
-{
-    printf("MAX30102 Test\n");
-    max30102_data_t result = {};
-    //ESP_ERROR_CHECK(max30102_print_registers(&max30102));
-   
-    //Update sensor, saving to "result"
-    max30102_update(&max30102, &result);
-    if(result.pulse_detected)
-		{
-        printf("BEAT\n");
-        printf("BPM: %f | SpO2: %f%%\n", result.heart_bpm, result.spO2);
-    }
-    CLK_SysTickDelay(10000);
-        
-}	
-*/
 
 /*----------------------------------------------------------------------------
   SysTick IRQ Handler
@@ -156,8 +119,6 @@ void SYS_Init(void)
     /* Select HCLK clock source as PLL and HCLK source divider as 1 */
     CLK_SetHCLK(CLK_CLKSEL0_HCLKSEL_PLL, CLK_CLKDIV0_HCLK(1));
 
-    /* Enable UART clock */
-    CLK->APBCLK0 |= CLK_APBCLK0_UART0CKEN_Msk;
 
     /* Select UART clock source */
     //CLK->CLKSEL1 = (CLK->CLKSEL1 & (~CLK_CLKSEL1_UART0SEL_Msk)) | CLK_CLKSEL1_UART0SEL_HIRC;
@@ -171,9 +132,14 @@ void SYS_Init(void)
     CLK->CLKSEL1 = CLK_CLKSEL1_UART0SEL_HIRC | CLK_CLKSEL1_UART1SEL_HIRC;
     CLK->CLKSEL3 = CLK_CLKSEL3_UART2SEL_HIRC | CLK_CLKSEL3_UART3SEL_HIRC | CLK_CLKSEL3_UART5SEL_HIRC;
 
+		/* Enable Crypto Accelerator */
+    CLK->AHBCLK  |= CLK_AHBCLK_CRPTCKEN_Msk;
+		
     /* Enable IP clock */
     CLK->APBCLK0 |= CLK_APBCLK0_UART0CKEN_Msk | CLK_APBCLK0_TMR0CKEN_Msk | CLK_APBCLK0_UART1CKEN_Msk |
                     CLK_APBCLK0_UART2CKEN_Msk | CLK_APBCLK0_UART3CKEN_Msk | CLK_APBCLK0_UART5CKEN_Msk;
+
+
 
 
     /* Enable UART module clock */
@@ -183,7 +149,7 @@ void SYS_Init(void)
     //CLK_SetModuleClock(UART0_MODULE, CLK_CLKSEL1_UART0SEL_HXT, CLK_CLKDIV0_UART0(1));
     
 		/* Select HIRC as the clock source of SPI0 */
-    CLK_SetModuleClock(SPI0_MODULE, CLK_CLKSEL2_SPI0SEL_PCLK1, MODULE_NoMsk);
+    CLK_SetModuleClock(SPI1_MODULE, CLK_CLKSEL2_SPI1SEL_PCLK0, MODULE_NoMsk);
     //CLK_SetModuleClock(SDH0_MODULE, CLK_CLKSEL2_SPI0SEL_HIRC, MODULE_NoMsk);
 
     /* Enable I2C0 peripheral clock */
@@ -193,8 +159,10 @@ void SYS_Init(void)
     //CLK_EnableModuleClock(I2C1_MODULE);
 		
     /* Enable SPI0 peripheral clock */
-    CLK_EnableModuleClock(SPI0_MODULE);
+    CLK_EnableModuleClock(SPI1_MODULE);
 		//CLK_EnableModuleClock(SDH0_MODULE);
+		
+
 
 		/* Update System Core Clock */
     /* User can use SystemCoreClockUpdate() to calculate PllClock, SystemCoreClock and CycylesPerUs automatically. */
@@ -230,9 +198,15 @@ void SYS_Init(void)
     //SYS->GPD_MFPL |= (SYS_GPD_MFPL_PD0MFP_SPI0_MOSI | SYS_GPD_MFPL_PD2MFP_SPI0_CLK | SYS_GPD_MFPL_PD3MFP_SPI0_SS);
 
 		/* Setup SPI0 multi-function pins */
-    SYS->GPA_MFPL &= ~(SYS_GPA_MFPL_PA0MFP_Msk | SYS_GPA_MFPL_PA2MFP_Msk | SYS_GPA_MFPL_PA3MFP_Msk);
-    SYS->GPA_MFPL |= (SYS_GPA_MFPL_PA0MFP_SPI0_MOSI | SYS_GPA_MFPL_PA2MFP_SPI0_CLK | SYS_GPA_MFPL_PA3MFP_SPI0_SS);
+    //SYS->GPA_MFPL &= ~(SYS_GPA_MFPL_PA0MFP_Msk | SYS_GPA_MFPL_PA2MFP_Msk | SYS_GPA_MFPL_PA3MFP_Msk);
+    //SYS->GPA_MFPL |= (SYS_GPA_MFPL_PA0MFP_SPI0_MOSI | SYS_GPA_MFPL_PA2MFP_SPI0_CLK | SYS_GPA_MFPL_PA3MFP_SPI0_SS);
 
+		/* Setup SPI1 multi-function pins */
+    SYS->GPH_MFPH &= ~(SYS_GPH_MFPH_PH8MFP_Msk | SYS_GPH_MFPH_PH9MFP_Msk);
+    SYS->GPH_MFPH |= (SYS_GPH_MFPH_PH8MFP_SPI1_CLK | SYS_GPH_MFPH_PH9MFP_SPI1_SS);
+    
+		SYS->GPE_MFPL &= ~(SYS_GPE_MFPL_PE0MFP_Msk);
+    SYS->GPE_MFPL |= (SYS_GPE_MFPL_PE0MFP_SPI1_MOSI);
 }
 
 
@@ -262,7 +236,7 @@ void WIFI_PORT_Init()
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
-/* Init I2C0                                                                                                */
+/* Init I2C0                                                                                               */
 /*---------------------------------------------------------------------------------------------------------*/
 void I2C0_Init(void)
 {
@@ -291,12 +265,12 @@ void I2C0_Init(void)
 void SPI_Init(void)
 {
     /* Set IP clock divider. SPI clock rate = 2MHz */
-    SPI_Open(SPI0, SPI_MASTER, SPI_MODE_0, 32, 2000000);
+    SPI_Open(SPI1_NS, SPI_MASTER, SPI_MODE_0, 32, 2000000);
 
     /* Enable the automatic hardware slave select function. Select the SS pin and configure as low-active. */
-    SPI_EnableAutoSS(SPI0, SPI_SS, SPI_SS_ACTIVE_LOW);
+    SPI_EnableAutoSS(SPI1_NS, SPI_SS, SPI_SS_ACTIVE_LOW);
 	
-		SPI_SET_DATA_WIDTH(SPI0, 8);
+		SPI_SET_DATA_WIDTH(SPI1_NS, 8);
 }
 
 
@@ -341,7 +315,67 @@ void Nonsecure_Init(void)
     }
 }
 
-	
+void testCryptDeCrypt() {
+
+    //Test Function to cipher and decypher data 
+
+    __attribute__((aligned(4))) uint8_t plainData[16] = {0x32, 0x43, 0xf6, 0xa8, 0x88, 0x5a, 0x30, 0x8d, 0x31, 0x31, 0x98, 0xa2, 0xe0, 0x37, 0x07, 0x34};
+    __attribute__((aligned(4))) uint8_t cipheredData[16] = {0};
+    __attribute__((aligned(4))) uint8_t resultData[16] = {0};
+
+    __attribute__((aligned(4))) uint8_t key[16] =
+    {
+        0x7f, 0x35, 0x91, 0xd3, 0x6f, 0xd5, 0x17, 0xa3, 0x7b, 0x6d, 0xe9, 0xe0, 0xdf, 0x93, 0x4b, 0x7a
+    };
+    __attribute__((aligned(4))) uint8_t iv[16] = {0};
+
+    if (DEMO) {
+        //printSecure("&key  = %p\n",key);
+        //printBlock(key);
+        //printSecure("&iv  = %p\n",iv);
+        //printBlock(iv);
+        printSecure("&plainData  = %p\n",plainData, NULL);
+        printBlock(plainData);
+        CLK_SysTickLongDelay(500000);
+    }
+
+    Store_key(key);
+    Store_iv(iv);
+
+    int c = Encrypt_data(plainData, cipheredData);
+    if (c == NULL) printSecure("Error : 128bits only", NULL, NULL);
+
+    if (DEMO) {
+        CLK_SysTickLongDelay(500000);
+        printSecure("|           Nonsecure is running ...          |\n",NULL, NULL);
+
+        printSecure("&cipheredData  = %p\n",cipheredData, NULL);
+        printBlock(cipheredData);
+    }
+
+    int r = Decrypt_data(cipheredData, resultData);
+    if (r == NULL) printSecure("Error : 128bits only", NULL, NULL);
+
+    if (DEMO) {
+        CLK_SysTickLongDelay(500000);
+        printSecure("|           Nonsecure is running ...          |\n",NULL, NULL);
+        
+        printSecure("&resultData  = %p\n",resultData, NULL);
+        printBlock(resultData);
+
+        uint8_t error = 0;
+        for (uint8_t i = 0 ; i < 16 ; i++) {
+
+            if (resultData[i] != plainData[i]) error++;
+
+        }
+        if (error != 0) printSecure("Error plainData is not equal to resultData", NULL, NULL);
+        else printSecure("No error plainData is equal to resultData", NULL, NULL);
+
+    }
+
+}
+
 /*---------------------------------------------------------------------------------------------------------*/
 /*  Main Function                                                                                          */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -372,31 +406,19 @@ int32_t main(void)
 		printf("+---------------------------------------------+\n");
     printf("|             Secure is running ...           |\n");
     printf("+---------------------------------------------+\n");
-		
-	
+
+		//testCryptDeCrypt();
 		
 		/* Config MAX30102 */
-		Config_MAX30102();
+		MAX30102_Config();
 
 
-    /* Init GPIO Port A for secure LED control */
-    GPIO_SetMode(PA, BIT13 | BIT12 | BIT11 | BIT10, GPIO_MODE_OUTPUT);
-
-    /* Init GPIO Port C for non-secure LED control */
-    //(PC_NS, BIT1, GPIO_MODE_OUTPUT);
-		
-		/* LDO OLED */
-    GPIO_SetMode(PC, BIT11, GPIO_MODE_OUTPUT); //DC
-    GPIO_SetMode(PC, BIT12, GPIO_MODE_OUTPUT); //RST
-    PC11 = 1;
-    PC12 = 1;
-		
-		//OLED_INIT();
-				
 		Nonsecure_Init();
 		
+		
 		do
-    {			
+    {
+				
 			//OLED_HeartRate(0, hr++);
 			//CLK_SysTickLongDelay(2000000);
 
@@ -404,53 +426,7 @@ int32_t main(void)
       //__WFI();
     }
     while(1);			
-		
-
-
-		/*
-		Max30102_Init(I2C0);
-		while (1) {
-		Max30102_Task();
-		printf("HR: %d\tSpO2: %d\n", Max30102_GetHeartRate(), Max30102_GetSpO2Value());
-		}
-		*/
-		
 	
-/*
-		max30102_init(&max30102, I2C0,
-                   MAX30102_DEFAULT_OPERATING_MODE,
-                   MAX30102_DEFAULT_SAMPLING_RATE,
-                   MAX30102_DEFAULT_LED_PULSE_WIDTH,
-                   MAX30102_DEFAULT_IR_LED_CURRENT,
-                   MAX30102_DEFAULT_START_RED_LED_CURRENT,
-                   MAX30102_DEFAULT_MEAN_FILTER_SIZE,
-                   MAX30102_DEFAULT_PULSE_BPM_SAMPLE_SIZE,
-                   MAX30102_DEFAULT_ADC_RANGE, 
-                   MAX30102_DEFAULT_SAMPLE_AVERAGING,
-                   MAX30102_DEFAULT_ROLL_OVER,
-                   MAX30102_DEFAULT_ALMOST_FULL,
-                   true );
-    
-    //Start test task
-
-		
-*/	
-/*
-		while(1)
-		{
-			Get_HeartRate();
-		}
-
-*/	
-		//int hr = 0;
-
-		//while(1)
-		//{
-			//MAX30102_Get_BPM();
-			//CLK_SysTickLongDelay(300000);
-		//}	
-		
-		
 		
 
 }

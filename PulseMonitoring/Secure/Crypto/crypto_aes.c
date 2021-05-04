@@ -1,15 +1,3 @@
-/*
- *########################################################
- * @file       : Nuvoton_M2351_crypto_aes.c
- * @version    : v1.00
- * @created on : 5 fevrier 2019
- * @updated on : 12 mars 2019
- * @author     : Damien SOURSAS
- *
- * @note       : Crypto accelerator usage with AES-ECB
- *########################################################
-*/
-
 #include "crypto_aes.h"
 #include "nsc.h"
 
@@ -25,7 +13,7 @@ void CRPT_IRQHandler()
     }
 }
 
-void Nuvoton_M2351_crypto_init(uint8_t channel, uint8_t modeAES)
+void M2351_Crypto_Init(uint8_t channel, uint8_t modeAES)
 {
 		if(modeAES != ENCRYPT && modeAES != DECRYPT)
 			printf("Error mode , mode must be ENCRYPT or DECRYPT value\n");
@@ -33,10 +21,10 @@ void Nuvoton_M2351_crypto_init(uint8_t channel, uint8_t modeAES)
 		NVIC_EnableIRQ(CRPT_IRQn);
 		AES_ENABLE_INT(CRPT);
 
-		AES_Open(CRPT, channel, modeAES, AES_MODE_ECB, AES_KEY_SIZE_128, AES_IN_OUT_SWAP);
+		AES_Open(CRPT, channel, modeAES, AES_MODE_CBC, AES_KEY_SIZE_128, AES_IN_OUT_SWAP);
 }
 
-void Nuvoton_M2351_crypto_useMasterKey()
+void M2351_Crypto_UseMasterKey()
 {
 
     CRPT_T *crpt = CRPT;
@@ -76,7 +64,7 @@ void Nuvoton_M2351_crypto_useMasterKey()
 
 }
 
-void Nuvoton_M2351_crypto_useSessionKey(uint8_t channel)
+void M2351_Crypto_UseSessionKey(uint8_t channel)
 {
 
 	uint8_t sessionKey[16] = {0};
@@ -84,17 +72,20 @@ void Nuvoton_M2351_crypto_useSessionKey(uint8_t channel)
 	//printf("&cipheredSessionKey = %p\n", cipheredSessionKey);
     //printBlock(cipheredSessionKey);
 
-	Nuvoton_M2351_crypto_init(1, DECRYPT);
-  Nuvoton_M2351_crypto_useMasterKey();
-	if (DEMO)
-		printf("|  Secure is running ... decrypt sessionKey   |\n");
-  Nuvoton_M2351_decrypt_data(1, cipheredSessionKey, sessionKey);
+	//M2351_Crypto_Init(1, DECRYPT);
+  //M2351_Crypto_UseMasterKey();
+	//if (DEMO)
+	//	printf("|  Secure is running ... decrypt sessionKey   |\n");
+  //M2351_Decrypt_Data(1, cipheredSessionKey, sessionKey);
 
 	//printf("&sessionKey = %p\n", sessionKey);
     //printBlock(sessionKey);
 
-    uint32_t tmp_sk[4];
-    uint32_t tmp_si[4];
+	
+	if (DEMO)
+		printf("|     Secure is running ... Use sessionKey    |\n");
+  uint32_t tmp_sk[4];
+  uint32_t tmp_si[4];
 
 	for (uint8_t z = 0; z < 4; z++)
 	{
@@ -114,8 +105,8 @@ void Nuvoton_M2351_crypto_useSessionKey(uint8_t channel)
 
 }
 
-/* Function Nuvoton_M2351_encrypt_data is same as Nuvoton_M2351_decrypt_data */
-void Nuvoton_M2351_encrypt_data(uint8_t channel, uint8_t InputData[], uint8_t OutputData[])
+/* Function M2351_encrypt_data is same as Nuvoton_M2351_decrypt_data */
+void M2351_Encrypt_Data(uint8_t channel, uint8_t InputData[], uint8_t OutputData[])
 {
 
 	//printf("AES ECB encrypt start.\n");
@@ -140,12 +131,12 @@ void Nuvoton_M2351_encrypt_data(uint8_t channel, uint8_t InputData[], uint8_t Ou
 	/* Waiting for AES calculation */
 	while(!g_AES_done);
 
-	//printf("AES ECB encrypt done.\n");
+	//printf("AES CBC encrypt done.\n");
 
 }
 
-/* Function Nuvoton_M2351_decrypt_data is same as Nuvoton_M2351_encrypt_data */
-void Nuvoton_M2351_decrypt_data(uint8_t channel, uint8_t InputData[], uint8_t OutputData[]) 
+/* Function M2351_decrypt_data is same as Nuvoton_M2351_encrypt_data */
+void M2351_Decrypt_Data(uint8_t channel, uint8_t InputData[], uint8_t OutputData[]) 
 {
 
 	//printf("AES ECB decrypt start.\n");
@@ -169,6 +160,6 @@ void Nuvoton_M2351_decrypt_data(uint8_t channel, uint8_t InputData[], uint8_t Ou
     /* Waiting for AES calculation */
     while(!g_AES_done);
 		
-	//printf("AES ECB decrypt done.\n");
+	//printf("AES CBC decrypt done.\n");
 
 }

@@ -40,12 +40,12 @@ typedef struct	s_netData
 }								t_netData;
 
 		
-void WIFI_PORT_Init();
-void WIFI_PORT_Start();
-void WIFI_PORT_Read(int);
-void WIFI_PORT_Write(int, const char *, int);
-int WIFI_PORT_Receive_Data(int, t_netData *);
-int WIFI_PORT_Send_Data(int, t_netData *);
+void WIFI_Init();
+void WIFI_Connect();
+void WIFI_Read(int);
+void WIFI_Write(int, const char *, int);
+int WIFI_ReceiveData(int, t_netData *);
+int WIFI_SendData(int, t_netData *);
 		
 		
 #endif /* __WIFI_H__ */

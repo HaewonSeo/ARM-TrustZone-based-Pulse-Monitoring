@@ -10,8 +10,8 @@ Achieve drawing: draw points, lines, boxes, circles and their size,
 Achieve display characters: Display a single character, string, number
 Achieve time display: adaptive size display time minutes and seconds		
 ******************************************************************************/
-#include "OLED_GUI.h"
 #include <stdio.h>
+#include "OLED_GUI.h"
 #include "DEV_Config.h"
 
 extern OLED_DIS sOLED_DIS;
@@ -488,21 +488,21 @@ note:
 ******************************************************************************/
 void GUI_Show(void)
 {
-	printf("Clear... \r\n");
+	//printf("Clear... \r\n");
 	OLED_Clear(OLED_BACKGROUND);//OLED_BACKGROUND
 	OLED_Display();
 
-	printf("Draw Line \r\n");
+	//printf("Draw Line \r\n");
 	GUI_DrawLine(0, 1                          , sOLED_DIS.OLED_Dis_Column - 1, 1                          , WHITE, LINE_SOLID , DOT_PIXEL_2X2);
 	GUI_DrawLine(0, 4                          , sOLED_DIS.OLED_Dis_Column - 1, 4                          , WHITE, LINE_DOTTED, DOT_PIXEL_DFT);
 	GUI_DrawLine(0, sOLED_DIS.OLED_Dis_Page - 5, sOLED_DIS.OLED_Dis_Column - 1, sOLED_DIS.OLED_Dis_Page - 5, WHITE, LINE_DOTTED, DOT_PIXEL_DFT);
 	GUI_DrawLine(0, sOLED_DIS.OLED_Dis_Page - 1, sOLED_DIS.OLED_Dis_Column - 1, sOLED_DIS.OLED_Dis_Page - 1, WHITE, LINE_SOLID , DOT_PIXEL_2X2);
 
-	printf("Draw Rectangle \r\n");
+	//printf("Draw Rectangle \r\n");
 	GUI_DrawRectangle(5 , 7 , sOLED_DIS.OLED_Dis_Column - 5 , sOLED_DIS.OLED_Dis_Page - 7, WHITE, DRAW_EMPTY, DOT_PIXEL_DFT);
 	GUI_DrawRectangle(10, 10, sOLED_DIS.OLED_Dis_Column - 10, 20                         , WHITE, DRAW_FULL , DOT_PIXEL_DFT);
 
-	printf("Draw Rings\r\n");
+	//printf("Draw Rings\r\n");
 	GUI_DrawCircle(10, 30, 3, WHITE, DRAW_FULL , DOT_PIXEL_DFT);
 	GUI_DrawCircle(10, 40, 3, WHITE, DRAW_EMPTY, DOT_PIXEL_DFT);
 	GUI_DrawCircle(10, 50, 3, WHITE, DRAW_FULL , DOT_PIXEL_DFT);
@@ -510,7 +510,7 @@ void GUI_Show(void)
 	GUI_DrawCircle(sOLED_DIS.OLED_Dis_Column - 10, 40, 3, WHITE, DRAW_EMPTY, DOT_PIXEL_DFT);
 	GUI_DrawCircle(sOLED_DIS.OLED_Dis_Column - 10, 50, 3, WHITE, DRAW_FULL , DOT_PIXEL_DFT);
 
-	printf("Draw Olympic Rings\r\n");
+	//printf("Draw Olympic Rings\r\n");
 	uint16_t Cx1 = 35, Cy1 = 85, Cr = 12;
 	uint16_t Cx2 = Cx1 + (2.5 * Cr), Cy2 = Cy1;
 	uint16_t Cx3 = Cx1 + (5 * Cr), Cy3 = Cy1;
@@ -523,13 +523,15 @@ void GUI_Show(void)
 	GUI_DrawCircle(Cx4, Cy4, Cr, WHITE, DRAW_EMPTY, DOT_PIXEL_DFT);
 	GUI_DrawCircle(Cx5, Cy5, Cr, WHITE, DRAW_EMPTY, DOT_PIXEL_DFT);
 
-	printf("Display String \r\n");
+	//printf("Display String \r\n");
 	GUI_DisString_EN(30, 25, "WaveShare"   , &Font12, FONT_BACKGROUND, WHITE);
 	GUI_DisString_EN(28, 35, "Electronic"  , &Font12, FONT_BACKGROUND, WHITE);
 	GUI_DisString_EN(18, 45, "1.5inch OLED", &Font12, FONT_BACKGROUND, WHITE);
 	
-	printf("Showing...\r\n");
+	//printf("Showing...\r\n");
 	OLED_Display();
 	Driver_Delay_ms(2000);
 }
+
+
 

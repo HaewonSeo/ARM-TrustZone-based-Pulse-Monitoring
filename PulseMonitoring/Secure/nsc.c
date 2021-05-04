@@ -11,13 +11,28 @@
 
 #include "nsc.h"
 
+uint32_t startTime, endTime, OLED_printTime;
 
-/* typedef for NonSecure callback functions */
-typedef __NONSECURE_CALL int32_t (*NonSecure_funcptr)(uint32_t);
+/*----------------------------------------------------------------------------
+  NonSecure callable function for NonSecure callback
+ *----------------------------------------------------------------------------*/
 
-//extern uint8_t au8RDataBuf[6];
-extern float beatsPerMinute;
-extern int32_t beatAvg;
+NonSecure_funcptr pfNonSecure_OLED_On = (NonSecure_funcptr)NULL;
+NonSecure_funcptr pfNonSecure_OLED_Off = (NonSecure_funcptr)NULL;
+
+__NONSECURE_ENTRY
+int32_t Secure_OLED_On_callback(NonSecure_funcptr *callback)
+{
+    pfNonSecure_OLED_On = (NonSecure_funcptr)cmse_nsfptr_create(callback);
+    return 0;
+}
+
+__NONSECURE_ENTRY
+int32_t Secure_OLED_Off_callback(NonSecure_funcptr *callback)
+{
+    pfNonSecure_OLED_Off = (NonSecure_funcptr)cmse_nsfptr_create(callback);
+    return 0;
+}
 
 /*----------------------------------------------------------------------------
   Secure functions exported to NonSecure application
@@ -33,96 +48,77 @@ uint32_t GetSystemCoreClock(void)
 
 
 __NONSECURE_ENTRY
-void Print_Pulse()
+uint32_t MAX30102_Get_BPM()
 {
-		printf("HR_val : %#08x(%d),\t \n", hr_val, hr_val);
-}
-
-__NONSECURE_ENTRY
-void OLED_HeartRate(int print, int bpm)
-{	
-
-	OLED_SetWindow(0, 0, 127, 127);
-	OLED_ClearWindow(0, 0, 127, 127, BLACK);
+	uint32_t ret;
+	static uint32_t ticks;
 	
-	if(print)
-		printf("Show toolbar icons\n");
-	GUI_Disbitmap(0  , 2, Signal816  , 16, 8);
-	GUI_Disbitmap(24 , 2, Bluetooth88, 8 , 8);
-	GUI_Disbitmap(40 , 2, Msg816     , 16, 8);
-	GUI_Disbitmap(64 , 2, GPRS88     , 8 , 8);
-	GUI_Disbitmap(90 , 2, Alarm88    , 8 , 8);
-	GUI_Disbitmap(112, 2, Bat816     , 16, 8);
+	ret =	MAX30102_ComputeBPM();
 
-	if(print)
-		printf("Show background(16 gray map)\n");
-	GUI_DisGrayMap(0, 0, gImage_background);
+	ticks++;
 	
-	if(print)
-		printf("Show Heart Rate\n");
-	
-	if(bpm >= 0)
-		GUI_DisNum(20 , 28, bpm, &Font24, FONT_BACKGROUND, WHITE);
-	
-	OLED_DisWindow(0, 0, 127, 127);
-	//OLED_Display();
-
-
-	//GUI_DisGrayMap(0, 73, gImage_flower);
-	//GUI_DisString_EN(0 , 52, "123", &Font12, FONT_BACKGROUND, WHITE);
-	//GUI_DisString_EN(48, 52, "MENU" , &Font12, FONT_BACKGROUND, WHITE);
-	//GUI_DisString_EN(90, 52, "PHONE", &Font12, FONT_BACKGROUND, WHITE);
-	
-	//printf("Show time\r\n");
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-	/*
-  while (1)
-  {
-	uint8_t sec = 0;
-	DEV_TIME sDev_time;
-	sDev_time.Hour = 12;
-	sDev_time.Min = 34;
-	sDev_time.Sec = 56;
-	for (;;) {
-		sec++;
-		sDev_time.Sec = sec;
-		if (sec == 60) {
-			sDev_time.Min = sDev_time.Min + 1;
-			sec = 0;
-			if (sDev_time.Min == 60) {
-				sDev_time.Hour =  sDev_time.Hour + 1;
-				sDev_time.Min = 0;
-				if (sDev_time.Hour == 24) {
-				  sDev_time.Hour = 0;
-				  sDev_time.Min = 0;
-				  sDev_time.Sec = 0;
-				}
-			}
-		}
-		GUI_Showtime(0, 22, 127, 47, &sDev_time, WHITE);
-		Driver_Delay_ms(1000);//Analog clock 1s 
-	}
-	
-	}
-	*/	
-}
-
-__NONSECURE_ENTRY
-int32_t MAX30102_Get_BPM()
-{
-		//MAX30102_Get_FIFO();
-		MAX30102_Compute_HR();
-
+	if (ticks == 60)
+	{
+		ticks = 0;
+		startTime = GetMillis();
 		/* Refresh OLED */
-		//OLED_HeartRate(0, -1);
-		//OLED_HeartRate(0, beatsPerMinute);
+		pfNonSecure_OLED_On(9999);
+		pfNonSecure_OLED_On(beatAvg);	
+		endTime = GetMillis();
 		
-		return beatAvg;
+		OLED_printTime = endTime - startTime;
+		//printf("OLED print time = %u\n", OLED_printTime);
+	}
+	else
+		OLED_printTime = 0;
+	
+	if (ret == 0)
+		return 0;
+	
+	return beatAvg;
 }
 
+__NONSECURE_ENTRY
+uint32_t MAX30102_Get_EncryptedBPM(uint8_t *encryptedBPM)
+{
+	uint32_t ret;
+	static uint32_t ticks;
+	
+	ret =	MAX30102_ComputeBPM();
+
+	ticks++;
+	
+	if (ticks == 60)
+	{
+		ticks = 0;
+		startTime = GetMillis();
+		/* Refresh OLED */
+		pfNonSecure_OLED_On(9999);
+		pfNonSecure_OLED_On(beatAvg);	
+		endTime = GetMillis();
+		
+		OLED_printTime = endTime - startTime;
+		//printf("OLED print time = %u\n", OLED_printTime);
+		
+		/* Encyrpt beatAvg */
+		__attribute__((aligned(4))) uint8_t plainBPM[16] = {0};
+		memcpy(plainBPM, &beatAvg, sizeof(uint32_t));
+		Encrypt_data(plainBPM, encryptedBPM);
+		printf("\nplainBPM\n");
+		printBlock(plainBPM);
+		printf("\nencryptedBPM\n");
+		printBlock(encryptedBPM);
+	
+		
+	}
+	else
+		OLED_printTime = 0;
+	
+	if (beatAvg == 0)
+		return 0;
+	
+	return 1;
+}
 
 
 
@@ -132,29 +128,38 @@ int32_t MAX30102_Get_BPM()
  *----------------------------------------------------------------------------*/
 
 __NONSECURE_ENTRY
-int32_t Encrypt_data(uint8_t *plainData, uint8_t *cipheredData) {
+int32_t Encrypt_data(uint8_t *plainData, uint8_t *encryptedData) {
 
-    if (DEMO) printf("|     Secure is running ... Encrypt_data      |\n");
+    if (DEMO) printf("\n|     Secure is running ... Encrypt_data      |\n");
     //if (DEMO) LED_On();
 
-    Nuvoton_M2351_crypto_init(0, ENCRYPT);
-    Nuvoton_M2351_crypto_useSessionKey(0);
-    Nuvoton_M2351_encrypt_data(0, plainData, cipheredData);
+    M2351_Crypto_Init(0, ENCRYPT);
+    M2351_Crypto_UseSessionKey(0);
+    M2351_Encrypt_Data(0, plainData, encryptedData);
+	
+		//M2351_crypto_init(1, ENCRYPT);
+		//M2351_crypto_useMasterKey();
+    //M2351_encrypt_data(1, plainData, cipheredData);
 
     //if (DEMO) LED_Off();
-    return (int32_t)cipheredData;
+    return (int32_t)encryptedData;
 }
 
 __NONSECURE_ENTRY
-int32_t Decrypt_data(uint8_t *cipheredData, uint8_t *resultData) {
+int32_t Decrypt_data(uint8_t *encryptedData, uint8_t *resultData) {
 
-    if (DEMO) printf("|     Secure is running ... Decrypt_data      |\n");
+    if (DEMO) printf("\n|     Secure is running ... Decrypt_data      |\n");
     //if (DEMO) LED_On();	
 
-    Nuvoton_M2351_crypto_init(0, DECRYPT);
-    Nuvoton_M2351_crypto_useSessionKey(0);
-    Nuvoton_M2351_decrypt_data(0, cipheredData, resultData);
+    M2351_Crypto_Init(0, DECRYPT);
+    M2351_Crypto_UseSessionKey(0);
+    M2351_Decrypt_Data(0, encryptedData, resultData);
 
+	
+	  //M2351_crypto_init(1, DECRYPT);
+    //M2351_crypto_useMasterKey();
+    //M2351_decrypt_data(1, cipheredData, resultData);
+	
     //if (DEMO) LED_Off();	
     return (int32_t)resultData;
 }
@@ -162,7 +167,7 @@ int32_t Decrypt_data(uint8_t *cipheredData, uint8_t *resultData) {
 __NONSECURE_ENTRY
 int32_t Store_key(uint8_t *newKey) {
 
-    if (DEMO) printf("|      Secure is running ... Store_key        |\n");
+    if (DEMO) printf("\n|      Secure is running ... Store_key        |\n");
     //if (DEMO) LED_On(); 
 
     for (uint8_t z = 0; z < 16; z++) {
@@ -184,7 +189,7 @@ int32_t Store_key(uint8_t *newKey) {
 __NONSECURE_ENTRY
 int32_t Store_iv(uint8_t *newIv) {
 
-    if (DEMO) printf("|      Secure is running ... Store_iv         |\n");
+    if (DEMO) printf("\n|      Secure is running ... Store_iv         |\n");
     //if (DEMO) LED_On(); 
     
     for (uint8_t z = 0; z < 16; z++) {

@@ -12,24 +12,8 @@
 #include <stdio.h>
 #include "M2351.h"
 
-/* MAX30100 I2C-ADDRESS */
-#define MAX30100_ADDR   				0x57
+/* MAX30102 I2C-ADDRESS */
 #define MAX30102_ADDR    		    0x57  // 8bit address converted to 7bit
-
-/* MAX30100 Register Map */
-#define MAX30100_INT_STATUS     0x00  // Which interrupts are tripped
-#define MAX30100_INT_ENABLE     0x01  // Which interrupts are active
-#define MAX30100_FIFO_WR_PTR    0x02  // Where data is being written
-#define MAX30100_OVRFLOW_CTR    0x03  // Number of lost samples
-#define MAX30100_FIFO_RD_PTR    0x04  // Where to read from
-#define MAX30100_FIFO_DATA      0x05  // Ouput data buffer
-#define MAX30100_MODE_CONFIG    0x06  // Control register
-#define MAX30100_SPO2_CONFIG    0x07  // Oximetry settings
-#define MAX30100_LED_CONFIG     0x09  // Pulse width and power of LEDs
-#define MAX30100_TEMP_INTG      0x16  // Temperature value, whole number
-#define MAX30100_TEMP_FRAC      0x17  // Temperature value, fraction
-#define MAX30100_REV_ID         0xFE  // Part revision
-#define MAX30100_PART_ID        0xFF  // Part ID, normally 0x11
 
 /* MAX30102 Register Map */
 #define MAX30102_INT_STATUS1     0x00  // Which interrupts are tripped
@@ -59,15 +43,15 @@
 
 
 //void Get_Data_From_MAX30102();
-void Config_MAX30102();
+void MAX30102_Config();
 
 int checkForBeat(int32_t sample);
 int16_t averageDCEstimator(int32_t *p, uint16_t x);
 int16_t lowPassFIRFilter(int16_t din);
 int32_t mul16(int16_t x, int16_t y);
 
-void MAX30102_Get_FIFO();
-void MAX30102_Compute_HR();
+void MAX30102_GetFIFO();
+uint32_t MAX30102_ComputeBPM();
 
 
 

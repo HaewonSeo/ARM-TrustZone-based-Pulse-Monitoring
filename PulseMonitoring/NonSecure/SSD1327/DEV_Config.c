@@ -27,7 +27,7 @@ note:
 uint8_t System_Init(void)
 {
 #if USE_SPI_4W
-    printf("USE 4wire spi\r\n");
+    //printf("USE 4wire spi\r\n");
 #elif USE_IIC
     printf("USE i2c\r\n");
 	//DC = 1 => addrdess = 0X3D
@@ -53,8 +53,8 @@ note:
 ********************************************************************************/
 void SPI4W_Write_Byte(uint8_t value)
 {
-		SPI_WRITE_TX(SPI0, value);
-		while (SPI_IS_BUSY(SPI0));
+		SPI_WRITE_TX(SPI1_NS, value);
+		while (SPI_IS_BUSY(SPI1_NS));
 		//printf("[RX] : %d\t [TX] : %d(%#x) \n", SPI_READ_RX(SPI0), value, value);
 }
 /********************************************************************************

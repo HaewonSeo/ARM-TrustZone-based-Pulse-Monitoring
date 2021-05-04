@@ -38,7 +38,7 @@ const char ATCommand_CIPMUX_GET[]		= "AT+CIPMUX?\r\n";																			//Get c
 const char ATCommand_CIPMUX_SET0[]	= "AT+CIPMUX=0\r\n";																		//Set mode for single connection
 const char ATCommand_CIPMUX_SET1[]	= "AT+CIPMUX=1\r\n";																		//Set mode for multiple connection
 const char ATCommand_CIFSR[]				= "AT+CIFSR\r\n";																				//Get local IP address
-const char ATCommand_CIPSTART[]			= "AT+CIPSTART=\"TCP\",\"192.168.35.145\",80\r\n";				//Start connection
+const char ATCommand_CIPSTART[]			= "AT+CIPSTART=\"TCP\",\"192.168.35.125\",80\r\n";				//Start connection
 const char ATCommand_CIPSEND[]			= "AT+CIPSEND=";																				//Send data(without data and end string)
 const char ATCommand_CIPCLOSE[]			= "AT+CIPCLOSE\r\n";																		//Close connection
 
@@ -47,19 +47,19 @@ const char ATCommand_CIPCLOSE[]			= "AT+CIPCLOSE\r\n";																		//Close 
 
 
 
-char command_AT[] 				= "AT\r\n";
-char command_CWMODE[] 		= "AT+CWMODE=2\r\n";
-char command_CWDHCP[] 		= "AT+CWDHCP=0,0\r\n";
-char command_CWSAP[] 			= "AT+CWSAP=\"NuvotonBoard\",\"oscorepass\",5,3\r\n";
-char command_CIPAP[] 			= "AT+CIPAP=\"192.168.4.254\"\r\n";
-char command_CIPMUX[] 		= "AT+CIPMUX=1\r\n";
-char command_CIPSERVER[] 	= "AT+CIPSERVER=1,5386\r\n";
-char command_CIPSTART[] 	= "AT+CIPSTART=0,\"UDP\",\"0.0.0.0\",5386,5386,2\r\n";
-char command_CIPSTO[] 		= "AT+CIPSTO?\r\n";		
-		
+//char command_AT[] 				= "AT\r\n";
+//char command_CWMODE[] 		= "AT+CWMODE=2\r\n";
+//char command_CWDHCP[] 		= "AT+CWDHCP=0,0\r\n";
+//char command_CWSAP[] 			= "AT+CWSAP=\"NuvotonBoard\",\"oscorepass\",5,3\r\n";
+//char command_CIPAP[] 			= "AT+CIPAP=\"192.168.4.254\"\r\n";
+//char command_CIPMUX[] 		= "AT+CIPMUX=1\r\n";
+//char command_CIPSERVER[] 	= "AT+CIPSERVER=1,5386\r\n";
+//char command_CIPSTART[] 	= "AT+CIPSTART=0,\"UDP\",\"0.0.0.0\",5386,5386,2\r\n";
+//char command_CIPSTO[] 		= "AT+CIPSTO?\r\n";		
+//		
 
 
-void WIFI_PORT_Init()
+void WIFI_Init()
 {
     CLK->APBCLK0 |= CLK_APBCLK0_UART3CKEN_Msk;
     CLK->CLKSEL3 = (CLK->CLKSEL3 & (~CLK_CLKSEL3_UART3SEL_Msk)) | CLK_CLKSEL3_UART3SEL_HIRC;
@@ -72,7 +72,7 @@ void WIFI_PORT_Init()
     SYS->GPD_MFPL = (SYS->GPD_MFPL & (~(UART3_RXD_PD0_Msk | UART3_TXD_PD1_Msk))) | UART3_RXD_PD0 | UART3_TXD_PD1;
 }
 
-void WIFI_PORT_Start()
+void WIFI_Connect()
 {
 
     if (DEMO) {
@@ -143,29 +143,29 @@ void WIFI_PORT_Start()
         }
         if(ready) {
 
-            WIFI_PORT_Write(PRINT, ATCommand_AT, strlen(ATCommand_AT));
-            WIFI_PORT_Read(PRINT);
+            WIFI_Write(PRINT, ATCommand_AT, strlen(ATCommand_AT));
+            WIFI_Read(PRINT);
 
-            WIFI_PORT_Write(PRINT, ATCommand_CWMODE_SET1, strlen(ATCommand_CWMODE_SET1));
-            WIFI_PORT_Read(PRINT);
+            WIFI_Write(PRINT, ATCommand_CWMODE_SET1, strlen(ATCommand_CWMODE_SET1));
+            WIFI_Read(PRINT);
             if (DEMO) printf("|        Current mode : [1] Station           |\n");
 
-            WIFI_PORT_Write(PRINT, ATCommand_CWJAP_SET, strlen(ATCommand_CWJAP_SET));
-            WIFI_PORT_Read(PRINT);
+            WIFI_Write(PRINT, ATCommand_CWJAP_SET, strlen(ATCommand_CWJAP_SET));
+            WIFI_Read(PRINT);
             if (DEMO) printf("|        WiFi SSID :  \"SK_WiFiGIGA7EB1\"       |\n");
 
-						WIFI_PORT_Write(PRINT, ATCommand_CIPSTA_SET, strlen(ATCommand_CIPSTA_SET));
-            WIFI_PORT_Read(PRINT);
+						WIFI_Write(PRINT, ATCommand_CIPSTA_SET, strlen(ATCommand_CIPSTA_SET));
+            WIFI_Read(PRINT);
 						if (DEMO) printf("|        Set Station IP : 192.168.35.127      |\n");
 
-            WIFI_PORT_Write(PRINT, ATCommand_CIPMUX_SET0, strlen(ATCommand_CIPMUX_SET0));
-            WIFI_PORT_Read(PRINT);
+            WIFI_Write(PRINT, ATCommand_CIPMUX_SET0, strlen(ATCommand_CIPMUX_SET0));
+            WIFI_Read(PRINT);
             if (DEMO) printf("|    WiFi Single Server Connections Enabled   |\n");
 
             //WIFI_PORT_Write(PRINT, ATCommand_CIPMUX_GET, strlen(ATCommand_CIPMUX_SET0));
             //WIFI_PORT_Read(PRINT);
 						
-            WIFI_PORT_Write(PRINT, ATCommand_CIPSTART, strlen(ATCommand_CIPSTART));
+            WIFI_Write(PRINT, ATCommand_CIPSTART, strlen(ATCommand_CIPSTART));
             //WIFI_PORT_Read(PRINT);
             if (DEMO) printf("|       Server TCP enabled on 80 port         |\n");
 
@@ -188,7 +188,7 @@ void WIFI_PORT_Start()
 }
 
 /* Receive data from ESP8266 char by char, until last 'OK' message is received  */
-void WIFI_PORT_Read(int print)
+void WIFI_Read(int print)
 {
     char buf = 0;
     char lastBuf = 0;
@@ -215,7 +215,7 @@ void WIFI_PORT_Read(int print)
 }
 
 /* Send AT command on UART to ESP8266 char by char */
-void WIFI_PORT_Write(int print, const char *command, int lenCommand)
+void WIFI_Write(int print, const char *command, int lenCommand)
 {
     
     for (int i = 0; i < lenCommand; i++) {
@@ -227,7 +227,7 @@ void WIFI_PORT_Write(int print, const char *command, int lenCommand)
 }
 
 /* AT+CIPSEND : Send data */
-int WIFI_PORT_Send_Data(int print, t_netData *netData)
+int WIFI_SendData(int print, t_netData *netData)
 {
     int lengthStrLen = 0;
 		char *lengthStr;
@@ -247,21 +247,21 @@ int WIFI_PORT_Send_Data(int print, t_netData *netData)
     sprintf(lengthStr, "%d", netData->len);
 
     // AT+CIPSEND=
-    WIFI_PORT_Write(print, ATCommand_CIPSEND, strlen(ATCommand_CIPSEND));
+    WIFI_Write(print, ATCommand_CIPSEND, strlen(ATCommand_CIPSEND));
 		// <length>
-    WIFI_PORT_Write(print, lengthStr, lengthStrLen);
+    WIFI_Write(print, lengthStr, lengthStrLen);
 		// \r\n
-    WIFI_PORT_Write(print, ATCommand_END, strlen(ATCommand_END));
+    WIFI_Write(print, ATCommand_END, strlen(ATCommand_END));
 		
-    WIFI_PORT_Read(print);
+    WIFI_Read(print);
 
 		// >DATA
-    WIFI_PORT_Write(print, netData->data, netData->len);
+    WIFI_Write(print, netData->data, netData->len);
 		// \r\n
-    WIFI_PORT_Write(print, ATCommand_END, strlen(ATCommand_END));
+    WIFI_Write(print, ATCommand_END, strlen(ATCommand_END));
 		
 		// SEND OK
-    WIFI_PORT_Read(print);
+    WIFI_Read(print);
 		
 		free(lengthStr);
 		
@@ -274,7 +274,7 @@ int WIFI_PORT_Send_Data(int print, t_netData *netData)
 }
 
 /* +IPD : Receive network data */
-int WIFI_PORT_Receive_Data(int print, t_netData *netData)
+int WIFI_ReceiveData(int print, t_netData *netData)
 {
     char buff = 0;
     int isReceive = 0;
@@ -377,4 +377,21 @@ int WIFI_PORT_Receive_Data(int print, t_netData *netData)
 
 }
 
-
+		/*
+		// Bypass AT commands from debug port to WiFi port 
+    while(1)
+    {
+        if((WIFI_PORT->FIFOSTS & UART_FIFOSTS_RXEMPTY_Msk) == 0)
+        {
+            while(BYPASS_PORT->FIFOSTS & UART_FIFOSTS_TXFULL_Msk);
+            BYPASS_PORT->DAT = WIFI_PORT->DAT;
+        }
+				
+        if((BYPASS_PORT->FIFOSTS & UART_FIFOSTS_RXEMPTY_Msk) == 0)
+        {
+            while(WIFI_PORT->FIFOSTS & UART_FIFOSTS_TXFULL_Msk);
+            WIFI_PORT->DAT = BYPASS_PORT->DAT;
+        }
+				
+		}
+		*/

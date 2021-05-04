@@ -123,7 +123,7 @@
 //   <o.21>  UART5      <0=> Secure <1=> Non-Secure
 //   </h>
 */
-#define SCU_INIT_PNSSET3_VAL      0x90000
+#define SCU_INIT_PNSSET3_VAL      0x90004
 /*
     PNSSET4
 */
@@ -194,7 +194,7 @@
 //   <o.6>  PG      <0=> Secure <1=> Non-Secure
 //   <o.7>  PH      <0=> Secure <1=> Non-Secure
 */
-#define SCU_INIT_IONSSET_VAL      0xA
+#define SCU_INIT_IONSSET_VAL      0x9E
 /*
 // </h>
 */

@@ -20,24 +20,24 @@
 #define IIC_CMD        0X00
 #define IIC_RAM        0X40
 
-#define SPI0_SCK							PD2
-#define SPI0_SCK_GPIO_Port 		GPIOD
+//#define SPI0_SCK							PD2_NS
+//#define SPI0_SCK_GPIO_Port 		GPIOD
 
-#define SPI0_MISO							PD1
-#define SPI0_MISO_GPIO_Port 	GPIOD
+//#define SPI0_MISO							PD1_NS
+//#define SPI0_MISO_GPIO_Port 	GPIOD
 
-#define SPI0_MOSI							PD0
-#define SPI0_MOSI_GPIO_Port 	GPIOD
+//#define SPI0_MOSI							PD0_NS
+//#define SPI0_MOSI_GPIO_Port 	GPIOD
 
-#define OLED_DC 							PC11
+#define OLED_DC 							PC11_NS
 #define OLED_DC_GPIO_Port 		GPIOC
 
-#define OLED_RST							PC12
+#define OLED_RST							PC12_NS
 #define OLED_RST_GPIO_Port 		GPIOC
 
-#define OLED_CS								PD3
-#define OLED_CS_GPIO_Port 		GPIOD
-
+#define OLED_CS								PH9_NS
+#define OLED_CS_GPIO_Port 		GPIOH
+/*
 #define I2C1_SCL_Pin 					GPIO_PIN_8
 #define I2C1_SCL_GPIO_Port 		GPIOB
 #define I2C1_SDA_Pin 					GPIO_PIN_9
@@ -60,6 +60,7 @@
 
 #define SPI1_MOSI_0		HAL_GPIO_WritePin(SPI1_MOSI_GPIO_Port, SPI1_MOSI_Pin, GPIO_PIN_RESET)
 #define SPI1_MOSI_1		HAL_GPIO_WritePin(SPI1_MOSI_GPIO_Port, SPI1_MOSI_Pin, GPIO_PIN_SET)
+*/
 /*------------------------------------------------------------------------------------------------------*/
 
 uint8_t System_Init(void);
