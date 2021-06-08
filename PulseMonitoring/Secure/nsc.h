@@ -1,3 +1,10 @@
+/**********************************************************
+ *
+ * @file       : nsc.h
+ * @author     : HaewonSeo
+ *
+ * @note       : Non-Secure callable
+ **********************************************************/
 #ifndef __NSC_H__
 #define __NSC_H__
 
@@ -5,12 +12,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "NuMicro.h"
-#include "crypto_aes.h"
+#include "M2351_crypto.h"
 #include "MAX30102.h"
 
-#define DEMO		 1 
-#define OSCORE_CRYPTO_SUCCESS 1
-#define OSCORE_CRYPTO_FAIL 0
+#define DEMO			1 
+#define SUCCESS 	1
+#define FAIL 			0
 
 // Raw HR & SPo2 data from FIFO
 extern volatile int32_t hr_val;
@@ -19,7 +26,7 @@ extern volatile int32_t spo2_val;
 /* typedef for NonSecure callback functions */
 typedef __NONSECURE_CALL void (*NonSecure_funcptr)(uint32_t);
 
-extern uint32_t GetMillis();
+extern volatile uint32_t millis_counter;
 extern float beatsPerMinute;
 extern uint32_t beatAvg;
 
@@ -33,6 +40,19 @@ typedef struct	s_netData
 	int						len;
 }								t_netData;
 
+typedef struct s_digitallySignedData
+{
+	uint8_t				data[17];
+	uint8_t				pubKey1[25];
+	uint8_t				pubKey2[25];
+	uint8_t				R[25];
+	uint8_t				S[25];
+}							t_digitallySignedData;
+	
+
+__NONSECURE_ENTRY
+uint32_t GetSystemCoreClock(void);
+
 /*----------------------------------------------------------------------------
   NonSecure callable function for NonSecure callback
  *----------------------------------------------------------------------------*/
@@ -45,33 +65,37 @@ int32_t Secure_OLED_On_callback(NonSecure_funcptr *callback);
 
 
 /*----------------------------------------------------------------------------
-  Secure functions exported to NonSecure application
+  MAX30102 Heart-Rate Sensor functions exported to NonSecure application
   Must place in Non-secure Callable
  *----------------------------------------------------------------------------*/
 
 __NONSECURE_ENTRY
-uint32_t GetSystemCoreClock(void);
-
-__NONSECURE_ENTRY
 uint32_t MAX30102_Get_BPM();
 
+__NONSECURE_ENTRY
+uint32_t MAX30102_Get_EncryptedBPM();
+
 /*----------------------------------------------------------------------------
- CRYPTO Secure functions exported to NonSecure application
+ CRYPTO functions exported to NonSecure application
  Must place in Non-secure Callable
  *----------------------------------------------------------------------------*/
 
 __NONSECURE_ENTRY
-int32_t Encrypt_data(uint8_t *,uint8_t *);
+int32_t Encrypt_data(uint8_t *,uint8_t *, uint32_t);
 __NONSECURE_ENTRY
-int32_t Decrypt_data(uint8_t *,uint8_t *);
+int32_t Decrypt_data(uint8_t *,uint8_t *, uint32_t);
 __NONSECURE_ENTRY
 int32_t Store_key(uint8_t *);
 __NONSECURE_ENTRY
 int32_t Store_iv(uint8_t *);
 
+__NONSECURE_ENTRY
+void M2351_LoadKey();
+__NONSECURE_ENTRY
+void M2351_DeleteKeySignature();
 
 /*----------------------------------------------------------------------------
- PRINT Secure functions exported to NonSecure application
+ PRINT functions exported to NonSecure application
  Must place in Non-secure Callable
  *----------------------------------------------------------------------------*/
 
@@ -81,9 +105,8 @@ __NONSECURE_ENTRY
 int32_t printSecure(char *,void *,uint8_t);
 __NONSECURE_ENTRY
 int32_t printNetworkData(t_netData *);
-
-
-
+__NONSECURE_ENTRY
+int32_t printDigitallySignedData(t_digitallySignedData *dsd);
 
 
 #endif /* __NSC_H__ */

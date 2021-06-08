@@ -13,6 +13,7 @@
 //#include "stm32f1xx_hal_gpio.h"
 //#include "main.h"
 #include <stdint.h>
+#include "NuMicro.h"
 
 #define USE_SPI_4W 1
 #define USE_IIC 0

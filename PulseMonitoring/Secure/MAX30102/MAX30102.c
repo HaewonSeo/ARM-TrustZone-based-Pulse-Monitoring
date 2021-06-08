@@ -4,7 +4,6 @@
 // *           MAX30102 driver header file
 // *
 // * @note
-// * Copyright (C) 2019 Nuvoton Technology Corp. All rights reserved.
 // ********************************************************************** **/
 
 
@@ -78,7 +77,7 @@ volatile int32_t hr_val;
 volatile int32_t spo2_val;
 
 extern volatile uint32_t millis_counter;
-extern uint32_t GetMillis();
+//extern uint32_t GetMillis();
 extern uint32_t OLED_printTime;
 
 int16_t IR_AC_Max = 20;
@@ -291,8 +290,8 @@ uint32_t MAX30102_ComputeBPM()
     //printf("\nWe sensed a beat!\n");
 		//printf("\nmillis = %d\t delta = %ld\n", millis_counter, delta);
 
-    delta = (GetMillis() - lastBeat) - OLED_printTime;
-		lastBeat = GetMillis();
+    delta = (millis_counter - lastBeat) - OLED_printTime;
+		lastBeat = millis_counter;
     
     beatsPerMinute = 60 / (delta / 1000.0);
 

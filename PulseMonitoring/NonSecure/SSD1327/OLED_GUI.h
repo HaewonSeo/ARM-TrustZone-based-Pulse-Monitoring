@@ -14,6 +14,7 @@ Achieve time display: adaptive size display time minutes and seconds
 #define __OLED_GUI_H
 
 #include <stdint.h>
+#include "NuMicro.h"
 #include "OLED_Driver.h"
 #include "../SSD1327_Fonts/fonts.h"
 
@@ -107,6 +108,12 @@ void GUI_DisNum(POINT Xpoint, POINT Ypoint, int32_t Nummber, sFONT* Font, COLOR 
 void GUI_Showtime(POINT Xstart, POINT Ystart, POINT Xend, POINT Yend, DEV_TIME *pTime, COLOR Color);
 //show
 void GUI_Show(void);
+
+// User defined fuction
+void OLED_Config(void);
+void OLED_Background_On(void);
+void OLED_BPM(uint32_t bpm);
+void OLED_Off(void);
 
 
 static const unsigned char gImage_ninja[8198] = { 0X00,0X04,0X80,0X00,0X80,0X00,

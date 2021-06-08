@@ -7,7 +7,7 @@
 	Provide the hardware underlying interface	
 ******************************************************************************/
 #include "DEV_Config.h"
-#include "NuMicro.h"
+
 //#include "stm32f1xx_hal_i2c.h"
 //#include "i2c.h"
 

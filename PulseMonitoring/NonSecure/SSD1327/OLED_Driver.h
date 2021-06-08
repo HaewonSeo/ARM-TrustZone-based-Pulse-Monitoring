@@ -79,6 +79,8 @@ void OLED_Clear(COLOR  Color);
 void OLED_Display(void);
 void OLED_ClearWindow(POINT Xstart, POINT Ystart, POINT Xend, POINT Yend, COLOR Color);
 void OLED_DisWindow(POINT Xstart, POINT Ystart, POINT Xend, POINT Yend);
+
+
 #endif  
 	 
 	 

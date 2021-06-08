@@ -11,8 +11,8 @@ Achieve display characters: Display a single character, string, number
 Achieve time display: adaptive size display time minutes and seconds		
 ******************************************************************************/
 #include <stdio.h>
+
 #include "OLED_GUI.h"
-#include "DEV_Config.h"
 
 extern OLED_DIS sOLED_DIS;
 extern COLOR Buffer[OLED_WIDTH / 2 * OLED_HEIGHT];
@@ -533,5 +533,80 @@ void GUI_Show(void)
 	Driver_Delay_ms(2000);
 }
 
+
+/*----------------------------------------------------------------------------
+  User Function 
+ *----------------------------------------------------------------------------*/
+void OLED_Config(void)
+{
+	/* Init GPIO Port C for non-secure OLED control */
+	GPIO_SetMode(PC_NS, BIT12 | BIT11, GPIO_MODE_OUTPUT);
+	PC11_NS = 1;		//OLED_DC(DATA or COMMAND)
+	PC12_NS = 1;		//OLED_RST
+	
+	
+  /* USER CODE BEGIN 2 */  
+	if(PRINT)
+		printf("**********1.5inch OLED Init**********\r\n");
+	System_Init();
+  
+	if(PRINT)
+		printf("OLED_Init()...\r\n");
+	OLED_Init(SCAN_DIR_DFT);//SCAN_DIR_DFT = D2U_L2R
+	
+	if(PRINT)
+		printf("OLED_Show()...\r\n");	
+	GUI_Show();
+	
+	if(PRINT)
+		printf("************************************\r\n");
+	OLED_Clear(OLED_BACKGROUND);//OLED_BACKGROUND
+	OLED_Display();
+}
+
+void OLED_Background_On()
+{
+	OLED_SetWindow(0, 0, 127, 127);
+	OLED_ClearWindow(0, 0, 127, 127, BLACK);
+	
+	if(PRINT)
+		printf("Show toolbar icons\n");
+	GUI_Disbitmap(0  , 2, Signal816  , 16, 8);
+	GUI_Disbitmap(24 , 2, Bluetooth88, 8 , 8);
+	GUI_Disbitmap(40 , 2, Msg816     , 16, 8);
+	GUI_Disbitmap(64 , 2, GPRS88     , 8 , 8);
+	GUI_Disbitmap(90 , 2, Alarm88    , 8 , 8);
+	GUI_Disbitmap(112, 2, Bat816     , 16, 8);
+
+	if(PRINT)
+		printf("Show background(16 gray map)\n");
+	GUI_DisGrayMap(0, 0, gImage_background);
+	
+	
+	OLED_DisWindow(0, 0, 127, 127);
+}
+
+void OLED_BPM(uint32_t bpm)
+{	
+	if(bpm == 9999)
+	{
+		OLED_SetWindow(0, 10, 127, 50);
+		OLED_ClearWindow(0, 10, 127, 50, BLACK);
+		OLED_DisWindow(0, 10, 127, 50);
+		return ;
+	}
+	
+	if(PRINT)
+		printf("Show Heart Rate\n");
+	OLED_SetWindow(0, 10, 127, 50);
+	GUI_DisNum(22 , 25, bpm, &Font24, FONT_BACKGROUND, WHITE);
+	OLED_DisWindow(0, 10, 127, 50);
+}
+
+void OLED_Off(void)
+{
+	OLED_Clear(OLED_BACKGROUND);//OLED_BACKGROUND
+	OLED_Display();
+}
 
 

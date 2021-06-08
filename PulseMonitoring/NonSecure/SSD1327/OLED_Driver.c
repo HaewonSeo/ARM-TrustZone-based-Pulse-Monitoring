@@ -9,7 +9,6 @@ note:
 Image scanning:
 Please use progressive scanning to generate images or fonts			
 ******************************************************************************/
-#include "NuMicro.h"
 
 #include "OLED_Driver.h"
 #include <stdio.h>
@@ -301,3 +300,7 @@ void OLED_DisWindow(POINT Xstart, POINT Ystart, POINT Xend, POINT Yend)
 		pBuf = (COLOR *)Buffer + Xstart + (Ystart + page + 1) * (sOLED_DIS.OLED_Dis_Column / 2);
 	}
 }
+
+
+	
+

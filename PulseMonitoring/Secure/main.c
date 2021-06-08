@@ -1,14 +1,11 @@
-/***************************************************************************
- * @file     main.c
- * @version  V3.00
- * $Revision: 3 $
- * $Date: 16/10/17 2:06p $
- * @brief
- *           Demonstrate how to set I2C Master mode and Slave mode.
- *           And show how a master access a slave on a chip.
- * @note
- * Copyright (C) 2016 Nuvoton Technology Corp. All rights reserved.
-*****************************************************************************/
+/**********************************************************
+ *
+ * @file       : main.c
+ * @author     : HaewonSeo
+ *
+ * @note       : Main of secure world
+ **********************************************************/
+ 
 #include <arm_cmse.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -16,8 +13,9 @@
 #include "partition_M2351.h"
 #include "nsc.h"
 #include "MAX30102.h"
-#include "crypto_aes.h"
+#include "M2351_crypto.h"
 
+//extern int ssl_client1(void);
 
 #define DEBUG_PORT			UART0_NS
 #define WIFI_PORT   		UART3_NS    // Used to connect to WIFI module
@@ -30,18 +28,6 @@ typedef __NONSECURE_CALL void (*NonSecure_funcptr)(uint32_t);
 typedef int32_t (*Secure_funcptr)(uint32_t);
 
 volatile uint32_t millis_counter;
-//max30102_config_t max30102 = {};
-
-
-/*----------------------------------------------------------------------------
-  Secure LED control function
- *----------------------------------------------------------------------------*/
-
-uint32_t GetMillis()
-{
-	return millis_counter;
-}
-
 
 /*----------------------------------------------------------------------------
   SysTick IRQ Handler
@@ -51,25 +37,22 @@ void SysTick_Handler(void)
     static uint32_t u32Ticks;
 
 		millis_counter++;
-		//printf("\nSysTick : %d \n", millis_counter);
+	
     switch(u32Ticks++)
     {
         case   0:
-            //OLED_Heartrate(1, (int)u32Ticks);
             break;
         case 100:
             break;
         case 200:
             break;
         case 300:
-						//OLED_Heartrate(1, (int)u32Ticks);
             break;
         case 400:
             break;
         case 500:
             break;
         case 600:
-						//OLED_Heartrate(1, (int)u32Ticks);
             u32Ticks = 0;
             break;
         default:
@@ -250,12 +233,6 @@ void I2C0_Init(void)
     /* Set I2C0 Slave Addresses */
     I2C_SetSlaveAddr(I2C0, 0, MAX30102_ADDR, 0);   /* MAX30102 Slave Address : 0x57 */	
 
-    /* Set I2C0 Slave Addresses Mask */
-    //I2C_SetSlaveAddrMask(I2C0, 0, 0x01);	
-	
-    /* Enable I2C0 interrupt */
-    //I2C_EnableInt(I2C0);
-    //NVIC_EnableIRQ(I2C0_IRQn);
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
@@ -342,7 +319,7 @@ void testCryptDeCrypt() {
     Store_key(key);
     Store_iv(iv);
 
-    int c = Encrypt_data(plainData, cipheredData);
+    int c = Encrypt_data(plainData, cipheredData, 16);
     if (c == NULL) printSecure("Error : 128bits only", NULL, NULL);
 
     if (DEMO) {
@@ -353,7 +330,7 @@ void testCryptDeCrypt() {
         printBlock(cipheredData);
     }
 
-    int r = Decrypt_data(cipheredData, resultData);
+    int r = Decrypt_data(cipheredData, resultData, 16);
     if (r == NULL) printSecure("Error : 128bits only", NULL, NULL);
 
     if (DEMO) {
@@ -407,23 +384,41 @@ int32_t main(void)
     printf("|             Secure is running ...           |\n");
     printf("+---------------------------------------------+\n");
 
+
+	/*
+		char priKey[49] = {0};
+		char pubKey1[49] = {0}, pubKey2[49] = {0};
+		char R[49] = {0}, S[49] = {0};
+		
+		M2351_FMC_Read_Key(0, 3, priKey);
+		printf("prikey(%d-bits) : %s\n", strlen(priKey) * 4, priKey); 
+		
+		M2351_ECC_GenerateKey(priKey, pubKey1, pubKey2);
+		printf("pubKey1(%d-bits) : %s\npubKey2(%d-bits) : %s\n", strlen(pubKey1) * 4, pubKey1, strlen(pubKey2) * 4, pubKey2); 
+		
+		__attribute__((aligned(4))) uint8_t plainBPM[16] = {0};
+		uint8_t hashBPM[41] = {0};
+		
+		M2351_SHA_Hash(plainBPM, hashBPM);
+		printf("\nhashBPM(%d-bits):\n%s\n", strlen(hashBPM) * 4, hashBPM);
+		
+		M2351_ECDSA_GenerateSignature(hashBPM, priKey, R, S);
+		M2351_ECDSA_VerificationSignature(hashBPM, pubKey1, pubKey2, R, S);
+		
+		while(1);
+		*/
 		//testCryptDeCrypt();
 		
 		/* Config MAX30102 */
 		MAX30102_Config();
 
-
-		Nonsecure_Init();
-		
+		Nonsecure_Init();		
 		
 		do
     {
-				
 			//OLED_HeartRate(0, hr++);
 			//CLK_SysTickLongDelay(2000000);
-
-			
-      //__WFI();
+      __WFI();
     }
     while(1);			
 	

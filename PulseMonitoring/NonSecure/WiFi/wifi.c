@@ -1,14 +1,12 @@
-/*********************************************************
+  /**********************************************************
  *
- * @file       : Nuvoton_M2351_wifi_module.c
- * @version    : v1.00
- * @created on : 11 mars 2019
- * @updated on : 13 mars 2019
+ * @file       : wifi.c
  * @author     : HaewonSeo
  *
- * @note       : WiFi Module
- *********************************************************
-*/
+ * @note       : ESP8266 WiFi Module
+ *
+ **********************************************************/
+
 
 #include <string.h>
 #include "wifi.h"
@@ -42,22 +40,66 @@ const char ATCommand_CIPSTART[]			= "AT+CIPSTART=\"TCP\",\"192.168.35.125\",80\r
 const char ATCommand_CIPSEND[]			= "AT+CIPSEND=";																				//Send data(without data and end string)
 const char ATCommand_CIPCLOSE[]			= "AT+CIPCLOSE\r\n";																		//Close connection
 
+enum {PULSE, PUBKEY1, PUBKEY2, SIGNATURE_R, SIGNATURE_S};
 
-/* TCP/IP Server */
+const char GET_MSG_HEAD[] 					= "GET /process.php?pulse=";
+const char *GET_MSG_BODY[5]					= {"pulse=", "pubKey1=", "pubKey2=", "signatureR=", "signatureS="};
+const char GET_MSG_TAIL[] 					= " HTTP/1.1\nHost: 127.0.0.1\nConnection: keep-alive\nAccept: */*\n\n";
+//const char GET_MSG[] = "GET /process.php?pulse=112345 HTTP/1.1\nHost: 192.168.35.128\nConnection: keep-alive\nAccept: */*\n\n";
 
 
+ static void stringKeyToKey(char *stringKey, uint8_t *key) {
 
-//char command_AT[] 				= "AT\r\n";
-//char command_CWMODE[] 		= "AT+CWMODE=2\r\n";
-//char command_CWDHCP[] 		= "AT+CWDHCP=0,0\r\n";
-//char command_CWSAP[] 			= "AT+CWSAP=\"NuvotonBoard\",\"oscorepass\",5,3\r\n";
-//char command_CIPAP[] 			= "AT+CIPAP=\"192.168.4.254\"\r\n";
-//char command_CIPMUX[] 		= "AT+CIPMUX=1\r\n";
-//char command_CIPSERVER[] 	= "AT+CIPSERVER=1,5386\r\n";
-//char command_CIPSTART[] 	= "AT+CIPSTART=0,\"UDP\",\"0.0.0.0\",5386,5386,2\r\n";
-//char command_CIPSTO[] 		= "AT+CIPSTO?\r\n";		
-//		
+    //printSecure("StringKeyToKey\n", NULL, NULL);
 
+    uint8_t temp0;
+    int i = 0;
+
+    //printSecure("stringKey[0] = %x\n", NULL,(uint8_t)stringKey[0]);
+
+    for (int nb=0; nb < 32; nb++) {
+        if (stringKey[nb] >= 0x30 && stringKey[nb] <= 0x39) {
+            if (!(nb%2)) temp0 = ((uint8_t)stringKey[nb]-0x30)<<4;
+            else temp0 = temp0 | ((uint8_t)stringKey[nb]-0x30);
+            //printSecure("temp0_A : %x\n", NULL,temp0);
+        }
+        else if (stringKey[nb] >= 0x61 && stringKey[nb] <= 0x66) {
+            if (!(nb%2)) temp0 = (stringKey[nb]-0x57)<<4;
+            else temp0 = temp0 | (stringKey[nb]-0x57);
+            //printSecure("temp0_B : %x\n", NULL,temp0);
+        }
+        else {
+            printSecure("StringKeyToKey ERROR : Bad Key.\n", NULL, NULL);
+            break;
+        }
+        i = (int)(nb/2);
+        key[i] = temp0;
+    }
+
+}
+
+
+static void keyToStringKey(uint8_t *key, char *stringKey) {
+
+    //printSecure("keyToStringKey\n", NULL, NULL);
+    //printSecure("key[0] = %x\n", NULL,(uint8_t)key[0]);
+    uint8_t temp0;
+    int i = 0;
+
+    for (int nb=0; nb < 32; nb++) {
+
+        i = (int)(nb/2);
+        if (!(nb%2)) temp0 = (key[i]>>4) & 0x0f;
+        else temp0 = 0x0f & key[i];
+
+        if (temp0 >= 0 && temp0 <= 9) stringKey[nb] = (char)(temp0+0x30);
+        else if (temp0 >= 0xa && temp0 <= 0xf) stringKey[nb] = (char)(temp0+0x57);
+
+    }
+
+    //printSecure("stringKey = %s\n", stringKey, NULL);
+
+}
 
 void WIFI_Init()
 {
@@ -377,21 +419,112 @@ int WIFI_ReceiveData(int print, t_netData *netData)
 
 }
 
-		/*
-		// Bypass AT commands from debug port to WiFi port 
-    while(1)
-    {
-        if((WIFI_PORT->FIFOSTS & UART_FIFOSTS_RXEMPTY_Msk) == 0)
-        {
-            while(BYPASS_PORT->FIFOSTS & UART_FIFOSTS_TXFULL_Msk);
-            BYPASS_PORT->DAT = WIFI_PORT->DAT;
-        }
-				
-        if((BYPASS_PORT->FIFOSTS & UART_FIFOSTS_RXEMPTY_Msk) == 0)
-        {
-            while(WIFI_PORT->FIFOSTS & UART_FIFOSTS_TXFULL_Msk);
-            WIFI_PORT->DAT = BYPASS_PORT->DAT;
-        }
-				
+
+void WIFI_Send_BPM(int pulse)
+{
+	t_netData *get;
+	int tmpPulse;
+	char *strPulse;
+	int strPulseLen = 0;
+	int totalLen;
+
+	//Convert int pulse to char *strPulse
+	if (pulse == 0)
+		strPulseLen = 1;
+	else
+	{
+		tmpPulse = pulse;
+		while (tmpPulse)
+		{
+			strPulseLen++;
+			tmpPulse /= 10;
 		}
-		*/
+	}
+	strPulse = calloc((strPulseLen + 1), sizeof(char));
+	sprintf(strPulse, "%d", pulse);
+	
+	//Create t_netData *get
+	totalLen = strlen(GET_MSG_HEAD) + strlen(GET_MSG_BODY[PULSE]) + strlen(GET_MSG_TAIL) + strPulseLen;
+	
+	get = calloc(1, sizeof(t_netData));
+	get->data = calloc(totalLen, sizeof(char));
+	get->len = totalLen;
+	
+	strcat(get->data, GET_MSG_HEAD);
+	strcat(get->data, GET_MSG_BODY[PULSE]);
+	strcat(get->data, strPulse);
+	strcat(get->data, GET_MSG_TAIL);
+
+	//printNetworkData(get);
+	WIFI_SendData(0, get);
+	
+	free(get->data);
+	free(get);
+	free(strPulse);
+	
+}
+
+
+
+void WIFI_Send_EncryptedMsg(uint8_t *encryptedMsg, uint32_t body)
+{
+	t_netData *get;
+	char *strPulse;
+	int strPulseLen = 32;
+	int totalLen;
+	
+	//Convert uint8_t *encryptedBPM to char *strEncrytedBPM
+	strPulse = calloc((strPulseLen + 1), sizeof(char));
+//	for(int i = 0; i < strPulseLen; i++)
+//		strPulse[i] = encryptedBPM[i];
+	keyToStringKey(encryptedMsg, strPulse);
+	strPulse[strPulseLen+1] = '\0';
+
+
+//	printf("stringKey : %s\n", strPulse);
+	
+//  __attribute__((aligned(4))) uint8_t resultData[16] = {0};
+//	 stringKeyToKey(strPulse, resultData);
+//	for(int i =0 ; i <32; i++)
+//		printf("%c", strPulse[i]);
+//	printf("\n");
+	//printf("\nplainBPM\n");
+	//printBlock(resultData);
+	
+	totalLen = strlen(GET_MSG_HEAD) + strlen(GET_MSG_BODY[body]) + strlen(GET_MSG_TAIL) + strPulseLen;
+	
+	//Create t_netData *get
+	get = calloc(1, sizeof(t_netData));
+	get->data = calloc(totalLen, sizeof(char));
+	get->len = totalLen;
+	
+	strcat(get->data, GET_MSG_HEAD);
+	strcat(get->data,	GET_MSG_BODY[body]);
+	strcat(get->data, strPulse);
+	strcat(get->data, GET_MSG_TAIL);
+	
+	//printBlock(encryptedBPM);
+	//printBlock(strPulse);
+	//printf("\nstrPulse : %s\n", strPulse);
+	// printf("\nstrPulseLen : %d\n", strlen(strPulse));
+	printNetworkData(get);
+	
+	WIFI_SendData(0, get);
+	 
+	free(get->data);
+	free(get);
+	free(strPulse);
+	
+}
+
+void WIFI_Send_DigitallySignedData(t_digitallySignedData *dsd)
+{
+	uint32_t u32i;
+	
+	WIFI_Send_EncryptedMsg(dsd->data, PULSE);
+	WIFI_Send_EncryptedMsg(dsd->pubKey1, PUBKEY1);
+	WIFI_Send_EncryptedMsg(dsd->pubKey2, PUBKEY2);
+	WIFI_Send_EncryptedMsg(dsd->R, SIGNATURE_R);
+	WIFI_Send_EncryptedMsg(dsd->S, SIGNATURE_S);
+	return ;
+}
