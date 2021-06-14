@@ -22,7 +22,7 @@ const char ATCommand_CWMODE_SET1[] = "AT+CWMODE=1\r\n";								  //Set current m
 const char ATCommand_CWMODE_SET2[] = "AT+CWMODE=2\r\n";								  //Set current mode2 : softAP
 const char ATCommand_CWMODE_SET3[] = "AT+CWMODE=3\r\n";								  //Set current mode3 : Station + softAP
 const char ATCommand_CWJAP_GET[] = "AT+CWJAP=?\r\n";								  //Get AP's info which is connected
-const char ATCommand_CWJAP_SET[] = "AT+CWJAP=\"SK_WiFiGIGA7EB1\",\"1603004500\"\r\n"; //Connect to WiFi AP
+const char ATCommand_CWJAP_SET[] = "AT+CWJAP=\"WIFIID\",\"WIFIIDPW\"\r\n"; //Connect to WiFi AP
 const char ATCommand_CIPSTA_GET[] = "AT+CIPSTA=?\r\n";								  //Get Station IP
 const char ATCommand_CIPSTA_SET[] = "AT+CIPSTA=\"192.168.35.127\"\r\n";				  //Set Station IP
 
