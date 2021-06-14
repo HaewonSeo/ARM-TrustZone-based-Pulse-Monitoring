@@ -1,0 +1,2680 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m23
+	.eabi_attribute	6, 16	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.eabi_attribute	34, 0	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 4	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 2	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"OLED_Driver.c"
+	.file	1 "C:\\" "Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stdint.h"
+	.file	2 "C:\\Users\\shw26\\OneDrive\\Desktop\\2021\\2021-1\\\354\272\241\354\212\244\355\206\244\353\224\224\354\236\220\354\235\2702\\Nuvoton\\M2351_BSP_v3.00.004\\M2351Series_BSP_CMSIS_V3.00.004\\MyProject\\PulseMonitoring\\NonSecure" "SSD1327/OLED_Driver.c"
+	.file	3 "C:\\Users\\shw26\\OneDrive\\Desktop\\2021\\2021-1\\\354\272\241\354\212\244\355\206\244\353\224\224\354\236\220\354\235\2702\\Nuvoton\\M2351_BSP_v3.00.004\\M2351Series_BSP_CMSIS_V3.00.004\\MyProject\\PulseMonitoring\\NonSecure" "./SSD1327/OLED_Driver.h"
+	.section	.text.OLED_WriteReg,"ax",%progbits
+	.hidden	OLED_WriteReg                   @ -- Begin function OLED_WriteReg
+	.globl	OLED_WriteReg
+	.p2align	2
+	.type	OLED_WriteReg,%function
+	.code	16                              @ @OLED_WriteReg
+	.thumb_func
+OLED_WriteReg:
+.Lfunc_begin0:
+	.loc	2 41 0                          @ SSD1327/OLED_Driver.c:41:0
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	mov	r1, r0
+	add	r2, sp, #12
+	strb	r0, [r2]
+	ldr	r0, __arm_cp.0_0
+	movs	r3, #0
+.Ltmp0:
+	.loc	2 43 13 prologue_end            @ SSD1327/OLED_Driver.c:43:13
+	str	r3, [r0]
+	ldr	r0, __arm_cp.0_1
+	.loc	2 44 13                         @ SSD1327/OLED_Driver.c:44:13
+	str	r3, [r0]
+	.loc	2 45 20                         @ SSD1327/OLED_Driver.c:45:20
+	ldrb	r2, [r2]
+	.loc	2 45 3 is_stmt 0                @ SSD1327/OLED_Driver.c:45:3
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	mov	r0, r2
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	bl	SPI4W_Write_Byte
+	movs	r0, #1
+	.loc	2 46 13 is_stmt 1               @ SSD1327/OLED_Driver.c:46:13
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	str	r0, [r1]
+	.loc	2 51 1                          @ SSD1327/OLED_Driver.c:51:1
+	add	sp, #16
+	pop	{r7, pc}
+.Ltmp1:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:1
+__arm_cp.0_0:
+	.long	1342195884                      @ 0x500048ac
+.Lcpi_end0:
+	.size	__arm_cp.0_0, .Lcpi_end0-__arm_cp.0_0
+__arm_cp.0_1:
+	.long	1342196196                      @ 0x500049e4
+.Lcpi_end1:
+	.size	__arm_cp.0_1, .Lcpi_end1-__arm_cp.0_1
+.Lfunc_end0:
+	.size	OLED_WriteReg, .Lfunc_end0-OLED_WriteReg
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.OLED_WriteData,"ax",%progbits
+	.hidden	OLED_WriteData                  @ -- Begin function OLED_WriteData
+	.globl	OLED_WriteData
+	.p2align	2
+	.type	OLED_WriteData,%function
+	.code	16                              @ @OLED_WriteData
+	.thumb_func
+OLED_WriteData:
+.Lfunc_begin1:
+	.loc	2 54 0 is_stmt 1                @ SSD1327/OLED_Driver.c:54:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r4, lr}
+	push	{r4, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r4, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	mov	r1, r0
+	add	r2, sp, #12
+	strb	r0, [r2]
+	ldr	r0, __arm_cp.1_0
+	movs	r3, #1
+.Ltmp2:
+	.loc	2 56 13 prologue_end            @ SSD1327/OLED_Driver.c:56:13
+	str	r3, [r0]
+	ldr	r0, __arm_cp.1_1
+	movs	r4, #0
+	.loc	2 57 13                         @ SSD1327/OLED_Driver.c:57:13
+	str	r4, [r0]
+	.loc	2 58 22                         @ SSD1327/OLED_Driver.c:58:22
+	ldrb	r2, [r2]
+	.loc	2 58 5 is_stmt 0                @ SSD1327/OLED_Driver.c:58:5
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	mov	r0, r2
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	str	r3, [sp]                        @ 4-byte Spill
+	bl	SPI4W_Write_Byte
+	.loc	2 59 13 is_stmt 1               @ SSD1327/OLED_Driver.c:59:13
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	str	r0, [r1]
+	.loc	2 64 1                          @ SSD1327/OLED_Driver.c:64:1
+	add	sp, #16
+	pop	{r4, pc}
+.Ltmp3:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:1
+__arm_cp.1_0:
+	.long	1342195884                      @ 0x500048ac
+.Lcpi_end2:
+	.size	__arm_cp.1_0, .Lcpi_end2-__arm_cp.1_0
+__arm_cp.1_1:
+	.long	1342196196                      @ 0x500049e4
+.Lcpi_end3:
+	.size	__arm_cp.1_1, .Lcpi_end3-__arm_cp.1_1
+.Lfunc_end1:
+	.size	OLED_WriteData, .Lfunc_end1-OLED_WriteData
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.OLED_SetGramScanWay,"ax",%progbits
+	.hidden	OLED_SetGramScanWay             @ -- Begin function OLED_SetGramScanWay
+	.globl	OLED_SetGramScanWay
+	.p2align	2
+	.type	OLED_SetGramScanWay,%function
+	.code	16                              @ @OLED_SetGramScanWay
+	.thumb_func
+OLED_SetGramScanWay:
+.Lfunc_begin2:
+	.loc	2 131 0 is_stmt 1               @ SSD1327/OLED_Driver.c:131:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	str	r0, [sp]
+.Ltmp4:
+	.loc	2 133 31 prologue_end           @ SSD1327/OLED_Driver.c:133:31
+	ldr	r0, [sp]
+	.loc	2 133 29 is_stmt 0              @ SSD1327/OLED_Driver.c:133:29
+	ldr	r1, __arm_cp.2_0
+	str	r0, [r1, #4]
+.Ltmp5:
+	.loc	2 136 8 is_stmt 1               @ SSD1327/OLED_Driver.c:136:8
+	ldr	r0, [sp]
+	.loc	2 136 28 is_stmt 0              @ SSD1327/OLED_Driver.c:136:28
+	cmp	r0, #0
+	beq	.LBB2_4
+	b	.LBB2_1
+.LBB2_1:
+	.loc	2 136 31                        @ SSD1327/OLED_Driver.c:136:31
+	ldr	r0, [sp]
+	.loc	2 136 51                        @ SSD1327/OLED_Driver.c:136:51
+	cmp	r0, #1
+	beq	.LBB2_4
+	b	.LBB2_2
+.LBB2_2:
+	.loc	2 136 54                        @ SSD1327/OLED_Driver.c:136:54
+	ldr	r0, [sp]
+	.loc	2 136 74                        @ SSD1327/OLED_Driver.c:136:74
+	cmp	r0, #2
+	beq	.LBB2_4
+	b	.LBB2_3
+.LBB2_3:
+	.loc	2 136 77                        @ SSD1327/OLED_Driver.c:136:77
+	ldr	r0, [sp]
+.Ltmp6:
+	.loc	2 136 8                         @ SSD1327/OLED_Driver.c:136:8
+	cmp	r0, #3
+	bne	.LBB2_5
+	b	.LBB2_4
+.LBB2_4:
+.Ltmp7:
+	.loc	2 137 35 is_stmt 1              @ SSD1327/OLED_Driver.c:137:35
+	ldr	r0, __arm_cp.2_0
+	movs	r1, #128
+	strh	r1, [r0]
+	.loc	2 138 33                        @ SSD1327/OLED_Driver.c:138:33
+	strh	r1, [r0, #2]
+	movs	r1, #0
+	.loc	2 139 33                        @ SSD1327/OLED_Driver.c:139:33
+	strh	r1, [r0, #8]
+	.loc	2 140 33                        @ SSD1327/OLED_Driver.c:140:33
+	strh	r1, [r0, #10]
+	.loc	2 141 5                         @ SSD1327/OLED_Driver.c:141:5
+	b	.LBB2_6
+.Ltmp8:
+.LBB2_5:
+	.loc	2 142 35                        @ SSD1327/OLED_Driver.c:142:35
+	ldr	r0, __arm_cp.2_0
+	movs	r1, #128
+	strh	r1, [r0]
+	.loc	2 143 33                        @ SSD1327/OLED_Driver.c:143:33
+	strh	r1, [r0, #2]
+	movs	r1, #0
+	.loc	2 144 33                        @ SSD1327/OLED_Driver.c:144:33
+	strh	r1, [r0, #8]
+	.loc	2 145 33                        @ SSD1327/OLED_Driver.c:145:33
+	strh	r1, [r0, #10]
+	b	.LBB2_6
+.Ltmp9:
+.LBB2_6:
+	.loc	2 147 1                         @ SSD1327/OLED_Driver.c:147:1
+	add	sp, #4
+	bx	lr
+.Ltmp10:
+	.p2align	2
+@ %bb.7:
+	.loc	2 0 1 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:1
+__arm_cp.2_0:
+	.long	sOLED_DIS
+.Lcpi_end4:
+	.size	__arm_cp.2_0, .Lcpi_end4-__arm_cp.2_0
+.Lfunc_end2:
+	.size	OLED_SetGramScanWay, .Lfunc_end2-OLED_SetGramScanWay
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.OLED_Init,"ax",%progbits
+	.hidden	OLED_Init                       @ -- Begin function OLED_Init
+	.globl	OLED_Init
+	.p2align	1
+	.type	OLED_Init,%function
+	.code	16                              @ @OLED_Init
+	.thumb_func
+OLED_Init:
+.Lfunc_begin3:
+	.loc	2 154 0 is_stmt 1               @ SSD1327/OLED_Driver.c:154:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+.Ltmp11:
+	.loc	2 156 5 prologue_end            @ SSD1327/OLED_Driver.c:156:5
+	bl	OLED_Reset
+	.loc	2 159 5                         @ SSD1327/OLED_Driver.c:159:5
+	bl	OLED_InitReg
+	.loc	2 162 25                        @ SSD1327/OLED_Driver.c:162:25
+	ldr	r0, [sp, #4]
+	.loc	2 162 5 is_stmt 0               @ SSD1327/OLED_Driver.c:162:5
+	bl	OLED_SetGramScanWay
+	movs	r0, #200
+	.loc	2 163 5 is_stmt 1               @ SSD1327/OLED_Driver.c:163:5
+	bl	Driver_Delay_ms
+	movs	r0, #175
+	.loc	2 166 5                         @ SSD1327/OLED_Driver.c:166:5
+	bl	OLED_WriteReg
+	.loc	2 167 1                         @ SSD1327/OLED_Driver.c:167:1
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp12:
+.Lfunc_end3:
+	.size	OLED_Init, .Lfunc_end3-OLED_Init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.OLED_Reset,"ax",%progbits
+	.p2align	2                               @ -- Begin function OLED_Reset
+	.type	OLED_Reset,%function
+	.code	16                              @ @OLED_Reset
+	.thumb_func
+OLED_Reset:
+.Lfunc_begin4:
+	.loc	2 24 0                          @ SSD1327/OLED_Driver.c:24:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	ldr	r0, __arm_cp.4_0
+	movs	r1, #1
+.Ltmp13:
+	.loc	2 25 14 prologue_end            @ SSD1327/OLED_Driver.c:25:14
+	str	r1, [r0]
+	movs	r2, #100
+	.loc	2 27 5                          @ SSD1327/OLED_Driver.c:27:5
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	mov	r0, r2
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	bl	Driver_Delay_ms
+	movs	r0, #0
+	.loc	2 28 14                         @ SSD1327/OLED_Driver.c:28:14
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	str	r0, [r1]
+	.loc	2 30 5                          @ SSD1327/OLED_Driver.c:30:5
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	Driver_Delay_ms
+	.loc	2 31 14                         @ SSD1327/OLED_Driver.c:31:14
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	ldr	r1, [sp, #12]                   @ 4-byte Reload
+	str	r0, [r1]
+	.loc	2 33 5                          @ SSD1327/OLED_Driver.c:33:5
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	Driver_Delay_ms
+	.loc	2 34 1                          @ SSD1327/OLED_Driver.c:34:1
+	add	sp, #16
+	pop	{r7, pc}
+.Ltmp14:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:1
+__arm_cp.4_0:
+	.long	1342195888                      @ 0x500048b0
+.Lcpi_end5:
+	.size	__arm_cp.4_0, .Lcpi_end5-__arm_cp.4_0
+.Lfunc_end4:
+	.size	OLED_Reset, .Lfunc_end4-OLED_Reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.OLED_InitReg,"ax",%progbits
+	.p2align	1                               @ -- Begin function OLED_InitReg
+	.type	OLED_InitReg,%function
+	.code	16                              @ @OLED_InitReg
+	.thumb_func
+OLED_InitReg:
+.Lfunc_begin5:
+	.loc	2 71 0 is_stmt 1                @ SSD1327/OLED_Driver.c:71:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	movs	r0, #174
+.Ltmp15:
+	.loc	2 72 5 prologue_end             @ SSD1327/OLED_Driver.c:72:5
+	bl	OLED_WriteReg
+	movs	r0, #21
+	.loc	2 74 5                          @ SSD1327/OLED_Driver.c:74:5
+	bl	OLED_WriteReg
+	movs	r0, #0
+	.loc	2 75 5                          @ SSD1327/OLED_Driver.c:75:5
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	bl	OLED_WriteReg
+	movs	r0, #127
+	.loc	2 76 5                          @ SSD1327/OLED_Driver.c:76:5
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	bl	OLED_WriteReg
+	movs	r0, #117
+	.loc	2 78 5                          @ SSD1327/OLED_Driver.c:78:5
+	bl	OLED_WriteReg
+	.loc	2 79 5                          @ SSD1327/OLED_Driver.c:79:5
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	bl	OLED_WriteReg
+	.loc	2 80 5                          @ SSD1327/OLED_Driver.c:80:5
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	bl	OLED_WriteReg
+	movs	r0, #129
+	.loc	2 82 5                          @ SSD1327/OLED_Driver.c:82:5
+	bl	OLED_WriteReg
+	movs	r0, #128
+	.loc	2 83 5                          @ SSD1327/OLED_Driver.c:83:5
+	bl	OLED_WriteReg
+	movs	r0, #160
+	.loc	2 85 5                          @ SSD1327/OLED_Driver.c:85:5
+	bl	OLED_WriteReg
+	movs	r0, #81
+	.loc	2 86 5                          @ SSD1327/OLED_Driver.c:86:5
+	bl	OLED_WriteReg
+	movs	r0, #161
+	.loc	2 88 5                          @ SSD1327/OLED_Driver.c:88:5
+	bl	OLED_WriteReg
+	.loc	2 89 5                          @ SSD1327/OLED_Driver.c:89:5
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	bl	OLED_WriteReg
+	movs	r0, #162
+	.loc	2 91 5                          @ SSD1327/OLED_Driver.c:91:5
+	bl	OLED_WriteReg
+	.loc	2 92 5                          @ SSD1327/OLED_Driver.c:92:5
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	bl	OLED_WriteReg
+	movs	r0, #164
+	.loc	2 94 5                          @ SSD1327/OLED_Driver.c:94:5
+	bl	OLED_WriteReg
+	movs	r0, #168
+	.loc	2 95 5                          @ SSD1327/OLED_Driver.c:95:5
+	bl	OLED_WriteReg
+	.loc	2 96 5                          @ SSD1327/OLED_Driver.c:96:5
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	bl	OLED_WriteReg
+	movs	r0, #177
+	.loc	2 98 5                          @ SSD1327/OLED_Driver.c:98:5
+	bl	OLED_WriteReg
+	movs	r0, #241
+	.loc	2 99 5                          @ SSD1327/OLED_Driver.c:99:5
+	bl	OLED_WriteReg
+	movs	r0, #179
+	.loc	2 101 5                         @ SSD1327/OLED_Driver.c:101:5
+	bl	OLED_WriteReg
+	.loc	2 102 5                         @ SSD1327/OLED_Driver.c:102:5
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	bl	OLED_WriteReg
+	movs	r0, #171
+	.loc	2 104 5                         @ SSD1327/OLED_Driver.c:104:5
+	bl	OLED_WriteReg
+	movs	r0, #1
+	.loc	2 105 5                         @ SSD1327/OLED_Driver.c:105:5
+	bl	OLED_WriteReg
+	movs	r0, #182
+	.loc	2 107 5                         @ SSD1327/OLED_Driver.c:107:5
+	bl	OLED_WriteReg
+	movs	r0, #15
+	.loc	2 108 5                         @ SSD1327/OLED_Driver.c:108:5
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	OLED_WriteReg
+	movs	r0, #190
+	.loc	2 110 5                         @ SSD1327/OLED_Driver.c:110:5
+	bl	OLED_WriteReg
+	.loc	2 111 5                         @ SSD1327/OLED_Driver.c:111:5
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	bl	OLED_WriteReg
+	movs	r0, #188
+	.loc	2 113 5                         @ SSD1327/OLED_Driver.c:113:5
+	bl	OLED_WriteReg
+	movs	r0, #8
+	.loc	2 114 5                         @ SSD1327/OLED_Driver.c:114:5
+	bl	OLED_WriteReg
+	movs	r0, #213
+	.loc	2 116 5                         @ SSD1327/OLED_Driver.c:116:5
+	bl	OLED_WriteReg
+	movs	r0, #98
+	.loc	2 117 5                         @ SSD1327/OLED_Driver.c:117:5
+	bl	OLED_WriteReg
+	movs	r0, #253
+	.loc	2 119 5                         @ SSD1327/OLED_Driver.c:119:5
+	bl	OLED_WriteReg
+	movs	r0, #18
+	.loc	2 120 5                         @ SSD1327/OLED_Driver.c:120:5
+	bl	OLED_WriteReg
+	.loc	2 122 1                         @ SSD1327/OLED_Driver.c:122:1
+	add	sp, #16
+	pop	{r7, pc}
+.Ltmp16:
+.Lfunc_end5:
+	.size	OLED_InitReg, .Lfunc_end5-OLED_InitReg
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.OLED_SetCursor,"ax",%progbits
+	.hidden	OLED_SetCursor                  @ -- Begin function OLED_SetCursor
+	.globl	OLED_SetCursor
+	.p2align	2
+	.type	OLED_SetCursor,%function
+	.code	16                              @ @OLED_SetCursor
+	.thumb_func
+OLED_SetCursor:
+.Lfunc_begin6:
+	.loc	2 176 0                         @ SSD1327/OLED_Driver.c:176:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r4, lr}
+	push	{r4, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r4, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	mov	r2, r1
+	mov	r3, r0
+	add	r4, sp, #12
+	strh	r0, [r4]
+	add	r0, sp, #8
+	strh	r1, [r0]
+.Ltmp17:
+	.loc	2 177 9 prologue_end            @ SSD1327/OLED_Driver.c:177:9
+	ldrh	r0, [r4]
+	.loc	2 177 28 is_stmt 0              @ SSD1327/OLED_Driver.c:177:28
+	ldr	r1, __arm_cp.6_0
+	ldrh	r1, [r1]
+	.loc	2 177 45                        @ SSD1327/OLED_Driver.c:177:45
+	cmp	r0, r1
+	bgt	.LBB6_2
+	b	.LBB6_1
+.LBB6_1:
+	.loc	2 0 45                          @ SSD1327/OLED_Driver.c:0:45
+	add	r0, sp, #8
+	.loc	2 177 49                        @ SSD1327/OLED_Driver.c:177:49
+	ldrh	r0, [r0]
+	.loc	2 177 68                        @ SSD1327/OLED_Driver.c:177:68
+	ldr	r1, __arm_cp.6_0
+	ldrh	r1, [r1, #2]
+.Ltmp18:
+	.loc	2 177 8                         @ SSD1327/OLED_Driver.c:177:8
+	cmp	r0, r1
+	ble	.LBB6_3
+	b	.LBB6_2
+.LBB6_2:
+.Ltmp19:
+	.loc	2 178 9 is_stmt 1               @ SSD1327/OLED_Driver.c:178:9
+	b	.LBB6_4
+.Ltmp20:
+.LBB6_3:
+	.loc	2 0 9 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:9
+	movs	r0, #21
+	.loc	2 180 5 is_stmt 1               @ SSD1327/OLED_Driver.c:180:5
+	bl	OLED_WriteReg
+	add	r0, sp, #12
+	.loc	2 181 19                        @ SSD1327/OLED_Driver.c:181:19
+	ldrb	r1, [r0]
+	.loc	2 181 5 is_stmt 0               @ SSD1327/OLED_Driver.c:181:5
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	mov	r0, r1
+	bl	OLED_WriteReg
+	.loc	2 182 19 is_stmt 1              @ SSD1327/OLED_Driver.c:182:19
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb	r0, [r0]
+	.loc	2 182 5 is_stmt 0               @ SSD1327/OLED_Driver.c:182:5
+	bl	OLED_WriteReg
+	movs	r0, #117
+	.loc	2 184 5 is_stmt 1               @ SSD1327/OLED_Driver.c:184:5
+	bl	OLED_WriteReg
+	add	r0, sp, #8
+	.loc	2 185 19                        @ SSD1327/OLED_Driver.c:185:19
+	ldrb	r1, [r0]
+	.loc	2 185 5 is_stmt 0               @ SSD1327/OLED_Driver.c:185:5
+	str	r0, [sp]                        @ 4-byte Spill
+	mov	r0, r1
+	bl	OLED_WriteReg
+	.loc	2 186 19 is_stmt 1              @ SSD1327/OLED_Driver.c:186:19
+	ldr	r0, [sp]                        @ 4-byte Reload
+	ldrb	r0, [r0]
+	.loc	2 186 5 is_stmt 0               @ SSD1327/OLED_Driver.c:186:5
+	bl	OLED_WriteReg
+	.loc	2 187 1 is_stmt 1               @ SSD1327/OLED_Driver.c:187:1
+	b	.LBB6_4
+.LBB6_4:
+	add	sp, #16
+	pop	{r4, pc}
+.Ltmp21:
+	.p2align	2
+@ %bb.5:
+	.loc	2 0 1 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:1
+__arm_cp.6_0:
+	.long	sOLED_DIS
+.Lcpi_end6:
+	.size	__arm_cp.6_0, .Lcpi_end6-__arm_cp.6_0
+.Lfunc_end6:
+	.size	OLED_SetCursor, .Lfunc_end6-OLED_SetCursor
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.OLED_SetWindow,"ax",%progbits
+	.hidden	OLED_SetWindow                  @ -- Begin function OLED_SetWindow
+	.globl	OLED_SetWindow
+	.p2align	2
+	.type	OLED_SetWindow,%function
+	.code	16                              @ @OLED_SetWindow
+	.thumb_func
+OLED_SetWindow:
+.Lfunc_begin7:
+	.loc	2 198 0 is_stmt 1               @ SSD1327/OLED_Driver.c:198:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#28
+	sub	sp, #28
+	.cfi_def_cfa_offset 48
+	mov	r4, r3
+	mov	r5, r2
+	mov	r6, r1
+	mov	r7, r0
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	add	r0, sp, #24
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	str	r1, [sp]                        @ 4-byte Spill
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	strh	r0, [r1]
+	add	r0, sp, #20
+	ldr	r1, [sp]                        @ 4-byte Reload
+	strh	r1, [r0]
+	add	r0, sp, #16
+	strh	r2, [r0]
+	add	r0, sp, #12
+	strh	r3, [r0]
+.Ltmp22:
+	.loc	2 199 9 prologue_end            @ SSD1327/OLED_Driver.c:199:9
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrh	r2, [r0]
+	.loc	2 199 28 is_stmt 0              @ SSD1327/OLED_Driver.c:199:28
+	ldr	r3, __arm_cp.7_0
+	ldrh	r3, [r3]
+	.loc	2 199 45                        @ SSD1327/OLED_Driver.c:199:45
+	cmp	r2, r3
+	bgt	.LBB7_4
+	b	.LBB7_1
+.LBB7_1:
+	.loc	2 0 45                          @ SSD1327/OLED_Driver.c:0:45
+	add	r0, sp, #20
+	.loc	2 199 49                        @ SSD1327/OLED_Driver.c:199:49
+	ldrh	r0, [r0]
+	.loc	2 199 68                        @ SSD1327/OLED_Driver.c:199:68
+	ldr	r1, __arm_cp.7_0
+	ldrh	r1, [r1, #2]
+	.loc	2 199 83                        @ SSD1327/OLED_Driver.c:199:83
+	cmp	r0, r1
+	bgt	.LBB7_4
+	b	.LBB7_2
+.LBB7_2:
+	.loc	2 0 83                          @ SSD1327/OLED_Driver.c:0:83
+	add	r0, sp, #16
+	.loc	2 200 9 is_stmt 1               @ SSD1327/OLED_Driver.c:200:9
+	ldrh	r0, [r0]
+	.loc	2 200 26 is_stmt 0              @ SSD1327/OLED_Driver.c:200:26
+	ldr	r1, __arm_cp.7_0
+	ldrh	r1, [r1]
+	.loc	2 200 43                        @ SSD1327/OLED_Driver.c:200:43
+	cmp	r0, r1
+	bgt	.LBB7_4
+	b	.LBB7_3
+.LBB7_3:
+	.loc	2 0 43                          @ SSD1327/OLED_Driver.c:0:43
+	add	r0, sp, #12
+	.loc	2 200 47                        @ SSD1327/OLED_Driver.c:200:47
+	ldrh	r0, [r0]
+	.loc	2 200 64                        @ SSD1327/OLED_Driver.c:200:64
+	ldr	r1, __arm_cp.7_0
+	ldrh	r1, [r1, #2]
+.Ltmp23:
+	.loc	2 199 8 is_stmt 1               @ SSD1327/OLED_Driver.c:199:8
+	cmp	r0, r1
+	ble	.LBB7_5
+	b	.LBB7_4
+.LBB7_4:
+.Ltmp24:
+	.loc	2 201 9                         @ SSD1327/OLED_Driver.c:201:9
+	b	.LBB7_6
+.Ltmp25:
+.LBB7_5:
+	.loc	2 0 9 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:9
+	movs	r0, #21
+	.loc	2 203 5 is_stmt 1               @ SSD1327/OLED_Driver.c:203:5
+	bl	OLED_WriteReg
+	add	r0, sp, #24
+	.loc	2 204 19                        @ SSD1327/OLED_Driver.c:204:19
+	ldrb	r0, [r0]
+	.loc	2 204 5 is_stmt 0               @ SSD1327/OLED_Driver.c:204:5
+	bl	OLED_WriteReg
+	.loc	2 205 19 is_stmt 1              @ SSD1327/OLED_Driver.c:205:19
+	ldr	r0, [sp, #16]
+	.loc	2 205 24 is_stmt 0              @ SSD1327/OLED_Driver.c:205:24
+	subs	r0, r0, #1
+	.loc	2 205 5                         @ SSD1327/OLED_Driver.c:205:5
+	uxtb	r0, r0
+	bl	OLED_WriteReg
+	movs	r0, #117
+	.loc	2 207 5 is_stmt 1               @ SSD1327/OLED_Driver.c:207:5
+	bl	OLED_WriteReg
+	add	r0, sp, #20
+	.loc	2 208 19                        @ SSD1327/OLED_Driver.c:208:19
+	ldrb	r0, [r0]
+	.loc	2 208 5 is_stmt 0               @ SSD1327/OLED_Driver.c:208:5
+	bl	OLED_WriteReg
+	.loc	2 209 19 is_stmt 1              @ SSD1327/OLED_Driver.c:209:19
+	ldr	r0, [sp, #12]
+	.loc	2 209 24 is_stmt 0              @ SSD1327/OLED_Driver.c:209:24
+	subs	r0, r0, #1
+	.loc	2 209 5                         @ SSD1327/OLED_Driver.c:209:5
+	uxtb	r0, r0
+	bl	OLED_WriteReg
+	.loc	2 210 1 is_stmt 1               @ SSD1327/OLED_Driver.c:210:1
+	b	.LBB7_6
+.LBB7_6:
+	add	sp, #28
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp26:
+	.p2align	2
+@ %bb.7:
+	.loc	2 0 1 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:1
+__arm_cp.7_0:
+	.long	sOLED_DIS
+.Lcpi_end7:
+	.size	__arm_cp.7_0, .Lcpi_end7-__arm_cp.7_0
+.Lfunc_end7:
+	.size	OLED_SetWindow, .Lfunc_end7-OLED_SetWindow
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.OLED_SetColor,"ax",%progbits
+	.hidden	OLED_SetColor                   @ -- Begin function OLED_SetColor
+	.globl	OLED_SetColor
+	.p2align	2
+	.type	OLED_SetColor,%function
+	.code	16                              @ @OLED_SetColor
+	.thumb_func
+OLED_SetColor:
+.Lfunc_begin8:
+	.loc	2 219 0 is_stmt 1               @ SSD1327/OLED_Driver.c:219:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
+	.cfi_offset lr, -4
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 28
+	mov	r3, r2
+	mov	r4, r1
+	mov	r5, r0
+	add	r6, sp, #8
+	strh	r0, [r6]
+	add	r0, sp, #4
+	strh	r1, [r0]
+	mov	r0, sp
+	strh	r2, [r0]
+.Ltmp27:
+	.loc	2 220 8 prologue_end            @ SSD1327/OLED_Driver.c:220:8
+	ldrh	r0, [r6]
+	.loc	2 220 27 is_stmt 0              @ SSD1327/OLED_Driver.c:220:27
+	ldr	r1, __arm_cp.8_0
+	ldrh	r1, [r1]
+	.loc	2 220 43                        @ SSD1327/OLED_Driver.c:220:43
+	cmp	r0, r1
+	bgt	.LBB8_2
+	b	.LBB8_1
+.LBB8_1:
+	.loc	2 0 43                          @ SSD1327/OLED_Driver.c:0:43
+	add	r0, sp, #4
+	.loc	2 220 46                        @ SSD1327/OLED_Driver.c:220:46
+	ldrh	r0, [r0]
+	.loc	2 220 65                        @ SSD1327/OLED_Driver.c:220:65
+	ldr	r1, __arm_cp.8_0
+	ldrh	r1, [r1, #2]
+.Ltmp28:
+	.loc	2 220 8                         @ SSD1327/OLED_Driver.c:220:8
+	cmp	r0, r1
+	ble	.LBB8_3
+	b	.LBB8_2
+.LBB8_2:
+.Ltmp29:
+	.loc	2 221 9 is_stmt 1               @ SSD1327/OLED_Driver.c:221:9
+	b	.LBB8_6
+.Ltmp30:
+.LBB8_3:
+	.loc	2 0 9 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:9
+	add	r0, sp, #8
+.Ltmp31:
+	.loc	2 224 8 is_stmt 1               @ SSD1327/OLED_Driver.c:224:8
+	ldrh	r0, [r0]
+.Ltmp32:
+	.loc	2 224 8 is_stmt 0               @ SSD1327/OLED_Driver.c:224:8
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB8_5
+	b	.LBB8_4
+.LBB8_4:
+.Ltmp33:
+	.loc	2 225 45 is_stmt 1              @ SSD1327/OLED_Driver.c:225:45
+	ldr	r0, [sp]
+	.loc	2 225 51 is_stmt 0              @ SSD1327/OLED_Driver.c:225:51
+	lsls	r0, r0, #4
+	add	r1, sp, #8
+	.loc	2 225 66                        @ SSD1327/OLED_Driver.c:225:66
+	ldrh	r1, [r1]
+	.loc	2 225 73                        @ SSD1327/OLED_Driver.c:225:73
+	lsrs	r1, r1, #1
+	add	r2, sp, #4
+	.loc	2 225 79                        @ SSD1327/OLED_Driver.c:225:79
+	ldrh	r2, [r2]
+	.loc	2 225 86                        @ SSD1327/OLED_Driver.c:225:86
+	lsls	r2, r2, #6
+	.loc	2 225 77                        @ SSD1327/OLED_Driver.c:225:77
+	adds	r1, r1, r2
+	.loc	2 225 59                        @ SSD1327/OLED_Driver.c:225:59
+	lsls	r1, r1, #1
+	ldr	r2, __arm_cp.8_1
+	ldrh	r3, [r2, r1]
+	.loc	2 225 57                        @ SSD1327/OLED_Driver.c:225:57
+	orrs	r0, r3
+	.loc	2 225 42                        @ SSD1327/OLED_Driver.c:225:42
+	strh	r0, [r2, r1]
+	.loc	2 226 5 is_stmt 1               @ SSD1327/OLED_Driver.c:226:5
+	b	.LBB8_6
+.Ltmp34:
+.LBB8_5:
+	.loc	2 0 5 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:5
+	mov	r0, sp
+.Ltmp35:
+	.loc	2 227 45 is_stmt 1              @ SSD1327/OLED_Driver.c:227:45
+	ldrh	r0, [r0]
+	movs	r1, #15
+	.loc	2 227 51 is_stmt 0              @ SSD1327/OLED_Driver.c:227:51
+	ands	r0, r1
+	add	r1, sp, #8
+	.loc	2 227 68                        @ SSD1327/OLED_Driver.c:227:68
+	ldrh	r1, [r1]
+	.loc	2 227 75                        @ SSD1327/OLED_Driver.c:227:75
+	lsrs	r1, r1, #1
+	add	r2, sp, #4
+	.loc	2 227 81                        @ SSD1327/OLED_Driver.c:227:81
+	ldrh	r2, [r2]
+	.loc	2 227 88                        @ SSD1327/OLED_Driver.c:227:88
+	lsls	r2, r2, #6
+	.loc	2 227 79                        @ SSD1327/OLED_Driver.c:227:79
+	adds	r1, r1, r2
+	.loc	2 227 61                        @ SSD1327/OLED_Driver.c:227:61
+	lsls	r1, r1, #1
+	ldr	r2, __arm_cp.8_1
+	ldrh	r3, [r2, r1]
+	.loc	2 227 59                        @ SSD1327/OLED_Driver.c:227:59
+	orrs	r0, r3
+	.loc	2 227 42                        @ SSD1327/OLED_Driver.c:227:42
+	strh	r0, [r2, r1]
+	b	.LBB8_6
+.Ltmp36:
+.LBB8_6:
+	.loc	2 229 1 is_stmt 1               @ SSD1327/OLED_Driver.c:229:1
+	add	sp, #12
+	pop	{r4, r5, r6, pc}
+.Ltmp37:
+	.p2align	2
+@ %bb.7:
+	.loc	2 0 1 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:1
+__arm_cp.8_0:
+	.long	sOLED_DIS
+.Lcpi_end8:
+	.size	__arm_cp.8_0, .Lcpi_end8-__arm_cp.8_0
+__arm_cp.8_1:
+	.long	Buffer
+.Lcpi_end9:
+	.size	__arm_cp.8_1, .Lcpi_end9-__arm_cp.8_1
+.Lfunc_end8:
+	.size	OLED_SetColor, .Lfunc_end8-OLED_SetColor
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.OLED_Clear,"ax",%progbits
+	.hidden	OLED_Clear                      @ -- Begin function OLED_Clear
+	.globl	OLED_Clear
+	.p2align	2
+	.type	OLED_Clear,%function
+	.code	16                              @ @OLED_Clear
+	.thumb_func
+OLED_Clear:
+.Lfunc_begin9:
+	.loc	2 236 0 is_stmt 1               @ SSD1327/OLED_Driver.c:236:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 12
+	mov	r1, r0
+	add	r2, sp, #8
+	strh	r0, [r2]
+	movs	r0, #0
+.Ltmp38:
+	.loc	2 239 11 prologue_end           @ SSD1327/OLED_Driver.c:239:11
+	str	r0, [sp, #4]
+	.loc	2 239 9 is_stmt 0               @ SSD1327/OLED_Driver.c:239:9
+	b	.LBB9_1
+.LBB9_1:                                @ =>This Loop Header: Depth=1
+                                        @     Child Loop BB9_3 Depth 2
+.Ltmp39:
+	.loc	2 239 16                        @ SSD1327/OLED_Driver.c:239:16
+	ldr	r0, [sp, #4]
+	.loc	2 239 30                        @ SSD1327/OLED_Driver.c:239:30
+	ldr	r1, __arm_cp.9_0
+	ldrh	r1, [r1, #2]
+.Ltmp40:
+	.loc	2 239 5                         @ SSD1327/OLED_Driver.c:239:5
+	cmp	r0, r1
+	bhs	.LBB9_8
+	b	.LBB9_2
+.LBB9_2:                                @   in Loop: Header=BB9_1 Depth=1
+	.loc	2 0 5                           @ SSD1327/OLED_Driver.c:0:5
+	movs	r0, #0
+.Ltmp41:
+	.loc	2 240 15 is_stmt 1              @ SSD1327/OLED_Driver.c:240:15
+	str	r0, [sp]
+	.loc	2 240 13 is_stmt 0              @ SSD1327/OLED_Driver.c:240:13
+	b	.LBB9_3
+.LBB9_3:                                @   Parent Loop BB9_1 Depth=1
+                                        @ =>  This Inner Loop Header: Depth=2
+.Ltmp42:
+	.loc	2 240 20                        @ SSD1327/OLED_Driver.c:240:20
+	ldr	r0, [sp]
+	.loc	2 240 35                        @ SSD1327/OLED_Driver.c:240:35
+	ldr	r1, __arm_cp.9_0
+	ldrh	r1, [r1]
+	.loc	2 240 51                        @ SSD1327/OLED_Driver.c:240:51
+	lsrs	r1, r1, #1
+.Ltmp43:
+	.loc	2 240 9                         @ SSD1327/OLED_Driver.c:240:9
+	cmp	r0, r1
+	bhs	.LBB9_6
+	b	.LBB9_4
+.LBB9_4:                                @   in Loop: Header=BB9_3 Depth=2
+	.loc	2 0 9                           @ SSD1327/OLED_Driver.c:0:9
+	add	r0, sp, #8
+.Ltmp44:
+	.loc	2 241 63 is_stmt 1              @ SSD1327/OLED_Driver.c:241:63
+	ldrh	r0, [r0]
+	.loc	2 241 78 is_stmt 0              @ SSD1327/OLED_Driver.c:241:78
+	lsls	r1, r0, #4
+	.loc	2 241 69                        @ SSD1327/OLED_Driver.c:241:69
+	orrs	r0, r1
+	.loc	2 241 20                        @ SSD1327/OLED_Driver.c:241:20
+	ldr	r1, [sp, #4]
+	.loc	2 241 35                        @ SSD1327/OLED_Driver.c:241:35
+	ldr	r2, __arm_cp.9_0
+	ldrh	r2, [r2]
+	.loc	2 241 51                        @ SSD1327/OLED_Driver.c:241:51
+	lsrs	r2, r2, #1
+	.loc	2 241 22                        @ SSD1327/OLED_Driver.c:241:22
+	muls	r2, r1, r2
+	.loc	2 241 58                        @ SSD1327/OLED_Driver.c:241:58
+	ldr	r1, [sp]
+	.loc	2 241 56                        @ SSD1327/OLED_Driver.c:241:56
+	adds	r1, r2, r1
+	.loc	2 241 13                        @ SSD1327/OLED_Driver.c:241:13
+	lsls	r1, r1, #1
+	ldr	r2, __arm_cp.9_1
+	.loc	2 241 61                        @ SSD1327/OLED_Driver.c:241:61
+	strh	r0, [r2, r1]
+	.loc	2 242 9 is_stmt 1               @ SSD1327/OLED_Driver.c:242:9
+	b	.LBB9_5
+.Ltmp45:
+.LBB9_5:                                @   in Loop: Header=BB9_3 Depth=2
+	.loc	2 240 58                        @ SSD1327/OLED_Driver.c:240:58
+	ldr	r0, [sp]
+	adds	r0, r0, #1
+	str	r0, [sp]
+	.loc	2 240 9 is_stmt 0               @ SSD1327/OLED_Driver.c:240:9
+	b	.LBB9_3
+.Ltmp46:
+.LBB9_6:                                @   in Loop: Header=BB9_1 Depth=1
+	.loc	2 243 5 is_stmt 1               @ SSD1327/OLED_Driver.c:243:5
+	b	.LBB9_7
+.Ltmp47:
+.LBB9_7:                                @   in Loop: Header=BB9_1 Depth=1
+	.loc	2 239 46                        @ SSD1327/OLED_Driver.c:239:46
+	ldr	r0, [sp, #4]
+	adds	r0, r0, #1
+	str	r0, [sp, #4]
+	.loc	2 239 5 is_stmt 0               @ SSD1327/OLED_Driver.c:239:5
+	b	.LBB9_1
+.Ltmp48:
+.LBB9_8:
+	.loc	2 244 1 is_stmt 1               @ SSD1327/OLED_Driver.c:244:1
+	add	sp, #12
+	bx	lr
+.Ltmp49:
+	.p2align	2
+@ %bb.9:
+	.loc	2 0 1 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:1
+__arm_cp.9_0:
+	.long	sOLED_DIS
+.Lcpi_end10:
+	.size	__arm_cp.9_0, .Lcpi_end10-__arm_cp.9_0
+__arm_cp.9_1:
+	.long	Buffer
+.Lcpi_end11:
+	.size	__arm_cp.9_1, .Lcpi_end11-__arm_cp.9_1
+.Lfunc_end9:
+	.size	OLED_Clear, .Lfunc_end9-OLED_Clear
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.OLED_Display,"ax",%progbits
+	.hidden	OLED_Display                    @ -- Begin function OLED_Display
+	.globl	OLED_Display
+	.p2align	2
+	.type	OLED_Display,%function
+	.code	16                              @ @OLED_Display
+	.thumb_func
+OLED_Display:
+.Lfunc_begin10:
+	.loc	2 250 0 is_stmt 1               @ SSD1327/OLED_Driver.c:250:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+.Ltmp50:
+	.loc	2 252 12 prologue_end           @ SSD1327/OLED_Driver.c:252:12
+	ldr	r0, __arm_cp.10_0
+	str	r0, [sp, #4]
+	.loc	2 254 36                        @ SSD1327/OLED_Driver.c:254:36
+	ldr	r0, __arm_cp.10_1
+	ldrh	r2, [r0]
+	.loc	2 254 63 is_stmt 0              @ SSD1327/OLED_Driver.c:254:63
+	ldrh	r3, [r0, #2]
+	movs	r0, #0
+	.loc	2 254 5                         @ SSD1327/OLED_Driver.c:254:5
+	str	r0, [sp]                        @ 4-byte Spill
+	ldr	r1, [sp]                        @ 4-byte Reload
+	bl	OLED_SetWindow
+	add	r0, sp, #12
+.Ltmp51:
+	.loc	2 256 15 is_stmt 1              @ SSD1327/OLED_Driver.c:256:15
+	ldr	r1, [sp]                        @ 4-byte Reload
+	strh	r1, [r0]
+	.loc	2 256 10 is_stmt 0              @ SSD1327/OLED_Driver.c:256:10
+	b	.LBB10_1
+.LBB10_1:                               @ =>This Loop Header: Depth=1
+                                        @     Child Loop BB10_3 Depth 2
+	.loc	2 0 10                          @ SSD1327/OLED_Driver.c:0:10
+	add	r0, sp, #12
+.Ltmp52:
+	.loc	2 256 20                        @ SSD1327/OLED_Driver.c:256:20
+	ldrh	r0, [r0]
+	.loc	2 256 37                        @ SSD1327/OLED_Driver.c:256:37
+	ldr	r1, __arm_cp.10_1
+	ldrh	r1, [r1, #2]
+.Ltmp53:
+	.loc	2 256 5                         @ SSD1327/OLED_Driver.c:256:5
+	cmp	r0, r1
+	bge	.LBB10_8
+	b	.LBB10_2
+.LBB10_2:                               @   in Loop: Header=BB10_1 Depth=1
+	.loc	2 0 5                           @ SSD1327/OLED_Driver.c:0:5
+	add	r0, sp, #8
+	movs	r1, #0
+.Ltmp54:
+	.loc	2 257 20 is_stmt 1              @ SSD1327/OLED_Driver.c:257:20
+	strh	r1, [r0]
+	.loc	2 257 13 is_stmt 0              @ SSD1327/OLED_Driver.c:257:13
+	b	.LBB10_3
+.LBB10_3:                               @   Parent Loop BB10_1 Depth=1
+                                        @ =>  This Inner Loop Header: Depth=2
+	.loc	2 0 13                          @ SSD1327/OLED_Driver.c:0:13
+	add	r0, sp, #8
+.Ltmp55:
+	.loc	2 257 25                        @ SSD1327/OLED_Driver.c:257:25
+	ldrh	r0, [r0]
+	.loc	2 257 44                        @ SSD1327/OLED_Driver.c:257:44
+	ldr	r1, __arm_cp.10_1
+	ldrh	r1, [r1]
+	.loc	2 257 60                        @ SSD1327/OLED_Driver.c:257:60
+	lsrs	r1, r1, #1
+.Ltmp56:
+	.loc	2 257 9                         @ SSD1327/OLED_Driver.c:257:9
+	cmp	r0, r1
+	bge	.LBB10_6
+	b	.LBB10_4
+.LBB10_4:                               @   in Loop: Header=BB10_3 Depth=2
+.Ltmp57:
+	.loc	2 258 29 is_stmt 1              @ SSD1327/OLED_Driver.c:258:29
+	ldr	r0, [sp, #4]
+	.loc	2 258 28 is_stmt 0              @ SSD1327/OLED_Driver.c:258:28
+	ldrb	r0, [r0]
+	.loc	2 258 13                        @ SSD1327/OLED_Driver.c:258:13
+	bl	OLED_WriteData
+	.loc	2 259 17 is_stmt 1              @ SSD1327/OLED_Driver.c:259:17
+	ldr	r0, [sp, #4]
+	adds	r0, r0, #2
+	str	r0, [sp, #4]
+	.loc	2 260 9                         @ SSD1327/OLED_Driver.c:260:9
+	b	.LBB10_5
+.Ltmp58:
+.LBB10_5:                               @   in Loop: Header=BB10_3 Depth=2
+	.loc	2 257 71                        @ SSD1327/OLED_Driver.c:257:71
+	ldr	r0, [sp, #8]
+	adds	r0, r0, #1
+	add	r1, sp, #8
+	strh	r0, [r1]
+	.loc	2 257 9 is_stmt 0               @ SSD1327/OLED_Driver.c:257:9
+	b	.LBB10_3
+.Ltmp59:
+.LBB10_6:                               @   in Loop: Header=BB10_1 Depth=1
+	.loc	2 261 5 is_stmt 1               @ SSD1327/OLED_Driver.c:261:5
+	b	.LBB10_7
+.Ltmp60:
+.LBB10_7:                               @   in Loop: Header=BB10_1 Depth=1
+	.loc	2 256 56                        @ SSD1327/OLED_Driver.c:256:56
+	ldr	r0, [sp, #12]
+	adds	r0, r0, #1
+	add	r1, sp, #12
+	strh	r0, [r1]
+	.loc	2 256 5 is_stmt 0               @ SSD1327/OLED_Driver.c:256:5
+	b	.LBB10_1
+.Ltmp61:
+.LBB10_8:
+	.loc	2 262 1 is_stmt 1               @ SSD1327/OLED_Driver.c:262:1
+	add	sp, #16
+	pop	{r7, pc}
+.Ltmp62:
+	.p2align	2
+@ %bb.9:
+	.loc	2 0 1 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:1
+__arm_cp.10_0:
+	.long	Buffer
+.Lcpi_end12:
+	.size	__arm_cp.10_0, .Lcpi_end12-__arm_cp.10_0
+__arm_cp.10_1:
+	.long	sOLED_DIS
+.Lcpi_end13:
+	.size	__arm_cp.10_1, .Lcpi_end13-__arm_cp.10_1
+.Lfunc_end10:
+	.size	OLED_Display, .Lfunc_end10-OLED_Display
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.OLED_ClearWindow,"ax",%progbits
+	.hidden	OLED_ClearWindow                @ -- Begin function OLED_ClearWindow
+	.globl	OLED_ClearWindow
+	.p2align	2
+	.type	OLED_ClearWindow,%function
+	.code	16                              @ @OLED_ClearWindow
+	.thumb_func
+OLED_ClearWindow:
+.Lfunc_begin11:
+	.loc	2 269 0 is_stmt 1               @ SSD1327/OLED_Driver.c:269:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#56
+	sub	sp, #56
+	.cfi_def_cfa_offset 76
+	ldr	r4, [sp, #76]
+	mov	r5, r3
+	mov	r6, r2
+	mov	r7, r1
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	add	r0, sp, #52
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+	str	r1, [sp]                        @ 4-byte Spill
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	strh	r0, [r1]
+	add	r0, sp, #48
+	ldr	r1, [sp]                        @ 4-byte Reload
+	strh	r1, [r0]
+	add	r0, sp, #44
+	strh	r2, [r0]
+	add	r2, sp, #40
+	strh	r3, [r2]
+	add	r2, sp, #36
+	strh	r4, [r2]
+.Ltmp63:
+	.loc	2 271 12 prologue_end           @ SSD1327/OLED_Driver.c:271:12
+	ldrh	r0, [r0]
+	.loc	2 271 19 is_stmt 0              @ SSD1327/OLED_Driver.c:271:19
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	ldrh	r3, [r2]
+	.loc	2 271 17                        @ SSD1327/OLED_Driver.c:271:17
+	subs	r0, r0, r3
+	.loc	2 271 27                        @ SSD1327/OLED_Driver.c:271:27
+	lsrs	r3, r0, #31
+	adds	r0, r0, r3
+	lsrs	r0, r0, #1
+	add	r3, sp, #24
+	.loc	2 271 9                         @ SSD1327/OLED_Driver.c:271:9
+	strh	r0, [r3]
+	.loc	2 272 11 is_stmt 1              @ SSD1327/OLED_Driver.c:272:11
+	ldr	r0, [sp, #40]
+	.loc	2 272 18 is_stmt 0              @ SSD1327/OLED_Driver.c:272:18
+	ldr	r3, [sp, #48]
+	.loc	2 272 16                        @ SSD1327/OLED_Driver.c:272:16
+	subs	r0, r0, r3
+	add	r3, sp, #20
+	.loc	2 272 9                         @ SSD1327/OLED_Driver.c:272:9
+	strh	r0, [r3]
+	.loc	2 274 20 is_stmt 1              @ SSD1327/OLED_Driver.c:274:20
+	ldr	r0, [sp, #52]
+	.loc	2 274 29 is_stmt 0              @ SSD1327/OLED_Driver.c:274:29
+	ldr	r3, [sp, #48]
+	.loc	2 274 49                        @ SSD1327/OLED_Driver.c:274:49
+	ldr	r4, __arm_cp.11_0
+	ldrh	r4, [r4]
+	.loc	2 274 65                        @ SSD1327/OLED_Driver.c:274:65
+	lsrs	r4, r4, #1
+	.loc	2 274 36                        @ SSD1327/OLED_Driver.c:274:36
+	muls	r4, r3, r4
+	.loc	2 274 27                        @ SSD1327/OLED_Driver.c:274:27
+	adds	r0, r0, r4
+	add	r3, sp, #16
+	.loc	2 274 14                        @ SSD1327/OLED_Driver.c:274:14
+	strh	r0, [r3]
+	add	r0, sp, #32
+	movs	r3, #0
+.Ltmp64:
+	.loc	2 275 11 is_stmt 1              @ SSD1327/OLED_Driver.c:275:11
+	strh	r3, [r0]
+	.loc	2 275 9 is_stmt 0               @ SSD1327/OLED_Driver.c:275:9
+	b	.LBB11_1
+.LBB11_1:                               @ =>This Loop Header: Depth=1
+                                        @     Child Loop BB11_3 Depth 2
+	.loc	2 0 9                           @ SSD1327/OLED_Driver.c:0:9
+	add	r0, sp, #32
+.Ltmp65:
+	.loc	2 275 16                        @ SSD1327/OLED_Driver.c:275:16
+	ldrh	r0, [r0]
+	add	r1, sp, #20
+	.loc	2 275 20                        @ SSD1327/OLED_Driver.c:275:20
+	ldrh	r1, [r1]
+.Ltmp66:
+	.loc	2 275 5                         @ SSD1327/OLED_Driver.c:275:5
+	cmp	r0, r1
+	bge	.LBB11_8
+	b	.LBB11_2
+.LBB11_2:                               @   in Loop: Header=BB11_1 Depth=1
+	.loc	2 0 5                           @ SSD1327/OLED_Driver.c:0:5
+	add	r0, sp, #28
+	movs	r1, #0
+.Ltmp67:
+	.loc	2 276 15 is_stmt 1              @ SSD1327/OLED_Driver.c:276:15
+	strh	r1, [r0]
+	.loc	2 276 13 is_stmt 0              @ SSD1327/OLED_Driver.c:276:13
+	b	.LBB11_3
+.LBB11_3:                               @   Parent Loop BB11_1 Depth=1
+                                        @ =>  This Inner Loop Header: Depth=2
+	.loc	2 0 13                          @ SSD1327/OLED_Driver.c:0:13
+	add	r0, sp, #28
+.Ltmp68:
+	.loc	2 276 20                        @ SSD1327/OLED_Driver.c:276:20
+	ldrh	r0, [r0]
+	add	r1, sp, #24
+	.loc	2 276 24                        @ SSD1327/OLED_Driver.c:276:24
+	ldrh	r1, [r1]
+.Ltmp69:
+	.loc	2 276 9                         @ SSD1327/OLED_Driver.c:276:9
+	cmp	r0, r1
+	bge	.LBB11_6
+	b	.LBB11_4
+.LBB11_4:                               @   in Loop: Header=BB11_3 Depth=2
+	.loc	2 0 9                           @ SSD1327/OLED_Driver.c:0:9
+	add	r0, sp, #16
+.Ltmp70:
+	.loc	2 277 20 is_stmt 1              @ SSD1327/OLED_Driver.c:277:20
+	ldrh	r0, [r0]
+	add	r1, sp, #28
+	.loc	2 277 26 is_stmt 0              @ SSD1327/OLED_Driver.c:277:26
+	ldrh	r1, [r1]
+	.loc	2 277 24                        @ SSD1327/OLED_Driver.c:277:24
+	adds	r0, r0, r1
+	.loc	2 277 13                        @ SSD1327/OLED_Driver.c:277:13
+	lsls	r0, r0, #1
+	ldr	r1, __arm_cp.11_1
+	movs	r2, #0
+	.loc	2 277 29                        @ SSD1327/OLED_Driver.c:277:29
+	strh	r2, [r1, r0]
+	.loc	2 278 9 is_stmt 1               @ SSD1327/OLED_Driver.c:278:9
+	b	.LBB11_5
+.Ltmp71:
+.LBB11_5:                               @   in Loop: Header=BB11_3 Depth=2
+	.loc	2 276 33                        @ SSD1327/OLED_Driver.c:276:33
+	ldr	r0, [sp, #28]
+	adds	r0, r0, #1
+	add	r1, sp, #28
+	strh	r0, [r1]
+	.loc	2 276 9 is_stmt 0               @ SSD1327/OLED_Driver.c:276:9
+	b	.LBB11_3
+.Ltmp72:
+.LBB11_6:                               @   in Loop: Header=BB11_1 Depth=1
+	.loc	2 279 9 is_stmt 1               @ SSD1327/OLED_Driver.c:279:9
+	ldr	r0, [sp, #52]
+	.loc	2 279 19 is_stmt 0              @ SSD1327/OLED_Driver.c:279:19
+	ldr	r1, [sp, #48]
+	.loc	2 279 28                        @ SSD1327/OLED_Driver.c:279:28
+	ldr	r2, [sp, #32]
+	.loc	2 279 26                        @ SSD1327/OLED_Driver.c:279:26
+	adds	r1, r1, r2
+	.loc	2 279 30                        @ SSD1327/OLED_Driver.c:279:30
+	adds	r1, r1, #1
+	.loc	2 279 48                        @ SSD1327/OLED_Driver.c:279:48
+	ldr	r2, __arm_cp.11_0
+	ldrh	r2, [r2]
+	.loc	2 279 64                        @ SSD1327/OLED_Driver.c:279:64
+	lsrs	r2, r2, #1
+	.loc	2 279 35                        @ SSD1327/OLED_Driver.c:279:35
+	muls	r2, r1, r2
+	.loc	2 279 16                        @ SSD1327/OLED_Driver.c:279:16
+	adds	r0, r0, r2
+	add	r1, sp, #16
+	.loc	2 279 7                         @ SSD1327/OLED_Driver.c:279:7
+	strh	r0, [r1]
+	.loc	2 280 5 is_stmt 1               @ SSD1327/OLED_Driver.c:280:5
+	b	.LBB11_7
+.Ltmp73:
+.LBB11_7:                               @   in Loop: Header=BB11_1 Depth=1
+	.loc	2 275 29                        @ SSD1327/OLED_Driver.c:275:29
+	ldr	r0, [sp, #32]
+	adds	r0, r0, #1
+	add	r1, sp, #32
+	strh	r0, [r1]
+	.loc	2 275 5 is_stmt 0               @ SSD1327/OLED_Driver.c:275:5
+	b	.LBB11_1
+.Ltmp74:
+.LBB11_8:
+	.loc	2 281 1 is_stmt 1               @ SSD1327/OLED_Driver.c:281:1
+	add	sp, #56
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp75:
+	.p2align	2
+@ %bb.9:
+	.loc	2 0 1 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:1
+__arm_cp.11_0:
+	.long	sOLED_DIS
+.Lcpi_end14:
+	.size	__arm_cp.11_0, .Lcpi_end14-__arm_cp.11_0
+__arm_cp.11_1:
+	.long	Buffer
+.Lcpi_end15:
+	.size	__arm_cp.11_1, .Lcpi_end15-__arm_cp.11_1
+.Lfunc_end11:
+	.size	OLED_ClearWindow, .Lfunc_end11-OLED_ClearWindow
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.OLED_DisWindow,"ax",%progbits
+	.hidden	OLED_DisWindow                  @ -- Begin function OLED_DisWindow
+	.globl	OLED_DisWindow
+	.p2align	2
+	.type	OLED_DisWindow,%function
+	.code	16                              @ @OLED_DisWindow
+	.thumb_func
+OLED_DisWindow:
+.Lfunc_begin12:
+	.loc	2 287 0 is_stmt 1               @ SSD1327/OLED_Driver.c:287:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#76
+	sub	sp, #76
+	.cfi_def_cfa_offset 96
+	mov	r4, r3
+	mov	r5, r2
+	mov	r6, r1
+	mov	r7, r0
+	str	r0, [sp, #36]                   @ 4-byte Spill
+	add	r0, sp, #72
+	str	r0, [sp, #32]                   @ 4-byte Spill
+	ldr	r0, [sp, #36]                   @ 4-byte Reload
+	str	r1, [sp, #28]                   @ 4-byte Spill
+	ldr	r1, [sp, #32]                   @ 4-byte Reload
+	strh	r0, [r1]
+	add	r0, sp, #68
+	ldr	r1, [sp, #28]                   @ 4-byte Reload
+	strh	r1, [r0]
+	add	r1, sp, #64
+	strh	r2, [r1]
+	add	r2, sp, #60
+	strh	r3, [r2]
+.Ltmp76:
+	.loc	2 289 12 prologue_end           @ SSD1327/OLED_Driver.c:289:12
+	ldrh	r3, [r1]
+	.loc	2 289 19 is_stmt 0              @ SSD1327/OLED_Driver.c:289:19
+	str	r0, [sp, #24]                   @ 4-byte Spill
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	ldrh	r0, [r0]
+	.loc	2 289 17                        @ SSD1327/OLED_Driver.c:289:17
+	subs	r0, r3, r0
+	.loc	2 289 27                        @ SSD1327/OLED_Driver.c:289:27
+	lsrs	r3, r0, #31
+	adds	r0, r0, r3
+	lsrs	r0, r0, #1
+	add	r3, sp, #48
+	.loc	2 289 9                         @ SSD1327/OLED_Driver.c:289:9
+	strh	r0, [r3]
+	.loc	2 290 11 is_stmt 1              @ SSD1327/OLED_Driver.c:290:11
+	ldr	r0, [sp, #60]
+	.loc	2 290 18 is_stmt 0              @ SSD1327/OLED_Driver.c:290:18
+	ldr	r3, [sp, #68]
+	.loc	2 290 16                        @ SSD1327/OLED_Driver.c:290:16
+	subs	r0, r0, r3
+	add	r3, sp, #44
+	.loc	2 290 9                         @ SSD1327/OLED_Driver.c:290:9
+	strh	r0, [r3]
+	.loc	2 291 20 is_stmt 1              @ SSD1327/OLED_Driver.c:291:20
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	ldrh	r0, [r0]
+	.loc	2 291 28 is_stmt 0              @ SSD1327/OLED_Driver.c:291:28
+	ldr	r3, [sp, #24]                   @ 4-byte Reload
+	ldrh	r3, [r3]
+	.loc	2 291 36                        @ SSD1327/OLED_Driver.c:291:36
+	ldrh	r1, [r1]
+	.loc	2 291 42                        @ SSD1327/OLED_Driver.c:291:42
+	ldrh	r2, [r2]
+	.loc	2 291 5                         @ SSD1327/OLED_Driver.c:291:5
+	str	r1, [sp, #20]                   @ 4-byte Spill
+	mov	r1, r3
+	ldr	r3, [sp, #20]                   @ 4-byte Reload
+	str	r2, [sp, #16]                   @ 4-byte Spill
+	mov	r2, r3
+	ldr	r3, [sp, #16]                   @ 4-byte Reload
+	str	r4, [sp, #12]                   @ 4-byte Spill
+	str	r5, [sp, #8]                    @ 4-byte Spill
+	str	r6, [sp, #4]                    @ 4-byte Spill
+	str	r7, [sp]                        @ 4-byte Spill
+	bl	OLED_SetWindow
+	.loc	2 294 37 is_stmt 1              @ SSD1327/OLED_Driver.c:294:37
+	ldr	r0, [sp, #32]                   @ 4-byte Reload
+	ldrh	r1, [r0]
+	.loc	2 294 35 is_stmt 0              @ SSD1327/OLED_Driver.c:294:35
+	lsls	r1, r1, #1
+	ldr	r2, __arm_cp.12_0
+	adds	r1, r2, r1
+	.loc	2 294 46                        @ SSD1327/OLED_Driver.c:294:46
+	ldr	r2, [sp, #24]                   @ 4-byte Reload
+	ldrh	r3, [r2]
+	.loc	2 294 66                        @ SSD1327/OLED_Driver.c:294:66
+	ldr	r4, __arm_cp.12_1
+	ldrh	r4, [r4]
+	.loc	2 294 82                        @ SSD1327/OLED_Driver.c:294:82
+	lsrs	r4, r4, #1
+	.loc	2 294 53                        @ SSD1327/OLED_Driver.c:294:53
+	muls	r4, r3, r4
+	.loc	2 294 44                        @ SSD1327/OLED_Driver.c:294:44
+	lsls	r3, r4, #1
+	adds	r1, r1, r3
+	.loc	2 294 12                        @ SSD1327/OLED_Driver.c:294:12
+	str	r1, [sp, #40]
+	add	r1, sp, #56
+	movs	r3, #0
+.Ltmp77:
+	.loc	2 295 15 is_stmt 1              @ SSD1327/OLED_Driver.c:295:15
+	strh	r3, [r1]
+	.loc	2 295 10 is_stmt 0              @ SSD1327/OLED_Driver.c:295:10
+	b	.LBB12_1
+.LBB12_1:                               @ =>This Loop Header: Depth=1
+                                        @     Child Loop BB12_3 Depth 2
+	.loc	2 0 10                          @ SSD1327/OLED_Driver.c:0:10
+	add	r0, sp, #56
+.Ltmp78:
+	.loc	2 295 20                        @ SSD1327/OLED_Driver.c:295:20
+	ldrh	r0, [r0]
+	add	r1, sp, #44
+	.loc	2 295 27                        @ SSD1327/OLED_Driver.c:295:27
+	ldrh	r1, [r1]
+.Ltmp79:
+	.loc	2 295 5                         @ SSD1327/OLED_Driver.c:295:5
+	cmp	r0, r1
+	bge	.LBB12_8
+	b	.LBB12_2
+.LBB12_2:                               @   in Loop: Header=BB12_1 Depth=1
+	.loc	2 0 5                           @ SSD1327/OLED_Driver.c:0:5
+	add	r0, sp, #52
+	movs	r1, #0
+.Ltmp80:
+	.loc	2 296 20 is_stmt 1              @ SSD1327/OLED_Driver.c:296:20
+	strh	r1, [r0]
+	.loc	2 296 13 is_stmt 0              @ SSD1327/OLED_Driver.c:296:13
+	b	.LBB12_3
+.LBB12_3:                               @   Parent Loop BB12_1 Depth=1
+                                        @ =>  This Inner Loop Header: Depth=2
+	.loc	2 0 13                          @ SSD1327/OLED_Driver.c:0:13
+	add	r0, sp, #52
+.Ltmp81:
+	.loc	2 296 25                        @ SSD1327/OLED_Driver.c:296:25
+	ldrh	r0, [r0]
+	add	r1, sp, #48
+	.loc	2 296 34                        @ SSD1327/OLED_Driver.c:296:34
+	ldrh	r1, [r1]
+.Ltmp82:
+	.loc	2 296 9                         @ SSD1327/OLED_Driver.c:296:9
+	cmp	r0, r1
+	bge	.LBB12_6
+	b	.LBB12_4
+.LBB12_4:                               @   in Loop: Header=BB12_3 Depth=2
+.Ltmp83:
+	.loc	2 297 29 is_stmt 1              @ SSD1327/OLED_Driver.c:297:29
+	ldr	r0, [sp, #40]
+	.loc	2 297 28 is_stmt 0              @ SSD1327/OLED_Driver.c:297:28
+	ldrb	r0, [r0]
+	.loc	2 297 13                        @ SSD1327/OLED_Driver.c:297:13
+	bl	OLED_WriteData
+	.loc	2 298 17 is_stmt 1              @ SSD1327/OLED_Driver.c:298:17
+	ldr	r0, [sp, #40]
+	adds	r0, r0, #2
+	str	r0, [sp, #40]
+	.loc	2 299 9                         @ SSD1327/OLED_Driver.c:299:9
+	b	.LBB12_5
+.Ltmp84:
+.LBB12_5:                               @   in Loop: Header=BB12_3 Depth=2
+	.loc	2 296 48                        @ SSD1327/OLED_Driver.c:296:48
+	ldr	r0, [sp, #52]
+	adds	r0, r0, #1
+	add	r1, sp, #52
+	strh	r0, [r1]
+	.loc	2 296 9 is_stmt 0               @ SSD1327/OLED_Driver.c:296:9
+	b	.LBB12_3
+.Ltmp85:
+.LBB12_6:                               @   in Loop: Header=BB12_1 Depth=1
+	.loc	2 0 9                           @ SSD1327/OLED_Driver.c:0:9
+	add	r0, sp, #72
+	.loc	2 300 28 is_stmt 1              @ SSD1327/OLED_Driver.c:300:28
+	ldrh	r0, [r0]
+	.loc	2 300 26 is_stmt 0              @ SSD1327/OLED_Driver.c:300:26
+	lsls	r0, r0, #1
+	ldr	r1, __arm_cp.12_0
+	adds	r0, r1, r0
+	add	r1, sp, #68
+	.loc	2 300 38                        @ SSD1327/OLED_Driver.c:300:38
+	ldrh	r1, [r1]
+	add	r2, sp, #56
+	.loc	2 300 47                        @ SSD1327/OLED_Driver.c:300:47
+	ldrh	r2, [r2]
+	.loc	2 300 45                        @ SSD1327/OLED_Driver.c:300:45
+	adds	r1, r1, r2
+	.loc	2 300 52                        @ SSD1327/OLED_Driver.c:300:52
+	adds	r1, r1, #1
+	.loc	2 300 70                        @ SSD1327/OLED_Driver.c:300:70
+	ldr	r2, __arm_cp.12_1
+	ldrh	r2, [r2]
+	.loc	2 300 86                        @ SSD1327/OLED_Driver.c:300:86
+	lsrs	r2, r2, #1
+	.loc	2 300 57                        @ SSD1327/OLED_Driver.c:300:57
+	muls	r2, r1, r2
+	.loc	2 300 35                        @ SSD1327/OLED_Driver.c:300:35
+	lsls	r1, r2, #1
+	adds	r0, r0, r1
+	.loc	2 300 8                         @ SSD1327/OLED_Driver.c:300:8
+	str	r0, [sp, #40]
+	.loc	2 301 2 is_stmt 1               @ SSD1327/OLED_Driver.c:301:2
+	b	.LBB12_7
+.Ltmp86:
+.LBB12_7:                               @   in Loop: Header=BB12_1 Depth=1
+	.loc	2 295 39                        @ SSD1327/OLED_Driver.c:295:39
+	ldr	r0, [sp, #56]
+	adds	r0, r0, #1
+	add	r1, sp, #56
+	strh	r0, [r1]
+	.loc	2 295 5 is_stmt 0               @ SSD1327/OLED_Driver.c:295:5
+	b	.LBB12_1
+.Ltmp87:
+.LBB12_8:
+	.loc	2 302 1 is_stmt 1               @ SSD1327/OLED_Driver.c:302:1
+	add	sp, #76
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp88:
+	.p2align	2
+@ %bb.9:
+	.loc	2 0 1 is_stmt 0                 @ SSD1327/OLED_Driver.c:0:1
+__arm_cp.12_0:
+	.long	Buffer
+.Lcpi_end16:
+	.size	__arm_cp.12_0, .Lcpi_end16-__arm_cp.12_0
+__arm_cp.12_1:
+	.long	sOLED_DIS
+.Lcpi_end17:
+	.size	__arm_cp.12_1, .Lcpi_end17-__arm_cp.12_1
+.Lfunc_end12:
+	.size	OLED_DisWindow, .Lfunc_end12-OLED_DisWindow
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.hidden	sOLED_DIS                       @ @sOLED_DIS
+	.type	sOLED_DIS,%object
+	.section	.bss.sOLED_DIS,"aw",%nobits
+	.globl	sOLED_DIS
+	.p2align	2
+sOLED_DIS:
+	.zero	12
+	.size	sOLED_DIS, 12
+
+	.hidden	Buffer                          @ @Buffer
+	.type	Buffer,%object
+	.section	.bss.Buffer,"aw",%nobits
+	.globl	Buffer
+	.p2align	1
+Buffer:
+	.zero	16384
+	.size	Buffer, 16384
+
+	.section	.debug_abbrev,"",%progbits
+	.byte	1                               @ Abbreviation Code
+	.byte	17                              @ DW_TAG_compile_unit
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	37                              @ DW_AT_producer
+	.byte	14                              @ DW_FORM_strp
+	.byte	19                              @ DW_AT_language
+	.byte	5                               @ DW_FORM_data2
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	16                              @ DW_AT_stmt_list
+	.byte	6                               @ DW_FORM_data4
+	.byte	27                              @ DW_AT_comp_dir
+	.byte	14                              @ DW_FORM_strp
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	85                              @ DW_AT_ranges
+	.byte	6                               @ DW_FORM_data4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	2                               @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	3                               @ Abbreviation Code
+	.byte	1                               @ DW_TAG_array_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	4                               @ Abbreviation Code
+	.byte	33                              @ DW_TAG_subrange_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	55                              @ DW_AT_count
+	.byte	5                               @ DW_FORM_data2
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	5                               @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	6                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	7                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	8                               @ Abbreviation Code
+	.byte	19                              @ DW_TAG_structure_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	9                               @ Abbreviation Code
+	.byte	13                              @ DW_TAG_member
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	56                              @ DW_AT_data_member_location
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	10                              @ Abbreviation Code
+	.byte	4                               @ DW_TAG_enumeration_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	11                              @ Abbreviation Code
+	.byte	40                              @ DW_TAG_enumerator
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	28                              @ DW_AT_const_value
+	.byte	15                              @ DW_FORM_udata
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	12                              @ Abbreviation Code
+	.byte	15                              @ DW_TAG_pointer_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	13                              @ Abbreviation Code
+	.byte	53                              @ DW_TAG_volatile_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	14                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	15                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	16                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	17                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	18                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	19                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	20                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	0                               @ EOM(3)
+	.section	.debug_info,"",%progbits
+.Lcu_begin0:
+	.long	.Ldebug_info_end0-.Ldebug_info_start0 @ Length of Unit
+.Ldebug_info_start0:
+	.short	3                               @ DWARF version number
+	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
+	.byte	4                               @ Address Size (in bytes)
+	.byte	1                               @ Abbrev [1] 0xb:0x455 DW_TAG_compile_unit
+	.long	.Linfo_string0                  @ DW_AT_producer
+	.short	12                              @ DW_AT_language
+	.long	.Linfo_string1                  @ DW_AT_name
+	.long	.Lline_table_start0             @ DW_AT_stmt_list
+	.long	.Linfo_string2                  @ DW_AT_comp_dir
+	.long	0                               @ DW_AT_low_pc
+	.long	.Ldebug_ranges0                 @ DW_AT_ranges
+	.byte	2                               @ Abbrev [2] 0x26:0x12 DW_TAG_variable
+	.long	.Linfo_string3                  @ DW_AT_name
+	.long	56                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	17                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	Buffer
+	.byte	3                               @ Abbrev [3] 0x38:0xd DW_TAG_array_type
+	.long	69                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x3d:0x7 DW_TAG_subrange_type
+	.long	87                              @ DW_AT_type
+	.short	8192                            @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	5                               @ Abbrev [5] 0x45:0xb DW_TAG_typedef
+	.long	80                              @ DW_AT_type
+	.long	.Linfo_string5                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	63                              @ DW_AT_decl_line
+	.byte	6                               @ Abbrev [6] 0x50:0x7 DW_TAG_base_type
+	.long	.Linfo_string4                  @ DW_AT_name
+	.byte	7                               @ DW_AT_encoding
+	.byte	2                               @ DW_AT_byte_size
+	.byte	7                               @ Abbrev [7] 0x57:0x7 DW_TAG_base_type
+	.long	.Linfo_string6                  @ DW_AT_name
+	.byte	8                               @ DW_AT_byte_size
+	.byte	7                               @ DW_AT_encoding
+	.byte	2                               @ Abbrev [2] 0x5e:0x12 DW_TAG_variable
+	.long	.Linfo_string7                  @ DW_AT_name
+	.long	112                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	2                               @ DW_AT_decl_file
+	.byte	18                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	sOLED_DIS
+	.byte	5                               @ Abbrev [5] 0x70:0xb DW_TAG_typedef
+	.long	123                             @ DW_AT_type
+	.long	.Linfo_string23                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	62                              @ DW_AT_decl_line
+	.byte	8                               @ Abbrev [8] 0x7b:0x41 DW_TAG_structure_type
+	.byte	12                              @ DW_AT_byte_size
+	.byte	3                               @ DW_AT_decl_file
+	.byte	56                              @ DW_AT_decl_line
+	.byte	9                               @ Abbrev [9] 0x7f:0xc DW_TAG_member
+	.long	.Linfo_string8                  @ DW_AT_name
+	.long	69                              @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
+	.byte	57                              @ DW_AT_decl_line
+	.byte	0                               @ DW_AT_data_member_location
+	.byte	9                               @ Abbrev [9] 0x8b:0xc DW_TAG_member
+	.long	.Linfo_string9                  @ DW_AT_name
+	.long	69                              @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.byte	2                               @ DW_AT_data_member_location
+	.byte	9                               @ Abbrev [9] 0x97:0xc DW_TAG_member
+	.long	.Linfo_string10                 @ DW_AT_name
+	.long	188                             @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
+	.byte	59                              @ DW_AT_decl_line
+	.byte	4                               @ DW_AT_data_member_location
+	.byte	9                               @ Abbrev [9] 0xa3:0xc DW_TAG_member
+	.long	.Linfo_string21                 @ DW_AT_name
+	.long	69                              @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
+	.byte	60                              @ DW_AT_decl_line
+	.byte	8                               @ DW_AT_data_member_location
+	.byte	9                               @ Abbrev [9] 0xaf:0xc DW_TAG_member
+	.long	.Linfo_string22                 @ DW_AT_name
+	.long	69                              @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
+	.byte	61                              @ DW_AT_decl_line
+	.byte	10                              @ DW_AT_data_member_location
+	.byte	0                               @ End Of Children Mark
+	.byte	5                               @ Abbrev [5] 0xbc:0xb DW_TAG_typedef
+	.long	199                             @ DW_AT_type
+	.long	.Linfo_string20                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	49                              @ DW_AT_decl_line
+	.byte	10                              @ Abbrev [10] 0xc7:0x39 DW_TAG_enumeration_type
+	.long	256                             @ DW_AT_type
+	.byte	4                               @ DW_AT_byte_size
+	.byte	3                               @ DW_AT_decl_file
+	.byte	39                              @ DW_AT_decl_line
+	.byte	11                              @ Abbrev [11] 0xcf:0x6 DW_TAG_enumerator
+	.long	.Linfo_string12                 @ DW_AT_name
+	.byte	0                               @ DW_AT_const_value
+	.byte	11                              @ Abbrev [11] 0xd5:0x6 DW_TAG_enumerator
+	.long	.Linfo_string13                 @ DW_AT_name
+	.byte	1                               @ DW_AT_const_value
+	.byte	11                              @ Abbrev [11] 0xdb:0x6 DW_TAG_enumerator
+	.long	.Linfo_string14                 @ DW_AT_name
+	.byte	2                               @ DW_AT_const_value
+	.byte	11                              @ Abbrev [11] 0xe1:0x6 DW_TAG_enumerator
+	.long	.Linfo_string15                 @ DW_AT_name
+	.byte	3                               @ DW_AT_const_value
+	.byte	11                              @ Abbrev [11] 0xe7:0x6 DW_TAG_enumerator
+	.long	.Linfo_string16                 @ DW_AT_name
+	.byte	4                               @ DW_AT_const_value
+	.byte	11                              @ Abbrev [11] 0xed:0x6 DW_TAG_enumerator
+	.long	.Linfo_string17                 @ DW_AT_name
+	.byte	5                               @ DW_AT_const_value
+	.byte	11                              @ Abbrev [11] 0xf3:0x6 DW_TAG_enumerator
+	.long	.Linfo_string18                 @ DW_AT_name
+	.byte	6                               @ DW_AT_const_value
+	.byte	11                              @ Abbrev [11] 0xf9:0x6 DW_TAG_enumerator
+	.long	.Linfo_string19                 @ DW_AT_name
+	.byte	7                               @ DW_AT_const_value
+	.byte	0                               @ End Of Children Mark
+	.byte	6                               @ Abbrev [6] 0x100:0x7 DW_TAG_base_type
+	.long	.Linfo_string11                 @ DW_AT_name
+	.byte	7                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	12                              @ Abbrev [12] 0x107:0x5 DW_TAG_pointer_type
+	.long	268                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x10c:0x5 DW_TAG_volatile_type
+	.long	273                             @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x111:0xb DW_TAG_typedef
+	.long	256                             @ DW_AT_type
+	.long	.Linfo_string24                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	64                              @ DW_AT_decl_line
+	.byte	12                              @ Abbrev [12] 0x11c:0x5 DW_TAG_pointer_type
+	.long	69                              @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x121:0x22 DW_TAG_subprogram
+	.long	.Lfunc_begin0                   @ DW_AT_low_pc
+	.long	.Lfunc_end0                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string25                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	40                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	15                              @ Abbrev [15] 0x134:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	40                              @ DW_AT_decl_line
+	.long	1101                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	14                              @ Abbrev [14] 0x143:0x22 DW_TAG_subprogram
+	.long	.Lfunc_begin1                   @ DW_AT_low_pc
+	.long	.Lfunc_end1                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string26                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	53                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	15                              @ Abbrev [15] 0x156:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string41                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	53                              @ DW_AT_decl_line
+	.long	1101                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	14                              @ Abbrev [14] 0x165:0x22 DW_TAG_subprogram
+	.long	.Lfunc_begin2                   @ DW_AT_low_pc
+	.long	.Lfunc_end2                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	130                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	15                              @ Abbrev [15] 0x178:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string42                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	130                             @ DW_AT_decl_line
+	.long	188                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	14                              @ Abbrev [14] 0x187:0x22 DW_TAG_subprogram
+	.long	.Lfunc_begin3                   @ DW_AT_low_pc
+	.long	.Lfunc_end3                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string28                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	153                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	15                              @ Abbrev [15] 0x19a:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string43                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	153                             @ DW_AT_decl_line
+	.long	188                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	16                              @ Abbrev [16] 0x1a9:0x12 DW_TAG_subprogram
+	.long	.Lfunc_begin4                   @ DW_AT_low_pc
+	.long	.Lfunc_end4                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string29                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	23                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	16                              @ Abbrev [16] 0x1bb:0x12 DW_TAG_subprogram
+	.long	.Lfunc_begin5                   @ DW_AT_low_pc
+	.long	.Lfunc_end5                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string30                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	70                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	14                              @ Abbrev [14] 0x1cd:0x30 DW_TAG_subprogram
+	.long	.Lfunc_begin6                   @ DW_AT_low_pc
+	.long	.Lfunc_end6                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string31                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	175                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	15                              @ Abbrev [15] 0x1e0:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	175                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x1ee:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string45                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	175                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	14                              @ Abbrev [14] 0x1fd:0x4c DW_TAG_subprogram
+	.long	.Lfunc_begin7                   @ DW_AT_low_pc
+	.long	.Lfunc_end7                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string32                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	197                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	15                              @ Abbrev [15] 0x210:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	24
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	197                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x21e:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	20
+	.long	.Linfo_string47                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	197                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x22c:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string48                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	197                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x23a:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string49                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	197                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	14                              @ Abbrev [14] 0x249:0x3e DW_TAG_subprogram
+	.long	.Lfunc_begin8                   @ DW_AT_low_pc
+	.long	.Lfunc_end8                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string33                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	218                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	15                              @ Abbrev [15] 0x25c:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	218                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x26a:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string45                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	218                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x278:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string50                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	218                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	14                              @ Abbrev [14] 0x287:0x3e DW_TAG_subprogram
+	.long	.Lfunc_begin9                   @ DW_AT_low_pc
+	.long	.Lfunc_end9                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string34                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	235                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	15                              @ Abbrev [15] 0x29a:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string50                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	235                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	17                              @ Abbrev [17] 0x2a8:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string51                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	237                             @ DW_AT_decl_line
+	.long	256                             @ DW_AT_type
+	.byte	17                              @ Abbrev [17] 0x2b6:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	237                             @ DW_AT_decl_line
+	.long	256                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	14                              @ Abbrev [14] 0x2c5:0x3e DW_TAG_subprogram
+	.long	.Lfunc_begin10                  @ DW_AT_low_pc
+	.long	.Lfunc_end10                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	249                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	17                              @ Abbrev [17] 0x2d8:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string53                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	251                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	17                              @ Abbrev [17] 0x2e6:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string54                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	251                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	17                              @ Abbrev [17] 0x2f4:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string55                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	252                             @ DW_AT_decl_line
+	.long	284                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	18                              @ Abbrev [18] 0x303:0xab DW_TAG_subprogram
+	.long	.Lfunc_begin11                  @ DW_AT_low_pc
+	.long	.Lfunc_end11                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string36                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	268                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	19                              @ Abbrev [19] 0x317:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	52
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	268                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x326:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	48
+	.long	.Linfo_string47                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	268                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x335:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	44
+	.long	.Linfo_string48                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	268                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x344:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	40
+	.long	.Linfo_string49                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	268                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x353:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	36
+	.long	.Linfo_string50                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	268                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x362:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	32
+	.long	.Linfo_string51                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	270                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x371:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	28
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	270                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x380:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	24
+	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	270                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x38f:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	20
+	.long	.Linfo_string45                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	270                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x39e:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string56                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	274                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	18                              @ Abbrev [18] 0x3ae:0x9f DW_TAG_subprogram
+	.long	.Lfunc_begin12                  @ DW_AT_low_pc
+	.long	.Lfunc_end12                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	286                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	19                              @ Abbrev [19] 0x3c2:0x10 DW_TAG_formal_parameter
+	.byte	3                               @ DW_AT_location
+	.byte	145
+	.asciz	"\310"
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	286                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x3d2:0x10 DW_TAG_formal_parameter
+	.byte	3                               @ DW_AT_location
+	.byte	145
+	.asciz	"\304"
+	.long	.Linfo_string47                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	286                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x3e2:0x10 DW_TAG_formal_parameter
+	.byte	3                               @ DW_AT_location
+	.byte	145
+	.asciz	"\300"
+	.long	.Linfo_string48                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	286                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x3f2:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	60
+	.long	.Linfo_string49                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	286                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x401:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	56
+	.long	.Linfo_string53                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	288                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x410:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	52
+	.long	.Linfo_string54                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	288                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x41f:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	48
+	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	288                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x42e:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	44
+	.long	.Linfo_string45                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	288                             @ DW_AT_decl_line
+	.long	69                              @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x43d:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	40
+	.long	.Linfo_string55                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	294                             @ DW_AT_decl_line
+	.long	284                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	5                               @ Abbrev [5] 0x44d:0xb DW_TAG_typedef
+	.long	1112                            @ DW_AT_type
+	.long	.Linfo_string40                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	62                              @ DW_AT_decl_line
+	.byte	6                               @ Abbrev [6] 0x458:0x7 DW_TAG_base_type
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	8                               @ DW_AT_encoding
+	.byte	1                               @ DW_AT_byte_size
+	.byte	0                               @ End Of Children Mark
+.Ldebug_info_end0:
+	.section	.debug_ranges,"",%progbits
+.Ldebug_ranges0:
+	.long	.Lfunc_begin0
+	.long	.Lfunc_end0
+	.long	.Lfunc_begin1
+	.long	.Lfunc_end1
+	.long	.Lfunc_begin2
+	.long	.Lfunc_end2
+	.long	.Lfunc_begin3
+	.long	.Lfunc_end3
+	.long	.Lfunc_begin4
+	.long	.Lfunc_end4
+	.long	.Lfunc_begin5
+	.long	.Lfunc_end5
+	.long	.Lfunc_begin6
+	.long	.Lfunc_end6
+	.long	.Lfunc_begin7
+	.long	.Lfunc_end7
+	.long	.Lfunc_begin8
+	.long	.Lfunc_end8
+	.long	.Lfunc_begin9
+	.long	.Lfunc_end9
+	.long	.Lfunc_begin10
+	.long	.Lfunc_end10
+	.long	.Lfunc_begin11
+	.long	.Lfunc_end11
+	.long	.Lfunc_begin12
+	.long	.Lfunc_end12
+	.long	0
+	.long	0
+	.section	.debug_str,"MS",%progbits,1
+.Linfo_string0:
+	.asciz	"Component: ARM Compiler 6.15 Tool: armclang [5dd79400]" @ string offset=0
+.Linfo_string1:
+	.asciz	"SSD1327\\OLED_Driver.c"        @ string offset=55
+.Linfo_string2:
+	.asciz	"C:\\Users\\shw26\\OneDrive\\Desktop\\2021\\2021-1\\\354\272\241\354\212\244\355\206\244\353\224\224\354\236\220\354\235\2702\\Nuvoton\\M2351_BSP_v3.00.004\\M2351Series_BSP_CMSIS_V3.00.004\\MyProject\\PulseMonitoring\\NonSecure" @ string offset=77
+.Linfo_string3:
+	.asciz	"Buffer"                        @ string offset=237
+.Linfo_string4:
+	.asciz	"unsigned short"                @ string offset=244
+.Linfo_string5:
+	.asciz	"uint16_t"                      @ string offset=259
+.Linfo_string6:
+	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=268
+.Linfo_string7:
+	.asciz	"sOLED_DIS"                     @ string offset=288
+.Linfo_string8:
+	.asciz	"OLED_Dis_Column"               @ string offset=298
+.Linfo_string9:
+	.asciz	"OLED_Dis_Page"                 @ string offset=314
+.Linfo_string10:
+	.asciz	"OLED_Scan_Dir"                 @ string offset=328
+.Linfo_string11:
+	.asciz	"unsigned int"                  @ string offset=342
+.Linfo_string12:
+	.asciz	"L2R_U2D"                       @ string offset=355
+.Linfo_string13:
+	.asciz	"L2R_D2U"                       @ string offset=363
+.Linfo_string14:
+	.asciz	"R2L_U2D"                       @ string offset=371
+.Linfo_string15:
+	.asciz	"R2L_D2U"                       @ string offset=379
+.Linfo_string16:
+	.asciz	"U2D_L2R"                       @ string offset=387
+.Linfo_string17:
+	.asciz	"U2D_R2L"                       @ string offset=395
+.Linfo_string18:
+	.asciz	"D2U_L2R"                       @ string offset=403
+.Linfo_string19:
+	.asciz	"D2U_R2L"                       @ string offset=411
+.Linfo_string20:
+	.asciz	"OLED_SCAN_DIR"                 @ string offset=419
+.Linfo_string21:
+	.asciz	"OLED_X_Adjust"                 @ string offset=433
+.Linfo_string22:
+	.asciz	"OLED_Y_Adjust"                 @ string offset=447
+.Linfo_string23:
+	.asciz	"OLED_DIS"                      @ string offset=461
+.Linfo_string24:
+	.asciz	"uint32_t"                      @ string offset=470
+.Linfo_string25:
+	.asciz	"OLED_WriteReg"                 @ string offset=479
+.Linfo_string26:
+	.asciz	"OLED_WriteData"                @ string offset=493
+.Linfo_string27:
+	.asciz	"OLED_SetGramScanWay"           @ string offset=508
+.Linfo_string28:
+	.asciz	"OLED_Init"                     @ string offset=528
+.Linfo_string29:
+	.asciz	"OLED_Reset"                    @ string offset=538
+.Linfo_string30:
+	.asciz	"OLED_InitReg"                  @ string offset=549
+.Linfo_string31:
+	.asciz	"OLED_SetCursor"                @ string offset=562
+.Linfo_string32:
+	.asciz	"OLED_SetWindow"                @ string offset=577
+.Linfo_string33:
+	.asciz	"OLED_SetColor"                 @ string offset=592
+.Linfo_string34:
+	.asciz	"OLED_Clear"                    @ string offset=606
+.Linfo_string35:
+	.asciz	"OLED_Display"                  @ string offset=617
+.Linfo_string36:
+	.asciz	"OLED_ClearWindow"              @ string offset=630
+.Linfo_string37:
+	.asciz	"OLED_DisWindow"                @ string offset=647
+.Linfo_string38:
+	.asciz	"Reg"                           @ string offset=662
+.Linfo_string39:
+	.asciz	"unsigned char"                 @ string offset=666
+.Linfo_string40:
+	.asciz	"uint8_t"                       @ string offset=680
+.Linfo_string41:
+	.asciz	"Data"                          @ string offset=688
+.Linfo_string42:
+	.asciz	"Scan_dir"                      @ string offset=693
+.Linfo_string43:
+	.asciz	"OLED_ScanDir"                  @ string offset=702
+.Linfo_string44:
+	.asciz	"Xpoint"                        @ string offset=715
+.Linfo_string45:
+	.asciz	"Ypoint"                        @ string offset=722
+.Linfo_string46:
+	.asciz	"Xstart"                        @ string offset=729
+.Linfo_string47:
+	.asciz	"Ystart"                        @ string offset=736
+.Linfo_string48:
+	.asciz	"Xend"                          @ string offset=743
+.Linfo_string49:
+	.asciz	"Yend"                          @ string offset=748
+.Linfo_string50:
+	.asciz	"Color"                         @ string offset=753
+.Linfo_string51:
+	.asciz	"i"                             @ string offset=759
+.Linfo_string52:
+	.asciz	"m"                             @ string offset=761
+.Linfo_string53:
+	.asciz	"page"                          @ string offset=763
+.Linfo_string54:
+	.asciz	"Column"                        @ string offset=768
+.Linfo_string55:
+	.asciz	"pBuf"                          @ string offset=775
+.Linfo_string56:
+	.asciz	"Num"                           @ string offset=780
+	.ident	"Component: ARM Compiler 6.15 Tool: armclang [5dd79400]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba
+	.section	.debug_line,"",%progbits
+.Lline_table_start0:

@@ -1,0 +1,390 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m23
+	.eabi_attribute	6, 16	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.eabi_attribute	34, 0	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"version.c"
+	.section	.text.mbedtls_version_get_number,"ax",%progbits
+	.hidden	mbedtls_version_get_number      @ -- Begin function mbedtls_version_get_number
+	.globl	mbedtls_version_get_number
+	.p2align	2
+	.type	mbedtls_version_get_number,%function
+	.code	16                              @ @mbedtls_version_get_number
+	.thumb_func
+mbedtls_version_get_number:
+.Lfunc_begin0:
+	.file	1 "C:\\Users\\shw26\\OneDrive\\Desktop\\2021\\2021-1\\\354\272\241\354\212\244\355\206\244\353\224\224\354\236\220\354\235\2702\\Nuvoton\\M2351_BSP_v3.00.004\\M2351Series_BSP_CMSIS_V3.00.004\\MyProject\\PulseMonitoring\\Secure" "../../../ThirdParty/mbedTLS/library/version.c"
+	.loc	1 34 0                          @ ../../../ThirdParty/mbedTLS/library/version.c:34:0
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	ldr	r0, __arm_cp.0_0
+.Ltmp0:
+	.loc	1 35 5 prologue_end             @ ../../../ThirdParty/mbedTLS/library/version.c:35:5
+	bx	lr
+.Ltmp1:
+	.p2align	2
+@ %bb.1:
+	.loc	1 0 5 is_stmt 0                 @ ../../../ThirdParty/mbedTLS/library/version.c:0:5
+__arm_cp.0_0:
+	.long	34668544                        @ 0x2110000
+.Lcpi_end0:
+	.size	__arm_cp.0_0, .Lcpi_end0-__arm_cp.0_0
+.Lfunc_end0:
+	.size	mbedtls_version_get_number, .Lfunc_end0-mbedtls_version_get_number
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mbedtls_version_get_string,"ax",%progbits
+	.hidden	mbedtls_version_get_string      @ -- Begin function mbedtls_version_get_string
+	.globl	mbedtls_version_get_string
+	.p2align	2
+	.type	mbedtls_version_get_string,%function
+	.code	16                              @ @mbedtls_version_get_string
+	.thumb_func
+mbedtls_version_get_string:
+.Lfunc_begin1:
+	.loc	1 39 0 is_stmt 1                @ ../../../ThirdParty/mbedTLS/library/version.c:39:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	@DEBUG_VALUE: mbedtls_version_get_string:string <- $r0
+	@DEBUG_VALUE: mbedtls_version_get_string:string <- $r0
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp2:
+	.loc	1 40 5 prologue_end             @ ../../../ThirdParty/mbedTLS/library/version.c:40:5
+	ldr	r1, __arm_cp.1_0
+	movs	r2, #7
+	@DEBUG_VALUE: mbedtls_version_get_string:string <- $r0
+	bl	__aeabi_memcpy
+.Ltmp3:
+	@DEBUG_VALUE: mbedtls_version_get_string:string <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 42 1                          @ ../../../ThirdParty/mbedTLS/library/version.c:42:1
+	pop	{r7, pc}
+.Ltmp4:
+	.p2align	2
+@ %bb.1:
+	.loc	1 0 1 is_stmt 0                 @ ../../../ThirdParty/mbedTLS/library/version.c:0:1
+__arm_cp.1_0:
+	.long	.L.str
+.Lcpi_end1:
+	.size	__arm_cp.1_0, .Lcpi_end1-__arm_cp.1_0
+.Lfunc_end1:
+	.size	mbedtls_version_get_string, .Lfunc_end1-mbedtls_version_get_string
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.mbedtls_version_get_string_full,"ax",%progbits
+	.hidden	mbedtls_version_get_string_full @ -- Begin function mbedtls_version_get_string_full
+	.globl	mbedtls_version_get_string_full
+	.p2align	2
+	.type	mbedtls_version_get_string_full,%function
+	.code	16                              @ @mbedtls_version_get_string_full
+	.thumb_func
+mbedtls_version_get_string_full:
+.Lfunc_begin2:
+	.loc	1 45 0 is_stmt 1                @ ../../../ThirdParty/mbedTLS/library/version.c:45:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	@DEBUG_VALUE: mbedtls_version_get_string_full:string <- $r0
+	@DEBUG_VALUE: mbedtls_version_get_string_full:string <- $r0
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp5:
+	.loc	1 46 5 prologue_end             @ ../../../ThirdParty/mbedTLS/library/version.c:46:5
+	ldr	r1, __arm_cp.2_0
+	movs	r2, #16
+	@DEBUG_VALUE: mbedtls_version_get_string_full:string <- $r0
+	bl	__aeabi_memcpy
+.Ltmp6:
+	@DEBUG_VALUE: mbedtls_version_get_string_full:string <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 48 1                          @ ../../../ThirdParty/mbedTLS/library/version.c:48:1
+	pop	{r7, pc}
+.Ltmp7:
+	.p2align	2
+@ %bb.1:
+	.loc	1 0 1 is_stmt 0                 @ ../../../ThirdParty/mbedTLS/library/version.c:0:1
+__arm_cp.2_0:
+	.long	.L.str.1
+.Lcpi_end2:
+	.size	__arm_cp.2_0, .Lcpi_end2-__arm_cp.2_0
+.Lfunc_end2:
+	.size	mbedtls_version_get_string_full, .Lfunc_end2-mbedtls_version_get_string_full
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.type	.L.str,%object                  @ @.str
+	.section	.rodata.str1.1,"aMS",%progbits,1
+.L.str:
+	.asciz	"2.17.0"
+	.size	.L.str, 7
+
+	.type	.L.str.1,%object                @ @.str.1
+	.section	.rodata.str1.4,"aMS",%progbits,1
+	.p2align	2
+.L.str.1:
+	.asciz	"mbed TLS 2.17.0"
+	.size	.L.str.1, 16
+
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp3-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp3-.Lfunc_begin1
+	.long	.Ltmp4-.Lfunc_begin1
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp6-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp6-.Lfunc_begin2
+	.long	.Ltmp7-.Lfunc_begin2
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+	.section	.debug_abbrev,"",%progbits
+	.byte	1                               @ Abbreviation Code
+	.byte	17                              @ DW_TAG_compile_unit
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	37                              @ DW_AT_producer
+	.byte	14                              @ DW_FORM_strp
+	.byte	19                              @ DW_AT_language
+	.byte	5                               @ DW_FORM_data2
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	16                              @ DW_AT_stmt_list
+	.byte	6                               @ DW_FORM_data4
+	.byte	27                              @ DW_AT_comp_dir
+	.byte	14                              @ DW_FORM_strp
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	85                              @ DW_AT_ranges
+	.byte	6                               @ DW_FORM_data4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	2                               @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	3                               @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	4                               @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	6                               @ DW_FORM_data4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	5                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	6                               @ Abbreviation Code
+	.byte	15                              @ DW_TAG_pointer_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	0                               @ EOM(3)
+	.section	.debug_info,"",%progbits
+.Lcu_begin0:
+	.long	.Ldebug_info_end0-.Ldebug_info_start0 @ Length of Unit
+.Ldebug_info_start0:
+	.short	3                               @ DWARF version number
+	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
+	.byte	4                               @ Address Size (in bytes)
+	.byte	1                               @ Abbrev [1] 0xb:0x8c DW_TAG_compile_unit
+	.long	.Linfo_string0                  @ DW_AT_producer
+	.short	12                              @ DW_AT_language
+	.long	.Linfo_string1                  @ DW_AT_name
+	.long	.Lline_table_start0             @ DW_AT_stmt_list
+	.long	.Linfo_string2                  @ DW_AT_comp_dir
+	.long	0                               @ DW_AT_low_pc
+	.long	.Ldebug_ranges0                 @ DW_AT_ranges
+	.byte	2                               @ Abbrev [2] 0x26:0x17 DW_TAG_subprogram
+	.long	.Lfunc_begin0                   @ DW_AT_low_pc
+	.long	.Lfunc_end0                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string3                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	33                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	131                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	3                               @ Abbrev [3] 0x3d:0x23 DW_TAG_subprogram
+	.long	.Lfunc_begin1                   @ DW_AT_low_pc
+	.long	.Lfunc_end1                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string5                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	38                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	4                               @ Abbrev [4] 0x50:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
+	.long	.Linfo_string7                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	38                              @ DW_AT_decl_line
+	.long	138                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	3                               @ Abbrev [3] 0x60:0x23 DW_TAG_subprogram
+	.long	.Lfunc_begin2                   @ DW_AT_low_pc
+	.long	.Lfunc_end2                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string6                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	44                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	4                               @ Abbrev [4] 0x73:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc1                    @ DW_AT_location
+	.long	.Linfo_string7                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	44                              @ DW_AT_decl_line
+	.long	138                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	5                               @ Abbrev [5] 0x83:0x7 DW_TAG_base_type
+	.long	.Linfo_string4                  @ DW_AT_name
+	.byte	7                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	6                               @ Abbrev [6] 0x8a:0x5 DW_TAG_pointer_type
+	.long	143                             @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x8f:0x7 DW_TAG_base_type
+	.long	.Linfo_string8                  @ DW_AT_name
+	.byte	8                               @ DW_AT_encoding
+	.byte	1                               @ DW_AT_byte_size
+	.byte	0                               @ End Of Children Mark
+.Ldebug_info_end0:
+	.section	.debug_ranges,"",%progbits
+.Ldebug_ranges0:
+	.long	.Lfunc_begin0
+	.long	.Lfunc_end0
+	.long	.Lfunc_begin1
+	.long	.Lfunc_end1
+	.long	.Lfunc_begin2
+	.long	.Lfunc_end2
+	.long	0
+	.long	0
+	.section	.debug_str,"MS",%progbits,1
+.Linfo_string0:
+	.asciz	"Component: ARM Compiler 6.15 Tool: armclang [5dd79400]" @ string offset=0
+.Linfo_string1:
+	.asciz	"../../../ThirdParty/mbedTLS/library\\version.c" @ string offset=55
+.Linfo_string2:
+	.asciz	"C:\\Users\\shw26\\OneDrive\\Desktop\\2021\\2021-1\\\354\272\241\354\212\244\355\206\244\353\224\224\354\236\220\354\235\2702\\Nuvoton\\M2351_BSP_v3.00.004\\M2351Series_BSP_CMSIS_V3.00.004\\MyProject\\PulseMonitoring\\Secure" @ string offset=101
+.Linfo_string3:
+	.asciz	"mbedtls_version_get_number"    @ string offset=258
+.Linfo_string4:
+	.asciz	"unsigned int"                  @ string offset=285
+.Linfo_string5:
+	.asciz	"mbedtls_version_get_string"    @ string offset=298
+.Linfo_string6:
+	.asciz	"mbedtls_version_get_string_full" @ string offset=325
+.Linfo_string7:
+	.asciz	"string"                        @ string offset=357
+.Linfo_string8:
+	.asciz	"char"                          @ string offset=364
+	.ident	"Component: ARM Compiler 6.15 Tool: armclang [5dd79400]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba
+	.section	.debug_line,"",%progbits
+.Lline_table_start0:

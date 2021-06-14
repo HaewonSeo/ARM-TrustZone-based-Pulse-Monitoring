@@ -1,0 +1,20 @@
+--cpu=Cortex-M23
+".\objects\system_m2351.o"
+".\objects\startup_m2351.o"
+".\objects\gpio.o"
+".\objects\retarget.o"
+"..\Secure\lib\nsclib.o"
+".\objects\dev_config.o"
+".\objects\oled_driver.o"
+".\objects\oled_gui.o"
+".\objects\font8.o"
+".\objects\font12.o"
+".\objects\font16.o"
+".\objects\font20.o"
+".\objects\font24.o"
+".\objects\wifi.o"
+".\objects\main_ns.o"
+--library_type=microlib --strict --scatter ".\Objects\NonSecure.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\NonSecure.map" -o .\Objects\NonSecure.axf

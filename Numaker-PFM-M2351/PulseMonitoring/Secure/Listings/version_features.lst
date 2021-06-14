@@ -1,0 +1,1098 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m23
+	.eabi_attribute	6, 16	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.eabi_attribute	34, 0	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"version_features.c"
+	.file	1 "C:\\Users\\shw26\\OneDrive\\Desktop\\2021\\2021-1\\\354\272\241\354\212\244\355\206\244\353\224\224\354\236\220\354\235\2702\\Nuvoton\\M2351_BSP_v3.00.004\\M2351Series_BSP_CMSIS_V3.00.004\\MyProject\\PulseMonitoring\\Secure" "../../../ThirdParty/mbedTLS/library/version_features.c"
+	.section	.text.mbedtls_version_check_feature,"ax",%progbits
+	.hidden	mbedtls_version_check_feature   @ -- Begin function mbedtls_version_check_feature
+	.globl	mbedtls_version_check_feature
+	.p2align	2
+	.type	mbedtls_version_check_feature,%function
+	.code	16                              @ @mbedtls_version_check_feature
+	.thumb_func
+mbedtls_version_check_feature:
+.Lfunc_begin0:
+	.loc	1 788 0                         @ ../../../ThirdParty/mbedTLS/library/version_features.c:788:0
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	@DEBUG_VALUE: mbedtls_version_check_feature:feature <- $r0
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 24
+	movs	r6, #0
+	mvns	r4, r6
+	@DEBUG_VALUE: mbedtls_version_check_feature:feature <- $r0
+.Ltmp0:
+	@DEBUG_VALUE: mbedtls_version_check_feature:idx <- undef
+	.loc	1 794 9 prologue_end            @ ../../../ThirdParty/mbedTLS/library/version_features.c:794:9
+	cbz	r0, .LBB0_5
+.Ltmp1:
+@ %bb.1:
+	@DEBUG_VALUE: mbedtls_version_check_feature:feature <- $r0
+	.loc	1 0 9 is_stmt 0                 @ ../../../ThirdParty/mbedTLS/library/version_features.c:0:9
+	mov	r5, r0
+.Ltmp2:
+	@DEBUG_VALUE: mbedtls_version_check_feature:feature <- $r5
+	ldr	r0, __arm_cp.0_0
+	adds	r7, r0, #4
+	ldr	r0, __arm_cp.0_1
+.Ltmp3:
+.LBB0_2:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: mbedtls_version_check_feature:feature <- $r5
+	@DEBUG_VALUE: mbedtls_version_check_feature:idx <- undef
+	.loc	1 799 14 is_stmt 1              @ ../../../ThirdParty/mbedTLS/library/version_features.c:799:14
+	mov	r1, r5
+	bl	strcmp
+.Ltmp4:
+	@DEBUG_VALUE: mbedtls_version_check_feature:idx <- [DW_OP_plus_uconst 4, DW_OP_stack_value] undef
+	.loc	1 799 13 is_stmt 0              @ ../../../ThirdParty/mbedTLS/library/version_features.c:799:13
+	cbz	r0, .LBB0_4
+.Ltmp5:
+@ %bb.3:                                @   in Loop: Header=BB0_2 Depth=1
+	@DEBUG_VALUE: mbedtls_version_check_feature:feature <- $r5
+	@DEBUG_VALUE: mbedtls_version_check_feature:idx <- [DW_OP_plus_uconst 4, DW_OP_stack_value] undef
+	.loc	1 797 12 is_stmt 1              @ ../../../ThirdParty/mbedTLS/library/version_features.c:797:12
+	ldm	r7!, {r0}
+	.loc	1 797 5 is_stmt 0               @ ../../../ThirdParty/mbedTLS/library/version_features.c:797:5
+	cmp	r0, #0
+	bne	.LBB0_2
+	b	.LBB0_5
+.Ltmp6:
+.LBB0_4:
+	@DEBUG_VALUE: mbedtls_version_check_feature:feature <- $r5
+	.loc	1 0 0                           @ ../../../ThirdParty/mbedTLS/library/version_features.c:0:0
+	mov	r4, r6
+.Ltmp7:
+.LBB0_5:
+	.loc	1 804 1 is_stmt 1               @ ../../../ThirdParty/mbedTLS/library/version_features.c:804:1
+	mov	r0, r4
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp8:
+	.p2align	2
+@ %bb.6:
+	.loc	1 0 1 is_stmt 0                 @ ../../../ThirdParty/mbedTLS/library/version_features.c:0:1
+__arm_cp.0_0:
+	.long	features
+.Lcpi_end0:
+	.size	__arm_cp.0_0, .Lcpi_end0-__arm_cp.0_0
+__arm_cp.0_1:
+	.long	.L.str
+.Lcpi_end1:
+	.size	__arm_cp.0_1, .Lcpi_end1-__arm_cp.0_1
+.Lfunc_end0:
+	.size	mbedtls_version_check_feature, .Lfunc_end0-mbedtls_version_check_feature
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.type	features,%object                @ @features
+	.section	.rodata.features,"a",%progbits
+	.p2align	2
+features:
+	.long	.L.str
+	.long	.L.str.1
+	.long	.L.str.2
+	.long	.L.str.3
+	.long	.L.str.4
+	.long	.L.str.5
+	.long	.L.str.6
+	.long	.L.str.7
+	.long	.L.str.8
+	.long	.L.str.9
+	.long	.L.str.10
+	.long	.L.str.11
+	.long	.L.str.12
+	.long	.L.str.13
+	.long	.L.str.14
+	.long	.L.str.15
+	.long	.L.str.16
+	.long	.L.str.17
+	.long	.L.str.18
+	.long	.L.str.19
+	.long	.L.str.20
+	.long	.L.str.21
+	.long	.L.str.22
+	.long	.L.str.23
+	.long	.L.str.24
+	.long	.L.str.25
+	.long	.L.str.26
+	.long	.L.str.27
+	.long	.L.str.28
+	.long	.L.str.29
+	.long	.L.str.30
+	.long	.L.str.31
+	.long	.L.str.32
+	.long	.L.str.33
+	.long	.L.str.34
+	.long	.L.str.35
+	.long	.L.str.36
+	.long	.L.str.37
+	.long	.L.str.38
+	.long	.L.str.39
+	.long	.L.str.40
+	.long	.L.str.41
+	.long	.L.str.42
+	.long	.L.str.43
+	.long	.L.str.44
+	.long	.L.str.45
+	.long	.L.str.46
+	.long	.L.str.47
+	.long	.L.str.48
+	.long	.L.str.49
+	.long	.L.str.50
+	.long	.L.str.51
+	.long	.L.str.52
+	.long	.L.str.53
+	.long	.L.str.54
+	.long	.L.str.55
+	.long	.L.str.56
+	.long	.L.str.57
+	.long	.L.str.58
+	.long	.L.str.59
+	.long	.L.str.60
+	.long	.L.str.61
+	.long	.L.str.62
+	.long	.L.str.63
+	.long	.L.str.64
+	.long	.L.str.65
+	.long	.L.str.66
+	.long	.L.str.67
+	.long	.L.str.68
+	.long	.L.str.69
+	.long	.L.str.70
+	.long	.L.str.71
+	.long	.L.str.72
+	.long	.L.str.73
+	.long	.L.str.74
+	.long	.L.str.75
+	.long	.L.str.76
+	.long	.L.str.77
+	.long	.L.str.78
+	.long	.L.str.79
+	.long	.L.str.80
+	.long	.L.str.81
+	.long	.L.str.82
+	.long	.L.str.83
+	.long	.L.str.84
+	.long	.L.str.85
+	.long	.L.str.86
+	.long	.L.str.87
+	.long	.L.str.88
+	.long	.L.str.89
+	.long	.L.str.90
+	.long	.L.str.91
+	.long	.L.str.92
+	.long	.L.str.93
+	.long	.L.str.94
+	.long	.L.str.95
+	.long	.L.str.96
+	.long	.L.str.97
+	.long	.L.str.98
+	.long	.L.str.99
+	.long	.L.str.100
+	.long	.L.str.101
+	.long	.L.str.102
+	.long	.L.str.103
+	.long	.L.str.104
+	.long	.L.str.105
+	.long	.L.str.106
+	.long	.L.str.107
+	.long	.L.str.108
+	.long	.L.str.109
+	.long	.L.str.110
+	.long	.L.str.111
+	.long	.L.str.112
+	.long	.L.str.113
+	.long	.L.str.114
+	.long	.L.str.115
+	.long	.L.str.116
+	.long	.L.str.117
+	.long	.L.str.118
+	.long	.L.str.119
+	.long	.L.str.120
+	.long	0
+	.size	features, 488
+
+	.type	.L.str,%object                  @ @.str
+	.section	.rodata.str1.1,"aMS",%progbits,1
+.L.str:
+	.asciz	"MBEDTLS_ENTROPY_HARDWARE_ALT"
+	.size	.L.str, 29
+
+	.type	.L.str.1,%object                @ @.str.1
+.L.str.1:
+	.asciz	"MBEDTLS_AES_ROM_TABLES"
+	.size	.L.str.1, 23
+
+	.type	.L.str.2,%object                @ @.str.2
+.L.str.2:
+	.asciz	"MBEDTLS_CIPHER_MODE_CBC"
+	.size	.L.str.2, 24
+
+	.type	.L.str.3,%object                @ @.str.3
+.L.str.3:
+	.asciz	"MBEDTLS_CIPHER_MODE_CFB"
+	.size	.L.str.3, 24
+
+	.type	.L.str.4,%object                @ @.str.4
+.L.str.4:
+	.asciz	"MBEDTLS_CIPHER_MODE_CTR"
+	.size	.L.str.4, 24
+
+	.type	.L.str.5,%object                @ @.str.5
+.L.str.5:
+	.asciz	"MBEDTLS_CIPHER_PADDING_PKCS7"
+	.size	.L.str.5, 29
+
+	.type	.L.str.6,%object                @ @.str.6
+.L.str.6:
+	.asciz	"MBEDTLS_CIPHER_PADDING_ONE_AND_ZEROS"
+	.size	.L.str.6, 37
+
+	.type	.L.str.7,%object                @ @.str.7
+.L.str.7:
+	.asciz	"MBEDTLS_CIPHER_PADDING_ZEROS_AND_LEN"
+	.size	.L.str.7, 37
+
+	.type	.L.str.8,%object                @ @.str.8
+.L.str.8:
+	.asciz	"MBEDTLS_CIPHER_PADDING_ZEROS"
+	.size	.L.str.8, 29
+
+	.type	.L.str.9,%object                @ @.str.9
+.L.str.9:
+	.asciz	"MBEDTLS_REMOVE_ARC4_CIPHERSUITES"
+	.size	.L.str.9, 33
+
+	.type	.L.str.10,%object               @ @.str.10
+.L.str.10:
+	.asciz	"MBEDTLS_REMOVE_3DES_CIPHERSUITES"
+	.size	.L.str.10, 33
+
+	.type	.L.str.11,%object               @ @.str.11
+.L.str.11:
+	.asciz	"MBEDTLS_ECP_DP_SECP192R1_ENABLED"
+	.size	.L.str.11, 33
+
+	.type	.L.str.12,%object               @ @.str.12
+.L.str.12:
+	.asciz	"MBEDTLS_ECP_DP_SECP224R1_ENABLED"
+	.size	.L.str.12, 33
+
+	.type	.L.str.13,%object               @ @.str.13
+.L.str.13:
+	.asciz	"MBEDTLS_ECP_DP_SECP256R1_ENABLED"
+	.size	.L.str.13, 33
+
+	.type	.L.str.14,%object               @ @.str.14
+.L.str.14:
+	.asciz	"MBEDTLS_ECP_DP_SECP384R1_ENABLED"
+	.size	.L.str.14, 33
+
+	.type	.L.str.15,%object               @ @.str.15
+.L.str.15:
+	.asciz	"MBEDTLS_ECP_DP_SECP521R1_ENABLED"
+	.size	.L.str.15, 33
+
+	.type	.L.str.16,%object               @ @.str.16
+.L.str.16:
+	.asciz	"MBEDTLS_ECP_DP_SECP192K1_ENABLED"
+	.size	.L.str.16, 33
+
+	.type	.L.str.17,%object               @ @.str.17
+.L.str.17:
+	.asciz	"MBEDTLS_ECP_DP_SECP224K1_ENABLED"
+	.size	.L.str.17, 33
+
+	.type	.L.str.18,%object               @ @.str.18
+.L.str.18:
+	.asciz	"MBEDTLS_ECP_DP_SECP256K1_ENABLED"
+	.size	.L.str.18, 33
+
+	.type	.L.str.19,%object               @ @.str.19
+.L.str.19:
+	.asciz	"MBEDTLS_ECP_DP_BP256R1_ENABLED"
+	.size	.L.str.19, 31
+
+	.type	.L.str.20,%object               @ @.str.20
+.L.str.20:
+	.asciz	"MBEDTLS_ECP_DP_BP384R1_ENABLED"
+	.size	.L.str.20, 31
+
+	.type	.L.str.21,%object               @ @.str.21
+.L.str.21:
+	.asciz	"MBEDTLS_ECP_DP_BP512R1_ENABLED"
+	.size	.L.str.21, 31
+
+	.type	.L.str.22,%object               @ @.str.22
+.L.str.22:
+	.asciz	"MBEDTLS_ECP_DP_CURVE25519_ENABLED"
+	.size	.L.str.22, 34
+
+	.type	.L.str.23,%object               @ @.str.23
+.L.str.23:
+	.asciz	"MBEDTLS_ECP_DP_CURVE448_ENABLED"
+	.size	.L.str.23, 32
+
+	.type	.L.str.24,%object               @ @.str.24
+.L.str.24:
+	.asciz	"MBEDTLS_ECP_NIST_OPTIM"
+	.size	.L.str.24, 23
+
+	.type	.L.str.25,%object               @ @.str.25
+.L.str.25:
+	.asciz	"MBEDTLS_ECDSA_DETERMINISTIC"
+	.size	.L.str.25, 28
+
+	.type	.L.str.26,%object               @ @.str.26
+.L.str.26:
+	.asciz	"MBEDTLS_KEY_EXCHANGE_PSK_ENABLED"
+	.size	.L.str.26, 33
+
+	.type	.L.str.27,%object               @ @.str.27
+.L.str.27:
+	.asciz	"MBEDTLS_KEY_EXCHANGE_DHE_PSK_ENABLED"
+	.size	.L.str.27, 37
+
+	.type	.L.str.28,%object               @ @.str.28
+.L.str.28:
+	.asciz	"MBEDTLS_KEY_EXCHANGE_ECDHE_PSK_ENABLED"
+	.size	.L.str.28, 39
+
+	.type	.L.str.29,%object               @ @.str.29
+.L.str.29:
+	.asciz	"MBEDTLS_KEY_EXCHANGE_RSA_PSK_ENABLED"
+	.size	.L.str.29, 37
+
+	.type	.L.str.30,%object               @ @.str.30
+.L.str.30:
+	.asciz	"MBEDTLS_KEY_EXCHANGE_RSA_ENABLED"
+	.size	.L.str.30, 33
+
+	.type	.L.str.31,%object               @ @.str.31
+.L.str.31:
+	.asciz	"MBEDTLS_KEY_EXCHANGE_DHE_RSA_ENABLED"
+	.size	.L.str.31, 37
+
+	.type	.L.str.32,%object               @ @.str.32
+.L.str.32:
+	.asciz	"MBEDTLS_KEY_EXCHANGE_ECDHE_RSA_ENABLED"
+	.size	.L.str.32, 39
+
+	.type	.L.str.33,%object               @ @.str.33
+.L.str.33:
+	.asciz	"MBEDTLS_KEY_EXCHANGE_ECDHE_ECDSA_ENABLED"
+	.size	.L.str.33, 41
+
+	.type	.L.str.34,%object               @ @.str.34
+.L.str.34:
+	.asciz	"MBEDTLS_KEY_EXCHANGE_ECDH_ECDSA_ENABLED"
+	.size	.L.str.34, 40
+
+	.type	.L.str.35,%object               @ @.str.35
+.L.str.35:
+	.asciz	"MBEDTLS_KEY_EXCHANGE_ECDH_RSA_ENABLED"
+	.size	.L.str.35, 38
+
+	.type	.L.str.36,%object               @ @.str.36
+.L.str.36:
+	.asciz	"MBEDTLS_PK_PARSE_EC_EXTENDED"
+	.size	.L.str.36, 29
+
+	.type	.L.str.37,%object               @ @.str.37
+.L.str.37:
+	.asciz	"MBEDTLS_ERROR_STRERROR_DUMMY"
+	.size	.L.str.37, 29
+
+	.type	.L.str.38,%object               @ @.str.38
+.L.str.38:
+	.asciz	"MBEDTLS_GENPRIME"
+	.size	.L.str.38, 17
+
+	.type	.L.str.39,%object               @ @.str.39
+.L.str.39:
+	.asciz	"MBEDTLS_NO_PLATFORM_ENTROPY"
+	.size	.L.str.39, 28
+
+	.type	.L.str.40,%object               @ @.str.40
+.L.str.40:
+	.asciz	"MBEDTLS_PK_RSA_ALT_SUPPORT"
+	.size	.L.str.40, 27
+
+	.type	.L.str.41,%object               @ @.str.41
+.L.str.41:
+	.asciz	"MBEDTLS_PKCS1_V15"
+	.size	.L.str.41, 18
+
+	.type	.L.str.42,%object               @ @.str.42
+.L.str.42:
+	.asciz	"MBEDTLS_PKCS1_V21"
+	.size	.L.str.42, 18
+
+	.type	.L.str.43,%object               @ @.str.43
+.L.str.43:
+	.asciz	"MBEDTLS_SELF_TEST"
+	.size	.L.str.43, 18
+
+	.type	.L.str.44,%object               @ @.str.44
+.L.str.44:
+	.asciz	"MBEDTLS_SSL_ALL_ALERT_MESSAGES"
+	.size	.L.str.44, 31
+
+	.type	.L.str.45,%object               @ @.str.45
+.L.str.45:
+	.asciz	"MBEDTLS_SSL_ENCRYPT_THEN_MAC"
+	.size	.L.str.45, 29
+
+	.type	.L.str.46,%object               @ @.str.46
+.L.str.46:
+	.asciz	"MBEDTLS_SSL_EXTENDED_MASTER_SECRET"
+	.size	.L.str.46, 35
+
+	.type	.L.str.47,%object               @ @.str.47
+.L.str.47:
+	.asciz	"MBEDTLS_SSL_FALLBACK_SCSV"
+	.size	.L.str.47, 26
+
+	.type	.L.str.48,%object               @ @.str.48
+.L.str.48:
+	.asciz	"MBEDTLS_SSL_CBC_RECORD_SPLITTING"
+	.size	.L.str.48, 33
+
+	.type	.L.str.49,%object               @ @.str.49
+.L.str.49:
+	.asciz	"MBEDTLS_SSL_RENEGOTIATION"
+	.size	.L.str.49, 26
+
+	.type	.L.str.50,%object               @ @.str.50
+.L.str.50:
+	.asciz	"MBEDTLS_SSL_MAX_FRAGMENT_LENGTH"
+	.size	.L.str.50, 32
+
+	.type	.L.str.51,%object               @ @.str.51
+.L.str.51:
+	.asciz	"MBEDTLS_SSL_PROTO_SSL3"
+	.size	.L.str.51, 23
+
+	.type	.L.str.52,%object               @ @.str.52
+.L.str.52:
+	.asciz	"MBEDTLS_SSL_PROTO_TLS1"
+	.size	.L.str.52, 23
+
+	.type	.L.str.53,%object               @ @.str.53
+.L.str.53:
+	.asciz	"MBEDTLS_SSL_PROTO_TLS1_1"
+	.size	.L.str.53, 25
+
+	.type	.L.str.54,%object               @ @.str.54
+.L.str.54:
+	.asciz	"MBEDTLS_SSL_PROTO_TLS1_2"
+	.size	.L.str.54, 25
+
+	.type	.L.str.55,%object               @ @.str.55
+.L.str.55:
+	.asciz	"MBEDTLS_SSL_PROTO_DTLS"
+	.size	.L.str.55, 23
+
+	.type	.L.str.56,%object               @ @.str.56
+.L.str.56:
+	.asciz	"MBEDTLS_SSL_ALPN"
+	.size	.L.str.56, 17
+
+	.type	.L.str.57,%object               @ @.str.57
+.L.str.57:
+	.asciz	"MBEDTLS_SSL_DTLS_ANTI_REPLAY"
+	.size	.L.str.57, 29
+
+	.type	.L.str.58,%object               @ @.str.58
+.L.str.58:
+	.asciz	"MBEDTLS_SSL_DTLS_HELLO_VERIFY"
+	.size	.L.str.58, 30
+
+	.type	.L.str.59,%object               @ @.str.59
+.L.str.59:
+	.asciz	"MBEDTLS_SSL_DTLS_CLIENT_PORT_REUSE"
+	.size	.L.str.59, 35
+
+	.type	.L.str.60,%object               @ @.str.60
+.L.str.60:
+	.asciz	"MBEDTLS_SSL_DTLS_BADMAC_LIMIT"
+	.size	.L.str.60, 30
+
+	.type	.L.str.61,%object               @ @.str.61
+.L.str.61:
+	.asciz	"MBEDTLS_SSL_SESSION_TICKETS"
+	.size	.L.str.61, 28
+
+	.type	.L.str.62,%object               @ @.str.62
+.L.str.62:
+	.asciz	"MBEDTLS_SSL_SERVER_NAME_INDICATION"
+	.size	.L.str.62, 35
+
+	.type	.L.str.63,%object               @ @.str.63
+.L.str.63:
+	.asciz	"MBEDTLS_SSL_TRUNCATED_HMAC"
+	.size	.L.str.63, 27
+
+	.type	.L.str.64,%object               @ @.str.64
+.L.str.64:
+	.asciz	"MBEDTLS_VERSION_FEATURES"
+	.size	.L.str.64, 25
+
+	.type	.L.str.65,%object               @ @.str.65
+.L.str.65:
+	.asciz	"MBEDTLS_X509_CHECK_KEY_USAGE"
+	.size	.L.str.65, 29
+
+	.type	.L.str.66,%object               @ @.str.66
+.L.str.66:
+	.asciz	"MBEDTLS_X509_CHECK_EXTENDED_KEY_USAGE"
+	.size	.L.str.66, 38
+
+	.type	.L.str.67,%object               @ @.str.67
+.L.str.67:
+	.asciz	"MBEDTLS_X509_RSASSA_PSS_SUPPORT"
+	.size	.L.str.67, 32
+
+	.type	.L.str.68,%object               @ @.str.68
+.L.str.68:
+	.asciz	"MBEDTLS_AES_C"
+	.size	.L.str.68, 14
+
+	.type	.L.str.69,%object               @ @.str.69
+.L.str.69:
+	.asciz	"MBEDTLS_ARC4_C"
+	.size	.L.str.69, 15
+
+	.type	.L.str.70,%object               @ @.str.70
+.L.str.70:
+	.asciz	"MBEDTLS_ASN1_PARSE_C"
+	.size	.L.str.70, 21
+
+	.type	.L.str.71,%object               @ @.str.71
+.L.str.71:
+	.asciz	"MBEDTLS_ASN1_WRITE_C"
+	.size	.L.str.71, 21
+
+	.type	.L.str.72,%object               @ @.str.72
+.L.str.72:
+	.asciz	"MBEDTLS_BASE64_C"
+	.size	.L.str.72, 17
+
+	.type	.L.str.73,%object               @ @.str.73
+.L.str.73:
+	.asciz	"MBEDTLS_BIGNUM_C"
+	.size	.L.str.73, 17
+
+	.type	.L.str.74,%object               @ @.str.74
+.L.str.74:
+	.asciz	"MBEDTLS_BLOWFISH_C"
+	.size	.L.str.74, 19
+
+	.type	.L.str.75,%object               @ @.str.75
+.L.str.75:
+	.asciz	"MBEDTLS_CAMELLIA_C"
+	.size	.L.str.75, 19
+
+	.type	.L.str.76,%object               @ @.str.76
+.L.str.76:
+	.asciz	"MBEDTLS_CCM_C"
+	.size	.L.str.76, 14
+
+	.type	.L.str.77,%object               @ @.str.77
+.L.str.77:
+	.asciz	"MBEDTLS_CERTS_C"
+	.size	.L.str.77, 16
+
+	.type	.L.str.78,%object               @ @.str.78
+.L.str.78:
+	.asciz	"MBEDTLS_CIPHER_C"
+	.size	.L.str.78, 17
+
+	.type	.L.str.79,%object               @ @.str.79
+.L.str.79:
+	.asciz	"MBEDTLS_CTR_DRBG_C"
+	.size	.L.str.79, 19
+
+	.type	.L.str.80,%object               @ @.str.80
+.L.str.80:
+	.asciz	"MBEDTLS_DEBUG_C"
+	.size	.L.str.80, 16
+
+	.type	.L.str.81,%object               @ @.str.81
+.L.str.81:
+	.asciz	"MBEDTLS_DES_C"
+	.size	.L.str.81, 14
+
+	.type	.L.str.82,%object               @ @.str.82
+.L.str.82:
+	.asciz	"MBEDTLS_DHM_C"
+	.size	.L.str.82, 14
+
+	.type	.L.str.83,%object               @ @.str.83
+.L.str.83:
+	.asciz	"MBEDTLS_ECDH_C"
+	.size	.L.str.83, 15
+
+	.type	.L.str.84,%object               @ @.str.84
+.L.str.84:
+	.asciz	"MBEDTLS_ECDSA_C"
+	.size	.L.str.84, 16
+
+	.type	.L.str.85,%object               @ @.str.85
+.L.str.85:
+	.asciz	"MBEDTLS_ECP_C"
+	.size	.L.str.85, 14
+
+	.type	.L.str.86,%object               @ @.str.86
+.L.str.86:
+	.asciz	"MBEDTLS_ENTROPY_C"
+	.size	.L.str.86, 18
+
+	.type	.L.str.87,%object               @ @.str.87
+.L.str.87:
+	.asciz	"MBEDTLS_ERROR_C"
+	.size	.L.str.87, 16
+
+	.type	.L.str.88,%object               @ @.str.88
+.L.str.88:
+	.asciz	"MBEDTLS_GCM_C"
+	.size	.L.str.88, 14
+
+	.type	.L.str.89,%object               @ @.str.89
+.L.str.89:
+	.asciz	"MBEDTLS_HMAC_DRBG_C"
+	.size	.L.str.89, 20
+
+	.type	.L.str.90,%object               @ @.str.90
+.L.str.90:
+	.asciz	"MBEDTLS_MD_C"
+	.size	.L.str.90, 13
+
+	.type	.L.str.91,%object               @ @.str.91
+.L.str.91:
+	.asciz	"MBEDTLS_MD5_C"
+	.size	.L.str.91, 14
+
+	.type	.L.str.92,%object               @ @.str.92
+.L.str.92:
+	.asciz	"MBEDTLS_NET_C"
+	.size	.L.str.92, 14
+
+	.type	.L.str.93,%object               @ @.str.93
+.L.str.93:
+	.asciz	"MBEDTLS_OID_C"
+	.size	.L.str.93, 14
+
+	.type	.L.str.94,%object               @ @.str.94
+.L.str.94:
+	.asciz	"MBEDTLS_PEM_PARSE_C"
+	.size	.L.str.94, 20
+
+	.type	.L.str.95,%object               @ @.str.95
+.L.str.95:
+	.asciz	"MBEDTLS_PEM_WRITE_C"
+	.size	.L.str.95, 20
+
+	.type	.L.str.96,%object               @ @.str.96
+.L.str.96:
+	.asciz	"MBEDTLS_PK_C"
+	.size	.L.str.96, 13
+
+	.type	.L.str.97,%object               @ @.str.97
+.L.str.97:
+	.asciz	"MBEDTLS_PK_PARSE_C"
+	.size	.L.str.97, 19
+
+	.type	.L.str.98,%object               @ @.str.98
+.L.str.98:
+	.asciz	"MBEDTLS_PK_WRITE_C"
+	.size	.L.str.98, 19
+
+	.type	.L.str.99,%object               @ @.str.99
+.L.str.99:
+	.asciz	"MBEDTLS_PKCS5_C"
+	.size	.L.str.99, 16
+
+	.type	.L.str.100,%object              @ @.str.100
+.L.str.100:
+	.asciz	"MBEDTLS_PKCS12_C"
+	.size	.L.str.100, 17
+
+	.type	.L.str.101,%object              @ @.str.101
+.L.str.101:
+	.asciz	"MBEDTLS_PLATFORM_C"
+	.size	.L.str.101, 19
+
+	.type	.L.str.102,%object              @ @.str.102
+.L.str.102:
+	.asciz	"MBEDTLS_RIPEMD160_C"
+	.size	.L.str.102, 20
+
+	.type	.L.str.103,%object              @ @.str.103
+.L.str.103:
+	.asciz	"MBEDTLS_RSA_C"
+	.size	.L.str.103, 14
+
+	.type	.L.str.104,%object              @ @.str.104
+.L.str.104:
+	.asciz	"MBEDTLS_SHA1_C"
+	.size	.L.str.104, 15
+
+	.type	.L.str.105,%object              @ @.str.105
+.L.str.105:
+	.asciz	"MBEDTLS_SHA256_C"
+	.size	.L.str.105, 17
+
+	.type	.L.str.106,%object              @ @.str.106
+.L.str.106:
+	.asciz	"MBEDTLS_SHA512_C"
+	.size	.L.str.106, 17
+
+	.type	.L.str.107,%object              @ @.str.107
+.L.str.107:
+	.asciz	"MBEDTLS_SSL_CACHE_C"
+	.size	.L.str.107, 20
+
+	.type	.L.str.108,%object              @ @.str.108
+.L.str.108:
+	.asciz	"MBEDTLS_SSL_COOKIE_C"
+	.size	.L.str.108, 21
+
+	.type	.L.str.109,%object              @ @.str.109
+.L.str.109:
+	.asciz	"MBEDTLS_SSL_TICKET_C"
+	.size	.L.str.109, 21
+
+	.type	.L.str.110,%object              @ @.str.110
+.L.str.110:
+	.asciz	"MBEDTLS_SSL_CLI_C"
+	.size	.L.str.110, 18
+
+	.type	.L.str.111,%object              @ @.str.111
+.L.str.111:
+	.asciz	"MBEDTLS_SSL_TLS_C"
+	.size	.L.str.111, 18
+
+	.type	.L.str.112,%object              @ @.str.112
+.L.str.112:
+	.asciz	"MBEDTLS_VERSION_C"
+	.size	.L.str.112, 18
+
+	.type	.L.str.113,%object              @ @.str.113
+.L.str.113:
+	.asciz	"MBEDTLS_X509_USE_C"
+	.size	.L.str.113, 19
+
+	.type	.L.str.114,%object              @ @.str.114
+.L.str.114:
+	.asciz	"MBEDTLS_X509_CRT_PARSE_C"
+	.size	.L.str.114, 25
+
+	.type	.L.str.115,%object              @ @.str.115
+.L.str.115:
+	.asciz	"MBEDTLS_X509_CRL_PARSE_C"
+	.size	.L.str.115, 25
+
+	.type	.L.str.116,%object              @ @.str.116
+.L.str.116:
+	.asciz	"MBEDTLS_X509_CSR_PARSE_C"
+	.size	.L.str.116, 25
+
+	.type	.L.str.117,%object              @ @.str.117
+.L.str.117:
+	.asciz	"MBEDTLS_X509_CREATE_C"
+	.size	.L.str.117, 22
+
+	.type	.L.str.118,%object              @ @.str.118
+.L.str.118:
+	.asciz	"MBEDTLS_X509_CRT_WRITE_C"
+	.size	.L.str.118, 25
+
+	.type	.L.str.119,%object              @ @.str.119
+.L.str.119:
+	.asciz	"MBEDTLS_X509_CSR_WRITE_C"
+	.size	.L.str.119, 25
+
+	.type	.L.str.120,%object              @ @.str.120
+.L.str.120:
+	.asciz	"MBEDTLS_XTEA_C"
+	.size	.L.str.120, 15
+
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp2-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp2-.Lfunc_begin0
+	.long	.Ltmp7-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+	.section	.debug_abbrev,"",%progbits
+	.byte	1                               @ Abbreviation Code
+	.byte	17                              @ DW_TAG_compile_unit
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	37                              @ DW_AT_producer
+	.byte	14                              @ DW_FORM_strp
+	.byte	19                              @ DW_AT_language
+	.byte	5                               @ DW_FORM_data2
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	16                              @ DW_AT_stmt_list
+	.byte	6                               @ DW_FORM_data4
+	.byte	27                              @ DW_AT_comp_dir
+	.byte	14                              @ DW_FORM_strp
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	2                               @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	3                               @ Abbreviation Code
+	.byte	1                               @ DW_TAG_array_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	4                               @ Abbreviation Code
+	.byte	33                              @ DW_TAG_subrange_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	55                              @ DW_AT_count
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	5                               @ Abbreviation Code
+	.byte	15                              @ DW_TAG_pointer_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	6                               @ Abbreviation Code
+	.byte	38                              @ DW_TAG_const_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	7                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	8                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	9                               @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	10                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	6                               @ DW_FORM_data4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	11                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	0                               @ EOM(3)
+	.section	.debug_info,"",%progbits
+.Lcu_begin0:
+	.long	.Ldebug_info_end0-.Ldebug_info_start0 @ Length of Unit
+.Ldebug_info_start0:
+	.short	3                               @ DWARF version number
+	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
+	.byte	4                               @ Address Size (in bytes)
+	.byte	1                               @ Abbrev [1] 0xb:0x92 DW_TAG_compile_unit
+	.long	.Linfo_string0                  @ DW_AT_producer
+	.short	12                              @ DW_AT_language
+	.long	.Linfo_string1                  @ DW_AT_name
+	.long	.Lline_table_start0             @ DW_AT_stmt_list
+	.long	.Linfo_string2                  @ DW_AT_comp_dir
+	.long	.Lfunc_begin0                   @ DW_AT_low_pc
+	.long	.Lfunc_end0                     @ DW_AT_high_pc
+	.byte	2                               @ Abbrev [2] 0x26:0x11 DW_TAG_variable
+	.long	.Linfo_string3                  @ DW_AT_name
+	.long	55                              @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	34                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	features
+	.byte	3                               @ Abbrev [3] 0x37:0xc DW_TAG_array_type
+	.long	67                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x3c:0x6 DW_TAG_subrange_type
+	.long	84                              @ DW_AT_type
+	.byte	122                             @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	5                               @ Abbrev [5] 0x43:0x5 DW_TAG_pointer_type
+	.long	72                              @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x48:0x5 DW_TAG_const_type
+	.long	77                              @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x4d:0x7 DW_TAG_base_type
+	.long	.Linfo_string4                  @ DW_AT_name
+	.byte	8                               @ DW_AT_encoding
+	.byte	1                               @ DW_AT_byte_size
+	.byte	8                               @ Abbrev [8] 0x54:0x7 DW_TAG_base_type
+	.long	.Linfo_string5                  @ DW_AT_name
+	.byte	8                               @ DW_AT_byte_size
+	.byte	7                               @ DW_AT_encoding
+	.byte	9                               @ Abbrev [9] 0x5b:0x35 DW_TAG_subprogram
+	.long	.Lfunc_begin0                   @ DW_AT_low_pc
+	.long	.Lfunc_end0                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string6                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.short	787                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	144                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	10                              @ Abbrev [10] 0x73:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
+	.long	.Linfo_string8                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.short	787                             @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x83:0xc DW_TAG_variable
+	.long	.Linfo_string9                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.short	789                             @ DW_AT_decl_line
+	.long	151                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	7                               @ Abbrev [7] 0x90:0x7 DW_TAG_base_type
+	.long	.Linfo_string7                  @ DW_AT_name
+	.byte	5                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	5                               @ Abbrev [5] 0x97:0x5 DW_TAG_pointer_type
+	.long	67                              @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+.Ldebug_info_end0:
+	.section	.debug_str,"MS",%progbits,1
+.Linfo_string0:
+	.asciz	"Component: ARM Compiler 6.15 Tool: armclang [5dd79400]" @ string offset=0
+.Linfo_string1:
+	.asciz	"../../../ThirdParty/mbedTLS/library\\version_features.c" @ string offset=55
+.Linfo_string2:
+	.asciz	"C:\\Users\\shw26\\OneDrive\\Desktop\\2021\\2021-1\\\354\272\241\354\212\244\355\206\244\353\224\224\354\236\220\354\235\2702\\Nuvoton\\M2351_BSP_v3.00.004\\M2351Series_BSP_CMSIS_V3.00.004\\MyProject\\PulseMonitoring\\Secure" @ string offset=110
+.Linfo_string3:
+	.asciz	"features"                      @ string offset=267
+.Linfo_string4:
+	.asciz	"char"                          @ string offset=276
+.Linfo_string5:
+	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=281
+.Linfo_string6:
+	.asciz	"mbedtls_version_check_feature" @ string offset=301
+.Linfo_string7:
+	.asciz	"int"                           @ string offset=331
+.Linfo_string8:
+	.asciz	"feature"                       @ string offset=335
+.Linfo_string9:
+	.asciz	"idx"                           @ string offset=343
+	.ident	"Component: ARM Compiler 6.15 Tool: armclang [5dd79400]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba
+	.section	.debug_line,"",%progbits
+.Lline_table_start0:

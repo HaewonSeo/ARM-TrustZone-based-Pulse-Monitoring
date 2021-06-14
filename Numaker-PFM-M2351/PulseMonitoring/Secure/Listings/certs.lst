@@ -1,0 +1,1247 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m23
+	.eabi_attribute	6, 16	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 3	@ Tag_THUMB_ISA_use
+	.eabi_attribute	34, 0	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"certs.c"
+	.file	1 "C:\\Users\\shw26\\OneDrive\\Desktop\\2021\\2021-1\\\354\272\241\354\212\244\355\206\244\353\224\224\354\236\220\354\235\2702\\Nuvoton\\M2351_BSP_v3.00.004\\M2351Series_BSP_CMSIS_V3.00.004\\MyProject\\PulseMonitoring\\Secure" "../../../ThirdParty/mbedTLS/library/certs.c"
+	.file	2 "C:\\" "Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include\\stddef.h"
+	.hidden	mbedtls_test_ca_crt_ec          @ @mbedtls_test_ca_crt_ec
+	.type	mbedtls_test_ca_crt_ec,%object
+	.section	.rodata.mbedtls_test_ca_crt_ec,"a",%progbits
+	.globl	mbedtls_test_ca_crt_ec
+mbedtls_test_ca_crt_ec:
+	.asciz	"-----BEGIN CERTIFICATE-----\r\nMIICUjCCAdegAwIBAgIJAMFD4n5iQ8zoMAoGCCqGSM49BAMCMD4xCzAJBgNVBAYT\r\nAk5MMREwDwYDVQQKEwhQb2xhclNTTDEcMBoGA1UEAxMTUG9sYXJzc2wgVGVzdCBF\r\nQyBDQTAeFw0xMzA5MjQxNTQ5NDhaFw0yMzA5MjIxNTQ5NDhaMD4xCzAJBgNVBAYT\r\nAk5MMREwDwYDVQQKEwhQb2xhclNTTDEcMBoGA1UEAxMTUG9sYXJzc2wgVGVzdCBF\r\nQyBDQTB2MBAGByqGSM49AgEGBSuBBAAiA2IABMPaKzRBN1gvh1b+/Im6KUNLTuBu\r\nww5XUzM5WNRStJGVOQsj318XJGJI/BqVKc4sLYfCiFKAr9ZqqyHduNMcbli4yuiy\r\naY7zQa0pw7RfdadHb9UZKVVpmlM7ILRmFmAzHqOBoDCBnTAdBgNVHQ4EFgQUnW0g\r\nJEkBPyvLeLUZvH4kydv7NnwwbgYDVR0jBGcwZYAUnW0gJEkBPyvLeLUZvH4kydv7\r\nNnyhQqRAMD4xCzAJBgNVBAYTAk5MMREwDwYDVQQKEwhQb2xhclNTTDEcMBoGA1UE\r\nAxMTUG9sYXJzc2wgVGVzdCBFQyBDQYIJAMFD4n5iQ8zoMAwGA1UdEwQFMAMBAf8w\r\nCgYIKoZIzj0EAwIDaQAwZgIxAMO0YnNWKJUAfXgSJtJxexn4ipg+kv4znuR50v56\r\nt4d0PCu412mUC6Nnd7izvtE2MgIxAP1nnJQjZ8BWukszFQDG48wxCCyci9qpdSMv\r\nuCjn8pwUOkABXK8Mss90fzCfCEOtIA==\r\n-----END CERTIFICATE-----\r\n"
+	.size	mbedtls_test_ca_crt_ec, 883
+
+	.hidden	mbedtls_test_ca_crt_ec_len      @ @mbedtls_test_ca_crt_ec_len
+	.type	mbedtls_test_ca_crt_ec_len,%object
+	.section	.rodata.mbedtls_test_ca_crt_ec_len,"a",%progbits
+	.globl	mbedtls_test_ca_crt_ec_len
+	.p2align	2
+mbedtls_test_ca_crt_ec_len:
+	.long	883                             @ 0x373
+	.size	mbedtls_test_ca_crt_ec_len, 4
+
+	.hidden	mbedtls_test_ca_key_ec          @ @mbedtls_test_ca_key_ec
+	.type	mbedtls_test_ca_key_ec,%object
+	.section	.rodata.mbedtls_test_ca_key_ec,"a",%progbits
+	.globl	mbedtls_test_ca_key_ec
+mbedtls_test_ca_key_ec:
+	.asciz	"-----BEGIN EC PRIVATE KEY-----\r\nProc-Type: 4,ENCRYPTED\r\nDEK-Info: DES-EDE3-CBC,307EAB469933D64E\r\n\r\nIxbrRmKcAzctJqPdTQLA4SWyBYYGYJVkYEna+F7Pa5t5Yg/gKADrFKcm6B72e7DG\r\nihExtZI648s0zdYw6qSJ74vrPSuWDe5qm93BqsfVH9svtCzWHW0pm1p0KTBCFfUq\r\nUsuWTITwJImcnlAs1gaRZ3sAWm7cOUidL0fo2G0fYUFNcYoCSLffCFTEHBuPnagb\r\na77x/sY1Bvii8S9/XhDTb6pTMx06wzrm\r\n-----END EC PRIVATE KEY-----\r\n"
+	.size	mbedtls_test_ca_key_ec, 362
+
+	.hidden	mbedtls_test_ca_key_ec_len      @ @mbedtls_test_ca_key_ec_len
+	.type	mbedtls_test_ca_key_ec_len,%object
+	.section	.rodata.mbedtls_test_ca_key_ec_len,"a",%progbits
+	.globl	mbedtls_test_ca_key_ec_len
+	.p2align	2
+mbedtls_test_ca_key_ec_len:
+	.long	362                             @ 0x16a
+	.size	mbedtls_test_ca_key_ec_len, 4
+
+	.hidden	mbedtls_test_ca_pwd_ec          @ @mbedtls_test_ca_pwd_ec
+	.type	mbedtls_test_ca_pwd_ec,%object
+	.section	.rodata.mbedtls_test_ca_pwd_ec,"a",%progbits
+	.globl	mbedtls_test_ca_pwd_ec
+mbedtls_test_ca_pwd_ec:
+	.asciz	"PolarSSLTest"
+	.size	mbedtls_test_ca_pwd_ec, 13
+
+	.hidden	mbedtls_test_ca_pwd_ec_len      @ @mbedtls_test_ca_pwd_ec_len
+	.type	mbedtls_test_ca_pwd_ec_len,%object
+	.section	.rodata.mbedtls_test_ca_pwd_ec_len,"a",%progbits
+	.globl	mbedtls_test_ca_pwd_ec_len
+	.p2align	2
+mbedtls_test_ca_pwd_ec_len:
+	.long	12                              @ 0xc
+	.size	mbedtls_test_ca_pwd_ec_len, 4
+
+	.hidden	mbedtls_test_srv_crt_ec         @ @mbedtls_test_srv_crt_ec
+	.type	mbedtls_test_srv_crt_ec,%object
+	.section	.rodata.mbedtls_test_srv_crt_ec,"a",%progbits
+	.globl	mbedtls_test_srv_crt_ec
+mbedtls_test_srv_crt_ec:
+	.asciz	"-----BEGIN CERTIFICATE-----\r\nMIICHzCCAaWgAwIBAgIBCTAKBggqhkjOPQQDAjA+MQswCQYDVQQGEwJOTDERMA8G\r\nA1UEChMIUG9sYXJTU0wxHDAaBgNVBAMTE1BvbGFyc3NsIFRlc3QgRUMgQ0EwHhcN\r\nMTMwOTI0MTU1MjA0WhcNMjMwOTIyMTU1MjA0WjA0MQswCQYDVQQGEwJOTDERMA8G\r\nA1UEChMIUG9sYXJTU0wxEjAQBgNVBAMTCWxvY2FsaG9zdDBZMBMGByqGSM49AgEG\r\nCCqGSM49AwEHA0IABDfMVtl2CR5acj7HWS3/IG7ufPkGkXTQrRS192giWWKSTuUA\r\n2CMR/+ov0jRdXRa9iojCa3cNVc2KKg76Aci07f+jgZ0wgZowCQYDVR0TBAIwADAd\r\nBgNVHQ4EFgQUUGGlj9QH2deCAQzlZX+MY0anE74wbgYDVR0jBGcwZYAUnW0gJEkB\r\nPyvLeLUZvH4kydv7NnyhQqRAMD4xCzAJBgNVBAYTAk5MMREwDwYDVQQKEwhQb2xh\r\nclNTTDEcMBoGA1UEAxMTUG9sYXJzc2wgVGVzdCBFQyBDQYIJAMFD4n5iQ8zoMAoG\r\nCCqGSM49BAMCA2gAMGUCMQCaLFzXptui5WQN8LlO3ddh1hMxx6tzgLvT03MTVK2S\r\nC12r0Lz3ri/moSEpNZWqPjkCMCE2f53GXcYLqyfyJR078c/xNSUU5+Xxl7VZ414V\r\nfGa5kHvHARBPc8YAIVIqDvHH1Q==\r\n-----END CERTIFICATE-----\r\n"
+	.size	mbedtls_test_srv_crt_ec, 813
+
+	.hidden	mbedtls_test_srv_crt_ec_len     @ @mbedtls_test_srv_crt_ec_len
+	.type	mbedtls_test_srv_crt_ec_len,%object
+	.section	.rodata.mbedtls_test_srv_crt_ec_len,"a",%progbits
+	.globl	mbedtls_test_srv_crt_ec_len
+	.p2align	2
+mbedtls_test_srv_crt_ec_len:
+	.long	813                             @ 0x32d
+	.size	mbedtls_test_srv_crt_ec_len, 4
+
+	.hidden	mbedtls_test_srv_key_ec         @ @mbedtls_test_srv_key_ec
+	.type	mbedtls_test_srv_key_ec,%object
+	.section	.rodata.mbedtls_test_srv_key_ec,"a",%progbits
+	.globl	mbedtls_test_srv_key_ec
+mbedtls_test_srv_key_ec:
+	.asciz	"-----BEGIN EC PRIVATE KEY-----\r\nMHcCAQEEIPEqEyB2AnCoPL/9U/YDHvdqXYbIogTywwyp6/UfDw6noAoGCCqGSM49\r\nAwEHoUQDQgAEN8xW2XYJHlpyPsdZLf8gbu58+QaRdNCtFLX3aCJZYpJO5QDYIxH/\r\n6i/SNF1dFr2KiMJrdw1VzYoqDvoByLTt/w==\r\n-----END EC PRIVATE KEY-----\r\n"
+	.size	mbedtls_test_srv_key_ec, 233
+
+	.hidden	mbedtls_test_srv_key_ec_len     @ @mbedtls_test_srv_key_ec_len
+	.type	mbedtls_test_srv_key_ec_len,%object
+	.section	.rodata.mbedtls_test_srv_key_ec_len,"a",%progbits
+	.globl	mbedtls_test_srv_key_ec_len
+	.p2align	2
+mbedtls_test_srv_key_ec_len:
+	.long	233                             @ 0xe9
+	.size	mbedtls_test_srv_key_ec_len, 4
+
+	.hidden	mbedtls_test_cli_crt_ec         @ @mbedtls_test_cli_crt_ec
+	.type	mbedtls_test_cli_crt_ec,%object
+	.section	.rodata.mbedtls_test_cli_crt_ec,"a",%progbits
+	.globl	mbedtls_test_cli_crt_ec
+mbedtls_test_cli_crt_ec:
+	.asciz	"-----BEGIN CERTIFICATE-----\r\nMIICLDCCAbKgAwIBAgIBDTAKBggqhkjOPQQDAjA+MQswCQYDVQQGEwJOTDERMA8G\r\nA1UEChMIUG9sYXJTU0wxHDAaBgNVBAMTE1BvbGFyc3NsIFRlc3QgRUMgQ0EwHhcN\r\nMTMwOTI0MTU1MjA0WhcNMjMwOTIyMTU1MjA0WjBBMQswCQYDVQQGEwJOTDERMA8G\r\nA1UEChMIUG9sYXJTU0wxHzAdBgNVBAMTFlBvbGFyU1NMIFRlc3QgQ2xpZW50IDIw\r\nWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAARX5a6xc9/TrLuTuIH/Eq7u5lOszlVT\r\n9jQOzC7jYyUL35ji81xgNpbA1RgUcOV/n9VLRRjlsGzVXPiWj4dwo+THo4GdMIGa\r\nMAkGA1UdEwQCMAAwHQYDVR0OBBYEFHoAX4Zk/OBd5REQO7LmO8QmP8/iMG4GA1Ud\r\nIwRnMGWAFJ1tICRJAT8ry3i1Gbx+JMnb+zZ8oUKkQDA+MQswCQYDVQQGEwJOTDER\r\nMA8GA1UEChMIUG9sYXJTU0wxHDAaBgNVBAMTE1BvbGFyc3NsIFRlc3QgRUMgQ0GC\r\nCQDBQ+J+YkPM6DAKBggqhkjOPQQDAgNoADBlAjBKZQ17IIOimbmoD/yN7o89u3BM\r\nlgOsjnhw3fIOoLIWy2WOGsk/LGF++DzvrRzuNiACMQCd8iem1XS4JK7haj8xocpU\r\nLwjQje5PDGHfd3h9tP38Qknu5bJqws0md2KOKHyeV0U=\r\n-----END CERTIFICATE-----\r\n"
+	.size	mbedtls_test_cli_crt_ec, 829
+
+	.hidden	mbedtls_test_cli_crt_ec_len     @ @mbedtls_test_cli_crt_ec_len
+	.type	mbedtls_test_cli_crt_ec_len,%object
+	.section	.rodata.mbedtls_test_cli_crt_ec_len,"a",%progbits
+	.globl	mbedtls_test_cli_crt_ec_len
+	.p2align	2
+mbedtls_test_cli_crt_ec_len:
+	.long	829                             @ 0x33d
+	.size	mbedtls_test_cli_crt_ec_len, 4
+
+	.hidden	mbedtls_test_cli_key_ec         @ @mbedtls_test_cli_key_ec
+	.type	mbedtls_test_cli_key_ec,%object
+	.section	.rodata.mbedtls_test_cli_key_ec,"a",%progbits
+	.globl	mbedtls_test_cli_key_ec
+mbedtls_test_cli_key_ec:
+	.asciz	"-----BEGIN EC PRIVATE KEY-----\r\nMHcCAQEEIPb3hmTxZ3/mZI3vyk7p3U3wBf+WIop6hDhkFzJhmLcqoAoGCCqGSM49\r\nAwEHoUQDQgAEV+WusXPf06y7k7iB/xKu7uZTrM5VU/Y0Dswu42MlC9+Y4vNcYDaW\r\nwNUYFHDlf5/VS0UY5bBs1Vz4lo+HcKPkxw==\r\n-----END EC PRIVATE KEY-----\r\n"
+	.size	mbedtls_test_cli_key_ec, 233
+
+	.hidden	mbedtls_test_cli_key_ec_len     @ @mbedtls_test_cli_key_ec_len
+	.type	mbedtls_test_cli_key_ec_len,%object
+	.section	.rodata.mbedtls_test_cli_key_ec_len,"a",%progbits
+	.globl	mbedtls_test_cli_key_ec_len
+	.p2align	2
+mbedtls_test_cli_key_ec_len:
+	.long	233                             @ 0xe9
+	.size	mbedtls_test_cli_key_ec_len, 4
+
+	.hidden	mbedtls_test_ca_crt_rsa         @ @mbedtls_test_ca_crt_rsa
+	.type	mbedtls_test_ca_crt_rsa,%object
+	.section	.rodata.mbedtls_test_ca_crt_rsa,"a",%progbits
+	.globl	mbedtls_test_ca_crt_rsa
+mbedtls_test_ca_crt_rsa:
+	.asciz	"-----BEGIN CERTIFICATE-----\r\nMIIDhzCCAm+gAwIBAgIBADANBgkqhkiG9w0BAQsFADA7MQswCQYDVQQGEwJOTDER\r\nMA8GA1UECgwIUG9sYXJTU0wxGTAXBgNVBAMMEFBvbGFyU1NMIFRlc3QgQ0EwHhcN\r\nMTcwNTA0MTY1NzAxWhcNMjcwNTA1MTY1NzAxWjA7MQswCQYDVQQGEwJOTDERMA8G\r\nA1UECgwIUG9sYXJTU0wxGTAXBgNVBAMMEFBvbGFyU1NMIFRlc3QgQ0EwggEiMA0G\r\nCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDA3zf8F7vglp0/ht6WMn1EpRagzSHx\r\nmdTs6st8GFgIlKXsm8WL3xoemTiZhx57wI053zhdcHgH057Zk+i5clHFzqMwUqny\r\n50BwFMtEonILwuVA+T7lpg6z+exKY8C4KQB0nFc7qKUEkHHxvYPZP9al4jwqj+8n\r\nYMPGn8u67GB9t+aEMr5P+1gmIgNb1LTV+/Xjli5wwOQuvfwu7uJBVcA0Ln0kcmnL\r\nR7EUQIN9Z/SG9jGr8XmksrUuEvmEF/Bibyc+E1ixVA0hmnM3oTDPb5Lc9un8rNsu\r\nKNF+AksjoBXyOGVkCeoMbo4bF6BxyLObyavpw/LPh5aPgAIynplYb6LVAgMBAAGj\r\ngZUwgZIwHQYDVR0OBBYEFLRa5KWz3tJS9rnVppUP6z68x/3/MGMGA1UdIwRcMFqA\r\nFLRa5KWz3tJS9rnVppUP6z68x/3/oT+kPTA7MQswCQYDVQQGEwJOTDERMA8GA1UE\r\nCgwIUG9sYXJTU0wxGTAXBgNVBAMMEFBvbGFyU1NMIFRlc3QgQ0GCAQAwDAYDVR0T\r\nBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAHK/HHrTZMnnVMpde1io+voAtql7j\r\n4sRhLrjD7o3THtwRbDa2diCvpq0Sq23Ng2LMYoXsOxoL/RQK3iN7UKxV3MKPEr0w\r\nXQS+kKQqiT2bsfrjnWMVHZtUOMpm6FNqcdGm/Rss3vKda2lcKl8kUnq/ylc1+QbB\r\nG6A6tUvQcr2ZyWfVg+mM5XkhTrOOXus2OLikb4WwEtJTJRNE0f+yPODSUz0/vT57\r\nApH0CnB80bYJshYHPHHymOtleAB8KSYtqm75g/YNobjnjB6cm4HkW3OZRVIl6fYY\r\nn20NRVA1Vjs6GAROr4NqW4k/+LofY9y0LLDE+p0oIEKXIsIvhPr39swxSA==\r\n-----END CERTIFICATE-----\r\n"
+	.size	mbedtls_test_ca_crt_rsa, 1307
+
+	.hidden	mbedtls_test_ca_crt_rsa_len     @ @mbedtls_test_ca_crt_rsa_len
+	.type	mbedtls_test_ca_crt_rsa_len,%object
+	.section	.rodata.mbedtls_test_ca_crt_rsa_len,"a",%progbits
+	.globl	mbedtls_test_ca_crt_rsa_len
+	.p2align	2
+mbedtls_test_ca_crt_rsa_len:
+	.long	1307                            @ 0x51b
+	.size	mbedtls_test_ca_crt_rsa_len, 4
+
+	.hidden	mbedtls_test_ca_key_rsa         @ @mbedtls_test_ca_key_rsa
+	.type	mbedtls_test_ca_key_rsa,%object
+	.section	.rodata.mbedtls_test_ca_key_rsa,"a",%progbits
+	.globl	mbedtls_test_ca_key_rsa
+mbedtls_test_ca_key_rsa:
+	.asciz	"-----BEGIN RSA PRIVATE KEY-----\r\nProc-Type: 4,ENCRYPTED\r\nDEK-Info: DES-EDE3-CBC,A8A95B05D5B7206B\r\n\r\n9Qd9GeArejl1GDVh2lLV1bHt0cPtfbh5h/5zVpAVaFpqtSPMrElp50Rntn9et+JA\r\n7VOyboR+Iy2t/HU4WvA687k3Bppe9GwKHjHhtl//8xFKwZr3Xb5yO5JUP8AUctQq\r\nNb8CLlZyuUC+52REAAthdWgsX+7dJO4yabzUcQ22Tp9JSD0hiL43BlkWYUNK3dAo\r\nPZlmiptjnzVTjg1MxsBSydZinWOLBV8/JQgxSPo2yD4uEfig28qbvQ2wNIn0pnAb\r\nGxnSAOazkongEGfvcjIIs+LZN9gXFhxcOh6kc4Q/c99B7QWETwLLkYgZ+z1a9VY9\r\ngEU7CwCxYCD+h9hY6FPmsK0/lC4O7aeRKpYq00rPPxs6i7phiexg6ax6yTMmArQq\r\nQmK3TAsJm8V/J5AWpLEV6jAFgRGymGGHnof0DXzVWZidrcZJWTNuGEX90nB3ee2w\r\nPXJEFWKoD3K3aFcSLdHYr3mLGxP7H9ThQai9VsycxZKS5kwvBKQ//YMrmFfwPk8x\r\nvTeY4KZMaUrveEel5tWZC94RSMKgxR6cyE1nBXyTQnDOGbfpNNgBKxyKbINWoOJU\r\nWJZAwlsQn+QzCDwpri7+sV1mS3gBE6UY7aQmnmiiaC2V3Hbphxct/en5QsfDOt1X\r\nJczSfpRWLlbPznZg8OQh/VgCMA58N5DjOzTIK7sJJ5r+94ZBTCpgAMbF588f0NTR\r\nKCe4yrxGJR7X02M4nvD4IwOlpsQ8xQxZtOSgXv4LkxvdU9XJJKWZ/XNKJeWztxSe\r\nZ1vdTc2YfsDBA2SEv33vxHx2g1vqtw8SjDRT2RaQSS0QuSaMJimdOX6mTOCBKk1J\r\n9Q5mXTrER+/LnK0jEmXsBXWA5bqqVZIyahXSx4VYZ7l7w/PHiUDtDgyRhMMKi4n2\r\niQvQcWSQTjrpnlJbca1/DkpRt3YwrvJwdqb8asZU2VrNETh5x0QVefDRLFiVpif/\r\ntUaeAe/P1F8OkS7OIZDs1SUbv/sD2vMbhNkUoCms3/PvNtdnvgL4F0zhaDpKCmlT\r\nP8vx49E7v5CyRNmED9zZg4o3wmMqrQO93PtTug3Eu9oVx1zPQM1NVMyBa2+f29DL\r\n1nuTCeXdo9+ni45xx+jAI4DCwrRdhJ9uzZyC6962H37H6D+5naNvClFR1s6li1Gb\r\nnqPoiy/OBsEx9CaDGcqQBp5Wme/3XW+6z1ISOx+igwNTVCT14mHdBMbya0eIKft5\r\nX+GnwtgEMyCYyyWuUct8g4RzErcY9+yW9Om5Hzpx4zOuW4NPZgPDTgK+t2RSL/Yq\r\nrE1njrgeGYcVeG3f+OftH4s6fPbq7t1A5ZgUscbLMBqr9tK+OqygR4EgKBPsH6Cz\r\nL6zlv/2RV0qAHvVuDJcIDIgwY5rJtINEm32rhOeFNJwZS5MNIC1czXZx5//ugX7l\r\nI4sy5nbVhwSjtAk8Xg5dZbdTZ6mIrb7xqH+fdakZor1khG7bC2uIwibD3cSl2XkR\r\nwN48lslbHnqqagr6Xm1nNOSVl8C/6kbJEsMpLhAezfRtGwvOucoaE+WbeUNolGde\r\nP/eQiddSf0brnpiLJRh7qZrl9XuqYdpUqnoEdMAfotDOID8OtV7gt8a48ad8VPW2\r\n-----END RSA PRIVATE KEY-----\r\n"
+	.size	mbedtls_test_ca_key_rsa, 1782
+
+	.hidden	mbedtls_test_ca_key_rsa_len     @ @mbedtls_test_ca_key_rsa_len
+	.type	mbedtls_test_ca_key_rsa_len,%object
+	.section	.rodata.mbedtls_test_ca_key_rsa_len,"a",%progbits
+	.globl	mbedtls_test_ca_key_rsa_len
+	.p2align	2
+mbedtls_test_ca_key_rsa_len:
+	.long	1782                            @ 0x6f6
+	.size	mbedtls_test_ca_key_rsa_len, 4
+
+	.hidden	mbedtls_test_ca_pwd_rsa         @ @mbedtls_test_ca_pwd_rsa
+	.type	mbedtls_test_ca_pwd_rsa,%object
+	.section	.rodata.mbedtls_test_ca_pwd_rsa,"a",%progbits
+	.globl	mbedtls_test_ca_pwd_rsa
+mbedtls_test_ca_pwd_rsa:
+	.asciz	"PolarSSLTest"
+	.size	mbedtls_test_ca_pwd_rsa, 13
+
+	.hidden	mbedtls_test_ca_pwd_rsa_len     @ @mbedtls_test_ca_pwd_rsa_len
+	.type	mbedtls_test_ca_pwd_rsa_len,%object
+	.section	.rodata.mbedtls_test_ca_pwd_rsa_len,"a",%progbits
+	.globl	mbedtls_test_ca_pwd_rsa_len
+	.p2align	2
+mbedtls_test_ca_pwd_rsa_len:
+	.long	12                              @ 0xc
+	.size	mbedtls_test_ca_pwd_rsa_len, 4
+
+	.hidden	mbedtls_test_srv_crt_rsa        @ @mbedtls_test_srv_crt_rsa
+	.type	mbedtls_test_srv_crt_rsa,%object
+	.section	.rodata.mbedtls_test_srv_crt_rsa,"a",%progbits
+	.globl	mbedtls_test_srv_crt_rsa
+mbedtls_test_srv_crt_rsa:
+	.asciz	"-----BEGIN CERTIFICATE-----\r\nMIIDNzCCAh+gAwIBAgIBAjANBgkqhkiG9w0BAQUFADA7MQswCQYDVQQGEwJOTDER\r\nMA8GA1UECgwIUG9sYXJTU0wxGTAXBgNVBAMMEFBvbGFyU1NMIFRlc3QgQ0EwHhcN\r\nMTEwMjEyMTQ0NDA2WhcNMjEwMjEyMTQ0NDA2WjA0MQswCQYDVQQGEwJOTDERMA8G\r\nA1UECgwIUG9sYXJTU0wxEjAQBgNVBAMMCWxvY2FsaG9zdDCCASIwDQYJKoZIhvcN\r\nAQEBBQADggEPADCCAQoCggEBAMFNo93nzR3RBNdJcriZrA545Do8Ss86ExbQWuTN\r\nowCIp+4ea5anUrSQ7y1yej4kmvy2NKwk9XfgJmSMnLAofaHa6ozmyRyWvP7BBFKz\r\nNtSj+uGxdtiQwWG0ZlI2oiZTqqt0Xgd9GYLbKtgfoNkNHC1JZvdbJXNG6AuKT2kM\r\ntQCQ4dqCEGZ9rlQri2V5kaHiYcPNQEkI7mgM8YuG0ka/0LiqEQMef1aoGh5EGA8P\r\nhYvai0Re4hjGYi/HZo36Xdh98yeJKQHFkA4/J/EwyEoO79bex8cna8cFPXrEAjya\r\nHT4P6DSYW8tzS1KW2BGiLICIaTla0w+w3lkvEcf36hIBMJcCAwEAAaNNMEswCQYD\r\nVR0TBAIwADAdBgNVHQ4EFgQUpQXoZLjc32APUBJNYKhkr02LQ5MwHwYDVR0jBBgw\r\nFoAUtFrkpbPe0lL2udWmlQ/rPrzH/f8wDQYJKoZIhvcNAQEFBQADggEBAAFzC0rF\r\ny6De8WMcdgQrEw3AhBHFjzqnxZw1ene4IBSC7lTw8rBSy3jOWQdPUWn+0y/pCeeF\r\nkti6sevFdl1hLemGtd4q+T9TKEKGg3ND4ARfB5AUZZ9uEHq8WBkiwus5clGS17Qd\r\ndS/TOisB59tQruLx1E1bPLtBKyqk4koC5WAULJwfpswGSyWJTpYwIpxcWE3D2tBu\r\nUB6MZfXZFzWmWEOyKbeoXjXe8GBCGgHLywvYDsGQ36HSGtEsAvR2QaTLSxWYcfk1\r\nfbDn4jSWkb4yZy1r01UEigFQtONieGwRFaUqEcFJHJvEEGVgh9keaVlOj2vrwf5r\r\n4mN4lW7gLdenN6g=\r\n-----END CERTIFICATE-----\r\n"
+	.size	mbedtls_test_srv_crt_rsa, 1197
+
+	.hidden	mbedtls_test_srv_crt_rsa_len    @ @mbedtls_test_srv_crt_rsa_len
+	.type	mbedtls_test_srv_crt_rsa_len,%object
+	.section	.rodata.mbedtls_test_srv_crt_rsa_len,"a",%progbits
+	.globl	mbedtls_test_srv_crt_rsa_len
+	.p2align	2
+mbedtls_test_srv_crt_rsa_len:
+	.long	1197                            @ 0x4ad
+	.size	mbedtls_test_srv_crt_rsa_len, 4
+
+	.hidden	mbedtls_test_srv_key_rsa        @ @mbedtls_test_srv_key_rsa
+	.type	mbedtls_test_srv_key_rsa,%object
+	.section	.rodata.mbedtls_test_srv_key_rsa,"a",%progbits
+	.globl	mbedtls_test_srv_key_rsa
+mbedtls_test_srv_key_rsa:
+	.asciz	"-----BEGIN RSA PRIVATE KEY-----\r\nMIIEpAIBAAKCAQEAwU2j3efNHdEE10lyuJmsDnjkOjxKzzoTFtBa5M2jAIin7h5r\r\nlqdStJDvLXJ6PiSa/LY0rCT1d+AmZIycsCh9odrqjObJHJa8/sEEUrM21KP64bF2\r\n2JDBYbRmUjaiJlOqq3ReB30Zgtsq2B+g2Q0cLUlm91slc0boC4pPaQy1AJDh2oIQ\r\nZn2uVCuLZXmRoeJhw81ASQjuaAzxi4bSRr/QuKoRAx5/VqgaHkQYDw+Fi9qLRF7i\r\nGMZiL8dmjfpd2H3zJ4kpAcWQDj8n8TDISg7v1t7HxydrxwU9esQCPJodPg/oNJhb\r\ny3NLUpbYEaIsgIhpOVrTD7DeWS8Rx/fqEgEwlwIDAQABAoIBAQCXR0S8EIHFGORZ\r\n++AtOg6eENxD+xVs0f1IeGz57Tjo3QnXX7VBZNdj+p1ECvhCE/G7XnkgU5hLZX+G\r\nZ0jkz/tqJOI0vRSdLBbipHnWouyBQ4e/A1yIJdlBtqXxJ1KE/ituHRbNc4j4kL8Z\r\n/r6pvwnTI0PSx2Eqs048YdS92LT6qAv4flbNDxMn2uY7s4ycS4Q8w1JXnCeaAnYm\r\nWYI5wxO+bvRELR2Mcz5DmVnL8jRyml6l6582bSv5oufReFIbyPZbQWlXgYnpu6He\r\nGTc7E1zKYQGG/9+DQUl/1vQuCPqQwny0tQoX2w5tdYpdMdVm+zkLtbajzdTviJJa\r\nTWzL6lt5AoGBAN86+SVeJDcmQJcv4Eq6UhtRr4QGMiQMz0Sod6ettYxYzMgxtw28\r\nCIrgpozCc+UaZJLo7UxvC6an85r1b2nKPCLQFaggJ0H4Q0J/sZOhBIXaoBzWxveK\r\nnupceKdVxGsFi8CDy86DBfiyFivfBj+47BbaQzPBj7C4rK7UlLjab2rDAoGBAN2u\r\nAM2gchoFiu4v1HFL8D7lweEpi6ZnMJjnEu/dEgGQJFjwdpLnPbsj4c75odQ4Gz8g\r\nsw9lao9VVzbusoRE/JGI4aTdO0pATXyG7eG1Qu+5Yc1YGXcCrliA2xM9xx+d7f+s\r\nmPzN+WIEg5GJDYZDjAzHG5BNvi/FfM1C9dOtjv2dAoGAF0t5KmwbjWHBhcVqO4Ic\r\nBVvN3BIlc1ue2YRXEDlxY5b0r8N4XceMgKmW18OHApZxfl8uPDauWZLXOgl4uepv\r\nwhZC3EuWrSyyICNhLY21Ah7hbIEBPF3L3ZsOwC+UErL+dXWLdB56Jgy3gZaBeW7b\r\nvDrEnocJbqCm7IukhXHOBK8CgYEAwqdHB0hqyNSzIOGY7v9abzB6pUdA3BZiQvEs\r\n3LjHVd4HPJ2x0N8CgrBIWOE0q8+0hSMmeE96WW/7jD3fPWwCR5zlXknxBQsfv0gP\r\n3BC5PR0Qdypz+d+9zfMf625kyit4T/hzwhDveZUzHnk1Cf+IG7Q+TOEnLnWAWBED\r\nISOWmrUCgYAFEmRxgwAc/u+D6t0syCwAYh6POtscq9Y0i9GyWk89NzgC4NdwwbBH\r\n4AgahOxIxXx2gxJnq3yfkJfIjwf0s2DyP0kY2y6Ua1OeomPeY9mrIS4tCuDQ6LrE\r\nTB6l9VGoxJL4fyHnZb8L5gGvnB1bbD8cL6YPaDiOhcRseC9vBiEuVg==\r\n-----END RSA PRIVATE KEY-----\r\n"
+	.size	mbedtls_test_srv_key_rsa, 1707
+
+	.hidden	mbedtls_test_srv_key_rsa_len    @ @mbedtls_test_srv_key_rsa_len
+	.type	mbedtls_test_srv_key_rsa_len,%object
+	.section	.rodata.mbedtls_test_srv_key_rsa_len,"a",%progbits
+	.globl	mbedtls_test_srv_key_rsa_len
+	.p2align	2
+mbedtls_test_srv_key_rsa_len:
+	.long	1707                            @ 0x6ab
+	.size	mbedtls_test_srv_key_rsa_len, 4
+
+	.hidden	mbedtls_test_cli_crt_rsa        @ @mbedtls_test_cli_crt_rsa
+	.type	mbedtls_test_cli_crt_rsa,%object
+	.section	.rodata.mbedtls_test_cli_crt_rsa,"a",%progbits
+	.globl	mbedtls_test_cli_crt_rsa
+mbedtls_test_cli_crt_rsa:
+	.asciz	"-----BEGIN CERTIFICATE-----\r\nMIIDPzCCAiegAwIBAgIBBDANBgkqhkiG9w0BAQsFADA7MQswCQYDVQQGEwJOTDER\r\nMA8GA1UECgwIUG9sYXJTU0wxGTAXBgNVBAMMEFBvbGFyU1NMIFRlc3QgQ0EwHhcN\r\nMTEwMjEyMTQ0NDA2WhcNMjEwMjEyMTQ0NDA2WjA8MQswCQYDVQQGEwJOTDERMA8G\r\nA1UECgwIUG9sYXJTU0wxGjAYBgNVBAMMEVBvbGFyU1NMIENsaWVudCAyMIIBIjAN\r\nBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyHTEzLn5tXnpRdkUYLB9u5Pyax6f\r\nM60Nj4o8VmXl3ETZzGaFB9X4J7BKNdBjngpuG7fa8H6r7gwQk4ZJGDTzqCrSV/Uu\r\n1C93KYRhTYJQj6eVSHD1bk2y1RPD0hrt5kPqQhTrdOrA7R/UV06p86jt0uDBMHEw\r\nMjDV0/YI0FZPRo7yX/k9Z5GIMC5Cst99++UMd//sMcB4j7/Cf8qtbCHWjdmLao5v\r\n4Jv4EFbMs44TFeY0BGbH7vk2DmqV9gmaBmf0ZXH4yqSxJeD+PIs1BGe64E92hfx/\r\n/DZrtenNLQNiTrM9AM+vdqBpVoNq0qjU51Bx5rU2BXcFbXvI5MT9TNUhXwIDAQAB\r\no00wSzAJBgNVHRMEAjAAMB0GA1UdDgQWBBRxoQBzckAvVHZeM/xSj7zx3WtGITAf\r\nBgNVHSMEGDAWgBS0WuSls97SUva51aaVD+s+vMf9/zANBgkqhkiG9w0BAQsFAAOC\r\nAQEAlHabem2Tu69VUN7EipwnQn1dIHdgvT5i+iQHpSxY1crPnBbAeSdAXwsVEqLQ\r\ngOOIAQD5VIITNuoGgo4i+4OpNh9u7ZkpRHla+/swsfrFWRRbBNP5Bcu74AGLstwU\r\nzM8gIkBiyfM1Q1qDQISV9trlCG6O8vh8dp/rbI3rfzo99BOHXgFCrzXjCuW4vDsF\r\nr+Dao26bX3sJ6UnEWg1H3o2x6PpUcvQ36h71/bz4TEbbUUEpe02V4QWuL+wrhHJL\r\nU7o3SVE3Og7jPF8sat0a50YUWhwEFI256m02KAXLg89ueUyYKEr6rNwhcvXJpvU9\r\ngiIVvd0Sbjjnn7NC4VDbcXV8vw==\r\n-----END CERTIFICATE-----\r\n"
+	.size	mbedtls_test_cli_crt_rsa, 1209
+
+	.hidden	mbedtls_test_cli_crt_rsa_len    @ @mbedtls_test_cli_crt_rsa_len
+	.type	mbedtls_test_cli_crt_rsa_len,%object
+	.section	.rodata.mbedtls_test_cli_crt_rsa_len,"a",%progbits
+	.globl	mbedtls_test_cli_crt_rsa_len
+	.p2align	2
+mbedtls_test_cli_crt_rsa_len:
+	.long	1209                            @ 0x4b9
+	.size	mbedtls_test_cli_crt_rsa_len, 4
+
+	.hidden	mbedtls_test_cli_key_rsa        @ @mbedtls_test_cli_key_rsa
+	.type	mbedtls_test_cli_key_rsa,%object
+	.section	.rodata.mbedtls_test_cli_key_rsa,"a",%progbits
+	.globl	mbedtls_test_cli_key_rsa
+mbedtls_test_cli_key_rsa:
+	.asciz	"-----BEGIN RSA PRIVATE KEY-----\r\nMIIEpAIBAAKCAQEAyHTEzLn5tXnpRdkUYLB9u5Pyax6fM60Nj4o8VmXl3ETZzGaF\r\nB9X4J7BKNdBjngpuG7fa8H6r7gwQk4ZJGDTzqCrSV/Uu1C93KYRhTYJQj6eVSHD1\r\nbk2y1RPD0hrt5kPqQhTrdOrA7R/UV06p86jt0uDBMHEwMjDV0/YI0FZPRo7yX/k9\r\nZ5GIMC5Cst99++UMd//sMcB4j7/Cf8qtbCHWjdmLao5v4Jv4EFbMs44TFeY0BGbH\r\n7vk2DmqV9gmaBmf0ZXH4yqSxJeD+PIs1BGe64E92hfx//DZrtenNLQNiTrM9AM+v\r\ndqBpVoNq0qjU51Bx5rU2BXcFbXvI5MT9TNUhXwIDAQABAoIBAGdNtfYDiap6bzst\r\nyhCiI8m9TtrhZw4MisaEaN/ll3XSjaOG2dvV6xMZCMV+5TeXDHOAZnY18Yi18vzz\r\n4Ut2TnNFzizCECYNaA2fST3WgInnxUkV3YXAyP6CNxJaCmv2aA0yFr2kFVSeaKGt\r\nymvljNp2NVkvm7Th8fBQBO7I7AXhz43k0mR7XmPgewe8ApZOG3hstkOaMvbWAvWA\r\nzCZupdDjZYjOJqlA4eEA4H8/w7F83r5CugeBE8LgEREjLPiyejrU5H1fubEY+h0d\r\nl5HZBJ68ybTXfQ5U9o/QKA3dd0toBEhhdRUDGzWtjvwkEQfqF1reGWj/tod/gCpf\r\nDFi6X0ECgYEA4wOv/pjSC3ty6TuOvKX2rOUiBrLXXv2JSxZnMoMiWI5ipLQt+RYT\r\nVPafL/m7Dn6MbwjayOkcZhBwk5CNz5A6Q4lJ64Mq/lqHznRCQQ2Mc1G8eyDF/fYL\r\nZe2pLvwP9VD5jTc2miDfw+MnvJhywRRLcemDFP8k4hQVtm8PMp3ZmNECgYEA4gz7\r\nwzObR4gn8ibe617uQPZjWzUj9dUHYd+in1gwBCIrtNnaRn9I9U/Q6tegRYpii4ys\r\nc176NmU+umy6XmuSKV5qD9bSpZWG2nLFnslrN15Lm3fhZxoeMNhBaEDTnLT26yoi\r\n33gp0mSSWy94ZEqipms+ULF6sY1ZtFW6tpGFoy8CgYAQHhnnvJflIs2ky4q10B60\r\nZcxFp3rtDpkp0JxhFLhiizFrujMtZSjYNm5U7KkgPVHhLELEUvCmOnKTt4ap/vZ0\r\nBxJNe1GZH3pW6SAvGDQpl9sG7uu/vTFP+lCxukmzxB0DrrDcvorEkKMom7ZCCRvW\r\nKZsZ6YeH2Z81BauRj218kQKBgQCUV/DgKP2985xDTT79N08jUo3hTP5MVYCCuj/+\r\nUeEw1TvZcx3LJby7P6Xad6a1/BqveaGyFKIfEFIaBUBItk801sDDpDaYc4gL00Xc\r\n7lFuBHOZkxJYlss5QrGpuOEl9ZwUt5IrFLBdYaKqNHzNVC1pCPfb/JyH6Dr2HUxq\r\ngxUwAQKBgQCcU6G2L8AG9d9c0UpOyL1tMvFe5Ttw0KjlQVdsh1MP6yigYo9DYuwu\r\nbHFVW2r0dBTqegP2/KTOxKzaHfC1qf0RGDsUoJCNJrd1cwoCLG8P2EF4w3OBrKqv\r\n8u4ytY0F+Vlanj5lm3TaoHSVF1+NWPyOTiwevIECGKwSxvlki4fDAA==\r\n-----END RSA PRIVATE KEY-----\r\n"
+	.size	mbedtls_test_cli_key_rsa, 1707
+
+	.hidden	mbedtls_test_cli_key_rsa_len    @ @mbedtls_test_cli_key_rsa_len
+	.type	mbedtls_test_cli_key_rsa_len,%object
+	.section	.rodata.mbedtls_test_cli_key_rsa_len,"a",%progbits
+	.globl	mbedtls_test_cli_key_rsa_len
+	.p2align	2
+mbedtls_test_cli_key_rsa_len:
+	.long	1707                            @ 0x6ab
+	.size	mbedtls_test_cli_key_rsa_len, 4
+
+	.hidden	mbedtls_test_cas_pem            @ @mbedtls_test_cas_pem
+	.type	mbedtls_test_cas_pem,%object
+	.section	.rodata.mbedtls_test_cas_pem,"a",%progbits
+	.globl	mbedtls_test_cas_pem
+mbedtls_test_cas_pem:
+	.asciz	"-----BEGIN CERTIFICATE-----\r\nMIIDhzCCAm+gAwIBAgIBADANBgkqhkiG9w0BAQUFADA7MQswCQYDVQQGEwJOTDER\r\nMA8GA1UEChMIUG9sYXJTU0wxGTAXBgNVBAMTEFBvbGFyU1NMIFRlc3QgQ0EwHhcN\r\nMTEwMjEyMTQ0NDAwWhcNMjEwMjEyMTQ0NDAwWjA7MQswCQYDVQQGEwJOTDERMA8G\r\nA1UEChMIUG9sYXJTU0wxGTAXBgNVBAMTEFBvbGFyU1NMIFRlc3QgQ0EwggEiMA0G\r\nCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDA3zf8F7vglp0/ht6WMn1EpRagzSHx\r\nmdTs6st8GFgIlKXsm8WL3xoemTiZhx57wI053zhdcHgH057Zk+i5clHFzqMwUqny\r\n50BwFMtEonILwuVA+T7lpg6z+exKY8C4KQB0nFc7qKUEkHHxvYPZP9al4jwqj+8n\r\nYMPGn8u67GB9t+aEMr5P+1gmIgNb1LTV+/Xjli5wwOQuvfwu7uJBVcA0Ln0kcmnL\r\nR7EUQIN9Z/SG9jGr8XmksrUuEvmEF/Bibyc+E1ixVA0hmnM3oTDPb5Lc9un8rNsu\r\nKNF+AksjoBXyOGVkCeoMbo4bF6BxyLObyavpw/LPh5aPgAIynplYb6LVAgMBAAGj\r\ngZUwgZIwDAYDVR0TBAUwAwEB/zAdBgNVHQ4EFgQUtFrkpbPe0lL2udWmlQ/rPrzH\r\n/f8wYwYDVR0jBFwwWoAUtFrkpbPe0lL2udWmlQ/rPrzH/f+hP6Q9MDsxCzAJBgNV\r\nBAYTAk5MMREwDwYDVQQKEwhQb2xhclNTTDEZMBcGA1UEAxMQUG9sYXJTU0wgVGVz\r\ndCBDQYIBADANBgkqhkiG9w0BAQUFAAOCAQEAuP1U2ABUkIslsCfdlc2i94QHHYeJ\r\nSsR4EdgHtdciUI5I62J6Mom+Y0dT/7a+8S6MVMCZP6C5NyNyXw1GWY/YR82XTJ8H\r\nDBJiCTok5DbZ6SzaONBzdWHXwWwmi5vg1dxn7YxrM9d0IjxM27WNKs4sDQhZBQkF\r\npjmfs2cb4oPl4Y9T9meTx/lvdkRYEug61Jfn6cA+qHpyPYdTH+UshITnmp5/Ztkf\r\nm/UTSLBNFNHesiTZeH31NcxYGdHSme9Nc/gfidRa0FLOCfWxRlFqAI47zG9jAQCZ\r\n7Z2mCGDNMhjQc+BYcdnl0lPXjdDK6V0qCg1dVewhUBcW5gZKzV7e9+DpVA==\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMIIDhzCCAm+gAwIBAgIBADANBgkqhkiG9w0BAQsFADA7MQswCQYDVQQGEwJOTDER\r\nMA8GA1UECgwIUG9sYXJTU0wxGTAXBgNVBAMMEFBvbGFyU1NMIFRlc3QgQ0EwHhcN\r\nMTcwNTA0MTY1NzAxWhcNMjcwNTA1MTY1NzAxWjA7MQswCQYDVQQGEwJOTDERMA8G\r\nA1UECgwIUG9sYXJTU0wxGTAXBgNVBAMMEFBvbGFyU1NMIFRlc3QgQ0EwggEiMA0G\r\nCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDA3zf8F7vglp0/ht6WMn1EpRagzSHx\r\nmdTs6st8GFgIlKXsm8WL3xoemTiZhx57wI053zhdcHgH057Zk+i5clHFzqMwUqny\r\n50BwFMtEonILwuVA+T7lpg6z+exKY8C4KQB0nFc7qKUEkHHxvYPZP9al4jwqj+8n\r\nYMPGn8u67GB9t+aEMr5P+1gmIgNb1LTV+/Xjli5wwOQuvfwu7uJBVcA0Ln0kcmnL\r\nR7EUQIN9Z/SG9jGr8XmksrUuEvmEF/Bibyc+E1ixVA0hmnM3oTDPb5Lc9un8rNsu\r\nKNF+AksjoBXyOGVkCeoMbo4bF6BxyLObyavpw/LPh5aPgAIynplYb6LVAgMBAAGj\r\ngZUwgZIwHQYDVR0OBBYEFLRa5KWz3tJS9rnVppUP6z68x/3/MGMGA1UdIwRcMFqA\r\nFLRa5KWz3tJS9rnVppUP6z68x/3/oT+kPTA7MQswCQYDVQQGEwJOTDERMA8GA1UE\r\nCgwIUG9sYXJTU0wxGTAXBgNVBAMMEFBvbGFyU1NMIFRlc3QgQ0GCAQAwDAYDVR0T\r\nBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAHK/HHrTZMnnVMpde1io+voAtql7j\r\n4sRhLrjD7o3THtwRbDa2diCvpq0Sq23Ng2LMYoXsOxoL/RQK3iN7UKxV3MKPEr0w\r\nXQS+kKQqiT2bsfrjnWMVHZtUOMpm6FNqcdGm/Rss3vKda2lcKl8kUnq/ylc1+QbB\r\nG6A6tUvQcr2ZyWfVg+mM5XkhTrOOXus2OLikb4WwEtJTJRNE0f+yPODSUz0/vT57\r\nApH0CnB80bYJshYHPHHymOtleAB8KSYtqm75g/YNobjnjB6cm4HkW3OZRVIl6fYY\r\nn20NRVA1Vjs6GAROr4NqW4k/+LofY9y0LLDE+p0oIEKXIsIvhPr39swxSA==\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMIICUjCCAdegAwIBAgIJAMFD4n5iQ8zoMAoGCCqGSM49BAMCMD4xCzAJBgNVBAYT\r\nAk5MMREwDwYDVQQKEwhQb2xhclNTTDEcMBoGA1UEAxMTUG9sYXJzc2wgVGVzdCBF\r\nQyBDQTAeFw0xMzA5MjQxNTQ5NDhaFw0yMzA5MjIxNTQ5NDhaMD4xCzAJBgNVBAYT\r\nAk5MMREwDwYDVQQKEwhQb2xhclNTTDEcMBoGA1UEAxMTUG9sYXJzc2wgVGVzdCBF\r\nQyBDQTB2MBAGByqGSM49AgEGBSuBBAAiA2IABMPaKzRBN1gvh1b+/Im6KUNLTuBu\r\nww5XUzM5WNRStJGVOQsj318XJGJI/BqVKc4sLYfCiFKAr9ZqqyHduNMcbli4yuiy\r\naY7zQa0pw7RfdadHb9UZKVVpmlM7ILRmFmAzHqOBoDCBnTAdBgNVHQ4EFgQUnW0g\r\nJEkBPyvLeLUZvH4kydv7NnwwbgYDVR0jBGcwZYAUnW0gJEkBPyvLeLUZvH4kydv7\r\nNnyhQqRAMD4xCzAJBgNVBAYTAk5MMREwDwYDVQQKEwhQb2xhclNTTDEcMBoGA1UE\r\nAxMTUG9sYXJzc2wgVGVzdCBFQyBDQYIJAMFD4n5iQ8zoMAwGA1UdEwQFMAMBAf8w\r\nCgYIKoZIzj0EAwIDaQAwZgIxAMO0YnNWKJUAfXgSJtJxexn4ipg+kv4znuR50v56\r\nt4d0PCu412mUC6Nnd7izvtE2MgIxAP1nnJQjZ8BWukszFQDG48wxCCyci9qpdSMv\r\nuCjn8pwUOkABXK8Mss90fzCfCEOtIA==\r\n-----END CERTIFICATE-----\r\n"
+	.size	mbedtls_test_cas_pem, 3495
+
+	.hidden	mbedtls_test_cas_pem_len        @ @mbedtls_test_cas_pem_len
+	.type	mbedtls_test_cas_pem_len,%object
+	.section	.rodata.mbedtls_test_cas_pem_len,"a",%progbits
+	.globl	mbedtls_test_cas_pem_len
+	.p2align	2
+mbedtls_test_cas_pem_len:
+	.long	3495                            @ 0xda7
+	.size	mbedtls_test_cas_pem_len, 4
+
+	.type	mbedtls_test_ca_crt_rsa_sha1,%object @ @mbedtls_test_ca_crt_rsa_sha1
+	.section	.rodata.mbedtls_test_ca_crt_rsa_sha1,"a",%progbits
+mbedtls_test_ca_crt_rsa_sha1:
+	.asciz	"-----BEGIN CERTIFICATE-----\r\nMIIDhzCCAm+gAwIBAgIBADANBgkqhkiG9w0BAQUFADA7MQswCQYDVQQGEwJOTDER\r\nMA8GA1UEChMIUG9sYXJTU0wxGTAXBgNVBAMTEFBvbGFyU1NMIFRlc3QgQ0EwHhcN\r\nMTEwMjEyMTQ0NDAwWhcNMjEwMjEyMTQ0NDAwWjA7MQswCQYDVQQGEwJOTDERMA8G\r\nA1UEChMIUG9sYXJTU0wxGTAXBgNVBAMTEFBvbGFyU1NMIFRlc3QgQ0EwggEiMA0G\r\nCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDA3zf8F7vglp0/ht6WMn1EpRagzSHx\r\nmdTs6st8GFgIlKXsm8WL3xoemTiZhx57wI053zhdcHgH057Zk+i5clHFzqMwUqny\r\n50BwFMtEonILwuVA+T7lpg6z+exKY8C4KQB0nFc7qKUEkHHxvYPZP9al4jwqj+8n\r\nYMPGn8u67GB9t+aEMr5P+1gmIgNb1LTV+/Xjli5wwOQuvfwu7uJBVcA0Ln0kcmnL\r\nR7EUQIN9Z/SG9jGr8XmksrUuEvmEF/Bibyc+E1ixVA0hmnM3oTDPb5Lc9un8rNsu\r\nKNF+AksjoBXyOGVkCeoMbo4bF6BxyLObyavpw/LPh5aPgAIynplYb6LVAgMBAAGj\r\ngZUwgZIwDAYDVR0TBAUwAwEB/zAdBgNVHQ4EFgQUtFrkpbPe0lL2udWmlQ/rPrzH\r\n/f8wYwYDVR0jBFwwWoAUtFrkpbPe0lL2udWmlQ/rPrzH/f+hP6Q9MDsxCzAJBgNV\r\nBAYTAk5MMREwDwYDVQQKEwhQb2xhclNTTDEZMBcGA1UEAxMQUG9sYXJTU0wgVGVz\r\ndCBDQYIBADANBgkqhkiG9w0BAQUFAAOCAQEAuP1U2ABUkIslsCfdlc2i94QHHYeJ\r\nSsR4EdgHtdciUI5I62J6Mom+Y0dT/7a+8S6MVMCZP6C5NyNyXw1GWY/YR82XTJ8H\r\nDBJiCTok5DbZ6SzaONBzdWHXwWwmi5vg1dxn7YxrM9d0IjxM27WNKs4sDQhZBQkF\r\npjmfs2cb4oPl4Y9T9meTx/lvdkRYEug61Jfn6cA+qHpyPYdTH+UshITnmp5/Ztkf\r\nm/UTSLBNFNHesiTZeH31NcxYGdHSme9Nc/gfidRa0FLOCfWxRlFqAI47zG9jAQCZ\r\n7Z2mCGDNMhjQc+BYcdnl0lPXjdDK6V0qCg1dVewhUBcW5gZKzV7e9+DpVA==\r\n-----END CERTIFICATE-----\r\n"
+	.size	mbedtls_test_ca_crt_rsa_sha1, 1307
+
+	.type	mbedtls_test_ca_crt_rsa_sha256,%object @ @mbedtls_test_ca_crt_rsa_sha256
+	.section	.rodata.mbedtls_test_ca_crt_rsa_sha256,"a",%progbits
+mbedtls_test_ca_crt_rsa_sha256:
+	.asciz	"-----BEGIN CERTIFICATE-----\r\nMIIDhzCCAm+gAwIBAgIBADANBgkqhkiG9w0BAQsFADA7MQswCQYDVQQGEwJOTDER\r\nMA8GA1UECgwIUG9sYXJTU0wxGTAXBgNVBAMMEFBvbGFyU1NMIFRlc3QgQ0EwHhcN\r\nMTcwNTA0MTY1NzAxWhcNMjcwNTA1MTY1NzAxWjA7MQswCQYDVQQGEwJOTDERMA8G\r\nA1UECgwIUG9sYXJTU0wxGTAXBgNVBAMMEFBvbGFyU1NMIFRlc3QgQ0EwggEiMA0G\r\nCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDA3zf8F7vglp0/ht6WMn1EpRagzSHx\r\nmdTs6st8GFgIlKXsm8WL3xoemTiZhx57wI053zhdcHgH057Zk+i5clHFzqMwUqny\r\n50BwFMtEonILwuVA+T7lpg6z+exKY8C4KQB0nFc7qKUEkHHxvYPZP9al4jwqj+8n\r\nYMPGn8u67GB9t+aEMr5P+1gmIgNb1LTV+/Xjli5wwOQuvfwu7uJBVcA0Ln0kcmnL\r\nR7EUQIN9Z/SG9jGr8XmksrUuEvmEF/Bibyc+E1ixVA0hmnM3oTDPb5Lc9un8rNsu\r\nKNF+AksjoBXyOGVkCeoMbo4bF6BxyLObyavpw/LPh5aPgAIynplYb6LVAgMBAAGj\r\ngZUwgZIwHQYDVR0OBBYEFLRa5KWz3tJS9rnVppUP6z68x/3/MGMGA1UdIwRcMFqA\r\nFLRa5KWz3tJS9rnVppUP6z68x/3/oT+kPTA7MQswCQYDVQQGEwJOTDERMA8GA1UE\r\nCgwIUG9sYXJTU0wxGTAXBgNVBAMMEFBvbGFyU1NMIFRlc3QgQ0GCAQAwDAYDVR0T\r\nBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAHK/HHrTZMnnVMpde1io+voAtql7j\r\n4sRhLrjD7o3THtwRbDa2diCvpq0Sq23Ng2LMYoXsOxoL/RQK3iN7UKxV3MKPEr0w\r\nXQS+kKQqiT2bsfrjnWMVHZtUOMpm6FNqcdGm/Rss3vKda2lcKl8kUnq/ylc1+QbB\r\nG6A6tUvQcr2ZyWfVg+mM5XkhTrOOXus2OLikb4WwEtJTJRNE0f+yPODSUz0/vT57\r\nApH0CnB80bYJshYHPHHymOtleAB8KSYtqm75g/YNobjnjB6cm4HkW3OZRVIl6fYY\r\nn20NRVA1Vjs6GAROr4NqW4k/+LofY9y0LLDE+p0oIEKXIsIvhPr39swxSA==\r\n-----END CERTIFICATE-----\r\n"
+	.size	mbedtls_test_ca_crt_rsa_sha256, 1307
+
+	.hidden	mbedtls_test_cas                @ @mbedtls_test_cas
+	.type	mbedtls_test_cas,%object
+	.section	.data.mbedtls_test_cas,"aw",%progbits
+	.globl	mbedtls_test_cas
+	.p2align	2
+mbedtls_test_cas:
+	.long	mbedtls_test_ca_crt_rsa_sha1
+	.long	mbedtls_test_ca_crt_rsa_sha256
+	.long	mbedtls_test_ca_crt_ec
+	.long	0
+	.size	mbedtls_test_cas, 16
+
+	.hidden	mbedtls_test_cas_len            @ @mbedtls_test_cas_len
+	.type	mbedtls_test_cas_len,%object
+	.section	.rodata.mbedtls_test_cas_len,"a",%progbits
+	.globl	mbedtls_test_cas_len
+	.p2align	2
+mbedtls_test_cas_len:
+	.long	1307                            @ 0x51b
+	.long	1307                            @ 0x51b
+	.long	883                             @ 0x373
+	.long	0                               @ 0x0
+	.size	mbedtls_test_cas_len, 16
+
+	.hidden	mbedtls_test_ca_crt             @ @mbedtls_test_ca_crt
+	.type	mbedtls_test_ca_crt,%object
+	.section	.data.mbedtls_test_ca_crt,"aw",%progbits
+	.globl	mbedtls_test_ca_crt
+	.p2align	2
+mbedtls_test_ca_crt:
+	.long	mbedtls_test_ca_crt_rsa
+	.size	mbedtls_test_ca_crt, 4
+
+	.hidden	mbedtls_test_ca_key             @ @mbedtls_test_ca_key
+	.type	mbedtls_test_ca_key,%object
+	.section	.data.mbedtls_test_ca_key,"aw",%progbits
+	.globl	mbedtls_test_ca_key
+	.p2align	2
+mbedtls_test_ca_key:
+	.long	mbedtls_test_ca_key_rsa
+	.size	mbedtls_test_ca_key, 4
+
+	.hidden	mbedtls_test_ca_pwd             @ @mbedtls_test_ca_pwd
+	.type	mbedtls_test_ca_pwd,%object
+	.section	.data.mbedtls_test_ca_pwd,"aw",%progbits
+	.globl	mbedtls_test_ca_pwd
+	.p2align	2
+mbedtls_test_ca_pwd:
+	.long	mbedtls_test_ca_pwd_rsa
+	.size	mbedtls_test_ca_pwd, 4
+
+	.hidden	mbedtls_test_srv_crt            @ @mbedtls_test_srv_crt
+	.type	mbedtls_test_srv_crt,%object
+	.section	.data.mbedtls_test_srv_crt,"aw",%progbits
+	.globl	mbedtls_test_srv_crt
+	.p2align	2
+mbedtls_test_srv_crt:
+	.long	mbedtls_test_srv_crt_rsa
+	.size	mbedtls_test_srv_crt, 4
+
+	.hidden	mbedtls_test_srv_key            @ @mbedtls_test_srv_key
+	.type	mbedtls_test_srv_key,%object
+	.section	.data.mbedtls_test_srv_key,"aw",%progbits
+	.globl	mbedtls_test_srv_key
+	.p2align	2
+mbedtls_test_srv_key:
+	.long	mbedtls_test_srv_key_rsa
+	.size	mbedtls_test_srv_key, 4
+
+	.hidden	mbedtls_test_cli_crt            @ @mbedtls_test_cli_crt
+	.type	mbedtls_test_cli_crt,%object
+	.section	.data.mbedtls_test_cli_crt,"aw",%progbits
+	.globl	mbedtls_test_cli_crt
+	.p2align	2
+mbedtls_test_cli_crt:
+	.long	mbedtls_test_cli_crt_rsa
+	.size	mbedtls_test_cli_crt, 4
+
+	.hidden	mbedtls_test_cli_key            @ @mbedtls_test_cli_key
+	.type	mbedtls_test_cli_key,%object
+	.section	.data.mbedtls_test_cli_key,"aw",%progbits
+	.globl	mbedtls_test_cli_key
+	.p2align	2
+mbedtls_test_cli_key:
+	.long	mbedtls_test_cli_key_rsa
+	.size	mbedtls_test_cli_key, 4
+
+	.hidden	mbedtls_test_ca_crt_len         @ @mbedtls_test_ca_crt_len
+	.type	mbedtls_test_ca_crt_len,%object
+	.section	.rodata.mbedtls_test_ca_crt_len,"a",%progbits
+	.globl	mbedtls_test_ca_crt_len
+	.p2align	2
+mbedtls_test_ca_crt_len:
+	.long	1307                            @ 0x51b
+	.size	mbedtls_test_ca_crt_len, 4
+
+	.hidden	mbedtls_test_ca_key_len         @ @mbedtls_test_ca_key_len
+	.type	mbedtls_test_ca_key_len,%object
+	.section	.rodata.mbedtls_test_ca_key_len,"a",%progbits
+	.globl	mbedtls_test_ca_key_len
+	.p2align	2
+mbedtls_test_ca_key_len:
+	.long	1782                            @ 0x6f6
+	.size	mbedtls_test_ca_key_len, 4
+
+	.hidden	mbedtls_test_ca_pwd_len         @ @mbedtls_test_ca_pwd_len
+	.type	mbedtls_test_ca_pwd_len,%object
+	.section	.rodata.mbedtls_test_ca_pwd_len,"a",%progbits
+	.globl	mbedtls_test_ca_pwd_len
+	.p2align	2
+mbedtls_test_ca_pwd_len:
+	.long	12                              @ 0xc
+	.size	mbedtls_test_ca_pwd_len, 4
+
+	.hidden	mbedtls_test_srv_crt_len        @ @mbedtls_test_srv_crt_len
+	.type	mbedtls_test_srv_crt_len,%object
+	.section	.rodata.mbedtls_test_srv_crt_len,"a",%progbits
+	.globl	mbedtls_test_srv_crt_len
+	.p2align	2
+mbedtls_test_srv_crt_len:
+	.long	1197                            @ 0x4ad
+	.size	mbedtls_test_srv_crt_len, 4
+
+	.hidden	mbedtls_test_srv_key_len        @ @mbedtls_test_srv_key_len
+	.type	mbedtls_test_srv_key_len,%object
+	.section	.rodata.mbedtls_test_srv_key_len,"a",%progbits
+	.globl	mbedtls_test_srv_key_len
+	.p2align	2
+mbedtls_test_srv_key_len:
+	.long	1707                            @ 0x6ab
+	.size	mbedtls_test_srv_key_len, 4
+
+	.hidden	mbedtls_test_cli_crt_len        @ @mbedtls_test_cli_crt_len
+	.type	mbedtls_test_cli_crt_len,%object
+	.section	.rodata.mbedtls_test_cli_crt_len,"a",%progbits
+	.globl	mbedtls_test_cli_crt_len
+	.p2align	2
+mbedtls_test_cli_crt_len:
+	.long	1209                            @ 0x4b9
+	.size	mbedtls_test_cli_crt_len, 4
+
+	.hidden	mbedtls_test_cli_key_len        @ @mbedtls_test_cli_key_len
+	.type	mbedtls_test_cli_key_len,%object
+	.section	.rodata.mbedtls_test_cli_key_len,"a",%progbits
+	.globl	mbedtls_test_cli_key_len
+	.p2align	2
+mbedtls_test_cli_key_len:
+	.long	1707                            @ 0x6ab
+	.size	mbedtls_test_cli_key_len, 4
+
+	.section	.debug_abbrev,"",%progbits
+	.byte	1                               @ Abbreviation Code
+	.byte	17                              @ DW_TAG_compile_unit
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	37                              @ DW_AT_producer
+	.byte	14                              @ DW_FORM_strp
+	.byte	19                              @ DW_AT_language
+	.byte	5                               @ DW_FORM_data2
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	16                              @ DW_AT_stmt_list
+	.byte	6                               @ DW_FORM_data4
+	.byte	27                              @ DW_AT_comp_dir
+	.byte	14                              @ DW_FORM_strp
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	2                               @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	3                               @ Abbreviation Code
+	.byte	1                               @ DW_TAG_array_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	4                               @ Abbreviation Code
+	.byte	33                              @ DW_TAG_subrange_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	55                              @ DW_AT_count
+	.byte	5                               @ DW_FORM_data2
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	5                               @ Abbreviation Code
+	.byte	38                              @ DW_TAG_const_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	6                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	7                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	8                               @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	9                               @ Abbreviation Code
+	.byte	33                              @ DW_TAG_subrange_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	55                              @ DW_AT_count
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	10                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	11                              @ Abbreviation Code
+	.byte	15                              @ DW_TAG_pointer_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	12                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	0                               @ EOM(3)
+	.section	.debug_info,"",%progbits
+.Lcu_begin0:
+	.long	.Ldebug_info_end0-.Ldebug_info_start0 @ Length of Unit
+.Ldebug_info_start0:
+	.short	3                               @ DWARF version number
+	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
+	.byte	4                               @ Address Size (in bytes)
+	.byte	1                               @ Abbrev [1] 0xb:0x46a DW_TAG_compile_unit
+	.long	.Linfo_string0                  @ DW_AT_producer
+	.short	12                              @ DW_AT_language
+	.long	.Linfo_string1                  @ DW_AT_name
+	.long	.Lline_table_start0             @ DW_AT_stmt_list
+	.long	.Linfo_string2                  @ DW_AT_comp_dir
+	.byte	2                               @ Abbrev [2] 0x1e:0x12 DW_TAG_variable
+	.long	.Linfo_string3                  @ DW_AT_name
+	.long	48                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	49                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_crt_ec
+	.byte	3                               @ Abbrev [3] 0x30:0xd DW_TAG_array_type
+	.long	61                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x35:0x7 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.short	883                             @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	5                               @ Abbrev [5] 0x3d:0x5 DW_TAG_const_type
+	.long	66                              @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x42:0x7 DW_TAG_base_type
+	.long	.Linfo_string4                  @ DW_AT_name
+	.byte	8                               @ DW_AT_encoding
+	.byte	1                               @ DW_AT_byte_size
+	.byte	7                               @ Abbrev [7] 0x49:0x7 DW_TAG_base_type
+	.long	.Linfo_string5                  @ DW_AT_name
+	.byte	8                               @ DW_AT_byte_size
+	.byte	7                               @ DW_AT_encoding
+	.byte	2                               @ Abbrev [2] 0x50:0x12 DW_TAG_variable
+	.long	.Linfo_string6                  @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	50                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_crt_ec_len
+	.byte	5                               @ Abbrev [5] 0x62:0x5 DW_TAG_const_type
+	.long	103                             @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x67:0xb DW_TAG_typedef
+	.long	114                             @ DW_AT_type
+	.long	.Linfo_string8                  @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	53                              @ DW_AT_decl_line
+	.byte	6                               @ Abbrev [6] 0x72:0x7 DW_TAG_base_type
+	.long	.Linfo_string7                  @ DW_AT_name
+	.byte	7                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	2                               @ Abbrev [2] 0x79:0x12 DW_TAG_variable
+	.long	.Linfo_string9                  @ DW_AT_name
+	.long	139                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	52                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_key_ec
+	.byte	3                               @ Abbrev [3] 0x8b:0xd DW_TAG_array_type
+	.long	61                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x90:0x7 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.short	362                             @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	2                               @ Abbrev [2] 0x98:0x12 DW_TAG_variable
+	.long	.Linfo_string10                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	62                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_key_ec_len
+	.byte	2                               @ Abbrev [2] 0xaa:0x12 DW_TAG_variable
+	.long	.Linfo_string11                 @ DW_AT_name
+	.long	188                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	64                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_pwd_ec
+	.byte	3                               @ Abbrev [3] 0xbc:0xc DW_TAG_array_type
+	.long	61                              @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0xc1:0x6 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.byte	13                              @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	2                               @ Abbrev [2] 0xc8:0x12 DW_TAG_variable
+	.long	.Linfo_string12                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	65                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_pwd_ec_len
+	.byte	2                               @ Abbrev [2] 0xda:0x12 DW_TAG_variable
+	.long	.Linfo_string13                 @ DW_AT_name
+	.long	236                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	67                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_srv_crt_ec
+	.byte	3                               @ Abbrev [3] 0xec:0xd DW_TAG_array_type
+	.long	61                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0xf1:0x7 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.short	813                             @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	2                               @ Abbrev [2] 0xf9:0x12 DW_TAG_variable
+	.long	.Linfo_string14                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	82                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_srv_crt_ec_len
+	.byte	2                               @ Abbrev [2] 0x10b:0x12 DW_TAG_variable
+	.long	.Linfo_string15                 @ DW_AT_name
+	.long	285                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	84                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_srv_key_ec
+	.byte	3                               @ Abbrev [3] 0x11d:0xc DW_TAG_array_type
+	.long	61                              @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x122:0x6 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.byte	233                             @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	2                               @ Abbrev [2] 0x129:0x12 DW_TAG_variable
+	.long	.Linfo_string16                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	90                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_srv_key_ec_len
+	.byte	2                               @ Abbrev [2] 0x13b:0x12 DW_TAG_variable
+	.long	.Linfo_string17                 @ DW_AT_name
+	.long	333                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	92                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cli_crt_ec
+	.byte	3                               @ Abbrev [3] 0x14d:0xd DW_TAG_array_type
+	.long	61                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x152:0x7 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.short	829                             @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	2                               @ Abbrev [2] 0x15a:0x12 DW_TAG_variable
+	.long	.Linfo_string18                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	107                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cli_crt_ec_len
+	.byte	2                               @ Abbrev [2] 0x16c:0x12 DW_TAG_variable
+	.long	.Linfo_string19                 @ DW_AT_name
+	.long	285                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	109                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cli_key_ec
+	.byte	2                               @ Abbrev [2] 0x17e:0x12 DW_TAG_variable
+	.long	.Linfo_string20                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	115                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cli_key_ec_len
+	.byte	2                               @ Abbrev [2] 0x190:0x12 DW_TAG_variable
+	.long	.Linfo_string21                 @ DW_AT_name
+	.long	418                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	144                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_crt_rsa
+	.byte	3                               @ Abbrev [3] 0x1a2:0xd DW_TAG_array_type
+	.long	61                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x1a7:0x7 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.short	1307                            @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	2                               @ Abbrev [2] 0x1af:0x12 DW_TAG_variable
+	.long	.Linfo_string22                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	145                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_crt_rsa_len
+	.byte	2                               @ Abbrev [2] 0x1c1:0x12 DW_TAG_variable
+	.long	.Linfo_string23                 @ DW_AT_name
+	.long	467                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	185                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_key_rsa
+	.byte	3                               @ Abbrev [3] 0x1d3:0xd DW_TAG_array_type
+	.long	61                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x1d8:0x7 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.short	1782                            @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	2                               @ Abbrev [2] 0x1e0:0x12 DW_TAG_variable
+	.long	.Linfo_string24                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	216                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_key_rsa_len
+	.byte	2                               @ Abbrev [2] 0x1f2:0x12 DW_TAG_variable
+	.long	.Linfo_string25                 @ DW_AT_name
+	.long	188                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	218                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_pwd_rsa
+	.byte	2                               @ Abbrev [2] 0x204:0x12 DW_TAG_variable
+	.long	.Linfo_string26                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	219                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_pwd_rsa_len
+	.byte	2                               @ Abbrev [2] 0x216:0x12 DW_TAG_variable
+	.long	.Linfo_string27                 @ DW_AT_name
+	.long	552                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	222                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_srv_crt_rsa
+	.byte	3                               @ Abbrev [3] 0x228:0xd DW_TAG_array_type
+	.long	61                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x22d:0x7 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.short	1197                            @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	2                               @ Abbrev [2] 0x235:0x12 DW_TAG_variable
+	.long	.Linfo_string28                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	243                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_srv_crt_rsa_len
+	.byte	2                               @ Abbrev [2] 0x247:0x12 DW_TAG_variable
+	.long	.Linfo_string29                 @ DW_AT_name
+	.long	601                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.byte	246                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_srv_key_rsa
+	.byte	3                               @ Abbrev [3] 0x259:0xd DW_TAG_array_type
+	.long	61                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x25e:0x7 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.short	1707                            @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	10                              @ Abbrev [10] 0x266:0x13 DW_TAG_variable
+	.long	.Linfo_string30                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	274                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_srv_key_rsa_len
+	.byte	10                              @ Abbrev [10] 0x279:0x13 DW_TAG_variable
+	.long	.Linfo_string31                 @ DW_AT_name
+	.long	652                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	277                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cli_crt_rsa
+	.byte	3                               @ Abbrev [3] 0x28c:0xd DW_TAG_array_type
+	.long	61                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x291:0x7 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.short	1209                            @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	10                              @ Abbrev [10] 0x299:0x13 DW_TAG_variable
+	.long	.Linfo_string32                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	298                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cli_crt_rsa_len
+	.byte	10                              @ Abbrev [10] 0x2ac:0x13 DW_TAG_variable
+	.long	.Linfo_string33                 @ DW_AT_name
+	.long	601                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	301                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cli_key_rsa
+	.byte	10                              @ Abbrev [10] 0x2bf:0x13 DW_TAG_variable
+	.long	.Linfo_string34                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	329                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cli_key_rsa_len
+	.byte	10                              @ Abbrev [10] 0x2d2:0x13 DW_TAG_variable
+	.long	.Linfo_string35                 @ DW_AT_name
+	.long	741                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	334                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cas_pem
+	.byte	3                               @ Abbrev [3] 0x2e5:0xd DW_TAG_array_type
+	.long	61                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x2ea:0x7 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.short	3495                            @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	10                              @ Abbrev [10] 0x2f2:0x13 DW_TAG_variable
+	.long	.Linfo_string36                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	345                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cas_pem_len
+	.byte	10                              @ Abbrev [10] 0x305:0x13 DW_TAG_variable
+	.long	.Linfo_string37                 @ DW_AT_name
+	.long	792                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	349                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cas
+	.byte	3                               @ Abbrev [3] 0x318:0xc DW_TAG_array_type
+	.long	804                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x31d:0x6 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.byte	4                               @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	11                              @ Abbrev [11] 0x324:0x5 DW_TAG_pointer_type
+	.long	61                              @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x329:0x13 DW_TAG_variable
+	.long	.Linfo_string38                 @ DW_AT_name
+	.long	828                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	361                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cas_len
+	.byte	3                               @ Abbrev [3] 0x33c:0xc DW_TAG_array_type
+	.long	98                              @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x341:0x6 DW_TAG_subrange_type
+	.long	73                              @ DW_AT_type
+	.byte	4                               @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	10                              @ Abbrev [10] 0x348:0x13 DW_TAG_variable
+	.long	.Linfo_string39                 @ DW_AT_name
+	.long	804                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	375                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_crt
+	.byte	10                              @ Abbrev [10] 0x35b:0x13 DW_TAG_variable
+	.long	.Linfo_string40                 @ DW_AT_name
+	.long	804                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	376                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_key
+	.byte	10                              @ Abbrev [10] 0x36e:0x13 DW_TAG_variable
+	.long	.Linfo_string41                 @ DW_AT_name
+	.long	804                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	377                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_pwd
+	.byte	10                              @ Abbrev [10] 0x381:0x13 DW_TAG_variable
+	.long	.Linfo_string42                 @ DW_AT_name
+	.long	804                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	378                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_srv_crt
+	.byte	10                              @ Abbrev [10] 0x394:0x13 DW_TAG_variable
+	.long	.Linfo_string43                 @ DW_AT_name
+	.long	804                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	379                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_srv_key
+	.byte	10                              @ Abbrev [10] 0x3a7:0x13 DW_TAG_variable
+	.long	.Linfo_string44                 @ DW_AT_name
+	.long	804                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	380                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cli_crt
+	.byte	10                              @ Abbrev [10] 0x3ba:0x13 DW_TAG_variable
+	.long	.Linfo_string45                 @ DW_AT_name
+	.long	804                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	381                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cli_key
+	.byte	10                              @ Abbrev [10] 0x3cd:0x13 DW_TAG_variable
+	.long	.Linfo_string46                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	382                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_crt_len
+	.byte	10                              @ Abbrev [10] 0x3e0:0x13 DW_TAG_variable
+	.long	.Linfo_string47                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	383                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_key_len
+	.byte	10                              @ Abbrev [10] 0x3f3:0x13 DW_TAG_variable
+	.long	.Linfo_string48                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	384                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_pwd_len
+	.byte	10                              @ Abbrev [10] 0x406:0x13 DW_TAG_variable
+	.long	.Linfo_string49                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	385                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_srv_crt_len
+	.byte	10                              @ Abbrev [10] 0x419:0x13 DW_TAG_variable
+	.long	.Linfo_string50                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	386                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_srv_key_len
+	.byte	10                              @ Abbrev [10] 0x42c:0x13 DW_TAG_variable
+	.long	.Linfo_string51                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	387                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cli_crt_len
+	.byte	10                              @ Abbrev [10] 0x43f:0x13 DW_TAG_variable
+	.long	.Linfo_string52                 @ DW_AT_name
+	.long	98                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	1                               @ DW_AT_decl_file
+	.short	388                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_cli_key_len
+	.byte	12                              @ Abbrev [12] 0x452:0x11 DW_TAG_variable
+	.long	.Linfo_string53                 @ DW_AT_name
+	.long	418                             @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	181                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_crt_rsa_sha1
+	.byte	12                              @ Abbrev [12] 0x463:0x11 DW_TAG_variable
+	.long	.Linfo_string54                 @ DW_AT_name
+	.long	418                             @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	148                             @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	mbedtls_test_ca_crt_rsa_sha256
+	.byte	0                               @ End Of Children Mark
+.Ldebug_info_end0:
+	.section	.debug_str,"MS",%progbits,1
+.Linfo_string0:
+	.asciz	"Component: ARM Compiler 6.15 Tool: armclang [5dd79400]" @ string offset=0
+.Linfo_string1:
+	.asciz	"../../../ThirdParty/mbedTLS/library\\certs.c" @ string offset=55
+.Linfo_string2:
+	.asciz	"C:\\Users\\shw26\\OneDrive\\Desktop\\2021\\2021-1\\\354\272\241\354\212\244\355\206\244\353\224\224\354\236\220\354\235\2702\\Nuvoton\\M2351_BSP_v3.00.004\\M2351Series_BSP_CMSIS_V3.00.004\\MyProject\\PulseMonitoring\\Secure" @ string offset=99
+.Linfo_string3:
+	.asciz	"mbedtls_test_ca_crt_ec"        @ string offset=256
+.Linfo_string4:
+	.asciz	"char"                          @ string offset=279
+.Linfo_string5:
+	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=284
+.Linfo_string6:
+	.asciz	"mbedtls_test_ca_crt_ec_len"    @ string offset=304
+.Linfo_string7:
+	.asciz	"unsigned int"                  @ string offset=331
+.Linfo_string8:
+	.asciz	"size_t"                        @ string offset=344
+.Linfo_string9:
+	.asciz	"mbedtls_test_ca_key_ec"        @ string offset=351
+.Linfo_string10:
+	.asciz	"mbedtls_test_ca_key_ec_len"    @ string offset=374
+.Linfo_string11:
+	.asciz	"mbedtls_test_ca_pwd_ec"        @ string offset=401
+.Linfo_string12:
+	.asciz	"mbedtls_test_ca_pwd_ec_len"    @ string offset=424
+.Linfo_string13:
+	.asciz	"mbedtls_test_srv_crt_ec"       @ string offset=451
+.Linfo_string14:
+	.asciz	"mbedtls_test_srv_crt_ec_len"   @ string offset=475
+.Linfo_string15:
+	.asciz	"mbedtls_test_srv_key_ec"       @ string offset=503
+.Linfo_string16:
+	.asciz	"mbedtls_test_srv_key_ec_len"   @ string offset=527
+.Linfo_string17:
+	.asciz	"mbedtls_test_cli_crt_ec"       @ string offset=555
+.Linfo_string18:
+	.asciz	"mbedtls_test_cli_crt_ec_len"   @ string offset=579
+.Linfo_string19:
+	.asciz	"mbedtls_test_cli_key_ec"       @ string offset=607
+.Linfo_string20:
+	.asciz	"mbedtls_test_cli_key_ec_len"   @ string offset=631
+.Linfo_string21:
+	.asciz	"mbedtls_test_ca_crt_rsa"       @ string offset=659
+.Linfo_string22:
+	.asciz	"mbedtls_test_ca_crt_rsa_len"   @ string offset=683
+.Linfo_string23:
+	.asciz	"mbedtls_test_ca_key_rsa"       @ string offset=711
+.Linfo_string24:
+	.asciz	"mbedtls_test_ca_key_rsa_len"   @ string offset=735
+.Linfo_string25:
+	.asciz	"mbedtls_test_ca_pwd_rsa"       @ string offset=763
+.Linfo_string26:
+	.asciz	"mbedtls_test_ca_pwd_rsa_len"   @ string offset=787
+.Linfo_string27:
+	.asciz	"mbedtls_test_srv_crt_rsa"      @ string offset=815
+.Linfo_string28:
+	.asciz	"mbedtls_test_srv_crt_rsa_len"  @ string offset=840
+.Linfo_string29:
+	.asciz	"mbedtls_test_srv_key_rsa"      @ string offset=869
+.Linfo_string30:
+	.asciz	"mbedtls_test_srv_key_rsa_len"  @ string offset=894
+.Linfo_string31:
+	.asciz	"mbedtls_test_cli_crt_rsa"      @ string offset=923
+.Linfo_string32:
+	.asciz	"mbedtls_test_cli_crt_rsa_len"  @ string offset=948
+.Linfo_string33:
+	.asciz	"mbedtls_test_cli_key_rsa"      @ string offset=977
+.Linfo_string34:
+	.asciz	"mbedtls_test_cli_key_rsa_len"  @ string offset=1002
+.Linfo_string35:
+	.asciz	"mbedtls_test_cas_pem"          @ string offset=1031
+.Linfo_string36:
+	.asciz	"mbedtls_test_cas_pem_len"      @ string offset=1052
+.Linfo_string37:
+	.asciz	"mbedtls_test_cas"              @ string offset=1077
+.Linfo_string38:
+	.asciz	"mbedtls_test_cas_len"          @ string offset=1094
+.Linfo_string39:
+	.asciz	"mbedtls_test_ca_crt"           @ string offset=1115
+.Linfo_string40:
+	.asciz	"mbedtls_test_ca_key"           @ string offset=1135
+.Linfo_string41:
+	.asciz	"mbedtls_test_ca_pwd"           @ string offset=1155
+.Linfo_string42:
+	.asciz	"mbedtls_test_srv_crt"          @ string offset=1175
+.Linfo_string43:
+	.asciz	"mbedtls_test_srv_key"          @ string offset=1196
+.Linfo_string44:
+	.asciz	"mbedtls_test_cli_crt"          @ string offset=1217
+.Linfo_string45:
+	.asciz	"mbedtls_test_cli_key"          @ string offset=1238
+.Linfo_string46:
+	.asciz	"mbedtls_test_ca_crt_len"       @ string offset=1259
+.Linfo_string47:
+	.asciz	"mbedtls_test_ca_key_len"       @ string offset=1283
+.Linfo_string48:
+	.asciz	"mbedtls_test_ca_pwd_len"       @ string offset=1307
+.Linfo_string49:
+	.asciz	"mbedtls_test_srv_crt_len"      @ string offset=1331
+.Linfo_string50:
+	.asciz	"mbedtls_test_srv_key_len"      @ string offset=1356
+.Linfo_string51:
+	.asciz	"mbedtls_test_cli_crt_len"      @ string offset=1381
+.Linfo_string52:
+	.asciz	"mbedtls_test_cli_key_len"      @ string offset=1406
+.Linfo_string53:
+	.asciz	"mbedtls_test_ca_crt_rsa_sha1"  @ string offset=1431
+.Linfo_string54:
+	.asciz	"mbedtls_test_ca_crt_rsa_sha256" @ string offset=1460
+	.ident	"Component: ARM Compiler 6.15 Tool: armclang [5dd79400]"
+	.section	".note.GNU-stack","",%progbits
+	.ARM_attribute	16, 1	@ Tag_AV_eba
+	.section	.debug_line,"",%progbits
+.Lline_table_start0:
