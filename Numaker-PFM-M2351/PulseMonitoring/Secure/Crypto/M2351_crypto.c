@@ -8,14 +8,23 @@
 #include "M2351_crypto.h"
 #include "nsc.h"
 
-uint8_t cipheredSessionKey[16];
-uint8_t sessionIv[16];
+uint32_t sessionKey[8] =
+{
+    0x30303030, 0x30303030, 0x30303030, 0x30303030,
+    0x30303030, 0x30303030, 0x30303030, 0x30303030
+};
+
+uint32_t sessionIV[4] =
+{
+    0x30303030, 0x30303030, 0x30303030, 0x30303030
+};
 
 char priKey[49] = {0};
 char pubKey1[49] = {0}, pubKey2[49] = {0};
 char R[49] = {0}, S[49] = {0};
 		
 #define KEY_LENGTH          192          /* Select ECC P-192 curve, 192-bits key length */
+
 static char  hex_char_tbl[] = "0123456789abcdef";
 
 static char get_Nth_nibble_char(uint32_t val32, uint32_t idx)
@@ -40,6 +49,31 @@ static void Reg2Hex(int32_t count, uint32_t volatile reg[], char output[])
             idx--;
         }
     }
+}
+
+static void DumpBuffHex(uint8_t *pucBuff, int nBytes)
+{
+    int32_t i32Idx, i;
+
+    i32Idx = 0;
+    while(nBytes > 0)
+    {
+        printf("0x%04X  ", i32Idx);
+        for(i = 0; i < 16; i++)
+            printf("%02x ", pucBuff[i32Idx + i]);
+        printf("  ");
+        for(i = 0; i < 16; i++)
+        {
+            if((pucBuff[i32Idx + i] >= 0x20) && (pucBuff[i32Idx + i] < 127))
+                printf("%c", pucBuff[i32Idx + i]);
+            else
+                printf(".");
+            nBytes--;
+        }
+        i32Idx += 16;
+        printf("\n");
+    }
+    printf("\n");
 }
 
 
@@ -108,21 +142,6 @@ void M2351_Crypto_UseMasterKey()
 
 void M2351_Crypto_UseSessionKey(uint8_t channel)
 {
-
-	uint8_t sessionKey[16] = {0};
-
-	//printf("&cipheredSessionKey = %p\n", cipheredSessionKey);
-    //printBlock(cipheredSessionKey);
-
-	//M2351_Crypto_Init(1, DECRYPT);
-  //M2351_Crypto_UseMasterKey();
-	//if (DEMO)
-	//	printf("|  Secure is running ... decrypt sessionKey   |\n");
-  //M2351_Decrypt_Data(1, cipheredSessionKey, sessionKey);
-
-	//printf("&sessionKey = %p\n", sessionKey);
-    //printBlock(sessionKey);
-
 	
 	if (DEMO)
 		printf("|     Secure is running ... Use sessionKey    |\n");
@@ -131,19 +150,11 @@ void M2351_Crypto_UseSessionKey(uint8_t channel)
 
 	for (uint8_t z = 0; z < 4; z++)
 	{
-    	tmp_sk[z] = (sessionKey[0+(4*z)] << 24) | (sessionKey[1+(4*z)] << 16) | (sessionKey[2+(4*z)] << 8) | sessionKey[3+(4*z)];
-    	tmp_si[z] = (sessionIv[0+(4*z)] << 24) | (sessionIv[1+(4*z)] << 16) | (sessionIv[2+(4*z)] << 8) | sessionIv[3+(4*z)];
+			tmp_sk[z] = sessionKey[z];
+			tmp_si[z] = sessionIV[z];
   }
 	AES_SetKey(CRPT, channel, tmp_sk, AES_KEY_SIZE_128);
 	AES_SetInitVect(CRPT, channel, tmp_si);
-
-	/* Reset memory */
-    for (uint8_t z = 0; z < 16; z++) sessionKey[z] = 0;
-
-    for (uint8_t z = 0; z < 4; z++) {
-    	tmp_sk[z] = 0;
-    	tmp_si[z] = 0;
-    }
 
 }
 
@@ -173,7 +184,8 @@ void M2351_Encrypt_Data(uint8_t channel, uint8_t InputData[], uint8_t OutputData
 	/* Waiting for AES calculation */
 	while(!g_AES_done);
 
-	//printf("AES CBC encrypt done.\n");
+	//printf("AES encrypt done.\n\n");
+  //DumpBuffHex((uint8_t*)OutputData, sizeof((uint8_t*)InputData));
 
 }
 
@@ -202,8 +214,8 @@ void M2351_Decrypt_Data(uint8_t channel, uint8_t InputData[], uint8_t OutputData
     /* Waiting for AES calculation */
     while(!g_AES_done);
 		
-	//printf("AES CBC decrypt done.\n");
-
+		//printf("AES decrypt done.\n\n");
+    //DumpBuffHex((uint8_t*)OutputData, sizeof((uint8_t*)InputData));
 }
 
 
@@ -216,7 +228,7 @@ void M2351_FMC_Read_Key(uint32_t num, uint32_t len, char *priKey)
 	uint32_t		otpPrivateKey[6]= {0};
 	
 	printf("+---------------------------------------------+\n");
-  printf("|       FMC Read OTP Private Key Demo         |\n");
+  printf("|          FMC Read OTP Private Key           |\n");
   printf("+---------------------------------------------+\n");	
 	
 	if(num >= FMC_OTP_ENTRY_CNT)
@@ -343,7 +355,7 @@ void M2351_ECC_GenerateKey(char *priKey, char *gKey1, char *gKey2)
 	
 		//SYS_UnlockReg();
 	  printf("+---------------------------------------------+\n");
-    printf("|   Crypto ECC Public Key Generation Demo     |\n");
+    printf("|     Crypto ECC Public Key Generation        |\n");
     printf("+---------------------------------------------+\n");
 
     /* Enable ECC interrupt */
@@ -380,7 +392,7 @@ void M2351_ECC_GenerateKey(char *priKey, char *gKey1, char *gKey2)
 		*/
 
 		printf("ECC key generated OK.\n");		
-
+		//printf("pubKey1 : %s\npubKey2 : %s\n", gKey1, gKey2); 
 }
 
 
@@ -436,20 +448,13 @@ static int32_t SHAHash(uint32_t u32Mode, uint32_t *pu32Addr, int32_t size, uint3
     return 0;
 }
 
-const __attribute__((aligned(4))) uint8_t g_au8Test[32] ={
-0x64,0x36,0x2E,0x4D,0x28,0x16,0x0D,0xB4,0x44,0xEF,0x39
-,0x47,0xE1,0xC4,0x05,0x51,0x51,0x8C,0x71,0xE7,0x50,0x30
-,0x7C,0xA4,0x93,0xD5,0xC8,0x10,0x3E,0xD2,0xBF,0x53
-};
-
-
 void M2351_SHA_Hash(uint8_t *msg, uint8_t *hash_msg)
 {   	
     int32_t i;
     uint32_t u32_hash[5];
 	
 	  printf("+---------------------------------------------+\n");
-    printf("|        M2351 Crypto SHA Sample Demo         |\n");
+    printf("|           M2351 Crypto SHA-1 Hash           |\n");
     printf("+---------------------------------------------+\n");
 
     NVIC_EnableIRQ(CRPT_IRQn);
@@ -509,7 +514,7 @@ void M2351_ECDSA_GenerateSignature(uint8_t *msg, char *priKey, char* R, char *S)
 
 		printf("\n");
     printf("+---------------------------------------------+\n");
-    printf("|   Crypto ECDSA Singnature Generation Demo   |\n");
+    printf("|     Crypto ECDSA Singnature Generation      |\n");
     printf("+---------------------------------------------+\n");
 
 		M2351_SHA_Hash(msg, (uint8_t *)hash_msg);
@@ -535,7 +540,7 @@ void M2351_ECDSA_GenerateSignature(uint8_t *msg, char *priKey, char* R, char *S)
         while(1);
     }
 		*/
-    printf("ECC digital signature generated OK.\n");
+    printf("\nECC digital signature generated OK.\n");
 		printf("Signature R : %s\nSignature S : %s\n", R, S); 
 }
 
@@ -552,7 +557,7 @@ void M2351_ECDSA_VerificationSignature(char *hash_msg, char *pubKey1, char* pubK
     ECC_ENABLE_INT(CRPT);
 
     printf("+---------------------------------------------+\n");
-    printf("|   Crypto ECC Public Key Verification Demo   |\n");
+    printf("|     Crypto ECDSA Singnature Verification    |\n");
     printf("+---------------------------------------------+\n");
 
     /* Verify the signature */

@@ -546,19 +546,19 @@ void OLED_Config(void)
 	
 	
   /* USER CODE BEGIN 2 */  
-	if(PRINT)
+	if(OLED_PRINT)
 		printf("**********1.5inch OLED Init**********\r\n");
 	System_Init();
   
-	if(PRINT)
+	if(OLED_PRINT)
 		printf("OLED_Init()...\r\n");
 	OLED_Init(SCAN_DIR_DFT);//SCAN_DIR_DFT = D2U_L2R
 	
-	if(PRINT)
+	if(OLED_PRINT)
 		printf("OLED_Show()...\r\n");	
 	GUI_Show();
 	
-	if(PRINT)
+	if(OLED_PRINT)
 		printf("************************************\r\n");
 	OLED_Clear(OLED_BACKGROUND);//OLED_BACKGROUND
 	OLED_Display();
@@ -569,7 +569,7 @@ void OLED_Background_On()
 	OLED_SetWindow(0, 0, 127, 127);
 	OLED_ClearWindow(0, 0, 127, 127, BLACK);
 	
-	if(PRINT)
+	if(OLED_PRINT)
 		printf("Show toolbar icons\n");
 	GUI_Disbitmap(0  , 2, Signal816  , 16, 8);
 	GUI_Disbitmap(24 , 2, Bluetooth88, 8 , 8);
@@ -578,7 +578,7 @@ void OLED_Background_On()
 	GUI_Disbitmap(90 , 2, Alarm88    , 8 , 8);
 	GUI_Disbitmap(112, 2, Bat816     , 16, 8);
 
-	if(PRINT)
+	if(OLED_PRINT)
 		printf("Show background(16 gray map)\n");
 	GUI_DisGrayMap(0, 0, gImage_background);
 	
@@ -596,7 +596,7 @@ void OLED_BPM(uint32_t bpm)
 		return ;
 	}
 	
-	if(PRINT)
+	if(OLED_PRINT)
 		printf("Show Heart Rate\n");
 	OLED_SetWindow(0, 10, 127, 50);
 	GUI_DisNum(22 , 25, bpm, &Font24, FONT_BACKGROUND, WHITE);

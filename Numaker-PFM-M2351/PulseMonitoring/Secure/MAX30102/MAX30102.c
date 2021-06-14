@@ -124,13 +124,13 @@ void MAX30102_Config()
 			Sample_AVG 4, FIFO_ROLLOVER_EN
 		1*/
 		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_FIFO_CONFIG, 0x50);
-		printf("|       [1]MAX30102_FIFO_CONFIG --- ret %d     |\n", ret);
+		printf("|       [1] MAX30102_FIFO_CONFIG .....        |\n");
 		
 		/* Mode Config
 			Mode conrtol, Active LED Channels : Multi-LED Mode
 		*/
 		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_MODE_CONFIG, 0x07);
-		printf("|       [2]MAX30102_MODE_CONFIG --- ret %d     |\n", ret);
+		printf("|       [2] MAX30102_MODE_CONFIG .....        |\n");
 
 		/* SpO2 Config
 			SPO2 ADC range control(4096), SPO2 sample rate 400/1s,
@@ -138,28 +138,33 @@ void MAX30102_Config()
 			0b00101111
 		*/
 		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_SPO2_CONFIG, 0x2F);
-		printf("|       [3]MAX30102_SPO2_CONFIG --- ret %d     |\n", ret);
+		printf("|       [3] MAX30102_SPO2_CONFIG .....        |\n");
 
 		/* LED Pulse Amplitude
 			Typical LED1(RED) current : 2.0mA
 			Typical LED2(IR) current : 6.2mA
 		*/
 		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_LED1_AMP, 0x0A);
-		printf("|       [4]MAX30102_LED1_AMP    --- ret %d     |\n", ret);
+		printf("|       [4] MAX30102_LED1_AMP    .....        |\n");
 		
 		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX30102_LED2_AMP, 0x1F);
-		printf("|       [4]MAX30102_LED2_AMP    --- ret %d     |\n", ret);
+		printf("|       [5] MAX30102_LED2_AMP    .....        |\n");
 		
 		/* Multi-LED Mode Control Registers
 			Slot1 : LED1(RED), Slot2 : LED2(IR)
 		*/
 		ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX31012_MLED_CTRL1, 0x21);
-		printf("|       [5]MAX31012_MLED_CTRL1  --- ret %d     |\n", ret);
+		printf("|       [6] MAX31012_MLED_CTRL1  .....        |\n");
 		
 		//ret = I2C_WriteByteOneReg(I2C0, MAX30102_ADDR, MAX31012_MLED_CTRL2, 0x00);	
 		//printf("|       [5]MAX31012_MLED_CTRL2  --- ret %d     |\n", ret);
 		
+
+		if (ret) 
+			printf("|       MAX31012 Configuration Error!        |\n");
+		
 		printf("+---------------------------------------------+\n");
+		
 }
 
 

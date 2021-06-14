@@ -27,18 +27,25 @@
     PD_NS->MODE = (GPIO_MODE_OUTPUT << 6*2) | (GPIO_MODE_OUTPUT << 7*2); }\
 		//PC_NS->MODE = (GPIO_MODE_OUTPUT << 11*2) | (GPIO_MODE_OUTPUT << 12*2); }	\
     //PA->MODE = (GPIO_MODE_OUTPUT << 10*2) | (GPIO_MODE_OUTPUT << 11*2) ;}
-
-
 		
+typedef struct	s_netData
+{
+	char					*data;
+	int						len;
+}								t_netData;
+
+
+void printNetworkData(t_netData *netData);
 void WIFI_Init();
 void WIFI_Connect();
 void WIFI_Read(int);
 void WIFI_Write(int, const char *, int);
 int WIFI_ReceiveData(int, t_netData *);
-int WIFI_SendData(int, t_netData *);
+int WIFI_SendData(int print, t_netData *netData, int port);
 
 void WIFI_Send_BPM(int pulse);
-void WIFI_Send_EncryptedMsg(uint8_t *encryptedMsg, uint32_t body);
+void WIFI_Send_EncryptedMsg(uint8_t *encryptedMsg, int encryptedMsgBytes, uint32_t body);
 void WIFI_Send_DigitallySignedData(t_digitallySignedData *dsd);
-		
-#endif /* __WIFI_H__ */
+void WIFI_Send_EncryptedDigitallySignedData(t_digitallySignedData *dsd);
+
+		#endif /* __WIFI_H__ */

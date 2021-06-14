@@ -30,10 +30,6 @@ extern volatile uint32_t millis_counter;
 extern float beatsPerMinute;
 extern uint32_t beatAvg;
 
-extern uint8_t cipheredSessionKey[16];
-extern uint8_t sessionIv[16];
-
-
 typedef struct	s_netData
 {
 	char					*data;
@@ -70,10 +66,10 @@ int32_t Secure_OLED_On_callback(NonSecure_funcptr *callback);
  *----------------------------------------------------------------------------*/
 
 __NONSECURE_ENTRY
-uint32_t MAX30102_Get_BPM();
+uint32_t Get_BPM();
 
 __NONSECURE_ENTRY
-uint32_t MAX30102_Get_EncryptedBPM();
+uint32_t Get_EncryptedDigitallySignedData();
 
 /*----------------------------------------------------------------------------
  CRYPTO functions exported to NonSecure application
@@ -84,15 +80,11 @@ __NONSECURE_ENTRY
 int32_t Encrypt_data(uint8_t *,uint8_t *, uint32_t);
 __NONSECURE_ENTRY
 int32_t Decrypt_data(uint8_t *,uint8_t *, uint32_t);
-__NONSECURE_ENTRY
-int32_t Store_key(uint8_t *);
-__NONSECURE_ENTRY
-int32_t Store_iv(uint8_t *);
 
 __NONSECURE_ENTRY
 void M2351_LoadKey();
 __NONSECURE_ENTRY
-void M2351_DeleteKeySignature();
+void M2351_DeleteKey();
 
 /*----------------------------------------------------------------------------
  PRINT functions exported to NonSecure application
@@ -103,8 +95,6 @@ __NONSECURE_ENTRY
 int32_t printBlock(uint8_t *);
 __NONSECURE_ENTRY
 int32_t printSecure(char *,void *,uint8_t);
-__NONSECURE_ENTRY
-int32_t printNetworkData(t_netData *);
 __NONSECURE_ENTRY
 int32_t printDigitallySignedData(t_digitallySignedData *dsd);
 

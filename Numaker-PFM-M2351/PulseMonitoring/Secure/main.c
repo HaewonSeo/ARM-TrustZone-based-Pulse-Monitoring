@@ -123,8 +123,6 @@ void SYS_Init(void)
                     CLK_APBCLK0_UART2CKEN_Msk | CLK_APBCLK0_UART3CKEN_Msk | CLK_APBCLK0_UART5CKEN_Msk;
 
 
-
-
     /* Enable UART module clock */
     //CLK_EnableModuleClock(UART0_MODULE);
 
@@ -292,66 +290,6 @@ void Nonsecure_Init(void)
     }
 }
 
-void testCryptDeCrypt() {
-
-    //Test Function to cipher and decypher data 
-
-    __attribute__((aligned(4))) uint8_t plainData[16] = {0x32, 0x43, 0xf6, 0xa8, 0x88, 0x5a, 0x30, 0x8d, 0x31, 0x31, 0x98, 0xa2, 0xe0, 0x37, 0x07, 0x34};
-    __attribute__((aligned(4))) uint8_t cipheredData[16] = {0};
-    __attribute__((aligned(4))) uint8_t resultData[16] = {0};
-
-    __attribute__((aligned(4))) uint8_t key[16] =
-    {
-        0x7f, 0x35, 0x91, 0xd3, 0x6f, 0xd5, 0x17, 0xa3, 0x7b, 0x6d, 0xe9, 0xe0, 0xdf, 0x93, 0x4b, 0x7a
-    };
-    __attribute__((aligned(4))) uint8_t iv[16] = {0};
-
-    if (DEMO) {
-        //printSecure("&key  = %p\n",key);
-        //printBlock(key);
-        //printSecure("&iv  = %p\n",iv);
-        //printBlock(iv);
-        printSecure("&plainData  = %p\n",plainData, NULL);
-        printBlock(plainData);
-        CLK_SysTickLongDelay(500000);
-    }
-
-    Store_key(key);
-    Store_iv(iv);
-
-    int c = Encrypt_data(plainData, cipheredData, 16);
-    if (c == NULL) printSecure("Error : 128bits only", NULL, NULL);
-
-    if (DEMO) {
-        CLK_SysTickLongDelay(500000);
-        printSecure("|           Nonsecure is running ...          |\n",NULL, NULL);
-
-        printSecure("&cipheredData  = %p\n",cipheredData, NULL);
-        printBlock(cipheredData);
-    }
-
-    int r = Decrypt_data(cipheredData, resultData, 16);
-    if (r == NULL) printSecure("Error : 128bits only", NULL, NULL);
-
-    if (DEMO) {
-        CLK_SysTickLongDelay(500000);
-        printSecure("|           Nonsecure is running ...          |\n",NULL, NULL);
-        
-        printSecure("&resultData  = %p\n",resultData, NULL);
-        printBlock(resultData);
-
-        uint8_t error = 0;
-        for (uint8_t i = 0 ; i < 16 ; i++) {
-
-            if (resultData[i] != plainData[i]) error++;
-
-        }
-        if (error != 0) printSecure("Error plainData is not equal to resultData", NULL, NULL);
-        else printSecure("No error plainData is equal to resultData", NULL, NULL);
-
-    }
-
-}
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*  Main Function                                                                                          */
@@ -384,31 +322,6 @@ int32_t main(void)
     printf("|             Secure is running ...           |\n");
     printf("+---------------------------------------------+\n");
 
-
-	/*
-		char priKey[49] = {0};
-		char pubKey1[49] = {0}, pubKey2[49] = {0};
-		char R[49] = {0}, S[49] = {0};
-		
-		M2351_FMC_Read_Key(0, 3, priKey);
-		printf("prikey(%d-bits) : %s\n", strlen(priKey) * 4, priKey); 
-		
-		M2351_ECC_GenerateKey(priKey, pubKey1, pubKey2);
-		printf("pubKey1(%d-bits) : %s\npubKey2(%d-bits) : %s\n", strlen(pubKey1) * 4, pubKey1, strlen(pubKey2) * 4, pubKey2); 
-		
-		__attribute__((aligned(4))) uint8_t plainBPM[16] = {0};
-		uint8_t hashBPM[41] = {0};
-		
-		M2351_SHA_Hash(plainBPM, hashBPM);
-		printf("\nhashBPM(%d-bits):\n%s\n", strlen(hashBPM) * 4, hashBPM);
-		
-		M2351_ECDSA_GenerateSignature(hashBPM, priKey, R, S);
-		M2351_ECDSA_VerificationSignature(hashBPM, pubKey1, pubKey2, R, S);
-		
-		while(1);
-		*/
-		//testCryptDeCrypt();
-		
 		/* Config MAX30102 */
 		MAX30102_Config();
 
@@ -423,5 +336,5 @@ int32_t main(void)
     while(1);			
 	
 		
-
 }
+

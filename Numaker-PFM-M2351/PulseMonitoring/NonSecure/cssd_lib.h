@@ -11,15 +11,10 @@
 #ifndef __CSSD_LIB_H__
 #define __CSSD_LIB_H__
 
-typedef struct	s_netData
-{
-	char					*data;
-	int						len;
-}								t_netData;
 
 typedef struct s_digitallySignedData
 {
-	uint8_t				data[16];
+	uint8_t				data[17];
 	uint8_t				pubKey1[25];
 	uint8_t				pubKey2[25];
 	uint8_t				R[25];
@@ -38,8 +33,8 @@ extern int32_t Secure_OLED_Off_callback(void (*)(uint32_t));
  MAX30102 Heart-Rate Sensor functions
  *----------------------------------------------------------------------------*/
 
-extern uint32_t MAX30102_Get_BPM();
-extern uint32_t MAX30102_Get_EncryptedBPM(t_digitallySignedData *dsd);
+extern uint32_t Get_BPM();
+extern uint32_t Get_EncryptedDigitallySignedData(t_digitallySignedData *dsd);
 
 /*----------------------------------------------------------------------------
  CRYPTO functions
@@ -47,17 +42,14 @@ extern uint32_t MAX30102_Get_EncryptedBPM(t_digitallySignedData *dsd);
 
 extern int32_t Encrypt_data(uint8_t *plainData, uint8_t *encryptedData, uint32_t bytes);
 extern int32_t Decrypt_data(uint8_t *encryptedData, uint8_t *resultData, uint32_t bytes);
-extern int32_t Store_key(uint8_t *newKey);
-extern int32_t Store_iv(uint8_t *newIv);
 extern void M2351_LoadKey();
-extern void M2351_DeleteKeySignature();
+extern void M2351_DeleteKey();
 /*----------------------------------------------------------------------------
  PRINT functions 
  *----------------------------------------------------------------------------*/
 
 extern void printBlock(uint8_t *block);
 extern void printSecure(char *string, void *ptr, uint8_t val);
-extern void printNetworkData(t_netData *netData);
 extern int32_t printDigitallySignedData(t_digitallySignedData *dsd);
 
 #endif //__CSSD_LIB_H__

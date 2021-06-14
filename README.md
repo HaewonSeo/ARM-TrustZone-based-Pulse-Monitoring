@@ -12,10 +12,14 @@
 
 + In Server/
 	+ docker build
-	``` docker build -t server```
+	```
+	docker build -t server
+	```
 
 	+ docker run
-	``` docker run --name=server -it -p80:80 -p443:443 -p2351:2351 server ```
+	```
+	docker run --name=server -it -p80:80 -p443:443 -p2351:2351 server
+	```
 
 
 # Contact

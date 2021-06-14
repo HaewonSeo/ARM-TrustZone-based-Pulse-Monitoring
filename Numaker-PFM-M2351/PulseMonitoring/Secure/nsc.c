@@ -51,7 +51,7 @@ uint32_t GetSystemCoreClock(void)
 
 
 __NONSECURE_ENTRY
-uint32_t MAX30102_Get_BPM()
+uint32_t Get_BPM()
 {
 	uint32_t ret;
 	static uint32_t ticks;
@@ -82,20 +82,25 @@ uint32_t MAX30102_Get_BPM()
 }
 
 __NONSECURE_ENTRY
-uint32_t MAX30102_Get_EncryptedBPM(t_digitallySignedData *dsd)
+uint32_t Get_EncryptedDigitallySignedData(t_digitallySignedData *dsd)
 {
 	uint32_t ret;
 	static uint32_t ticks;
-	
-	
+	__attribute__((aligned(4))) uint8_t plainBPM[16] = //{0};
+	{
+   0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
+   0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30
+	};	
+
 	ret =	MAX30102_ComputeBPM();
 
 	ticks++;
 	
-	if (ticks == 60)
+	if (ticks >= 60)
 	{
 		ticks = 0;
 		startTime = millis_counter;
+		
 		/* Refresh OLED */
 		pfNonSecure_OLED_On(9999);
 		pfNonSecure_OLED_On(beatAvg);	
@@ -105,23 +110,17 @@ uint32_t MAX30102_Get_EncryptedBPM(t_digitallySignedData *dsd)
 		//printf("OLED print time = %u\n", OLED_printTime);
 		
 		/* Encyrpt beatAvg */
-		__attribute__((aligned(4))) uint8_t plainBPM[16] = {0};
-		memcpy(plainBPM, &beatAvg, sizeof(uint32_t));
-		//char hashBPM[41] = {0};
+		memcpy(plainBPM, &beatAvg, sizeof(uint8_t));
 		
 		/* hashing(sha1) -> Generate Signature -> Encrypt plainBPM & Signiture */
 		
-		//printf("\nhashBPM(%d-bits):\n%s\n", strlen(hashBPM) * 4, hashBPM);
 		M2351_ECDSA_GenerateSignature((uint8_t *)plainBPM, priKey, R, S);
-		
-		
-		//printf("\nS\n");
-		//printDigitallySignedData(dsd);
-		Encrypt_data((uint8_t *)plainBPM, (uint8_t *)dsd->data, sizeof(plainBPM)-1);
-		Encrypt_data((uint8_t *)pubKey1, (uint8_t *)dsd->pubKey1, sizeof(pubKey1)-1);
-		Encrypt_data((uint8_t *)pubKey2, (uint8_t *)dsd->pubKey2, sizeof(pubKey2)-1);
-		Encrypt_data((uint8_t *)R, (uint8_t *)dsd->R, sizeof(R)-1);
-		Encrypt_data((uint8_t *)S, (uint8_t *)dsd->S, sizeof(S)-1);
+
+		Encrypt_data((uint8_t *)plainBPM, (uint8_t *)dsd->data, sizeof(plainBPM));
+		Encrypt_data((uint8_t *)pubKey1, (uint8_t *)dsd->pubKey1, 24);
+		Encrypt_data((uint8_t *)pubKey2, (uint8_t *)dsd->pubKey2, 24);
+		Encrypt_data((uint8_t *)R, (uint8_t *)dsd->R, 24);
+		Encrypt_data((uint8_t *)S, (uint8_t *)dsd->S, 24);
 		
 		printf("\nplainBPM\n");
 		printBlock(plainBPM);
@@ -177,42 +176,6 @@ int32_t Decrypt_data(uint8_t *encryptedData, uint8_t *resultData, uint32_t bytes
     return (int32_t)resultData;
 }
 
-__NONSECURE_ENTRY
-int32_t Store_key(uint8_t *newKey) {
-
-    if (DEMO) printf("\n|      Secure is running ... Store_key        |\n");
-
-    for (uint8_t z = 0; z < 16; z++) {
-
-        cipheredSessionKey[z] = newKey[z];
-
-        //Reset memory
-        newKey[z] = 0;
-
-    }
-
-    //printf("&cipheredSessionKey = %p\n", cipheredSessionKey);
-    //printBlock(cipheredSessionKey);
-
-    return SUCCESS;
-}
-
-__NONSECURE_ENTRY
-int32_t Store_iv(uint8_t *newIv) {
-
-    if (DEMO) printf("\n|      Secure is running ... Store_iv         |\n");
-    
-    for (uint8_t z = 0; z < 16; z++) {
-
-        sessionIv[z] = newIv[z];
-
-        // Reset memory
-        newIv[z] = 0;
-
-    }
-
-    return SUCCESS;
-}
 
 __NONSECURE_ENTRY
 void M2351_LoadKey()
@@ -238,7 +201,7 @@ void M2351_LoadKey()
 }
 
 __NONSECURE_ENTRY
-void M2351_DeleteKeySignature()
+void M2351_DeleteKey()
 {
 	memset(priKey, 0, sizeof(char) * 49);
 	memset(pubKey1, 0, sizeof(char) * 49);
@@ -285,39 +248,30 @@ int32_t printSecure(char *string, void *ptr, uint8_t val) {
 	return 1;
 }
 
-__NONSECURE_ENTRY
-int32_t printNetworkData(t_netData *netData) {
 
-    printf("Data   : %s\n", netData->data);
-    printf("Length : %d\n", netData->len);
-	
-    return 1;
-}
 
 __NONSECURE_ENTRY
 int32_t printDigitallySignedData(t_digitallySignedData *dsd) 
 {    
 	int32_t i;
-	
-	printf("\ndigitallySignedData\n");
-	
+		
 	printf(".data(%d-bits):\n", (sizeof(dsd->data)-1) * 8);
   for(i=0; i<16; i++)
      printf("%02x", dsd->data[i]);
 	
-	printf("\n.pubKey1(%d-bits):\n", (sizeof(dsd->pubKey1)-1) * 8);
-	for(i=0; i<24; i++)
-     printf("%02x", dsd->pubKey1[i]);
+	//printf("\n.pubKey1(%d-bits):\n", (sizeof(dsd->pubKey1)-1) * 8);
+	//for(i=0; i<24; i++)
+  //   printf("%02x", dsd->pubKey1[i]);
 	
-	printf("\n.pubKey2(%d-bits):\n", (sizeof(dsd->pubKey2)-1) * 8);
-	for(i=0; i<24; i++)
-     printf("%02x", dsd->pubKey2[i]);
+	//printf("\n.pubKey2(%d-bits):\n", (sizeof(dsd->pubKey2)-1) * 8);
+	//for(i=0; i<24; i++)
+  //   printf("%02x", dsd->pubKey2[i]);
 	
-	printf("\n.Signature R:\n");
+	printf("\n.SignatureR(%d-bits):\n", (sizeof(dsd->R)-1) * 8);
 	for(i=0; i<24; i++)
      printf("%02x", dsd->R[i]);
 	
-	printf("\n.Signature S:\n");
+	printf("\n.SignatureS(%d-bits):\n", (sizeof(dsd->S)-1) * 8);
 	for(i=0; i<24; i++)
      printf("%02x", dsd->S[i]);
 	
