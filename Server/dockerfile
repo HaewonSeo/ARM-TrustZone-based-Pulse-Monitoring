@@ -1,0 +1,36 @@
+FROM	debian:buster
+
+LABEL	maintainer="shw2662@khu.ac.kr"
+
+RUN		apt-get update && apt-get install -y \
+		nginx \
+		openssl \
+		vim \
+		php-fpm \
+		mariadb-server \
+		php-mysql \
+		php-mbstring \
+		wget \
+		php \
+		gcc \
+		libssl-dev \
+		netstat
+
+COPY	./srcs/default ./tmp/
+COPY	./srcs/wordpress-5.6.2.tar.gz ./tmp/
+COPY	./srcs/wp-config.php ./tmp/
+COPY	./srcs/phpMyAdmin-4.9.7-all-languages.tar.gz ./tmp/
+COPY	./srcs/config.inc.php ./tmp/
+COPY	./srcs/run.sh ./
+
+COPY	./srcs/input.php ./tmp/
+COPY	./srcs/process.php ./tmp/
+COPY	./srcs/highcharts.php ./tmp/
+COPY	./srcs/socket.php ./tmp/
+
+COPY	./srcs/tcp.h ./home/
+COPY	./srcs/tcps.s ./home/
+
+EXPOSE	80 443 2351
+
+CMD		bash run.sh
