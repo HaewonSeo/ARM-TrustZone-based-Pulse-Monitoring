@@ -5,7 +5,7 @@
 
 ## Numaker-PFM-M2351
 + Need a Keil uVision5
-+ Place a `Numaker-PFM-M2351` directory in a `M2351Series_BSP_CMSIS_V3.00.004` directory
++ Place a `Numaker-PFM-M2351` directory in a `M2351Series_BSP_CMSIS_V3.00.004` directory so that you can use the library.
 
 ## Server
 + Need a docker engine
