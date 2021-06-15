@@ -1,7 +1,7 @@
 # ARM-TrustZone-based-Pulse-Monitoring
 2021-1 Capston Project
 
-![structure](/structure.jpg)
+![structure](/structure.png)
 
 # Instruction
 
