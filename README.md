@@ -1,7 +1,15 @@
 # ARM-TrustZone-based-Pulse-Monitoring
 2021-1 Capston Project
 
+### Structure
 ![structure](/structure.png)
+
+### Target board : Numaker-PFM-M2351
++ Front View
+![front](/Numaker-PFM-M2351-front.png)
+
++ Read View
+![back](/Numaker-PFM-M2351-back.png)
 
 # Instruction
 
