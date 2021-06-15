@@ -370,7 +370,7 @@
             <TextAddressRange></TextAddressRange>
             <DataAddressRange></DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile>.\Objects\Secure.sct</ScatterFile>
+            <ScatterFile>.\Secure.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc>--import-cmse-lib-out .\lib\nsclib.o</Misc>
